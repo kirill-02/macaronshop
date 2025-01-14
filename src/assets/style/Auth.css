@@ -1,0 +1,113 @@
+.auth {
+  margin: 0 auto;
+}
+.auth__wrapper {
+  position: relative;
+}
+.auth__wrapper_img, .auth__wrapper_img_register {
+  position: absolute;
+  z-index: -1;
+}
+.auth__wrapper_img {
+  max-width: 570px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -14%);
+}
+.auth__wrapper_img img {
+  width: 570px;
+}
+.auth__wrapper_img_register {
+  width: 990px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -14%);
+}
+.auth__wrapper_img_register img {
+  width: 990px;
+}
+.auth__wrapper__form_register {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 370px);
+  grid-column-gap: 50px;
+}
+.auth__wrapper__form {
+  transform: translate(0, 70%);
+  max-width: 990px;
+  padding: 50px 100px;
+  background: #F7EBE5;
+  min-height: 300px;
+}
+.auth__wrapper__form label {
+  margin-bottom: 6px;
+  color: #292929;
+}
+.auth__wrapper__form label:not(:last-child) {
+  display: block;
+  margin-top: 15px;
+}
+.auth__wrapper__form input {
+  width: 370px;
+  padding: 14px 15px;
+  border: none;
+  outline: none;
+}
+.auth__wrapper__form_title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #292929;
+  font-size: 30px;
+  font-weight: 600;
+}
+.auth__wrapper__form_title span {
+  display: block;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.auth__wrapper__form_title p {
+  width: 370px;
+  display: block;
+  margin-top: 15px;
+  font-size: 15px;
+  font-weight: 400;
+}
+.auth__wrapper__form_re-password {
+  margin-top: 6px;
+  text-align: end;
+  color: #E7426A;
+}
+.auth__wrapper__form_btn {
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 3px;
+  padding: 16px 39px;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  background-color: #E7426A;
+}
+.auth__wrapper_login {
+  text-align: center;
+  color: #292929;
+  margin-top: 31px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.auth__wrapper_login span {
+  color: #E7426A;
+}
+.auth__wrapper_rules {
+  text-align: center;
+  color: #292929;
+  margin-top: 15px;
+  font-size: 11px;
+  font-weight: 400;
+}
+.auth__wrapper_rules a {
+  color: #4E9DD3;
+}
+
+/*# sourceMappingURL=Auth.css.map */

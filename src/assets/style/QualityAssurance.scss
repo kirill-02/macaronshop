@@ -1,0 +1,55 @@
+.title {
+  margin-top: 80px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.description {
+  margin: 26px auto;
+  width: 663px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.guarantee {
+  margin: 132px auto 37px;
+  text-align: center;
+
+  &__wrapper {
+    margin-top: 40px;
+
+    &__cards {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-column-gap: 30px;
+      grid-row-gap: 30px;
+
+      &_card {
+        width: 270px;
+
+        &_img {
+          width: 270px;
+          height: 270px;
+        }
+
+        &__information {
+          margin-top: 29px;
+          height: 102px;
+
+          &-center {
+            text-align: center;
+          }
+
+          &_title, &__description {
+            font-size: 14px;
+            color: #292929;
+            font-weight: 600;
+          }
+
+
+        }
+      }
+    }
+  }
+}

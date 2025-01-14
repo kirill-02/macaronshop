@@ -1,0 +1,225 @@
+img {
+  object-fit: cover;
+}
+
+hr {
+  border: 1px solid rgb(237, 237, 240);
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.product {
+  margin-top: 87px;
+
+  &__wrapper {
+    &__card-product {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__images {
+      img {
+        width: 570px;
+        height: 450px;
+      }
+
+      &__card {
+        display: flex;
+        margin-top: 14px;
+
+        img {
+          margin-right: 15px;
+          width: 71.25px;
+          height: 71.25px;
+        }
+
+        &__card_img {
+        }
+      }
+    }
+
+    &__block {
+      margin-left: 30px;
+      width: 570px;
+    }
+
+    &__information {
+
+      &__title {
+        font-size: 30px;
+        font-weight: 600;
+
+        p {
+          margin-top: 11px;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+
+      &__tastes {
+        margin-top: 20px;
+        background: #ffffff;
+        padding: 26px 27px 24px;
+        border-radius: 5px;
+
+        &_title {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+
+        &__name-quantity {
+          display: flex;
+          justify-content: space-between;
+          align-items: end;
+          text-align: right;
+
+          &_name:not(:last-child) {
+            margin-bottom: 10px;
+          }
+
+          &_dot {
+          }
+
+          &_dot:before {
+            content: '....................................................................................................................';
+            color: #EDEDF0;
+          }
+
+          &_quantity {
+          }
+        }
+
+      }
+    }
+
+    &__price {
+      margin-top: 10px;
+      display: flex;
+      font-size: 24px;
+      color: #E7426A;
+      font-weight: 600;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      padding: 15px 28px;
+      border-radius: 5px;
+
+      &_btn {
+        padding: 15px 38px;
+        background: #E7426A;
+        border: none;
+        outline: none;
+        color: #fff;
+        border-radius: 3px;
+      }
+    }
+
+    &__delivery {
+      margin-top: 31px;
+
+      &__card {
+        display: flex;
+        align-items: center;
+
+        i {
+          width: 46px;
+          font-size: 30px;
+          color: #E7426A;
+        }
+
+        i:not(:last-child) {
+          margin-bottom: 16px;
+
+        }
+
+        &_description {
+          font-size: 14px;
+          font-weight: 400;
+          width: 486px;
+          margin-left: 31px;
+        }
+      }
+    }
+
+    &__description {
+      margin-top: 36px;
+      padding: 22px 22px 57px;
+      background: #ffffff;
+
+      &__title {
+        display: flex;
+
+        &_btn {
+          position: relative;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 17px;
+          outline: none;
+          border: none;
+          background: none;
+          cursor: pointer;
+
+          div {
+
+          }
+
+          .div {
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: -120%;
+            left: 0%;
+            background: #E7426A;
+          }
+        }
+
+        &_btn:not(:last-child) {
+          margin-right: 29px;
+        }
+      }
+
+      &__description {
+        margin-top: 41px;
+        display: block;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+
+        p:nth-child(1) {
+
+        }
+
+        p:not(:last-child) {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}
+
+.popular-sets {
+  margin-top: 70px;
+  padding-bottom: 87px;
+
+  &__wrapper {
+    position: relative;
+    margin-top: 42px;
+
+    &__cards {
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      grid-template-columns: repeat(auto-fill, 270px);
+      grid-column-gap: 30px;
+      grid-row-gap: 35px;
+      padding-bottom: 35px;
+
+
+    }
+  }
+}

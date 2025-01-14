@@ -1,0 +1,111 @@
+.footer {
+  background: #EBEDEE;
+
+  &__wrapper {
+    display: flex;
+    padding: 58px 0 69px;
+    color: #292929;
+
+    &_title {
+      margin-bottom: 18px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    &_description {
+      font-size: 14px;
+      font-weight: 400;
+
+      div:not(:last-child) {
+        margin-bottom: 15px;
+      }
+    }
+
+    &__information {
+      margin-right: 30px;
+      width: 172px;
+    }
+
+    &__delivery {
+      width: 370px;
+      margin-right: 30px;
+
+      &__cards {
+        display: flex;
+        text-align: center;
+
+        &__card {
+          width: 144px;
+
+          &_icon {
+            font-size: 44px;
+            color: #4E9DD3;
+          }
+
+
+          &__description {
+            font-size: 12px;
+            font-weight: 400;
+            margin-right: 10px;
+          }
+        }
+      }
+
+      &_address {
+        margin-top: 28px;
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+
+
+    &__networks {
+      &__number {
+        text-align: end;
+
+        &_telephone {
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        &_time {
+          margin-top: 5px;
+          font-size: 14px;
+          font-weight: 400;
+
+        }
+      }
+
+      &__social {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin-top: 70px;
+
+        div {
+          width: 40px;
+          height: 40px;
+          background: #FFFFFF;
+          border-radius: 100%;
+          position: relative;
+
+          i {
+            font-size: 20px;
+            color: #292929;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        div:not(:last-child) {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,434 @@
+<template>
+  <div class="first-screen">
+    <div class="container">
+      <div class="first-screen__wrapper">
+        <div class="first-screen__wrapper_heart"><img src="../../public/img/home/1/1.png"></div>
+        <div class="first-screen__wrapper__information">
+          <div class="first-screen__wrapper__information_year">
+            <strong>Macaronshop</strong>
+            <span>&mdash; since 2013 &mdash;</span>
+          </div>
+          <div class="first-screen__wrapper__information_description">
+            <strong>Настоящая любовь</strong>
+            <span>Пирожные макарон и другие десерты из натуральных ингредиентов, приготовленные с любовью</span>
+            <img src="../../public/img/home/1/2.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-offers">
+    <div class="container">
+      <div class="card-offers__wrapper">
+        <router-link to="ready-sets" class="card-offers__wrapper__block">
+          <div class="card-offers__wrapper__block-one">
+            <div class="card-offers__wrapper__block_one-ready"></div>
+
+            <div class="card-offers__wrapper__block_icon"><i class="ic_ready"></i></div>
+            <div class="card-offers__wrapper__block_title">Готовые наборы &#8594;</div>
+            <div class="card-offers__wrapper__block_description">
+              Готовые наборы со скидкой.
+              Вы можете подобрать набор на подходящий случай.
+            </div>
+          </div>
+        </router-link>
+
+        <a href="#" class="card-offers__wrapper__block">
+          <div class="card-offers__wrapper__block-two">
+
+            <div class="card-offers__wrapper__block_one-mine"></div>
+
+            <div class="card-offers__wrapper__block_icon"><i class="ic_mine"></i></div>
+            <div class="card-offers__wrapper__block_title">Собрать свой набор &#8594;</div>
+            <div class="card-offers__wrapper__block_description">
+              Выбрать количество макарун, и выбрать вкусы
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="card-offers__wrapper__block">
+          <div class="card-offers__wrapper__block-three">
+
+            <div class="card-offers__wrapper__block_one-palette"></div>
+
+            <div class="card-offers__wrapper__block_icon"><i class="ic_palette"></i></div>
+            <div class="card-offers__wrapper__block_title">Набор с индивидуальной печатью &#8594;</div>
+            <div class="card-offers__wrapper__block_description">
+              Собрать набор макарон с уникальным дизайном.
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="card-offers__wrapper__block">
+          <div class="card-offers__wrapper__block-four">
+
+            <div class="card-offers__wrapper__block_one-cake"></div>
+
+            <div class="card-offers__wrapper__block_icon"><i class="ic_cake"></i></div>
+            <div class="card-offers__wrapper__block_title">Свадебные предложения &#8594;</div>
+            <div class="card-offers__wrapper__block_description">
+              Нежные пирожные макаронс с разными вкусами для украшения вашего свадебного торжества
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="card-offers__wrapper__block">
+          <div class="card-offers__wrapper__block-five">
+
+            <div class="card-offers__wrapper__block_one-present"></div>
+
+            <div class="card-offers__wrapper__block_icon"><i class="ic_present"></i></div>
+            <div class="card-offers__wrapper__block_title">Корпоративные подарки &#8594;</div>
+            <div class="card-offers__wrapper__block_description">
+              От 85 руб за шт. С уникальным дизайном. Приятный комплимент для коллег и партнеров
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="card-offers__wrapper__block">
+          <div class="card-offers__wrapper__block-six">
+
+            <div class="card-offers__wrapper__block_one-chair"></div>
+
+            <div class="card-offers__wrapper__block_icon"><i class="ic_chair"></i></div>
+            <div class="card-offers__wrapper__block_title">Оптовые поставки &#8594;</div>
+            <div class="card-offers__wrapper__block_description">
+              Предложение для кофеен, кафе, отелей и т.д.
+              Посмотрите условия сотрудничества и отзывы.
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="promotion">
+    <div class="container">
+      <div class="title">
+        Акции
+      </div>
+      <div class="promotion__wrapper">
+        <div class="promotion__wrapper__cards">
+          <div class="promotion__wrapper__cards_card primary">
+            <div class="promotion__wrapper__cards_card_bookmark primary">БЕСПЛАТНАЯ ДОСТАВКА</div>
+            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/1.jpeg" alt=""></div>
+            <div class="promotion__wrapper__cards_card_description ">По СПб в районе КАД – от 3000₽ По МСК – от
+              5000₽
+            </div>
+          </div>
+
+          <div class="promotion__wrapper__cards_card danger">
+            <div class="promotion__wrapper__cards_card_bookmark danger">НОВИНКА</div>
+            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/2.jpeg" alt=""></div>
+            <div class="promotion__wrapper__cards_card_description">Шоколадное пирожное картошка на основе
+              бисквита!
+            </div>
+          </div>
+
+          <div class="promotion__wrapper__cards_card danger">
+            <div class="promotion__wrapper__cards_card_bookmark danger">НОВИНКА</div>
+            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/3.jpeg" alt=""></div>
+            <div class="promotion__wrapper__cards_card_description">Аппетитные конфеты на основе миндального
+              печенья и
+              крема
+            </div>
+          </div>
+
+          <div class="promotion__wrapper__cards_card danger">
+            <div class="promotion__wrapper__cards_card_bookmark danger">СЛАДКАЯ НОВИНКА</div>
+            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/4.jpeg" alt=""></div>
+            <div class="promotion__wrapper__cards_card_description">Карамель на палочке из натуральных
+              ингредиентов
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="next-holiday">
+    <div class="container">
+      <div class="title">Ближайшие праздники</div>
+      <div class="next-holiday__wrapper">
+        <div class=" next-holiday__wrapper__arrived">
+          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/holiday.png" alt=""></div>
+          <div class="next-holiday__wrapper__arrived_description">Скоро День рождения близкого человека</div>
+
+        </div>
+
+        <div class="next-holiday__wrapper__arrived">
+          <!--          <div class="next-holiday__wrapper__arrived_dot">.......................</div>-->
+
+          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/turquoise.png" alt=""></div>
+          <div class="next-holiday__wrapper__arrived_description">1 января Новый Год 2021</div>
+          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
+        </div>
+
+        <div class="next-holiday__wrapper__arrived">
+          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/pink.png" alt=""></div>
+          <div class="next-holiday__wrapper__arrived_description">14 февраля День Святого Валентина</div>
+          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
+        </div>
+
+        <div class="next-holiday__wrapper__arrived">
+          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/orange.png" alt=""></div>
+          <div class="next-holiday__wrapper__arrived_description">23 февраля День Защитника Отечества</div>
+          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
+        </div>
+
+        <div class="next-holiday__wrapper__arrived">
+          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/turquoise.png" alt=""></div>
+          <div class="next-holiday__wrapper__arrived_description">8 марта Международный Женский День</div>
+          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
+        </div>
+
+        <div class="next-holiday__wrapper__arrived">
+          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/pink.png" alt=""></div>
+          <div class="next-holiday__wrapper__arrived_description">9 марта День Сурка</div>
+          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popular-sets">
+    <div class="container">
+      <div class="title">Популярные наборы</div>
+      <div class="popular-sets__wrapper">
+        <div class="popular-sets__wrapper__cards">
+          <app-sets-card
+              v-for="popularSet in visibleSets"
+              :key="popularSet.id"
+              :id="popularSet.id"
+              :img="require(`@/../public/img/home/5/${popularSet.img}`)"
+              :title="popularSet.title"
+              :description="popularSet.description"
+              :price="popularSet.price"
+          ></app-sets-card>
+        </div>
+        <app-border-button
+            text='Показать еще'
+            :hasMoreSets="hasMoreSets"
+            @show-more="showMore">
+        </app-border-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="news">
+    <div class="container">
+      <div class="title">Новости</div>
+      <div class="news__wrapper">
+        <div class="news__wrapper__cards">
+          <div v-for="(newsItem, index) in visibleNews" :key="index" class="news__wrapper__cards__card">
+            <div class="news__wrapper__cards__card_img"><img :src="newsItem.img" alt=""></div>
+            <div class="news__wrapper__cards__card__information">
+              <div class="news__wrapper__cards__card__information_year">{{ newsItem.date }}</div>
+              <div class="news__wrapper__cards__card__information_title">{{ newsItem.title }}</div>
+              <div class="news__wrapper__cards__card__information_description">{{ newsItem.description }}</div>
+            </div>
+          </div>
+        </div>
+        <app-border-button
+            text='Показать еще'
+            :hasMoreSets="hasMoreNews"
+            @show-more="showMoreNews">
+        </app-border-button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="guarantee">
+    <div class="container">
+      <div class="title">Мы обо всём позаботились</div>
+      <div class="guarantee__wrapper">
+        <div class="guarantee__wrapper__cards">
+
+          <div class="guarantee__wrapper__cards_card">
+            <div class="guarantee__wrapper__cards_card_img"><img src='../../public/img/home/7/1.jpeg' alt=""></div>
+            <div class="guarantee__wrapper__cards_card__information">
+              <div class="guarantee__wrapper__cards_card__information_title">Лучшие ингрединты</div>
+              <div class="guarantee__wrapper__cards_card__information__description">
+                Что-то про суперкачество, лучших поваров, свежесть и т.д.
+              </div>
+            </div>
+          </div>
+
+          <div class="guarantee__wrapper__cards_card">
+            <div class="guarantee__wrapper__cards_card_img"><img src='../../public/img/home/7/2.jpeg' alt=""></div>
+            <div class="guarantee__wrapper__cards_card__information">
+              <div class="guarantee__wrapper__cards_card__information_title">Лучшие ингрединты</div>
+              <div class="guarantee__wrapper__cards_card__information__description">
+                Что-то про суперкачество, лучших поваров, свежесть и т.д.
+              </div>
+            </div>
+          </div>
+
+          <div class="guarantee__wrapper__cards_card">
+            <div class="guarantee__wrapper__cards_card_img"><img src='../../public/img/home/7/3.jpeg' alt=""></div>
+            <div class="guarantee__wrapper__cards_card__information">
+              <div class="guarantee__wrapper__cards_card__information_title">Лучшие ингрединты</div>
+              <div class="guarantee__wrapper__cards_card__information__description">
+                Что-то про суперкачество, лучших поваров, свежесть и т.д.
+              </div>
+            </div>
+          </div>
+
+          <div class="guarantee__wrapper__cards_card">
+            <div class="guarantee__wrapper__cards_card_img"><img src='../../public/img/home/7/4.jpeg' alt=""></div>
+            <div class="guarantee__wrapper__cards_card__information">
+              <div class="guarantee__wrapper__cards_card__information_title">Лучшие ингрединты</div>
+              <div class="guarantee__wrapper__cards_card__information__description">
+                Что-то про суперкачество, лучших поваров, свежесть и т.д.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      popularSets: [
+        {
+          id: 1,
+          img: '1.jpeg',
+          title: 'Сердце',
+          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
+          price: '2800'
+        },
+        {
+          id: 2,
+          img: '2.jpeg',
+          title: 'Красота спасёт мир',
+          description: 'Набор 16 шт. Вкусы: клубника - базилик, кокос, голубой сыр, пармезан',
+          price: '750'
+        },
+        {
+          id: 3,
+          img: '3.jpeg',
+          title: 'Круглый набор',
+          description: '40 макаронс в круглой коробке с персональной надписью',
+          price: '3900'
+        },
+        {
+          id: 4,
+          img: '4.jpeg',
+          title: 'Набор на 9',
+          description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишня',
+          price: '950'
+        },
+        {
+          id: 5,
+          img: '5.jpeg',
+          title: 'Набор на 16',
+          description: 'Набор 16 шт. Вкусы: соленая карамель, голубой сыр, пармезан, шоколад',
+          price: '1500'
+        },
+        {
+          id: 6,
+          img: '6.jpeg',
+          title: 'Сердце',
+          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
+          price: '2500'
+        },
+        {
+          id: 7,
+          img: '4.jpeg',
+          title: 'Набор на 9',
+          description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишня',
+          price: '950'
+        },
+        {
+          id: 8,
+          img: '5.jpeg',
+          title: 'Набор на 16',
+          description: 'Набор 16 шт. Вкусы: соленая карамель, голубой сыр, пармезан, шоколад',
+          price: '1500'
+        },
+        {
+          id: 9,
+          img: '6.jpeg',
+          title: 'Сердце',
+          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
+          price: '2500'
+        },
+        // Добавьте больше наборов, если необходимо
+      ],
+      visibleSetCount: 6, // Количество видимых наборов
+      news: [
+        {
+          img: require('@/../public/img/home/6/1.jpeg'),
+          date: '25.02.2023',
+          title: 'Скоро главный праздник весны!',
+          description: 'Девушки любят, когда вкусно, красиво и натурально. Смотрите больше наборов с десертами ручной работы'
+        },
+        {
+          img: require('@/../public/img/home/6/2.jpeg'),
+          date: '17.02.2023',
+          title: 'Конкурс на 23 февраля!',
+          description: 'День Защитника Отечества уже совсем скоро! Порадуйте своего сладкоежку с помощью аппетитных наборов от МакаронШоп'
+        },
+        {
+          img: require('@/../public/img/home/6/3.jpeg'),
+          date: '11.02.2023',
+          title: 'Экспресс-конкурс ко дню Святого Валентина',
+          description: 'Подарок уже через 2 дня. День всех влюблённых не за горами. Расскажи о своих чувствах с помощью сладкой валентинки от МакаронШоп'
+        },
+        {
+          img: require('@/../public/img/home/6/1.jpeg'),
+          date: '11.02.2023',
+          title: 'Экспресс-конкурс ко дню Святого Валентина',
+          description: 'Подарок уже через 2 дня. День всех влюблённых не за горами. Расскажи о своих чувствах с помощью сладкой валентинки от МакаронШоп'
+        },
+        {
+          img: require('@/../public/img/home/6/2.jpeg'),
+          date: '11.02.2023',
+          title: 'Экспресс-конкурс ко дню Святого Валентина',
+          description: 'Подарок уже через 2 дня. День всех влюблённых не за горами. Расскажи о своих чувствах с помощью сладкой валентинки от МакаронШоп'
+        },
+        {
+          img: require('@/../public/img/home/6/3.jpeg'),
+          date: '11.02.2023',
+          title: 'Экспресс-конкурс ко дню Святого Валентина',
+          description: 'Подарок уже через 2 дня. День всех влюблённых не за горами. Расскажи о своих чувствах с помощью сладкой валентинки от МакаронШоп'
+        },
+      ],
+      visibleNewsCount: 3 // Количество видимых новостей
+    };
+  },
+  computed: {
+    visibleSets() {
+      return this.popularSets.slice(0, this.visibleSetCount);
+    },
+    hasMoreSets() {
+      return this.visibleSetCount < this.popularSets.length;
+    },
+    visibleNews() {
+      return this.news.slice(0, this.visibleNewsCount);
+    },
+    hasMoreNews() {
+      return this.visibleNewsCount < this.news.length;
+    }
+  },
+  methods: {
+    showMore() {
+      this.visibleSetCount += 3
+    },
+    showMoreNews() {
+      this.visibleNewsCount += 3; // Увеличиваем количество видимых новостей
+    }
+  }
+
+};
+</script>
+
+<style src="@/assets/style/Home.css" scoped>
+</style>

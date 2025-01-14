@@ -1,0 +1,126 @@
+.title {
+  text-align: center;
+  margin-top: 68px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.description {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.dessert-catalog__wrapper {
+  margin-top: 41px;
+}
+.dessert-catalog__wrapper__cakes {
+  background: #FEB0E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.dessert-catalog__wrapper__cakes_img {
+  width: 600px;
+}
+.dessert-catalog__wrapper__cakes_information {
+  margin-right: 99px;
+}
+.dessert-catalog__wrapper__cakes_information_title {
+  font-size: 30px;
+  font-weight: 600;
+}
+.dessert-catalog__wrapper__cakes_information_description {
+  margin-top: 17px;
+  font-size: 18px;
+  font-weight: 400;
+}
+.dessert-catalog__wrapper__cakes_information__btn {
+  margin-top: 42px;
+}
+.dessert-catalog__wrapper__cakes_information__btn_kit {
+  width: 230px;
+  padding: 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgb(78, 157, 211);
+  border-radius: 3px;
+  background: #FEB0E1;
+}
+.dessert-catalog__wrapper__cakes_information__btn_kit:not(:last-child) {
+  margin-right: 8px;
+}
+.dessert-catalog__wrapper__cards {
+  margin-top: 35px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 369px);
+  grid-column-gap: 30px;
+  grid-row-gap: 28px;
+  padding-bottom: 28px;
+  text-align: center;
+}
+.dessert-catalog__wrapper__cards_card:nth-child(1) {
+  background: #FFB84E;
+}
+.dessert-catalog__wrapper__cards_card:nth-child(2) {
+  background: #FEB0E1;
+}
+.dessert-catalog__wrapper__cards_card:nth-child(3) {
+  background: #FECE95;
+}
+.dessert-catalog__wrapper__cards_card {
+  padding: 11px 0;
+  position: relative;
+  height: 341px;
+  z-index: 2;
+}
+.dessert-catalog__wrapper__cards_card_title {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -248%);
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+.dessert-catalog__wrapper__cards_card_linear-gradient {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  width: 369px;
+  height: 168px;
+  border-radius: 5px;
+}
+.dessert-catalog__wrapper__cards_card .orange {
+  background: linear-gradient(360deg, rgb(242, 155, 53) 65%, rgba(242, 155, 53, 0) 100%);
+}
+.dessert-catalog__wrapper__cards_card .pink {
+  background: linear-gradient(360deg, rgb(227, 126, 183) 65%, rgba(227, 126, 183, 0) 100%);
+}
+.dessert-catalog__wrapper__cards_card .light {
+  background: linear-gradient(360deg, rgb(243, 214, 179) 65%, rgba(243, 214, 179, 0) 100%);
+}
+
+.popular-sets {
+  padding-bottom: 87px;
+}
+.popular-sets__wrapper {
+  position: relative;
+  margin-top: 42px;
+}
+.popular-sets__wrapper__cards {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 270px);
+  grid-column-gap: 30px;
+  grid-row-gap: 35px;
+  padding-bottom: 35px;
+}
+
+/*# sourceMappingURL=DessertCatalog.css.map */

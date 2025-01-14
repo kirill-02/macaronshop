@@ -1,0 +1,41 @@
+.title {
+  margin-top: 80px;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.popular-sets {
+  margin-bottom: 100px;
+}
+.popular-sets__wrapper {
+  position: relative;
+  margin-top: 42px;
+}
+.popular-sets__wrapper__filters {
+  display: flex;
+  margin-bottom: 41px;
+  align-items: center;
+  justify-content: space-between;
+}
+.popular-sets__wrapper__filters div {
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 100px;
+  background-color: #F7EBE5;
+  color: rgba(41, 41, 41, 0.83);
+}
+.popular-sets__wrapper__filters div:not(:last-child) {
+  margin-right: 4px;
+}
+.popular-sets__wrapper__cards {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 370px);
+  grid-column-gap: 30px;
+  grid-row-gap: 35px;
+  padding-bottom: 35px;
+}
+
+/*# sourceMappingURL=ReadySets.css.map */

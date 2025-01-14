@@ -1,0 +1,48 @@
+.title {
+  margin-top: 80px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.description {
+  margin: 26px auto;
+  width: 663px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.guarantee {
+  margin: 132px auto 37px;
+  text-align: center;
+}
+.guarantee__wrapper {
+  margin-top: 40px;
+}
+.guarantee__wrapper__cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+.guarantee__wrapper__cards_card {
+  width: 270px;
+}
+.guarantee__wrapper__cards_card_img {
+  width: 270px;
+  height: 270px;
+}
+.guarantee__wrapper__cards_card__information {
+  margin-top: 29px;
+  height: 102px;
+}
+.guarantee__wrapper__cards_card__information-center {
+  text-align: center;
+}
+.guarantee__wrapper__cards_card__information_title, .guarantee__wrapper__cards_card__information__description {
+  font-size: 14px;
+  color: #292929;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=QualityAssurance.css.map */
