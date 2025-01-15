@@ -1,0 +1,26 @@
+.title {
+  margin-top: 80px;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+.news {
+  margin-bottom: 100px;
+
+  &__wrapper {
+    position: relative;
+    margin-top: 42px;
+
+    &__cards {
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      grid-template-columns: repeat(auto-fill, 370px);
+      grid-column-gap: 30px;
+      grid-row-gap: 35px;
+      padding-bottom: 35px;
+    }
+  }
+}

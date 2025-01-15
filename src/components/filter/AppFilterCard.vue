@@ -32,6 +32,28 @@ export default {
   }
 };
 </script>
-<style src="@/assets/style/ReadySets.css" scoped>
+<style scoped lang="scss">
+.popular-sets__wrapper__filters {
+  display: flex;
+  margin-bottom: 41px;
+  align-items: center;
+  flex-wrap: wrap;
 
+  div {
+    text-align: center;
+    padding: 10px 14px;
+    height: 39px;
+    width: auto;
+    border-radius: 100px;
+    background-color: #F7EBE5;
+    color: rgba(41, 41, 41, 0.83);
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+
+  div:not(:last-child) {
+    margin-right: 4px;
+
+  }
+}
 </style>

@@ -222,14 +222,17 @@
       <div class="title">Новости</div>
       <div class="news__wrapper">
         <div class="news__wrapper__cards">
-          <div v-for="(newsItem, index) in visibleNews" :key="index" class="news__wrapper__cards__card">
-            <div class="news__wrapper__cards__card_img"><img :src="newsItem.img" alt=""></div>
-            <div class="news__wrapper__cards__card__information">
-              <div class="news__wrapper__cards__card__information_year">{{ newsItem.date }}</div>
-              <div class="news__wrapper__cards__card__information_title">{{ newsItem.title }}</div>
-              <div class="news__wrapper__cards__card__information_description">{{ newsItem.description }}</div>
-            </div>
-          </div>
+
+          <app-news-card
+              v-for="lotOfNews in visibleNews"
+              :key="lotOfNews.id"
+              :id="lotOfNews.id"
+              :img="require(`@/../public/img/home/6/${lotOfNews.img}`)"
+              :date="lotOfNews.date"
+              :description="lotOfNews.description"
+              :title="lotOfNews.title"
+          ></app-news-card>
+
         </div>
         <app-border-button
             text='Показать еще'
@@ -293,7 +296,10 @@
 </template>
 
 <script>
+import AppNewsCard from "@/components/card/AppNewsCard.vue";
+
 export default {
+  components: {AppNewsCard},
   data() {
     return {
       popularSets: [
@@ -365,37 +371,43 @@ export default {
       visibleSetCount: 6, // Количество видимых наборов
       news: [
         {
-          img: require('@/../public/img/home/6/1.jpeg'),
+          id: 1,
+          img: '1.jpeg',
           date: '25.02.2023',
           title: 'Скоро главный праздник весны!',
           description: 'Девушки любят, когда вкусно, красиво и натурально. Смотрите больше наборов с десертами ручной работы'
         },
         {
-          img: require('@/../public/img/home/6/2.jpeg'),
+          id: 2,
+          img: '2.jpeg',
           date: '17.02.2023',
           title: 'Конкурс на 23 февраля!',
           description: 'День Защитника Отечества уже совсем скоро! Порадуйте своего сладкоежку с помощью аппетитных наборов от МакаронШоп'
         },
         {
-          img: require('@/../public/img/home/6/3.jpeg'),
+          id: 3,
+          img: '3.jpeg',
           date: '11.02.2023',
           title: 'Экспресс-конкурс ко дню Святого Валентина',
           description: 'Подарок уже через 2 дня. День всех влюблённых не за горами. Расскажи о своих чувствах с помощью сладкой валентинки от МакаронШоп'
         },
         {
-          img: require('@/../public/img/home/6/1.jpeg'),
+          id: 4,
+          img: '1.jpeg',
           date: '11.02.2023',
           title: 'Экспресс-конкурс ко дню Святого Валентина',
           description: 'Подарок уже через 2 дня. День всех влюблённых не за горами. Расскажи о своих чувствах с помощью сладкой валентинки от МакаронШоп'
         },
         {
-          img: require('@/../public/img/home/6/2.jpeg'),
+          id: 5,
+          img: '2.jpeg',
           date: '11.02.2023',
           title: 'Экспресс-конкурс ко дню Святого Валентина',
           description: 'Подарок уже через 2 дня. День всех влюблённых не за горами. Расскажи о своих чувствах с помощью сладкой валентинки от МакаронШоп'
         },
         {
-          img: require('@/../public/img/home/6/3.jpeg'),
+          id: 6,
+          img: '3.jpeg',
           date: '11.02.2023',
           title: 'Экспресс-конкурс ко дню Святого Валентина',
           description: 'Подарок уже через 2 дня. День всех влюблённых не за горами. Расскажи о своих чувствах с помощью сладкой валентинки от МакаронШоп'

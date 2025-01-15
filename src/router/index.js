@@ -11,6 +11,7 @@ import ContactsView from "@/view/ContactsView.vue";
 import QualityAssuranceView from "@/view/QualityAssuranceView.vue";
 import DessertCatalogView from "@/view/DessertCatalogView.vue";
 import ProductView from "@/view/ProductView.vue";
+import NewsView from "@/view/NewsView.vue";
 
 const routes = [
     {
@@ -72,6 +73,15 @@ const routes = [
         path: '/product/:id',
         name: 'product',
         component: ProductView,
+        meta: {
+            layout: 'main',
+            auth: true
+        }
+    },
+    {
+        path: '/news',
+        name: 'news',
+        component: NewsView,
         meta: {
             layout: 'main',
             auth: true
