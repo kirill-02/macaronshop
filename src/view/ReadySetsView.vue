@@ -4,28 +4,19 @@
     <div class="container">
       <div class="title">Готовые наборы</div>
       <div class="popular-sets__wrapper">
-        <div class="popular-sets__wrapper__filters">
-          <router-link
-              v-for="filter in filters"
-              :key="filter.id"
-              @click="searchByTag(filter.title)"
-              to="">
-            <div class="" :id="filter.id">{{ filter.title }}</div>
-          </router-link>
-          <router-link to="" @click="clearFilters">
-            <div class="">Очистить фильтры</div>
-          </router-link>
-        </div>
+        <app-filter-card :filters="filters"
+                         @search="searchByTag"
+                         @clear="clearFilters"></app-filter-card>
         <div class="popular-sets__wrapper__cards">
-            <app-sets-card
-                v-for="popularSet in visibleSets"
-                :key="popularSet.id"
-                :id="popularSet.id"
-                :img="require(`@/../public/img/home/5/${popularSet.img}`)"
-                :title="popularSet.title"
-                :description="popularSet.description"
-                :price="popularSet.price"
-            ></app-sets-card>
+          <app-sets-card
+              v-for="popularSet in visibleSets"
+              :key="popularSet.id"
+              :id="popularSet.id"
+              :img="require(`@/../public/img/home/5/${popularSet.img}`)"
+              :title="popularSet.title"
+              :description="popularSet.description"
+              :price="popularSet.price"
+          ></app-sets-card>
 
         </div>
         <!--            v-if="hasMoreSets"-->
@@ -40,7 +31,10 @@
 </template>
 
 <script>
+import AppFilterCard from "@/components/filter/AppFilterCard.vue";
+
 export default {
+  components: {AppFilterCard},
   data() {
     return {
       searchQuery: '',
