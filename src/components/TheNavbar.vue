@@ -43,7 +43,13 @@
 
 
             <li><span><i class="ic_phone2"></i></span>8 812 309-82-88</li>
-            <li><a href="#"><span><i class="ic_basket"></i></span></a> В корзине (4 товара)</li>
+            <li>
+              <router-link class="router-link" to="basket"><span><i class="ic_basket"></i></span>
+                <!--                 (4 товара)-->
+                {{ basket.length > 0 ? `В корзине (${basket.length} товара)` : 'Закрыть' }}
+              </router-link>
+
+            </li>
           </div>
 
           <div class="information__menu-social">
@@ -169,6 +175,28 @@ export default {
         catalog: false,
         city: false,
       },
+      basket: [
+        {
+          id: 1,
+          title: "Kirill",
+          price: 100,
+        },
+        {
+          id: 2,
+          title: "Kirill",
+          price: 100,
+        },
+        {
+          id: 3,
+          title: "Kirill",
+          price: 100,
+        },
+        {
+          id: 3,
+          title: "Kirill",
+          price: 100,
+        },
+      ]
     };
   },
   methods: {

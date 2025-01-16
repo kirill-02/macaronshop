@@ -12,6 +12,7 @@ import QualityAssuranceView from "@/view/QualityAssuranceView.vue";
 import DessertCatalogView from "@/view/DessertCatalogView.vue";
 import ProductView from "@/view/ProductView.vue";
 import NewsView from "@/view/NewsView.vue";
+import BasketView from "@/view/BasketView.vue";
 
 const routes = [
     {
@@ -82,6 +83,15 @@ const routes = [
         path: '/news',
         name: 'news',
         component: NewsView,
+        meta: {
+            layout: 'main',
+            auth: true
+        }
+    },
+    {
+        path: '/basket',
+        name: 'basket',
+        component: BasketView,
         meta: {
             layout: 'main',
             auth: true
