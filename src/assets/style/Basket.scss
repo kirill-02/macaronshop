@@ -1,0 +1,173 @@
+.title {
+  margin-top: 78px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.description {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+hr {
+  margin: 16px 0;
+  border: none;
+  border-top: 0.1px solid rgb(237, 237, 240);
+}
+
+.basket {
+  &__wrapper {
+    margin-top: 44px;
+    display: flex;
+
+    &__information {
+      margin-right: 30px;
+
+      &__product {
+        background: white;
+
+        padding: 20px 26px 20px 17px;
+
+        &__layout {
+          display: flex;
+
+          &_images {
+            margin-right: 15px;
+            width: 80px;
+            height: 80px;
+
+            img {
+              width: 80px;
+              height: 80px;
+            }
+          }
+
+          &__things {
+            margin-right: 74px;
+
+            &__things_title {
+              margin-top: 100px;
+              font-size: 14px;
+              font-weight: 600;
+            }
+
+            &__things__description {
+              margin-top: 10px;
+              font-size: 12px;
+              font-weight: 400;
+            }
+          }
+
+          &__quantity {
+            &_minus {
+            }
+
+            &_number {
+            }
+
+            &_plus {
+            }
+          }
+
+          &__price {
+            font-size: 14px;
+            font-weight: 600;
+
+            span {
+              color: #E7426A;
+
+            }
+          }
+        }
+
+        &__total-price {
+          &_description {
+          }
+
+          &_price {
+            font-size: 14px;
+            font-weight: 600;
+            color: #E7426A;
+
+
+          }
+
+
+        }
+      }
+    }
+
+    &__result {
+      padding: 30px;
+      max-height: 328px;
+      border-radius: 5px;
+      background: #FFFFFF;
+      position: relative;
+
+      &_title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      &__information {
+        position: relative;
+        width: 473px;
+        margin-top: 15px;
+
+        &__card {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          &_title {
+            font-size: 16px;
+            font-weight: 400;
+          }
+
+          &_dot-one:before {
+            color: #EDEDF0;
+            content: "..................................................................";
+          }
+
+          &_dot-two:before {
+            color: #EDEDF0;
+            content: "...................................................................................................";
+          }
+
+          &_dot-three:before {
+            color: #EDEDF0;
+            content: "..........................................................................................";
+          }
+
+          &_price {
+            font-size: 16px;
+            font-weight: 400;
+          }
+
+        }
+
+        &__card:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+
+      &_btn {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -64%);
+        margin: 0 auto;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        border-radius: 3px;
+        padding: 17px 76px;
+        color: #fff;
+        background: #E7426A;
+      }
+    }
+  }
+}

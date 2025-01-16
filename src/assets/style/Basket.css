@@ -1,0 +1,128 @@
+.title {
+  margin-top: 78px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.description {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+hr {
+  margin: 16px 0;
+  border: none;
+  border-top: 0.1px solid rgb(237, 237, 240);
+}
+
+.basket__wrapper {
+  margin-top: 44px;
+  display: flex;
+}
+.basket__wrapper__information {
+  margin-right: 30px;
+}
+.basket__wrapper__information__product {
+  background: white;
+  padding: 20px 26px 20px 17px;
+}
+.basket__wrapper__information__product__layout {
+  display: flex;
+}
+.basket__wrapper__information__product__layout_images {
+  margin-right: 15px;
+  width: 80px;
+  height: 80px;
+}
+.basket__wrapper__information__product__layout_images img {
+  width: 80px;
+  height: 80px;
+}
+.basket__wrapper__information__product__layout__things {
+  margin-right: 74px;
+}
+.basket__wrapper__information__product__layout__things__things_title {
+  margin-top: 100px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.basket__wrapper__information__product__layout__things__things__description {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.basket__wrapper__information__product__layout__price {
+  font-size: 14px;
+  font-weight: 600;
+}
+.basket__wrapper__information__product__layout__price span {
+  color: #E7426A;
+}
+.basket__wrapper__information__product__total-price_price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #E7426A;
+}
+.basket__wrapper__result {
+  padding: 30px;
+  max-height: 328px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  position: relative;
+}
+.basket__wrapper__result_title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.basket__wrapper__result__information {
+  position: relative;
+  width: 473px;
+  margin-top: 15px;
+}
+.basket__wrapper__result__information__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.basket__wrapper__result__information__card_title {
+  font-size: 16px;
+  font-weight: 400;
+}
+.basket__wrapper__result__information__card_dot-one:before {
+  color: #EDEDF0;
+  content: "..................................................................";
+}
+.basket__wrapper__result__information__card_dot-two:before {
+  color: #EDEDF0;
+  content: "...................................................................................................";
+}
+.basket__wrapper__result__information__card_dot-three:before {
+  color: #EDEDF0;
+  content: "..........................................................................................";
+}
+.basket__wrapper__result__information__card_price {
+  font-size: 16px;
+  font-weight: 400;
+}
+.basket__wrapper__result__information__card:not(:last-child) {
+  margin-bottom: 10px;
+}
+.basket__wrapper__result_btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -64%);
+  margin: 0 auto;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 17px 76px;
+  color: #fff;
+  background: #E7426A;
+}
+
+/*# sourceMappingURL=Basket.css.map */
