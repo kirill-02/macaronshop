@@ -26,9 +26,9 @@
               </div>
 
               <div class="basket__wrapper__information__product__layout__quantity">
-                <button class="basket__wrapper__information__product__layout__quantity_minus">-</button>
+                <button class="basket__wrapper__information__product__layout__quantity_minus"><span>-</span></button>
                 <div class="basket__wrapper__information__product__layout__quantity_number">1</div>
-                <button class="basket__wrapper__information__product__layout__quantity_plus">+</button>
+                <button class="basket__wrapper__information__product__layout__quantity_plus"><span>+</span></button>
               </div>
 
               <div class="basket__wrapper__information__product__layout__price">
@@ -51,9 +51,9 @@
               </div>
 
               <div class="basket__wrapper__information__product__layout__quantity">
-                <button class="basket__wrapper__information__product__layout__quantity_minus">-</button>
+                <button class="basket__wrapper__information__product__layout__quantity_minus"><span>-</span></button>
                 <div class="basket__wrapper__information__product__layout__quantity_number">1</div>
-                <button class="basket__wrapper__information__product__layout__quantity_plus">+</button>
+                <button class="basket__wrapper__information__product__layout__quantity_plus"><span>+</span></button>
               </div>
 
               <div class="basket__wrapper__information__product__layout__price">
@@ -76,9 +76,9 @@
               </div>
 
               <div class="basket__wrapper__information__product__layout__quantity">
-                <button class="basket__wrapper__information__product__layout__quantity_minus">-</button>
+                <button class="basket__wrapper__information__product__layout__quantity_minus"><span>-</span></button>
                 <div class="basket__wrapper__information__product__layout__quantity_number">1</div>
-                <button class="basket__wrapper__information__product__layout__quantity_plus">+</button>
+                <button class="basket__wrapper__information__product__layout__quantity_plus"><span>+</span></button>
               </div>
 
               <div class="basket__wrapper__information__product__layout__price">

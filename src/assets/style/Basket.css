@@ -31,6 +31,7 @@ hr {
 }
 .basket__wrapper__information__product__layout {
   display: flex;
+  align-items: center;
 }
 .basket__wrapper__information__product__layout_images {
   margin-right: 15px;
@@ -42,17 +43,53 @@ hr {
   height: 80px;
 }
 .basket__wrapper__information__product__layout__things {
-  margin-right: 74px;
+  width: 201px;
+  margin-right: 17px;
 }
-.basket__wrapper__information__product__layout__things__things_title {
-  margin-top: 100px;
+.basket__wrapper__information__product__layout__things_title {
   font-size: 14px;
   font-weight: 600;
 }
-.basket__wrapper__information__product__layout__things__things__description {
-  margin-top: 10px;
+.basket__wrapper__information__product__layout__things__description {
+  color: #292929;
+  line-height: 18px;
+  margin-top: 8px;
   font-size: 12px;
   font-weight: 400;
+}
+.basket__wrapper__information__product__layout__quantity {
+  display: flex;
+  margin-right: 70px;
+  align-items: center;
+  justify-content: center;
+}
+.basket__wrapper__information__product__layout__quantity_minus, .basket__wrapper__information__product__layout__quantity_plus {
+  cursor: pointer;
+  outline: 1px solid rgba(41, 41, 41, 0.1);
+  border: none;
+  background: none;
+  font-size: 18px;
+  font-weight: 500;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border-radius: 3px;
+}
+.basket__wrapper__information__product__layout__quantity_minus span, .basket__wrapper__information__product__layout__quantity_plus span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.basket__wrapper__information__product__layout__quantity_minus span {
+  transform: translate(-55%, -56%);
+}
+.basket__wrapper__information__product__layout__quantity_plus span {
+  transform: translate(-50%, -50%);
+}
+.basket__wrapper__information__product__layout__quantity_number {
+  margin: 0 14px;
+  font-size: 16px;
+  font-weight: 600;
 }
 .basket__wrapper__information__product__layout__price {
   font-size: 14px;
@@ -61,8 +98,16 @@ hr {
 .basket__wrapper__information__product__layout__price span {
   color: #E7426A;
 }
-.basket__wrapper__information__product__total-price_price {
+.basket__wrapper__information__product__total-price {
+  display: flex;
+  justify-content: space-between;
+}
+.basket__wrapper__information__product__total-price_description {
   font-size: 14px;
+  font-weight: 400;
+}
+.basket__wrapper__information__product__total-price_price {
+  font-size: 18px;
   font-weight: 600;
   color: #E7426A;
 }
