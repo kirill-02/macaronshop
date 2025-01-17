@@ -23,6 +23,8 @@ hr {
   display: flex;
 }
 .basket__wrapper__information {
+  margin-bottom: 44px;
+  position: relative;
   margin-right: 30px;
 }
 .basket__wrapper__information__product {
@@ -30,6 +32,7 @@ hr {
   padding: 20px 26px 20px 17px;
 }
 .basket__wrapper__information__product__layout {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -98,6 +101,15 @@ hr {
 .basket__wrapper__information__product__layout__price span {
   color: #E7426A;
 }
+.basket__wrapper__information__product__layout_cross {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #292929;
+  opacity: 0.2;
+  font-size: 12px;
+}
 .basket__wrapper__information__product__total-price {
   display: flex;
   justify-content: space-between;
@@ -110,6 +122,148 @@ hr {
   font-size: 18px;
   font-weight: 600;
   color: #E7426A;
+}
+.basket__wrapper__information__delivery_title {
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+.basket__wrapper__information__delivery_description {
+  margin-top: 7px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+.basket__wrapper__information__delivery__forms {
+  margin-top: 35px;
+}
+.basket__wrapper__information__delivery__forms_title {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 11px;
+}
+.basket__wrapper__information__delivery__forms label {
+  font-size: 14px;
+  font-weight: 400;
+}
+.basket__wrapper__information__delivery__forms_contact {
+  display: flex;
+}
+.basket__wrapper__information__delivery__forms_contact input {
+  padding: 17px 14px 14px;
+  margin-top: 6px;
+  width: 328px;
+  background: #FFFFFF;
+  border: none;
+  color: #292929;
+  font-size: 16px;
+  font-weight: 400;
+  outline: 1px solid rgb(237, 237, 240);
+}
+.basket__wrapper__information__delivery__forms_contact div:not(:last-child) {
+  margin-right: 14px;
+}
+.basket__wrapper__information__delivery__forms__way {
+  margin-top: 24px;
+}
+.basket__wrapper__information__delivery__forms__way__choice {
+  display: flex;
+}
+.basket__wrapper__information__delivery__forms__way__choice__courier {
+  width: 328px;
+  display: flex;
+  padding: 23px 21px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  outline: 1px solid rgb(237, 237, 240);
+}
+.basket__wrapper__information__delivery__forms__way__choice__courier i {
+  font-size: 35px;
+  color: #E7426A;
+}
+.basket__wrapper__information__delivery__forms__way__choice__courier_price {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 14px;
+}
+.basket__wrapper__information__delivery__forms__way__choice__courier_price span {
+  display: block;
+  color: #E7426A;
+}
+.basket__wrapper__information__delivery__forms__way__choice__courier.selected {
+  outline: 1px solid rgb(231, 66, 106);
+}
+.basket__wrapper__information__delivery__forms__way__choice__courier:not(:last-child) {
+  margin-right: 14px;
+}
+.basket__wrapper__information__delivery__forms_comment {
+  margin: 24px 0;
+}
+.basket__wrapper__information__delivery__forms_comment textarea {
+  margin-top: 11px;
+  padding: 12px 14px;
+  background: #FFFFFF;
+  resize: none;
+  width: 670px;
+  height: 76px;
+  border: none;
+  outline: 1px solid rgb(237, 237, 240);
+  font-size: 16px;
+  font-weight: 400;
+}
+.basket__wrapper__information__delivery__forms_comment textarea:nth-child(2) {
+  height: 108px;
+}
+.basket__wrapper__information__delivery__forms__payment {
+  margin-top: 24px;
+}
+.basket__wrapper__information__delivery__forms__payment__method {
+  display: flex;
+}
+.basket__wrapper__information__delivery__forms__payment__method div:not(:last-child) {
+  margin-right: 50px;
+}
+.basket__wrapper__information__delivery__forms__payment__method label {
+  margin-left: 13px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.basket__wrapper__information__delivery__forms__result {
+  display: flex;
+  justify-content: space-between;
+}
+.basket__wrapper__information__delivery__forms__result_sum {
+  font-size: 14px;
+  font-weight: 400;
+}
+.basket__wrapper__information__delivery__forms__result_price {
+  font-size: 18px;
+  font-weight: 600;
+  color: #E7426A;
+}
+.basket__wrapper__information__delivery__forms_btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -98%);
+  margin: 0 auto;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 17px 76px;
+  color: #fff;
+  background: #E7426A;
+}
+.basket__wrapper__information__delivery__forms_offer {
+  margin-top: 99px;
+  font-size: 11px;
+  font-weight: 400;
+}
+.basket__wrapper__information__delivery__forms_offer span {
+  cursor: pointer;
+  color: #4E9DD3;
 }
 .basket__wrapper__result {
   padding: 30px;

@@ -44,7 +44,7 @@
 
             <li><span><i class="ic_phone2"></i></span>8 812 309-82-88</li>
             <li>
-              <router-link class="router-link" to="basket"><span><i class="ic_basket"></i></span>
+              <router-link class="router-link" to="/basket"><span><i class="ic_basket"></i></span>
                 <!--                 (4 товара)-->
                 {{ basket.length > 0 ? `В корзине (${basket.length} товара)` : 'Закрыть' }}
               </router-link>

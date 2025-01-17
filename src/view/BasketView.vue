@@ -34,6 +34,8 @@
               <div class="basket__wrapper__information__product__layout__price">
                 <div> Цена: <span>950 руб.</span></div>
               </div>
+              <div class="basket__wrapper__information__product__layout_cross"><i class="ic_cross"></i></div>
+
             </div>
             <hr>
             <div class="basket__wrapper__information__product__layout">
@@ -59,6 +61,8 @@
               <div class="basket__wrapper__information__product__layout__price">
                 <div> Цена: <span>950 руб.</span></div>
               </div>
+              <div class="basket__wrapper__information__product__layout_cross"><i class="ic_cross"></i></div>
+
             </div>
             <hr>
             <div class="basket__wrapper__information__product__layout">
@@ -84,6 +88,7 @@
               <div class="basket__wrapper__information__product__layout__price">
                 <div> Цена: <span>950 руб.</span></div>
               </div>
+              <div class="basket__wrapper__information__product__layout_cross"><i class="ic_cross"></i></div>
             </div>
             <hr>
             <div class="basket__wrapper__information__product__total-price">
@@ -94,6 +99,106 @@
             </div>
           </div>
 
+          <div class="basket__wrapper__information__delivery">
+            <div class="basket__wrapper__information__delivery_title">Доставка</div>
+            <div class="basket__wrapper__information__delivery_description">Укажите контактные данные и выберите способ
+              доставки
+            </div>
+
+            <form class="basket__wrapper__information__delivery__forms">
+
+              <div class="basket__wrapper__information__delivery__forms_contact">
+                <div class="">
+                  <label for="name">Ваше имя*</label>
+                  <input type="text" id="name" placeholder="Укажите имя"></div>
+                <div class="">
+                  <label for="phone">Ваш телефон*</label>
+                  <input type="text" id="phone" placeholder="+7 (___) ___-__-__"></div>
+              </div>
+
+              <div class="basket__wrapper__information__delivery__forms__way">
+                <div class="basket__wrapper__information__delivery__forms_title">Способ доставки:</div>
+
+                <div class="basket__wrapper__information__delivery__forms__way__choice">
+                  <div class="basket__wrapper__information__delivery__forms__way__choice__courier"
+                       :class="{'selected': selectedDelivery === 'courier'}"
+                       @click="selectDelivery('courier')">
+
+                    <i class="ic_wheelbarrow"></i>
+                    <div class="basket__wrapper__information__delivery__forms__way__choice__courier_price">
+                      <div class="">Курьерская доставка <span>400 руб.</span></div>
+                    </div>
+                  </div>
+                  <div class="basket__wrapper__information__delivery__forms__way__choice__courier"
+                       :class="{'selected': selectedDelivery === 'pickup'}"
+                       @click="selectDelivery('pickup')">
+                    <i class="ic_hand"></i>
+                    <div class="basket__wrapper__information__delivery__forms__way__choice__courier_price">
+                      <div class="">Самовывоз <span>Бесплатно</span></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="basket__wrapper__information__delivery__forms_comment">
+                <label for="address">Адрес доставки</label>
+                <textarea id="address" placeholder="Не нужно заполнять при самовывозе"></textarea>
+              </div>
+
+              <div class="basket__wrapper__information__delivery__forms_contact">
+                <div class="">
+                  <label for="name">Ваше имя*</label>
+                  <input type="text" id="name" placeholder="Укажите имя"></div>
+                <div class="">
+                  <label for="phone">Ваш телефон*</label>
+                  <input type="text" id="phone" placeholder="+7 (___) ___-__-__"></div>
+              </div>
+
+              <div class="basket__wrapper__information__delivery__forms_comment">
+                <label for="comment">Комментарий к заказe</label>
+                <textarea id="comment"
+                          placeholder="Здесь Вы можете написать пожелания, относительно анонимной доставки, текста открытки и другое."></textarea>
+              </div>
+
+              <div class="basket__wrapper__information__delivery__forms__payment">
+                <div class="basket__wrapper__information__delivery__forms_title">Метод оплаты</div>
+
+                <div class="basket__wrapper__information__delivery__forms__payment__method">
+                  <div>
+                    <input type="checkbox">
+                    <label for="">Оплата картой онлайн</label>
+                  </div>
+                  <div>
+                    <input type="checkbox">
+                    <label for="">Наличными при получении</label>
+                  </div>
+                  <div>
+                    <input type="checkbox">
+                    <label for="">Яндекс деньги</label>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="basket__wrapper__information__delivery__forms__result">
+                <div class="basket__wrapper__information__delivery__forms__result_sum">Итоговая сумма заказа вместе с
+                  доставкой:
+                </div>
+                <div class="basket__wrapper__information__delivery__forms__result_price">1400 руб.</div>
+              </div>
+
+              <hr>
+
+              <button class="basket__wrapper__information__delivery__forms_btn">Оформить заказ</button>
+              <div class="basket__wrapper__information__delivery__forms_offer">Нажимая на кнопку "Оформить заказ" Я
+                принимаю и соглашаюсь с <span> Договором оферты </span> и разрешаю обработку моих персональных данных в
+                соответствии с
+                <span> Политикой конфиденциальности</span>
+              </div>
+            </form>
+          </div>
         </div>
 
         <div class="basket__wrapper__result">
@@ -133,7 +238,18 @@
 </template>
 
 <script>
-
+export default {
+  data() {
+    return {
+      selectedDelivery: 'courier'
+    }
+  },
+  methods: {
+    selectDelivery(selected) {
+      this.selectedDelivery = selected
+    }
+  }
+}
 </script>
 
 <style src="@/assets/style/Basket.css" scoped>
