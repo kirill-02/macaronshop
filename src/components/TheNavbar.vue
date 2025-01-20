@@ -86,7 +86,7 @@
               </ul>
             </li>
 
-            <li>Собрать набор</li>
+<!--            <li>Собрать набор</li>-->
             <router-link to="/">
               <div class="menu__logo">
                 <i class="ic_cap"></i>
@@ -98,7 +98,7 @@
                 </div>
               </div>
             </router-link>
-            <li>Создать дизайн</li>
+<!--            <li>Создать дизайн</li>-->
 
             <li @click="toggleDropdown('companies')">
               КОМПАНИЯМ
@@ -107,18 +107,18 @@
                 <li class="dropdown-menu_group">
                   <a href="#">Свадебные предложения </a>
                 </li>
-                <li class="dropdown-menu_group">
-                  <a href="#">Наборы с печатью</a>
-                </li>
-                <li class="dropdown-menu_group">
-                  <a href="#">Гарантии вкуса и свежести</a>
-                </li>
-                <li class="dropdown-menu_group">
-                  <a href="#">Доставка и оплата</a>
-                </li>
-                <li class="dropdown-menu_group">
-                  <a href="#">Контакты</a>
-                </li>
+<!--                <li class="dropdown-menu_group">-->
+<!--                  <a href="#">Наборы с печатью</a>-->
+<!--                </li>-->
+<!--                <li class="dropdown-menu_group">-->
+<!--                  <a href="#">Гарантии вкуса и свежести</a>-->
+<!--                </li>-->
+<!--                <li class="dropdown-menu_group">-->
+<!--                  <a href="#">Доставка и оплата</a>-->
+<!--                </li>-->
+<!--                <li class="dropdown-menu_group">-->
+<!--                  <a href="#">Контакты</a>-->
+<!--                </li>-->
               </ul>
             </li>
 
