@@ -218,14 +218,22 @@ hr {
 .basket__wrapper__information__delivery__forms__payment {
   margin-top: 24px;
 }
+.basket__wrapper__information__delivery__forms__payment input[type=checkbox] {
+  accent-color: #E7426A;
+  width: 18px;
+  height: 18px;
+}
 .basket__wrapper__information__delivery__forms__payment__method {
   display: flex;
 }
+.basket__wrapper__information__delivery__forms__payment__method div {
+  display: flex;
+}
 .basket__wrapper__information__delivery__forms__payment__method div:not(:last-child) {
-  margin-right: 50px;
+  margin-right: 42px;
 }
 .basket__wrapper__information__delivery__forms__payment__method label {
-  margin-left: 13px;
+  margin-left: 12px;
   font-size: 14px;
   font-weight: 600;
 }

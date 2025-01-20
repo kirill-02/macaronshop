@@ -166,15 +166,30 @@
 
                 <div class="basket__wrapper__information__delivery__forms__payment__method">
                   <div>
-                    <input type="checkbox">
+                    <input
+                        @change="selectPayment('card')"
+                        type="checkbox"
+                        value="card"
+                        :checked="selectedPayment === 'card'"
+                    >
                     <label for="">Оплата картой онлайн</label>
                   </div>
                   <div>
-                    <input type="checkbox">
+                    <input
+                        @change="selectPayment('cash')"
+                        type="checkbox"
+                        value="cash"
+                        :checked="selectedPayment === 'cash'"
+                    >
                     <label for="">Наличными при получении</label>
                   </div>
                   <div>
-                    <input type="checkbox">
+                    <input
+                        @change="selectPayment('yandex')"
+                        type="checkbox"
+                        value="yandex"
+                        :checked="selectedPayment === 'yandex'"
+                    >
                     <label for="">Яндекс деньги</label>
                   </div>
                 </div>
@@ -241,12 +256,22 @@
 export default {
   data() {
     return {
-      selectedDelivery: 'courier'
+      selectedDelivery: 'courier',
+      selectedPayment: null,
     }
+
   },
   methods: {
     selectDelivery(selected) {
       this.selectedDelivery = selected
+    },
+    selectPayment(selected) {
+      if (this.selectedPayment === selected) {
+        // Если выбранный метод отличается от текущего, обновляем его
+        this.selectedPayment = null; // Сбрасываем выбор, если повторно нажали
+      } else {
+        this.selectedPayment = selected; // Устанавливаем новый выбранный метод
+      }
     }
   }
 }

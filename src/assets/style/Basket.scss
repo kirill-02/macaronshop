@@ -275,15 +275,25 @@ hr {
           &__payment {
             margin-top: 24px;
 
+            input[type="checkbox"] {
+              accent-color: #E7426A;
+              width: 18px;
+              height: 18px;
+            }
+
             &__method {
               display: flex;
 
+              div {
+                display: flex;
+              }
+
               div:not(:last-child) {
-                margin-right: 50px;
+                margin-right: 42px;
               }
 
               label {
-                margin-left: 13px;
+                margin-left: 12px;
                 font-size: 14px;
                 font-weight: 600;
               }
