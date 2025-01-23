@@ -13,6 +13,7 @@ import DessertCatalogView from "@/view/DessertCatalogView.vue";
 import ProductView from "@/view/ProductView.vue";
 import NewsView from "@/view/NewsView.vue";
 import BasketView from "@/view/BasketView.vue";
+import WeddingView from "@/view/WeddingView.vue";
 
 const routes = [
     {
@@ -92,6 +93,15 @@ const routes = [
         path: '/basket',
         name: 'basket',
         component: BasketView,
+        meta: {
+            layout: 'main',
+            auth: true
+        }
+    },
+    {
+        path: '/wedding',
+        name: 'wedding',
+        component: WeddingView,
         meta: {
             layout: 'main',
             auth: true

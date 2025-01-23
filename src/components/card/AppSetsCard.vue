@@ -70,6 +70,8 @@ export default {
       width: 70%;
       padding: 13px 22px;
       outline: 1px solid rgb(237, 237, 240);
+      font-size: 14px;
+      font-weight: 600;
 
       i {
         margin-right: 11px;

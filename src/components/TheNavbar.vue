@@ -104,9 +104,11 @@
               КОМПАНИЯМ
               <span><i class="ic_VectorButton"></i></span>
               <ul v-if="isDropdownOpen.companies" class="dropdown-menu">
+                <router-link to="/wedding">
                 <li class="dropdown-menu_group">
                   <a href="#">Свадебные предложения </a>
                 </li>
+                </router-link>
 <!--                <li class="dropdown-menu_group">-->
 <!--                  <a href="#">Наборы с печатью</a>-->
 <!--                </li>-->
