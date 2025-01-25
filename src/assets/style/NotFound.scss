@@ -1,0 +1,127 @@
+.not-found {
+  padding: 69px 0 194px;
+
+  &__wrapper {
+    position: relative;
+    text-align: center;
+
+    &_information {
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    &_title {
+      margin-top: 64px;
+      font-weight: 700;
+      line-height: 190px;
+      font-size: 256px;
+    }
+
+    &__images {
+
+      &_morning:nth-child(1), &_morning:nth-child(2), &_night:nth-child(3), &_night:nth-child(4), &_night:nth-child(5), &_night:nth-child(6) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+      }
+    }
+
+    &_btn {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 240%);
+      margin-top: 84px;
+
+      button {
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 17px 96px;
+        border: none;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+.morning {
+  .not-found__wrapper {
+    &_information {
+      color: #000;
+    }
+
+    &_title {
+      color: #826A5C;
+    }
+
+    &__images {
+      &_night {
+        display: none;
+      }
+
+      &_morning:nth-child(1) {
+        transform: translate(-50%, -18%);
+      }
+
+      &_morning:nth-child(2) {
+        transform: translate(-122%, -65%);
+      }
+    }
+
+    &_btn {
+      button {
+        color: #E7426A;
+        outline: 1px solid rgb(231, 66, 106);
+        background-color: #F7F7F7;
+      }
+    }
+  }
+}
+
+.night {
+  background: #49387A;
+
+  .not-found__wrapper {
+    &_information {
+      color: #fff;
+    }
+
+    &_title {
+      color: #8C71D9;
+    }
+
+    &__images {
+      &_morning {
+        display: none;
+      }
+
+      &_night {
+      }
+
+      &_night:nth-child(3) {
+        transform: translate(-50%, -24%);
+      }
+
+      &_night:nth-child(4) {
+        transform: translate(-50%, -42%);
+      }
+
+      &_night:nth-child(5) {
+        transform: translate(-58%, -38%);
+      }
+
+      &_night:nth-child(6) {
+        transform: translate(-50%, -18%);
+      }
+    }
+
+    &_btn {
+      button {
+        color: #fff;
+        outline: 1px solid rgb(78, 157, 211);
+        background-color: #49387A;
+      }
+    }
+  }
+}

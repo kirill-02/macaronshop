@@ -14,6 +14,7 @@ import ProductView from "@/view/ProductView.vue";
 import NewsView from "@/view/NewsView.vue";
 import BasketView from "@/view/BasketView.vue";
 import WeddingView from "@/view/WeddingView.vue";
+import ErrorView from "@/view/NotFoundView.vue";
 
 const routes = [
     {
@@ -107,6 +108,7 @@ const routes = [
             auth: true
         }
     },
+
     {
         path: '/auth',
         name: 'auth',
@@ -152,8 +154,15 @@ const routes = [
             auth: true
         }
     },
-
-    // другие маршруты
+    {
+        path: '/:pathMatch(.*)*',
+        name: '404',
+        component: ErrorView,
+        meta: {
+            layout: 'main',
+            auth: true
+        }
+    },
 ];
 
 const router = createRouter({

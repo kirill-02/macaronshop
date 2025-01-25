@@ -53,6 +53,7 @@ hr {
   font-weight: 600;
 }
 .wedding__wrapper__offer__information__btn button {
+  cursor: pointer;
   padding: 14px 74px;
   background: none;
   border: none;

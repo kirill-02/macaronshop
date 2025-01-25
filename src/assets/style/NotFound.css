@@ -1,0 +1,90 @@
+.not-found {
+  padding: 69px 0 194px;
+}
+.not-found__wrapper {
+  position: relative;
+  text-align: center;
+}
+.not-found__wrapper_information {
+  font-size: 20px;
+  font-weight: 400;
+}
+.not-found__wrapper_title {
+  margin-top: 64px;
+  font-weight: 700;
+  line-height: 190px;
+  font-size: 256px;
+}
+.not-found__wrapper__images_morning:nth-child(1), .not-found__wrapper__images_morning:nth-child(2), .not-found__wrapper__images_night:nth-child(3), .not-found__wrapper__images_night:nth-child(4), .not-found__wrapper__images_night:nth-child(5), .not-found__wrapper__images_night:nth-child(6) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.not-found__wrapper_btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 240%);
+  margin-top: 84px;
+}
+.not-found__wrapper_btn button {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 17px 96px;
+  border: none;
+  border-radius: 3px;
+}
+
+.morning .not-found__wrapper_information {
+  color: #000;
+}
+.morning .not-found__wrapper_title {
+  color: #826A5C;
+}
+.morning .not-found__wrapper__images_night {
+  display: none;
+}
+.morning .not-found__wrapper__images_morning:nth-child(1) {
+  transform: translate(-50%, -18%);
+}
+.morning .not-found__wrapper__images_morning:nth-child(2) {
+  transform: translate(-122%, -65%);
+}
+.morning .not-found__wrapper_btn button {
+  color: #E7426A;
+  outline: 1px solid rgb(231, 66, 106);
+  background-color: #F7F7F7;
+}
+
+.night {
+  background: #49387A;
+}
+.night .not-found__wrapper_information {
+  color: #fff;
+}
+.night .not-found__wrapper_title {
+  color: #8C71D9;
+}
+.night .not-found__wrapper__images_morning {
+  display: none;
+}
+.night .not-found__wrapper__images_night:nth-child(3) {
+  transform: translate(-50%, -24%);
+}
+.night .not-found__wrapper__images_night:nth-child(4) {
+  transform: translate(-50%, -42%);
+}
+.night .not-found__wrapper__images_night:nth-child(5) {
+  transform: translate(-58%, -38%);
+}
+.night .not-found__wrapper__images_night:nth-child(6) {
+  transform: translate(-50%, -18%);
+}
+.night .not-found__wrapper_btn button {
+  color: #fff;
+  outline: 1px solid rgb(78, 157, 211);
+  background-color: #49387A;
+}
+
+/*# sourceMappingURL=NotFound.css.map */
