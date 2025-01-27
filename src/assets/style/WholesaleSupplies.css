@@ -1,0 +1,138 @@
+hr {
+  margin: 16px 0;
+  border: none;
+  border-top: 0.1px solid rgb(237, 237, 240);
+}
+
+.wholesale-supplies {
+  margin-top: 53px;
+}
+.wholesale-supplies__wrapper__offer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.wholesale-supplies__wrapper__offer__images {
+  position: relative;
+}
+.wholesale-supplies__wrapper__offer__information {
+  width: 670px;
+  margin-left: 35px;
+}
+.wholesale-supplies__wrapper__offer__information__title {
+  font-size: 42px;
+  font-weight: 600;
+}
+.wholesale-supplies__wrapper__offer__information__description {
+  margin: 13px 0 0;
+  font-size: 18px;
+  font-weight: 400;
+}
+.wholesale-supplies__wrapper__offer__information__btn {
+  margin-top: 12px;
+  margin-bottom: 41px;
+}
+.wholesale-supplies__wrapper__offer__information__btn button {
+  cursor: pointer;
+  padding: 14px 74px;
+  background: none;
+  border: none;
+  outline: 1px solid rgb(78, 157, 211);
+  font-size: 14px;
+  font-weight: 600;
+}
+.wholesale-supplies__wrapper__offer__information__btn button:not(:last-child) {
+  margin-right: 10px;
+}
+.wholesale-supplies__wrapper__offer__information p {
+  font-size: 15px;
+  font-weight: 400;
+  text-align: left;
+}
+.wholesale-supplies__wrapper__offer__information .one, .wholesale-supplies__wrapper__offer__information .two, .wholesale-supplies__wrapper__offer__information .three, .wholesale-supplies__wrapper__offer__information .four {
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+}
+.wholesale-supplies__wrapper__offer__information .one {
+  width: 440px;
+  height: 440px;
+  left: 0;
+  transform: translate(-24%, -40%);
+}
+.wholesale-supplies__wrapper__offer__information .two {
+  width: 276px;
+  height: 276px;
+  right: 0;
+  transform: translate(24%, -121%);
+}
+.wholesale-supplies__wrapper__offer__information .three {
+  left: 50%;
+  transform: translate(-101%, -83%);
+}
+.wholesale-supplies__wrapper__offer__information .four {
+  left: 50%;
+  transform: translate(-101%, -28%);
+}
+.wholesale-supplies__wrapper__answers-questions {
+  margin-bottom: 69px;
+  margin-top: 81px;
+}
+.wholesale-supplies__wrapper__answers-questions_title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+.wholesale-supplies__wrapper__answers-questions__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 370px);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  margin-top: 33px;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card {
+  outline: 1px solid rgb(237, 237, 240);
+  border-radius: 5px;
+  width: 370px;
+  background: #fff;
+  padding: 20px;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card_title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card_description {
+  margin-top: 11px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card__name {
+  display: flex;
+  text-align: right;
+  align-items: end;
+  justify-content: end;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card__name div {
+  margin-right: 13px;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card__name div p {
+  font-size: 12px;
+  font-weight: 600;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card.one {
+  height: 194px;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card.two {
+  height: 332px;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card.three {
+  height: 455px;
+}
+.wholesale-supplies__wrapper__answers-questions__cards__card.four {
+  margin-top: -264px;
+  height: 286px;
+}
+
+/*# sourceMappingURL=WholesaleSupplies.css.map */

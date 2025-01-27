@@ -1,0 +1,167 @@
+hr {
+  margin: 16px 0;
+  border: none;
+  border-top: 0.1px solid rgb(237, 237, 240);
+}
+
+.corporate-gifts {
+  margin-top: 53px;
+}
+.corporate-gifts__wrapper__offer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.corporate-gifts__wrapper__offer__images {
+  position: relative;
+}
+.corporate-gifts__wrapper__offer__information {
+  width: 670px;
+  margin-left: 25px;
+}
+.corporate-gifts__wrapper__offer__information__title {
+  font-size: 42px;
+  font-weight: 600;
+}
+.corporate-gifts__wrapper__offer__information__description {
+  margin: 13px 0 63px;
+  font-size: 18px;
+  font-weight: 400;
+}
+.corporate-gifts__wrapper__offer__information__btn {
+  margin-top: 32px;
+}
+.corporate-gifts__wrapper__offer__information__btn button {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 14px 55px;
+  background: #E7426A;
+  border: none;
+  color: #FFFFFF;
+  outline: none;
+  border-radius: 3px;
+}
+.corporate-gifts__wrapper__offer__information__btn button:not(:last-child) {
+  margin-right: 10px;
+}
+.corporate-gifts__wrapper__offer__information p {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+}
+.corporate-gifts__wrapper__offer__information .one, .corporate-gifts__wrapper__offer__information .two, .corporate-gifts__wrapper__offer__information .three, .corporate-gifts__wrapper__offer__information .four {
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+}
+.corporate-gifts__wrapper__offer__information .one {
+  width: 440px;
+  height: 440px;
+  left: 0;
+  transform: translate(-24%, -40%);
+}
+.corporate-gifts__wrapper__offer__information .two {
+  width: 276px;
+  height: 276px;
+  right: 0;
+  transform: translate(24%, -121%);
+}
+.corporate-gifts__wrapper__offer__information .three {
+  left: 50%;
+  transform: translate(-101%, -83%);
+}
+.corporate-gifts__wrapper__offer__information .four {
+  left: 50%;
+  transform: translate(-101%, -28%);
+}
+.corporate-gifts__wrapper__sets {
+  margin-top: 60px;
+}
+.corporate-gifts__wrapper__sets_title {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+.corporate-gifts__wrapper__sets__cards {
+  margin-top: 52px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 270px);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  padding-bottom: 30px;
+}
+.corporate-gifts__wrapper__completed-orders {
+  margin-top: 69px;
+}
+.corporate-gifts__wrapper__completed-orders_title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+.corporate-gifts__wrapper__completed-orders__cards {
+  margin-top: 37px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 270px);
+  grid-column-gap: 29px;
+}
+.corporate-gifts__wrapper__completed-orders__cards_card {
+  background: #FFFFFF;
+  padding: 14px 14px 24px;
+}
+.corporate-gifts__wrapper__completed-orders__cards_card_img {
+  background: #E9E6E6;
+  width: 243px;
+  height: 192px;
+}
+.corporate-gifts__wrapper__completed-orders__cards_card_description {
+  margin-top: 22px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.corporate-gifts__wrapper__answers-questions {
+  margin-bottom: 69px;
+  margin-top: 81px;
+}
+.corporate-gifts__wrapper__answers-questions_title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+.corporate-gifts__wrapper__answers-questions__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 370px);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  margin-top: 33px;
+}
+.corporate-gifts__wrapper__answers-questions__cards__card {
+  outline: 1px solid rgb(237, 237, 240);
+  border-radius: 5px;
+  width: 370px;
+  background: #fff;
+  padding: 21px;
+}
+.corporate-gifts__wrapper__answers-questions__cards__card_title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.corporate-gifts__wrapper__answers-questions__cards__card_description {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.corporate-gifts__wrapper__answers-questions__cards__card.one {
+  height: 150px;
+}
+.corporate-gifts__wrapper__answers-questions__cards__card.two {
+  margin-top: -55px;
+  height: 285px;
+}
+
+/*# sourceMappingURL=CorporateGifts.css.map */

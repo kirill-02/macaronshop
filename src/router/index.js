@@ -15,6 +15,8 @@ import NewsView from "@/view/NewsView.vue";
 import BasketView from "@/view/BasketView.vue";
 import WeddingView from "@/view/WeddingView.vue";
 import ErrorView from "@/view/NotFoundView.vue";
+import WholesaleSuppliesView from "@/view/WholesaleSuppliesView.vue";
+import CorporateGiftsView from "@/view/CorporateGiftsView.vue";
 
 const routes = [
     {
@@ -103,6 +105,24 @@ const routes = [
         path: '/wedding',
         name: 'wedding',
         component: WeddingView,
+        meta: {
+            layout: 'main',
+            auth: true
+        }
+    },
+    {
+        path: '/wholesale-supplies',
+        name: 'wholesale-supplies',
+        component: WholesaleSuppliesView,
+        meta: {
+            layout: 'main',
+            auth: true
+        }
+    },
+    {
+        path: '/corporate-gifts',
+        name: 'corporate-gifts',
+        component: CorporateGiftsView,
         meta: {
             layout: 'main',
             auth: true

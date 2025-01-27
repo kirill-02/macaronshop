@@ -1,7 +1,7 @@
 <template>
   <div class="popular-sets__wrapper__cards__card">
     <router-link :to="`/product/${id}`">
-      <div class="popular-sets__wrapper__cards__card_img">
+      <div class="popular-sets__wrapper__cards__card_img" >
         <img :src="img" alt="">
       </div>
       <div class="popular-sets__wrapper__cards__card__information">
@@ -31,6 +31,7 @@ export default {
   border-radius: 5px;
 
   &_img {
+    //padding: 10px;
 
     img {
     }

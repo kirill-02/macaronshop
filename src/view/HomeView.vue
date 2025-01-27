@@ -73,7 +73,7 @@
           </div>
         </router-link>
 
-        <a href="#" class="card-offers__wrapper__block">
+        <router-link to="/corporate-gifts" class="card-offers__wrapper__block">
           <div class="card-offers__wrapper__block-five">
 
             <div class="card-offers__wrapper__block_one-present"></div>
@@ -84,9 +84,9 @@
               От 85 руб за шт. С уникальным дизайном. Приятный комплимент для коллег и партнеров
             </div>
           </div>
-        </a>
+        </router-link>
 
-        <a href="#" class="card-offers__wrapper__block">
+        <router-link to="/wholesale-supplies" class="card-offers__wrapper__block">
           <div class="card-offers__wrapper__block-six">
 
             <div class="card-offers__wrapper__block_one-chair"></div>
@@ -98,7 +98,7 @@
               Посмотрите условия сотрудничества и отзывы.
             </div>
           </div>
-        </a>
+        </router-link>
       </div>
     </div>
   </div>

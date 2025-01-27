@@ -48,16 +48,14 @@ hr {
   font-size: 18px;
   font-weight: 400;
 }
-.wedding__wrapper__offer__information__btn {
-  font-size: 14px;
-  font-weight: 600;
-}
 .wedding__wrapper__offer__information__btn button {
   cursor: pointer;
   padding: 14px 74px;
   background: none;
   border: none;
   outline: 1px solid rgb(78, 157, 211);
+  font-size: 14px;
+  font-weight: 600;
 }
 .wedding__wrapper__offer__information__btn button:not(:last-child) {
   margin-right: 10px;

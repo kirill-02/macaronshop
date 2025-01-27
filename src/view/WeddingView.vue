@@ -52,12 +52,6 @@
                 :price="popularSet.price"
             ></app-sets-card>
           </div>
-          <!--          <app-border-button-->
-          <!--              text='Показать еще'-->
-          <!--              :hasMoreSets="hasMoreSets"-->
-          <!--              @show-more="showMore">-->
-          <!--          </app-border-button>-->
-
         </div>
 
         <div class="wedding__wrapper__solutions">
@@ -204,15 +198,7 @@ export default {
     visibleSets() {
       return this.popularSets.slice(0, this.visibleSetCount);
     },
-    // hasMoreSets() {
-    //   return this.visibleSetCount < this.popularSets.length;
-    // },
   },
-  methods: {
-    // showMore() {
-    //   this.visibleSetCount += 3
-    // }
-  }
 }
 </script>
 
