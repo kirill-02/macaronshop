@@ -43,5 +43,6 @@ export default {
   padding: 17px 48px;
   border: 1px solid rgb(78, 157, 211);
   border-radius: 3px;
+  background: #F7F7F7;
 }
 </style>

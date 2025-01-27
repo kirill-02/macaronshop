@@ -1,6 +1,6 @@
 <template>
-  <router-link :to="`/product/${id}`">
-    <div class="popular-sets__wrapper__cards__card">
+  <div class="popular-sets__wrapper__cards__card">
+    <router-link :to="`/product/${id}`">
       <div class="popular-sets__wrapper__cards__card_img">
         <img :src="img" alt="">
       </div>
@@ -8,12 +8,14 @@
         <div class="popular-sets__wrapper__cards__card__information_title">{{ title }}</div>
         <div class="popular-sets__wrapper__cards__card__information_description">{{ description }}</div>
       </div>
-      <div class="popular-sets__wrapper__cards__card__price-basket">
-        <div class="popular-sets__wrapper__cards__card__price-basket_price">{{ price }} руб</div>
-        <div class="popular-sets__wrapper__cards__card__price-basket_basket"><i class="ic_basket"></i>В корзину</div>
-      </div>
+    </router-link>
+    <div class="popular-sets__wrapper__cards__card__price-basket">
+      <div class="popular-sets__wrapper__cards__card__price-basket_price">{{ price }} руб</div>
+      <button type="submit" class="popular-sets__wrapper__cards__card__price-basket_basket"><i class="ic_basket"></i>В
+        корзину
+      </button>
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script>
@@ -66,12 +68,15 @@ export default {
     }
 
     &_basket {
+      cursor: pointer;
       align-content: flex-end;
       width: 70%;
       padding: 13px 22px;
       outline: 1px solid rgb(237, 237, 240);
       font-size: 14px;
       font-weight: 600;
+      border: none;
+      background: #FFFFFF;
 
       i {
         margin-right: 11px;

@@ -128,16 +128,28 @@
         height: 264px;
       }
 
-      &_one-ready, &_one-cake, &_one-present {
+      &_one-ready {
+        top: -122px;
+        left: 3px;
+        transform: rotate(-155.8deg);
+      }
+
+      &_one-cake {
+        top: -130px;
+        left: -85px;
+        transform: rotate(-24.4deg);
+      }
+
+      &_one-present {
         top: 114px;
         left: 13px;
         transform: rotate(-24.5deg);
       }
 
       &_one-mine, &_one-palette, &_one-chair {
-        top: -129px;
-        left: -13px;
-        transform: rotate(24.1deg);
+        top: 127px;
+        left: -85px;
+        transform: rotate(24.5deg);
       }
 
       &_icon {

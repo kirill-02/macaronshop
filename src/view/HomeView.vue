@@ -34,33 +34,33 @@
           </div>
         </router-link>
 
-        <a href="#" class="card-offers__wrapper__block">
-          <div class="card-offers__wrapper__block-two">
+        <!--        <a href="#" class="card-offers__wrapper__block">-->
+        <!--          <div class="card-offers__wrapper__block-two">-->
 
-            <div class="card-offers__wrapper__block_one-mine"></div>
+        <!--            <div class="card-offers__wrapper__block_one-mine"></div>-->
 
-            <div class="card-offers__wrapper__block_icon"><i class="ic_mine"></i></div>
-            <div class="card-offers__wrapper__block_title">Собрать свой набор &#8594;</div>
-            <div class="card-offers__wrapper__block_description">
-              Выбрать количество макарун, и выбрать вкусы
-            </div>
-          </div>
-        </a>
+        <!--            <div class="card-offers__wrapper__block_icon"><i class="ic_mine"></i></div>-->
+        <!--            <div class="card-offers__wrapper__block_title">Собрать свой набор &#8594;</div>-->
+        <!--            <div class="card-offers__wrapper__block_description">-->
+        <!--              Выбрать количество макарун, и выбрать вкусы-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </a>-->
 
-        <a href="#" class="card-offers__wrapper__block">
-          <div class="card-offers__wrapper__block-three">
+        <!--        <a href="#" class="card-offers__wrapper__block">-->
+        <!--          <div class="card-offers__wrapper__block-three">-->
 
-            <div class="card-offers__wrapper__block_one-palette"></div>
+        <!--            <div class="card-offers__wrapper__block_one-palette"></div>-->
 
-            <div class="card-offers__wrapper__block_icon"><i class="ic_palette"></i></div>
-            <div class="card-offers__wrapper__block_title">Набор с индивидуальной печатью &#8594;</div>
-            <div class="card-offers__wrapper__block_description">
-              Собрать набор макарон с уникальным дизайном.
-            </div>
-          </div>
-        </a>
+        <!--            <div class="card-offers__wrapper__block_icon"><i class="ic_palette"></i></div>-->
+        <!--            <div class="card-offers__wrapper__block_title">Набор с индивидуальной печатью &#8594;</div>-->
+        <!--            <div class="card-offers__wrapper__block_description">-->
+        <!--              Собрать набор макарон с уникальным дизайном.-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </a>-->
 
-        <a href="#" class="card-offers__wrapper__block">
+        <router-link to="/wedding" class="card-offers__wrapper__block">
           <div class="card-offers__wrapper__block-four">
 
             <div class="card-offers__wrapper__block_one-cake"></div>
@@ -71,7 +71,7 @@
               Нежные пирожные макаронс с разными вкусами для украшения вашего свадебного торжества
             </div>
           </div>
-        </a>
+        </router-link>
 
         <a href="#" class="card-offers__wrapper__block">
           <div class="card-offers__wrapper__block-five">
