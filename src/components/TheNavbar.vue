@@ -147,9 +147,9 @@
                     </a>
                   </li>
                 </router-link>
-                <li class="dropdown-menu_group">
-                  <a href="#">Оптовые поставки</a>
-                </li>
+<!--                <li class="dropdown-menu_group">-->
+<!--                  <a href="#">Оптовые поставки</a>-->
+<!--                </li>-->
                 <router-link to="/contacts">
                   <li class="dropdown-menu_group">
                     <a href="#">Контакты</a>
