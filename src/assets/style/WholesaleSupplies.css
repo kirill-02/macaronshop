@@ -76,6 +76,70 @@ hr {
   left: 50%;
   transform: translate(-101%, -28%);
 }
+.wholesale-supplies__wrapper__for-what {
+  margin-top: 83px;
+}
+.wholesale-supplies__wrapper__for-what_title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+.wholesale-supplies__wrapper__for-what__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 268px);
+  grid-column-gap: 30px;
+  grid-row-gap: 54px;
+  margin-top: 51px;
+  align-items: center;
+  justify-content: center;
+}
+.wholesale-supplies__wrapper__for-what__cards__card {
+  text-align: center;
+}
+.wholesale-supplies__wrapper__for-what__cards__card_icon {
+  position: relative;
+  width: 268px;
+  height: 90px;
+}
+.wholesale-supplies__wrapper__for-what__cards__card_icon i {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  background: #fff;
+  font-size: 50px;
+  padding-top: 20px;
+}
+.wholesale-supplies__wrapper__for-what__cards__card .ic_present {
+  color: #57B6BB;
+}
+.wholesale-supplies__wrapper__for-what__cards__card .ic_cart {
+  color: #D17EAC;
+}
+.wholesale-supplies__wrapper__for-what__cards__card .ic_chair {
+  color: #8A8CDC;
+}
+.wholesale-supplies__wrapper__for-what__cards__card .ic_machine {
+  color: #CC9180;
+}
+.wholesale-supplies__wrapper__for-what__cards__card .ic_house {
+  color: #92C2D6;
+}
+.wholesale-supplies__wrapper__for-what__cards__card .ic_shop {
+  color: #FBBC8F;
+}
+.wholesale-supplies__wrapper__for-what__cards__card .ic_cake {
+  color: #E58383;
+}
+.wholesale-supplies__wrapper__for-what__cards__card .ic_mine {
+  color: #E67285;
+}
+.wholesale-supplies__wrapper__for-what__cards__card__description {
+  margin-top: 13px;
+}
 .wholesale-supplies__wrapper__answers-questions {
   margin-bottom: 69px;
   margin-top: 81px;

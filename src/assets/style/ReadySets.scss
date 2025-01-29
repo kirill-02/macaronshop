@@ -12,27 +12,6 @@
     position: relative;
     margin-top: 42px;
 
-    //&__filters {
-    //  display: flex;
-    //  margin-bottom: 41px;
-    //  align-items: center;
-    //  justify-content: space-between;
-    //
-    //  div {
-    //    text-align: center;
-    //    padding: 10px 14px;
-    //    border-radius: 100px;
-    //    background-color: #F7EBE5;
-    //    color: rgba(41, 41, 41, 0.83);
-    //
-    //  }
-    //
-    //  div:not(:last-child) {
-    //    margin-right: 4px;
-    //
-    //  }
-    //}
-
     &__cards {
       display: grid;
       align-items: center;

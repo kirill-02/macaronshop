@@ -94,6 +94,85 @@ hr {
       }
     }
 
+    &__for-what {
+      margin-top: 83px;
+
+      &_title {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 268px);
+        grid-column-gap: 30px;
+        grid-row-gap: 54px;
+        margin-top: 51px;
+        align-items: center;
+        justify-content: center;
+
+        &__card {
+          text-align: center;
+
+          &_icon {
+            position: relative;
+            width: 268px;
+            height: 90px;
+
+            i {
+              width: 90px;
+              height: 90px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              border-radius: 100%;
+              background: #fff;
+              font-size: 50px;
+              padding-top: 20px;
+            }
+          }
+
+          .ic_present {
+            color: #57B6BB;
+          }
+
+          .ic_cart {
+            color: #D17EAC;
+          }
+
+          .ic_chair {
+            color: #8A8CDC;
+          }
+
+          .ic_machine {
+            color: #CC9180;
+          }
+
+          .ic_house {
+            color: #92C2D6;
+          }
+
+          .ic_shop {
+            color: #FBBC8F;
+          }
+
+          .ic_cake {
+            color: #E58383;
+          }
+
+          .ic_mine {
+            color: #E67285;
+
+          }
+
+          &__description {
+            margin-top: 13px;
+          }
+        }
+      }
+    }
 
     &__answers-questions {
       margin-bottom: 69px;
@@ -145,6 +224,7 @@ hr {
 
               }
             }
+
             img {
 
             }

@@ -25,11 +25,7 @@ export default {
       this.$emit('show-more')
     }
   }
-  // methods: {
-  //   handleClick() {
-  //     this.$emit('show-more'); // Генерируем событие для родителя
-  //   }
-  // }
+
 }
 </script>
 
@@ -37,7 +33,6 @@ export default {
 .btn {
   cursor: pointer;
   position: absolute;
-  button: 0%;
   left: 50%;
   transform: translate(-50%, 0%);
   padding: 17px 48px;

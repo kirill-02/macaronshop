@@ -35,6 +35,59 @@
 
         </div>
 
+        <div class="wholesale-supplies__wrapper__for-what">
+          <div class="wholesale-supplies__wrapper__for-what_title"></div>
+          <div class="wholesale-supplies__wrapper__for-what__cards">
+
+            <div class="wholesale-supplies__wrapper__for-what__cards__card">
+              <div class="wholesale-supplies__wrapper__for-what__cards__card_icon"><i class="ic_present"></i></div>
+              <div class="wholesale-supplies__wrapper__for-what__cards__card__description">Корпоративные подарки</div>
+            </div>
+
+            <div class="wholesale-supplies__wrapper__for-what__cards__card">
+              <div class="wholesale-supplies__wrapper__for-what__cards__card_icon"><i class="ic_cart"></i></div>
+              <div class="wholesale-supplies__wrapper__for-what__cards__card__description">Сотрудничество с интернет
+                магазинами
+              </div>
+            </div>
+
+            <div class="wholesale-supplies__wrapper__for-what__cards__card">
+              <div class="wholesale-supplies__wrapper__for-what__cards__card_icon"><i class="ic_chair"></i></div>
+              <div class="wholesale-supplies__wrapper__for-what__cards__card__description">Сотрудничество с кафе и
+                ресторанами
+              </div>
+            </div>
+
+            <div class="wholesale-supplies__wrapper__for-what__cards__card">
+              <div class="wholesale-supplies__wrapper__for-what__cards__card_icon"><i class="ic_machine"></i></div>
+              <div class="wholesale-supplies__wrapper__for-what__cards__card__description">Сотрудничество с кофейнями
+              </div>
+            </div>
+
+            <div class="wholesale-supplies__wrapper__for-what__cards__card">
+              <div class="wholesale-supplies__wrapper__for-what__cards__card_icon"><i class="ic_house"></i></div>
+              <div class="wholesale-supplies__wrapper__for-what__cards__card__description">Сотрудничество с отелями
+              </div>
+            </div>
+
+            <div class="wholesale-supplies__wrapper__for-what__cards__card">
+              <div class="wholesale-supplies__wrapper__for-what__cards__card_icon"><i class="ic_shop"></i></div>
+              <div class="wholesale-supplies__wrapper__for-what__cards__card__description">Для Retail</div>
+            </div>
+
+            <div class="wholesale-supplies__wrapper__for-what__cards__card">
+              <div class="wholesale-supplies__wrapper__for-what__cards__card_icon"><i class="ic_cake"></i></div>
+              <div class="wholesale-supplies__wrapper__for-what__cards__card__description">Кенди бары для мероприятий
+              </div>
+            </div>
+
+            <div class="wholesale-supplies__wrapper__for-what__cards__card">
+              <div class="wholesale-supplies__wrapper__for-what__cards__card_icon"><i class="ic_mine"></i></div>
+              <div class="wholesale-supplies__wrapper__for-what__cards__card__description">И для других сфер бизнеса
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="wholesale-supplies__wrapper__answers-questions">
           <div class="wholesale-supplies__wrapper__answers-questions_title">Нас рекомендуют</div>

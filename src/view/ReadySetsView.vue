@@ -19,7 +19,6 @@
           ></app-sets-card>
 
         </div>
-        <!--            v-if="hasMoreSets"-->
         <app-border-button
             text='Показать еще'
             :hasMoreSets="hasMoreSets"
