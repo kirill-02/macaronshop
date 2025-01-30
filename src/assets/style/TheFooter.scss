@@ -10,6 +10,7 @@
       margin-bottom: 18px;
       font-size: 16px;
       font-weight: 600;
+      text-transform: uppercase;
     }
 
     &_description {
@@ -31,8 +32,10 @@
       margin-right: 30px;
 
       &__cards {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 144px);
         text-align: center;
+        grid-row-gap: 10px;
 
         &__card {
           width: 144px;
@@ -109,3 +112,155 @@
 }
 
 
+@media screen and (max-width: 1280px) {
+  .footer {
+    padding: 0 10px;
+
+    &__wrapper {
+      &__delivery {
+        margin-right: 12px;
+      }
+
+      &__information {
+        margin-right: 12px;
+      }
+
+      &__networks {
+        &__number {
+          &_telephone {
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    &__wrapper {
+      display: grid;
+      justify-content: center;
+
+      &__delivery {
+        &__cards {
+          display: block;
+          text-align: start;
+
+          &__card {
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            grid-column-gap: 30px;
+            position: relative;
+
+            &__description {
+              position: absolute;
+              top: 50%;
+              left: 22%;
+              transform: translate(0, -50%);
+            }
+
+            &_icon {
+              font-size: 60px;
+            }
+          }
+        }
+
+        &_address {
+          width: 200px;
+        }
+      }
+
+      &__information {
+        display: none;
+      }
+
+      &__networks {
+        margin-top: -60px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .footer {
+    &__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+
+      &__delivery {
+        &__cards {
+          &__card {
+            width: 300px;
+
+            &_icon {
+              font-size: 50px;
+            }
+
+            &__description {
+              left: 28%;
+            }
+          }
+        }
+      }
+
+      &__networks {
+        &__number {
+          margin-left: 174px;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 360px) {
+  .footer {
+    &__wrapper {
+      &__delivery {
+        width: auto;
+        margin-right: 0;
+
+        &_address {
+          width: 140px;
+          font-size: 10px;
+        }
+      }
+
+      &__networks {
+        margin-top: -64px;
+
+        &__number {
+          &_telephone {
+            font-size: 12px;
+            font-weight: 600;
+          }
+
+          &_time {
+            font-size: 10px;
+          }
+        }
+
+        &__social {
+          margin-top: 50px;
+
+          div {
+            width: 36px;
+            height: 36px;
+          }
+
+          div i {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

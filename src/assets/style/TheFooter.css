@@ -10,6 +10,7 @@
   margin-bottom: 18px;
   font-size: 16px;
   font-weight: 600;
+  text-transform: uppercase;
 }
 .footer__wrapper_description {
   font-size: 14px;
@@ -27,8 +28,10 @@
   margin-right: 30px;
 }
 .footer__wrapper__delivery__cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 144px);
   text-align: center;
+  grid-row-gap: 10px;
 }
 .footer__wrapper__delivery__cards__card {
   width: 144px;
@@ -83,6 +86,106 @@
 }
 .footer__wrapper__networks__social div:not(:last-child) {
   margin-right: 15px;
+}
+
+@media screen and (max-width: 1280px) {
+  .footer {
+    padding: 0 10px;
+  }
+  .footer__wrapper__delivery {
+    margin-right: 12px;
+  }
+  .footer__wrapper__information {
+    margin-right: 12px;
+  }
+  .footer__wrapper__networks__number_telephone {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+@media screen and (max-width: 768px) {
+  .footer__wrapper {
+    display: grid;
+    justify-content: center;
+  }
+  .footer__wrapper__delivery__cards {
+    display: block;
+    text-align: start;
+  }
+  .footer__wrapper__delivery__cards__card {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    grid-column-gap: 30px;
+    position: relative;
+  }
+  .footer__wrapper__delivery__cards__card__description {
+    position: absolute;
+    top: 50%;
+    left: 22%;
+    transform: translate(0, -50%);
+  }
+  .footer__wrapper__delivery__cards__card_icon {
+    font-size: 60px;
+  }
+  .footer__wrapper__delivery_address {
+    width: 200px;
+  }
+  .footer__wrapper__information {
+    display: none;
+  }
+  .footer__wrapper__networks {
+    margin-top: -60px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .footer__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer__wrapper__delivery__cards__card {
+    width: 300px;
+  }
+  .footer__wrapper__delivery__cards__card_icon {
+    font-size: 50px;
+  }
+  .footer__wrapper__delivery__cards__card__description {
+    left: 28%;
+  }
+  .footer__wrapper__networks__number {
+    margin-left: 174px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .footer__wrapper__delivery {
+    width: auto;
+    margin-right: 0;
+  }
+  .footer__wrapper__delivery_address {
+    width: 140px;
+    font-size: 10px;
+  }
+  .footer__wrapper__networks {
+    margin-top: -64px;
+  }
+  .footer__wrapper__networks__number_telephone {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .footer__wrapper__networks__number_time {
+    font-size: 10px;
+  }
+  .footer__wrapper__networks__social {
+    margin-top: 50px;
+  }
+  .footer__wrapper__networks__social div {
+    width: 36px;
+    height: 36px;
+  }
+  .footer__wrapper__networks__social div i {
+    font-size: 16px;
+  }
 }
 
 /*# sourceMappingURL=TheFooter.css.map */
