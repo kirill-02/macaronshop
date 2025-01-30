@@ -17,13 +17,16 @@ export default {
 
 <style lang="scss" scoped>
 .news__wrapper__cards__card {
-  height: 420px;
+  height: 100%;
   background: #FFFFFF;
   border-radius: 5px;
 
   &_img {
-    width: 370px;
-    height: 210px;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
   }
 
   &__information {
@@ -45,6 +48,52 @@ export default {
       font-size: 14px;
       font-weight: 400;
       color: #292929;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 560px) {
+  .news__wrapper__cards__card {
+    &__information {
+      padding: 10px 12px;
+
+      &_year {
+        font-size: 12px;
+      }
+
+      &_title {
+        font-size: 14px;
+      }
+
+      &_description {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .news__wrapper__cards__card {
+    &__information {
+      padding: 6px 12px;
+
+      &_year {
+        font-size: 10px;
+      }
+
+      &_title {
+        margin: 4px 0;
+        font-size: 12px;
+      }
+
+      &_description {
+        font-size: 10px;
+        margin-top: 5px;
+      }
     }
   }
 }

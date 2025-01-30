@@ -67,6 +67,9 @@
   grid-row-gap: 25px;
   justify-content: center;
 }
+.card-offers__wrapper hr {
+  display: none;
+}
 .card-offers__wrapper__block {
   text-align: center;
   align-items: center;
@@ -305,12 +308,14 @@
   grid-row-gap: 30px;
 }
 .guarantee__wrapper__cards_card_img {
-  width: 270px;
-  height: 270px;
+  width: 100%;
+}
+.guarantee__wrapper__cards_card_img img {
+  width: 100%;
 }
 .guarantee__wrapper__cards_card__information {
   margin-top: 29px;
-  height: 102px;
+  height: 100%;
 }
 .guarantee__wrapper__cards_card__information-center {
   text-align: center;
@@ -324,6 +329,323 @@
   font-weight: 400;
   margin-top: 11px;
   color: #292929;
+}
+
+@media screen and (max-width: 1024px) {
+  .first-screen__wrapper_heart {
+    margin-right: 240px;
+  }
+  .first-screen__wrapper__information {
+    margin-right: 60px;
+  }
+  .card-offers__wrapper {
+    grid-template-columns: repeat(auto-fill, 460px);
+  }
+  .card-offers__wrapper__block-one, .card-offers__wrapper__block-five, .card-offers__wrapper__block-six, .card-offers__wrapper__block-four {
+    height: 220px;
+    padding: 22px 25px;
+  }
+  .card-offers__wrapper__block_one-ready {
+    left: -13px;
+    transform: rotate(-154.8deg);
+  }
+  .card-offers__wrapper__block_one-cake {
+    top: -153px;
+    left: -135px;
+    transform: rotate(-25.4deg);
+  }
+  .card-offers__wrapper__block_one-chair {
+    top: 129px;
+    left: -97px;
+    transform: rotate(25.5deg);
+  }
+  .card-offers__wrapper__block_one-present {
+    top: 73px;
+    left: 2px;
+    transform: rotate(-25.5deg);
+  }
+  .card-offers__wrapper__block_title {
+    margin: 10px 0 5px;
+  }
+  .card-offers__wrapper__block_description {
+    font-size: 15px;
+  }
+  .card-offers__wrapper__block_icon {
+    width: 90px;
+    height: 90px;
+  }
+  .card-offers__wrapper__block_icon i {
+    font-size: 52px;
+  }
+  .popular-sets {
+    padding: 0 5px;
+  }
+  .news {
+    margin-top: 90px;
+  }
+  .news__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 290px);
+  }
+  .guarantee {
+    margin-top: 90px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .first-screen {
+    margin-top: 65px;
+  }
+  .first-screen__wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .first-screen__wrapper_heart {
+    margin-right: -160px;
+    width: 750px;
+  }
+  .first-screen__wrapper_heart img {
+    width: 750px;
+  }
+  .first-screen__wrapper__information {
+    position: relative;
+    margin-right: 0;
+  }
+  .first-screen__wrapper__information_description img {
+    display: none;
+  }
+  .card-offers__wrapper {
+    display: block;
+    justify-content: start;
+  }
+  .card-offers__wrapper hr {
+    display: block;
+    border: none;
+    border-top: 1px solid rgba(41, 41, 41, 0.16);
+    margin: 0 25px;
+  }
+  .card-offers__wrapper__block {
+    padding: 21px 25px;
+  }
+  .card-offers__wrapper__block-one, .card-offers__wrapper__block-five, .card-offers__wrapper__block-six, .card-offers__wrapper__block-four {
+    background: none;
+    height: auto;
+    position: relative;
+  }
+  .card-offers__wrapper__block_one-cake, .card-offers__wrapper__block_one-present, .card-offers__wrapper__block_one-ready, .card-offers__wrapper__block_one-chair {
+    display: none;
+  }
+  .card-offers__wrapper__block_title {
+    display: flex;
+    justify-content: space-between;
+  }
+  .card-offers__wrapper__block_description {
+    display: none;
+  }
+  .card-offers__wrapper__block_icon {
+    display: none;
+  }
+  .promotion {
+    padding: 5px;
+    margin-bottom: 68px;
+  }
+  .popular-sets__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 290px);
+  }
+  .news__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 290px);
+  }
+}
+@media screen and (max-width: 560px) {
+  .first-screen {
+    padding: 0 10px;
+  }
+  .first-screen__wrapper_heart {
+    width: 650px;
+  }
+  .first-screen__wrapper_heart img {
+    width: 650px;
+  }
+  .first-screen__wrapper__information {
+    padding: 10px;
+  }
+  .first-screen__wrapper__information_description strong {
+    font-size: 36px;
+  }
+  .first-screen__wrapper__information_description span {
+    font-size: 16px;
+  }
+  .card-offers {
+    margin-bottom: 50px;
+  }
+  .card-offers__wrapper__block-one, .card-offers__wrapper__block-five, .card-offers__wrapper__block-six, .card-offers__wrapper__block-four {
+    padding: 6px 25px;
+  }
+  .promotion {
+    margin-bottom: 35px;
+  }
+  .promotion .title {
+    font-size: 22px;
+  }
+  .promotion__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    margin-top: 28px;
+  }
+  .promotion__wrapper__cards_card {
+    overflow: hidden;
+    height: 260px;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+  .promotion__wrapper__cards_card_img img {
+    width: 180px;
+  }
+  .promotion__wrapper__cards_card_description {
+    padding: 10px;
+  }
+  .popular-sets .title {
+    font-size: 22px;
+  }
+  .popular-sets__wrapper {
+    margin-top: 28px;
+  }
+  .popular-sets__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  .news {
+    margin-top: 80px;
+  }
+  .news .title {
+    font-size: 22px;
+  }
+  .news__wrapper {
+    margin-top: 28px;
+  }
+  .news__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  .guarantee {
+    margin-top: 80px;
+  }
+  .guarantee .title {
+    font-size: 22px;
+  }
+  .guarantee__wrapper {
+    margin-top: 28px;
+  }
+  .guarantee__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  .guarantee__wrapper__cards_card__information {
+    margin-top: 10px;
+  }
+  .guarantee__wrapper__cards_card__information_title {
+    font-size: 14px;
+  }
+  .guarantee__wrapper__cards_card__information__description {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .first-screen__wrapper_heart {
+    width: 430px;
+    margin-right: -112px;
+  }
+  .first-screen__wrapper_heart img {
+    width: 430px;
+  }
+  .first-screen__wrapper__information_description strong {
+    font-size: 24px;
+  }
+  .first-screen__wrapper__information_description span {
+    font-size: 14px;
+    padding: 0 25px;
+  }
+  .card-offers__wrapper__block-one, .card-offers__wrapper__block-five, .card-offers__wrapper__block-six, .card-offers__wrapper__block-four {
+    padding: 0 25px;
+  }
+  .card-offers__wrapper__block_title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .promotion__wrapper {
+    margin-top: 20px;
+  }
+  .promotion .title {
+    font-size: 18px;
+  }
+  .promotion__wrapper__cards {
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+  }
+  .promotion__wrapper__cards_card {
+    height: 217px;
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  .promotion__wrapper__cards_card_img img {
+    width: 142px;
+  }
+  .popular-sets {
+    margin-bottom: 35px;
+  }
+  .popular-sets .title {
+    font-size: 18px;
+  }
+  .popular-sets__wrapper {
+    margin-top: 20px;
+  }
+  .popular-sets__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .news {
+    margin-top: 65px;
+  }
+  .news .title {
+    font-size: 18px;
+  }
+  .news__wrapper {
+    margin-top: 20px;
+  }
+  .news__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .guarantee {
+    margin-top: 65px;
+  }
+  .guarantee .title {
+    font-size: 18px;
+  }
+  .guarantee__wrapper {
+    margin-top: 20px;
+  }
+  .guarantee__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .guarantee__wrapper__cards_card__information {
+    margin-top: 8px;
+  }
+  .guarantee__wrapper__cards_card__information_title {
+    font-size: 12px;
+  }
+  .guarantee__wrapper__cards_card__information__description {
+    font-size: 10px;
+    margin-top: 5px;
+  }
 }
 
 /*# sourceMappingURL=Home.css.map */

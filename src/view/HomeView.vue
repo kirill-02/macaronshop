@@ -26,13 +26,14 @@
             <div class="card-offers__wrapper__block_one-ready"></div>
 
             <div class="card-offers__wrapper__block_icon"><i class="ic_ready"></i></div>
-            <div class="card-offers__wrapper__block_title">Готовые наборы &#8594;</div>
+            <div class="card-offers__wrapper__block_title">Готовые наборы <span>&#8594;</span></div>
             <div class="card-offers__wrapper__block_description">
               Готовые наборы со скидкой.
               Вы можете подобрать набор на подходящий случай.
             </div>
           </div>
         </router-link>
+        <hr>
 
         <!--        <a href="#" class="card-offers__wrapper__block">-->
         <!--          <div class="card-offers__wrapper__block-two">-->
@@ -66,39 +67,40 @@
             <div class="card-offers__wrapper__block_one-cake"></div>
 
             <div class="card-offers__wrapper__block_icon"><i class="ic_cake"></i></div>
-            <div class="card-offers__wrapper__block_title">Свадебные предложения &#8594;</div>
+            <div class="card-offers__wrapper__block_title">Свадебные предложения <span>&#8594;</span></div>
             <div class="card-offers__wrapper__block_description">
               Нежные пирожные макаронс с разными вкусами для украшения вашего свадебного торжества
             </div>
           </div>
         </router-link>
-
+        <hr>
         <router-link to="/corporate-gifts" class="card-offers__wrapper__block">
           <div class="card-offers__wrapper__block-five">
 
             <div class="card-offers__wrapper__block_one-present"></div>
 
             <div class="card-offers__wrapper__block_icon"><i class="ic_present"></i></div>
-            <div class="card-offers__wrapper__block_title">Корпоративные подарки &#8594;</div>
+            <div class="card-offers__wrapper__block_title">Корпоративные подарки <span>&#8594;</span></div>
             <div class="card-offers__wrapper__block_description">
               От 85 руб за шт. С уникальным дизайном. Приятный комплимент для коллег и партнеров
             </div>
           </div>
         </router-link>
-
+        <hr>
         <router-link to="/wholesale-supplies" class="card-offers__wrapper__block">
           <div class="card-offers__wrapper__block-six">
 
             <div class="card-offers__wrapper__block_one-chair"></div>
 
             <div class="card-offers__wrapper__block_icon"><i class="ic_chair"></i></div>
-            <div class="card-offers__wrapper__block_title">Оптовые поставки &#8594;</div>
+            <div class="card-offers__wrapper__block_title">Оптовые поставки <span>&#8594;</span></div>
             <div class="card-offers__wrapper__block_description">
               Предложение для кофеен, кафе, отелей и т.д.
               Посмотрите условия сотрудничества и отзывы.
             </div>
           </div>
         </router-link>
+        <hr>
       </div>
     </div>
   </div>
@@ -147,51 +149,51 @@
     </div>
   </div>
 
-  <div class="next-holiday">
-    <div class="container">
-      <div class="title">Ближайшие праздники</div>
-      <div class="next-holiday__wrapper">
-        <div class=" next-holiday__wrapper__arrived">
-          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/holiday.png" alt=""></div>
-          <div class="next-holiday__wrapper__arrived_description">Скоро День рождения близкого человека</div>
+<!--  <div class="next-holiday">-->
+<!--    <div class="container">-->
+<!--      <div class="title">Ближайшие праздники</div>-->
+<!--      <div class="next-holiday__wrapper">-->
+<!--        <div class=" next-holiday__wrapper__arrived">-->
+<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/holiday.png" alt=""></div>-->
+<!--          <div class="next-holiday__wrapper__arrived_description">Скоро День рождения близкого человека</div>-->
 
-        </div>
+<!--        </div>-->
 
-        <div class="next-holiday__wrapper__arrived">
-          <!--          <div class="next-holiday__wrapper__arrived_dot">.......................</div>-->
+<!--        <div class="next-holiday__wrapper__arrived">-->
+<!--          &lt;!&ndash;          <div class="next-holiday__wrapper__arrived_dot">.......................</div>&ndash;&gt;-->
 
-          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/turquoise.png" alt=""></div>
-          <div class="next-holiday__wrapper__arrived_description">1 января Новый Год 2021</div>
-          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
-        </div>
+<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/turquoise.png" alt=""></div>-->
+<!--          <div class="next-holiday__wrapper__arrived_description">1 января Новый Год 2021</div>-->
+<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
+<!--        </div>-->
 
-        <div class="next-holiday__wrapper__arrived">
-          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/pink.png" alt=""></div>
-          <div class="next-holiday__wrapper__arrived_description">14 февраля День Святого Валентина</div>
-          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
-        </div>
+<!--        <div class="next-holiday__wrapper__arrived">-->
+<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/pink.png" alt=""></div>-->
+<!--          <div class="next-holiday__wrapper__arrived_description">14 февраля День Святого Валентина</div>-->
+<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
+<!--        </div>-->
 
-        <div class="next-holiday__wrapper__arrived">
-          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/orange.png" alt=""></div>
-          <div class="next-holiday__wrapper__arrived_description">23 февраля День Защитника Отечества</div>
-          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
-        </div>
+<!--        <div class="next-holiday__wrapper__arrived">-->
+<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/orange.png" alt=""></div>-->
+<!--          <div class="next-holiday__wrapper__arrived_description">23 февраля День Защитника Отечества</div>-->
+<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
+<!--        </div>-->
 
-        <div class="next-holiday__wrapper__arrived">
-          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/turquoise.png" alt=""></div>
-          <div class="next-holiday__wrapper__arrived_description">8 марта Международный Женский День</div>
-          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
-        </div>
+<!--        <div class="next-holiday__wrapper__arrived">-->
+<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/turquoise.png" alt=""></div>-->
+<!--          <div class="next-holiday__wrapper__arrived_description">8 марта Международный Женский День</div>-->
+<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
+<!--        </div>-->
 
-        <div class="next-holiday__wrapper__arrived">
-          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/pink.png" alt=""></div>
-          <div class="next-holiday__wrapper__arrived_description">9 марта День Сурка</div>
-          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>
+<!--        <div class="next-holiday__wrapper__arrived">-->
+<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/pink.png" alt=""></div>-->
+<!--          <div class="next-holiday__wrapper__arrived_description">9 марта День Сурка</div>-->
+<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
 
-        </div>
-      </div>
-    </div>
-  </div>
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
   <div class="popular-sets">
     <div class="container">
@@ -328,7 +330,7 @@ export default {
           id: 4,
           img: '4.jpeg',
           title: 'Набор на 9',
-          description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишня',
+          description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишняНабор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишняНабор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишня',
           price: '950'
         },
         {

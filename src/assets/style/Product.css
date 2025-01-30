@@ -119,6 +119,7 @@ hr {
   display: flex;
 }
 .product__wrapper__description__title_btn {
+  color: #292929;
   position: relative;
   font-size: 14px;
   font-weight: 600;

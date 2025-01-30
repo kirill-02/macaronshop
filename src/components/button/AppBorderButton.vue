@@ -39,5 +39,26 @@ export default {
   border: 1px solid rgb(78, 157, 211);
   border-radius: 3px;
   background: #F7F7F7;
+  color: #292929;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 12px 44px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .btn {
+    padding: 8px 32px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .btn {
+    font-size: 12px;
+  }
 }
 </style>
