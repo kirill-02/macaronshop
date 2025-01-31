@@ -1,11 +1,11 @@
 .title {
-  margin-top: 80px;
   font-size: 30px;
   font-weight: 600;
   text-align: center;
 }
 
 .popular-sets {
+  margin-top: 80px;
   margin-bottom: 100px;
 }
 .popular-sets__wrapper {
@@ -20,6 +20,43 @@
   grid-column-gap: 30px;
   grid-row-gap: 35px;
   padding-bottom: 35px;
+}
+
+@media screen and (max-width: 1024px) {
+  .popular-sets {
+    padding: 0 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .popular-sets__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 290px);
+  }
+}
+@media screen and (max-width: 560px) {
+  .title {
+    font-size: 22px;
+  }
+  .popular-sets__wrapper {
+    margin-top: 28px;
+  }
+  .popular-sets__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .title {
+    font-size: 18px;
+  }
+  .popular-sets__wrapper {
+    margin-top: 20px;
+  }
+  .popular-sets__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
 }
 
 /*# sourceMappingURL=ReadySets.css.map */

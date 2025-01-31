@@ -1,6 +1,9 @@
 .footer {
   background: #EBEDEE;
 }
+.footer .container {
+  overflow: hidden;
+}
 .footer__wrapper {
   display: flex;
   padding: 58px 0 69px;
@@ -113,7 +116,7 @@
     text-align: start;
   }
   .footer__wrapper__delivery__cards__card {
-    width: 500px;
+    width: 442px;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -123,7 +126,7 @@
   .footer__wrapper__delivery__cards__card__description {
     position: absolute;
     top: 50%;
-    left: 22%;
+    left: 23%;
     transform: translate(0, -50%);
   }
   .footer__wrapper__delivery__cards__card_icon {

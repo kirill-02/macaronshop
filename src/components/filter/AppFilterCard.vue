@@ -49,11 +49,26 @@ export default {
     color: rgba(41, 41, 41, 0.83);
     margin-bottom: 10px;
     margin-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   div:not(:last-child) {
     margin-right: 4px;
 
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .popular-sets__wrapper__filters {
+    margin-bottom: 15px;
+
+    div {
+      padding: 7px 7px;
+      height: 28px;
+      font-size: 12px;
+      font-weight: 500;
+    }
   }
 }
 </style>

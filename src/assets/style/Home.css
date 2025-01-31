@@ -331,6 +331,11 @@
   color: #292929;
 }
 
+@media screen and (max-width: 1280px) {
+  .first-screen .container {
+    overflow: hidden;
+  }
+}
 @media screen and (max-width: 1024px) {
   .first-screen__wrapper_heart {
     margin-right: 240px;

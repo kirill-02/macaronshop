@@ -125,9 +125,10 @@ li {
     background: white;
     padding: 0 160px 16px;
 
-      .container {
-        overflow: revert;
-      }
+    .container {
+      overflow: revert;
+    }
+
     .menu.open {
       display: flex; /* Показать меню, если оно открыто */
     }
@@ -321,6 +322,10 @@ li {
         &-ul {
           font-size: 11px;
           margin: 0 0 0 0;
+
+          .dropdown-menu {
+            transform: translate(-60%, 4%);
+          }
         }
 
         .percent {
@@ -344,6 +349,25 @@ li {
 
     .header {
       padding: 0 40px 16px;
+
+      .menu {
+        &-ul {
+          .dropdown-menu {
+            width: 182px;
+            transform: translate(-70%, 4%);
+
+            &_group {
+              padding: 8px 9px;
+              width: 182px;
+            }
+
+            &_group a {
+              font-size: 14px;
+              font-weight: 400;
+            }
+          }
+        }
+      }
     }
   }
 }

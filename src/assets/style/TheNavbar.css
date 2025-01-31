@@ -257,6 +257,9 @@ li {
     font-size: 11px;
     margin: 0 0 0 0;
   }
+  .the-navbar .header .menu-ul .dropdown-menu {
+    transform: translate(-60%, 4%);
+  }
   .the-navbar .header .menu .percent {
     font-size: 13px;
   }
@@ -271,6 +274,18 @@ li {
   }
   .the-navbar .header {
     padding: 0 40px 16px;
+  }
+  .the-navbar .header .menu-ul .dropdown-menu {
+    width: 182px;
+    transform: translate(-70%, 4%);
+  }
+  .the-navbar .header .menu-ul .dropdown-menu_group {
+    padding: 8px 9px;
+    width: 182px;
+  }
+  .the-navbar .header .menu-ul .dropdown-menu_group a {
+    font-size: 14px;
+    font-weight: 400;
   }
 }
 @media screen and (max-width: 560px) {

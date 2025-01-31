@@ -1,6 +1,10 @@
 .footer {
   background: #EBEDEE;
 
+  .container {
+    overflow: hidden;
+  }
+
   &__wrapper {
     display: flex;
     padding: 58px 0 69px;
@@ -153,7 +157,7 @@
           text-align: start;
 
           &__card {
-            width: 500px;
+            width: 442px;
             display: flex;
             align-items: center;
             justify-content: start;
@@ -163,7 +167,7 @@
             &__description {
               position: absolute;
               top: 50%;
-              left: 22%;
+              left: 23%;
               transform: translate(0, -50%);
             }
 

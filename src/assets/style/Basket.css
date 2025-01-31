@@ -83,8 +83,14 @@ hr {
   top: 50%;
   left: 50%;
 }
+.basket__wrapper__information__product__layout__quantity_minus {
+  color: #292929;
+}
 .basket__wrapper__information__product__layout__quantity_minus span {
   transform: translate(-55%, -56%);
+}
+.basket__wrapper__information__product__layout__quantity_plus {
+  color: #292929;
 }
 .basket__wrapper__information__product__layout__quantity_plus span {
   transform: translate(-50%, -50%);
