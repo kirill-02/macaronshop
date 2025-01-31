@@ -418,8 +418,10 @@ li {
     outline: none;
     margin: 0;
     box-shadow: none;
+    transform: translate(-50%, 4%);
   }
   .the-navbar .header .menu .dropdown-menu_group {
+    width: 100%;
     padding: 8px 0;
     text-transform: none;
     background: none;
