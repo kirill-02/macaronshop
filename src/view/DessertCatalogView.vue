@@ -12,8 +12,10 @@
               воздушные, хрустящие макарушки. лучшее, что мы умеем делать.
             </div>
             <div class="dessert-catalog__wrapper__cakes_information__btn">
-              <button class="dessert-catalog__wrapper__cakes_information__btn_kit">Готовые наборы</button>
-              <button class="dessert-catalog__wrapper__cakes_information__btn_kit">Собрать свой набор</button>
+              <router-link to="/ready-sets" class="dessert-catalog__wrapper__cakes_information__btn_kit">Готовые наборы
+              </router-link>
+              <router-link to="/" class="dessert-catalog__wrapper__cakes_information__btn_kit">Собрать свой набор
+              </router-link>
             </div>
           </div>
         </div>

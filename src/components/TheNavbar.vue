@@ -193,14 +193,18 @@
                     <a href="#">Контакты</a>
                   </li>
                 </router-link>
-
+                <router-link to="/news">
+                  <li class="dropdown-menu_group" @click="closeMenu">
+                    <a href="#">Новости</a>
+                  </li>
+                </router-link>
               </ul>
             </li>
             <hr>
 
             <li class="menu-ul_burger">
               8 812 309-82-88
-<!--              <span><i class="ic_VectorButton"></i></span>-->
+              <!--              <span><i class="ic_VectorButton"></i></span>-->
             </li>
             <li class="menu-ul_burger">
               <span><i class="ic_telegram"></i></span>

@@ -1,6 +1,6 @@
 .title {
   text-align: center;
-  margin-top: 68px;
+  margin-top: 41px;
   font-size: 30px;
   font-weight: 600;
 }
@@ -13,8 +13,13 @@
 }
 
 .dessert-catalog {
+  .container {
+    overflow: hidden;
+  }
+
   &__wrapper {
-  margin-top: 41px;
+    margin-top: 41px;
+
     &__cakes {
       background: #FEB0E1;
       display: flex;
@@ -41,7 +46,12 @@
         }
 
         &__btn {
+          justify-content: center;
           margin-top: 42px;
+          display: flex;
+          flex-wrap: wrap;
+          grid-row-gap: 8px;
+          grid-column-gap: 8px;
 
           &_kit {
             width: 230px;
@@ -54,19 +64,17 @@
 
           }
 
-          &_kit:not(:last-child) {
-            margin-right: 8px;
-          }
+
         }
       }
     }
 
     &__cards {
       margin-top: 35px;
-      display: grid;
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      grid-template-columns: repeat(auto-fill, 369px);
       grid-column-gap: 30px;
       grid-row-gap: 28px;
       padding-bottom: 28px;
@@ -89,16 +97,18 @@
       }
 
       &_card {
+        width: 370px;
         padding: 11px 0;
         position: relative;
         height: 341px;
-
         z-index: 2;
 
         &_img:nth-child(1) {
 
         }
+
         &_img {
+
           img {
 
           }
@@ -106,10 +116,7 @@
 
         &_title {
           width: 100%;
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          transform: translate(-50%, -248%);
+          margin-top: 10px;
           font-size: 18px;
           font-weight: 600;
           color: #FFFFFF;
@@ -134,7 +141,7 @@
         }
 
         .light {
-          background: linear-gradient(360deg, rgba(243,214,179,1) 65%, rgba(243,214,179,0) 100%);
+          background: linear-gradient(360deg, rgba(243, 214, 179, 1) 65%, rgba(243, 214, 179, 0) 100%);
         }
       }
     }
@@ -159,6 +166,183 @@
       padding-bottom: 35px;
 
 
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .dessert-catalog {
+    &__wrapper {
+      margin: 0 16px;
+
+      &__cakes {
+        overflow: hidden;
+
+        &_img {
+          width: 600px;
+          margin-left: -226px;
+        }
+      }
+
+      &__cards {
+        &_card {
+          width: 290px;
+
+          &_linear-gradient {
+            width: 290px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .title {
+    padding: 0 20px;
+    margin-top: 28px;
+    font-size: 22px;
+  }
+
+  .description {
+    padding: 0 30px;
+    margin-top: 14px;
+    font-size: 16px;
+  }
+  .dessert-catalog {
+    &__wrapper {
+      margin-top: 12px;
+
+      &__cakes {
+
+        &_information {
+          width: 155px;
+          margin-right: 0;
+
+          &_title {
+            font-size: 16px;
+          }
+
+          &_description {
+            font-size: 10px;
+            margin-top: 8px;
+          }
+
+          &__btn {
+            margin-top: 10px;
+
+            &_kit {
+              font-size: 12px;
+              width: 150px;
+            }
+          }
+        }
+
+        &_img {
+          width: 358px;
+          margin-left: -218px;
+
+          img {
+            width: 410px;
+
+          }
+        }
+      }
+
+      &__cards {
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+
+        &_card {
+          width: 180px;
+          height: 241px;
+
+
+          &_img {
+            img {
+              width: 150px;
+            }
+          }
+
+          &_title {
+            font-size: 14px;
+            padding: 0 10px;
+          }
+
+          &_linear-gradient {
+            width: 180px;
+          }
+        }
+      }
+    }
+  }
+
+  .popular-sets {
+    &__wrapper {
+      &__cards {
+        grid-template-columns: repeat(auto-fill, 180px);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 360px) {
+  .title {
+    padding: 0 20px;
+    margin-top: 28px;
+    font-size: 18px;
+  }
+
+  .description {
+    margin-top: 14px;
+    font-size: 12px;
+  }
+
+  .dessert-catalog {
+    &__wrapper {
+      &__cakes {
+        &_img {
+          width: 301px;
+          margin-left: -204px;
+
+          img {
+            width: 375px;
+          }
+        }
+      }
+
+      &__cards {
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+
+        &_card {
+          width: 140px;
+          height: 190px;
+
+          &_img {
+            img {
+              width: 112px;
+            }
+          }
+
+          &_linear-gradient {
+            width: 140px;
+          }
+        }
+      }
+    }
+  }
+  .popular-sets {
+    &__wrapper {
+      &__cards {
+        grid-template-columns: repeat(auto-fill, 140px);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+      }
     }
   }
 }

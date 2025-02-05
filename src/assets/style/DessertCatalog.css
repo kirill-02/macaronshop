@@ -1,6 +1,6 @@
 .title {
   text-align: center;
-  margin-top: 68px;
+  margin-top: 41px;
   font-size: 30px;
   font-weight: 600;
 }
@@ -12,6 +12,9 @@
   font-weight: 400;
 }
 
+.dessert-catalog .container {
+  overflow: hidden;
+}
 .dessert-catalog__wrapper {
   margin-top: 41px;
 }
@@ -38,7 +41,12 @@
   font-weight: 400;
 }
 .dessert-catalog__wrapper__cakes_information__btn {
+  justify-content: center;
   margin-top: 42px;
+  display: flex;
+  flex-wrap: wrap;
+  grid-row-gap: 8px;
+  grid-column-gap: 8px;
 }
 .dessert-catalog__wrapper__cakes_information__btn_kit {
   width: 230px;
@@ -49,15 +57,12 @@
   border-radius: 3px;
   background: #FEB0E1;
 }
-.dessert-catalog__wrapper__cakes_information__btn_kit:not(:last-child) {
-  margin-right: 8px;
-}
 .dessert-catalog__wrapper__cards {
   margin-top: 35px;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, 369px);
   grid-column-gap: 30px;
   grid-row-gap: 28px;
   padding-bottom: 28px;
@@ -73,6 +78,7 @@
   background: #FECE95;
 }
 .dessert-catalog__wrapper__cards_card {
+  width: 370px;
   padding: 11px 0;
   position: relative;
   height: 341px;
@@ -80,10 +86,7 @@
 }
 .dessert-catalog__wrapper__cards_card_title {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -248%);
+  margin-top: 10px;
   font-size: 18px;
   font-weight: 600;
   color: #FFFFFF;
@@ -121,6 +124,125 @@
   grid-column-gap: 30px;
   grid-row-gap: 35px;
   padding-bottom: 35px;
+}
+
+@media screen and (max-width: 768px) {
+  .dessert-catalog__wrapper {
+    margin: 0 16px;
+  }
+  .dessert-catalog__wrapper__cakes {
+    overflow: hidden;
+  }
+  .dessert-catalog__wrapper__cakes_img {
+    width: 600px;
+    margin-left: -226px;
+  }
+  .dessert-catalog__wrapper__cards_card {
+    width: 290px;
+  }
+  .dessert-catalog__wrapper__cards_card_linear-gradient {
+    width: 290px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .title {
+    padding: 0 20px;
+    margin-top: 28px;
+    font-size: 22px;
+  }
+  .description {
+    padding: 0 30px;
+    margin-top: 14px;
+    font-size: 16px;
+  }
+  .dessert-catalog__wrapper {
+    margin-top: 12px;
+  }
+  .dessert-catalog__wrapper__cakes_information {
+    width: 155px;
+    margin-right: 0;
+  }
+  .dessert-catalog__wrapper__cakes_information_title {
+    font-size: 16px;
+  }
+  .dessert-catalog__wrapper__cakes_information_description {
+    font-size: 10px;
+    margin-top: 8px;
+  }
+  .dessert-catalog__wrapper__cakes_information__btn {
+    margin-top: 10px;
+  }
+  .dessert-catalog__wrapper__cakes_information__btn_kit {
+    font-size: 12px;
+    width: 150px;
+  }
+  .dessert-catalog__wrapper__cakes_img {
+    width: 358px;
+    margin-left: -218px;
+  }
+  .dessert-catalog__wrapper__cakes_img img {
+    width: 410px;
+  }
+  .dessert-catalog__wrapper__cards {
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  .dessert-catalog__wrapper__cards_card {
+    width: 180px;
+    height: 241px;
+  }
+  .dessert-catalog__wrapper__cards_card_img img {
+    width: 150px;
+  }
+  .dessert-catalog__wrapper__cards_card_title {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  .dessert-catalog__wrapper__cards_card_linear-gradient {
+    width: 180px;
+  }
+  .popular-sets__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .title {
+    padding: 0 20px;
+    margin-top: 28px;
+    font-size: 18px;
+  }
+  .description {
+    margin-top: 14px;
+    font-size: 12px;
+  }
+  .dessert-catalog__wrapper__cakes_img {
+    width: 301px;
+    margin-left: -204px;
+  }
+  .dessert-catalog__wrapper__cakes_img img {
+    width: 375px;
+  }
+  .dessert-catalog__wrapper__cards {
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .dessert-catalog__wrapper__cards_card {
+    width: 140px;
+    height: 190px;
+  }
+  .dessert-catalog__wrapper__cards_card_img img {
+    width: 112px;
+  }
+  .dessert-catalog__wrapper__cards_card_linear-gradient {
+    width: 140px;
+  }
+  .popular-sets__wrapper__cards {
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
 }
 
 /*# sourceMappingURL=DessertCatalog.css.map */
