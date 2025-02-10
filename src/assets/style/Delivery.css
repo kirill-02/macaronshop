@@ -1,15 +1,18 @@
 .delivery {
-  margin-top: 105px;
+  margin-top: 41px;
   color: #292929;
 }
+.delivery .container {
+  overflow: hidden;
+}
 .delivery__wrapper {
-  text-align: justify;
+  text-align: left;
 }
 .delivery__wrapper__courier {
-  background: rgb(247, 247, 247);
   display: flex;
   align-items: end;
   margin-bottom: 84px;
+  justify-content: center;
 }
 .delivery__wrapper__courier__bike {
   position: relative;
@@ -34,6 +37,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-10%, -25%);
+}
+.delivery__wrapper__courier__information-block {
+  display: none;
 }
 .delivery__wrapper__courier__information {
   width: 470px;
@@ -63,7 +69,10 @@
 }
 .delivery__wrapper__pickup {
   display: flex;
+  background: white;
   align-items: center;
+  padding-top: 40px;
+  padding-bottom: 90px;
 }
 .delivery__wrapper__pickup__information {
   margin: 0 119px 0 74px;
@@ -103,14 +112,13 @@ iframe {
 }
 
 .delivery__wrapper__map, .delivery__wrapper__map_iframe {
-  width: 100vw;
-  min-width: 1440px;
+  width: 100%;
   min-height: 350px;
   height: 32vh;
 }
 
 .delivery__wrapper__map {
-  margin: 92px auto 0;
+  margin: 0 auto 0;
   position: relative;
   display: flex;
   justify-content: end;
@@ -121,6 +129,205 @@ iframe {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0%);
+}
+
+@media screen and (max-width: 1024px) {
+  .delivery__wrapper__courier__bike .bike {
+    width: 370px;
+  }
+  .delivery__wrapper__courier__bike .sheet {
+    width: 76px;
+  }
+  .delivery__wrapper__courier__bike__img_one img {
+    width: 211px;
+  }
+  .delivery__wrapper__courier__bike__img_two img {
+    width: 258px;
+  }
+  .delivery__wrapper__courier__information {
+    width: 306px;
+    margin-left: 50px;
+  }
+  .delivery__wrapper__courier__information_title {
+    font-size: 36px;
+  }
+  .delivery__wrapper__courier__information_description {
+    font-size: 16px;
+  }
+  .delivery__wrapper__courier__information_title-small {
+    font-size: 16px;
+  }
+  .delivery__wrapper__courier__information_description-small {
+    font-size: 14px;
+  }
+  .delivery__wrapper__pickup__information {
+    margin: 0 42px 0 74px;
+    width: 306px;
+  }
+  .delivery__wrapper__pickup__information p {
+    font-size: 14px;
+  }
+  .delivery__wrapper__pickup__information_title {
+    font-size: 16px;
+  }
+  .delivery__wrapper__pickup__img_one {
+    width: 256px;
+  }
+  .delivery__wrapper__pickup__img_one img {
+    width: 256px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .delivery__wrapper__courier {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+  }
+  .delivery__wrapper__courier__bike .bike {
+    width: 322px;
+  }
+  .delivery__wrapper__courier__bike .sheet {
+    width: 66px;
+  }
+  .delivery__wrapper__courier__bike__img_one img {
+    width: 190px;
+  }
+  .delivery__wrapper__courier__bike__img_two img {
+    width: 225px;
+  }
+  .delivery__wrapper__courier__information-block {
+    display: block;
+    width: 384px;
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .delivery__wrapper__courier__information-block_title {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .delivery__wrapper__courier__information-block_description {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .delivery__wrapper__courier__information {
+    margin-left: 0;
+    width: 384px;
+  }
+  .delivery__wrapper__courier__information_title {
+    display: none;
+  }
+  .delivery__wrapper__courier__information_description {
+    display: none;
+  }
+  .delivery__wrapper__pickup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    justify-items: center;
+  }
+  .delivery__wrapper__pickup__information {
+    margin: 0;
+    width: 384px;
+  }
+  .delivery__wrapper__pickup__img_one {
+    width: 200px;
+  }
+  .delivery__wrapper__pickup__img_one img {
+    width: 200px;
+  }
+  .delivery__wrapper__pickup__img_two {
+    transform: translate(-51%, -62%);
+    width: 256px;
+  }
+  .delivery__wrapper__pickup__img_two img {
+    width: 256px;
+  }
+  .delivery__wrapper__pickup__img_three {
+    transform: translate(-164%, -196%);
+  }
+  .delivery__wrapper__pickup__img_three img {
+    width: 66px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .delivery__wrapper__courier__bike .bike {
+    width: 240px;
+  }
+  .delivery__wrapper__courier__bike .sheet {
+    width: 50px;
+  }
+  .delivery__wrapper__courier__bike__img_one img {
+    width: 142px;
+  }
+  .delivery__wrapper__courier__bike__img_two img {
+    width: 165px;
+  }
+  .delivery__wrapper__courier__information-block {
+    margin-bottom: 54px;
+    width: 285px;
+  }
+  .delivery__wrapper__courier__information-block_title {
+    font-size: 28px;
+  }
+  .delivery__wrapper__courier__information-block_description {
+    margin-top: 11px;
+    font-size: 16px;
+  }
+  .delivery__wrapper__courier__information {
+    width: 285px;
+    margin-top: 43px;
+  }
+  .delivery__wrapper__courier__information_title-small {
+    font-size: 14px;
+  }
+  .delivery__wrapper__courier__information_description-small {
+    font-size: 14px;
+  }
+  .delivery__wrapper__courier__information_description-small p {
+    margin-top: 10px;
+  }
+  .delivery__wrapper__pickup {
+    padding-top: 58px;
+    padding-bottom: 60px;
+  }
+  .delivery__wrapper__pickup__information {
+    margin-top: 20px;
+    width: 285px;
+  }
+  .delivery__wrapper__pickup__information p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .delivery__wrapper__pickup__information_title {
+    font-size: 14px;
+  }
+  .delivery__wrapper__pickup__information_title:not(:last-child) {
+    margin-top: 16px;
+  }
+  .delivery__wrapper__pickup__img_one {
+    width: 138px;
+  }
+  .delivery__wrapper__pickup__img_one img {
+    width: 138px;
+  }
+  .delivery__wrapper__pickup__img_two {
+    transform: translate(-51%, -64%);
+    width: 154px;
+  }
+  .delivery__wrapper__pickup__img_two img {
+    width: 154px;
+  }
+  .delivery__wrapper__pickup__img_three {
+    transform: translate(-187%, -216%);
+    width: 38px;
+  }
+  .delivery__wrapper__pickup__img_three img {
+    width: 38px;
+  }
 }
 
 /*# sourceMappingURL=Delivery.css.map */

@@ -4,7 +4,13 @@
       <div class="delivery__wrapper">
 
         <div class="delivery__wrapper__courier">
-
+          <div class="delivery__wrapper__courier__information-block">
+            <div class="delivery__wrapper__courier__information-block_title">Доставка и оплата</div>
+            <div class="delivery__wrapper__courier__information-block_description">Для наших покупателей доступны 2
+              способа
+              доставки: курьерская доставка по Санкт-Петербургу в пределах КАД и самовывоз.
+            </div>
+          </div>
           <div class="delivery__wrapper__courier__bike">
             <img class="bike" src="../../public/img/delivery/1.png" alt="">
             <img class="sheet" src="../../public/img/delivery/2.png" alt="">
