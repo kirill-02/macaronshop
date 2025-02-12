@@ -57,6 +57,9 @@
     margin-left: 92px;
     width: 379px;
   }
+  .contacts__wrapper__information__title {
+    font-size: 36px;
+  }
 }
 @media screen and (max-width: 768px) {
   .contacts__wrapper {
@@ -80,9 +83,6 @@
     align-items: center;
     justify-items: center;
     margin: 0 0 56px;
-  }
-  .contacts__wrapper__information__title {
-    font-size: 32px;
   }
   .contacts__wrapper__information__description {
     font-size: 16px;

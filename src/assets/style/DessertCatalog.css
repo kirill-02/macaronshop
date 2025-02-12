@@ -163,7 +163,7 @@
     margin-right: 0;
   }
   .dessert-catalog__wrapper__cakes_information_title {
-    font-size: 16px;
+    font-size: 22px;
   }
   .dessert-catalog__wrapper__cakes_information_description {
     font-size: 10px;
@@ -223,6 +223,9 @@
   }
   .dessert-catalog__wrapper__cakes_img img {
     width: 375px;
+  }
+  .dessert-catalog__wrapper__cakes_information_title {
+    font-size: 18px;
   }
   .dessert-catalog__wrapper__cards {
     grid-column-gap: 10px;

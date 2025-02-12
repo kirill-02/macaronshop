@@ -20,7 +20,7 @@
               <router-link class="router-link" to="/delivery">Доставка и оплата</router-link>
             </li>
             <li>
-              <router-link class="router-link" to="/delivery">Оптовые поставки</router-link>
+              <router-link class="router-link" to="/wholesale-supplies">Оптовые поставки</router-link>
             </li>
             <!--            <li>-->
             <!--              <router-link class="router-link" to="/auth">Вход</router-link>-->

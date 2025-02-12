@@ -221,7 +221,7 @@
           margin-right: 0;
 
           &_title {
-            font-size: 16px;
+            font-size: 22px;
           }
 
           &_description {
@@ -311,6 +311,11 @@
 
           img {
             width: 375px;
+          }
+        }
+        &_information {
+          &_title {
+            font-size: 18px;
           }
         }
       }
