@@ -96,10 +96,132 @@
           </div>
         </div>
 
-        <!--        <div class="wholesale-supplies__wrapper__answers-questions">-->
-        <!--          <div class="wholesale-supplies__wrapper__answers-questions_title">Нас рекомендуют</div>-->
-        <!--          <div class="wholesale-supplies__wrapper__answers-questions__cards">-->
-        <!--            <div class="wholesale-supplies__wrapper__answers-questions__cards__card one">-->
+
+        <div class="wholesale-supplies__wrapper__answers-questions">
+          <div class="wholesale-supplies__wrapper__answers-questions_title">Нас рекомендуют</div>
+          <div class="wholesale-supplies__wrapper__answers-questions__cards">
+            <div class="wholesale-supplies__wrapper__answers-questions__cards__card one">
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и
+                трубочки, рекомендую
+              </div>
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Отзыв блаблабла
+              </div>
+              <hr>
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">
+                <div>
+                  <p>
+                    Иванов Иван
+                  </p>
+                  <p>
+                    Генеральный директор ООО “ААА”
+                  </p>
+                </div>
+                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">
+              </div>
+            </div>
+            <div class="wholesale-supplies__wrapper__answers-questions__cards__card two">
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и
+                трубочки, рекомендую
+              </div>
+
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Банальные, но
+                неопровержимые выводы, а также представители современных социальных резервов ассоциативно распределены
+                по отраслям. Противоположная точка зрения подразумевает, что многие известные личности могут быть
+                обнародованы.
+              </div>
+              <hr>
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">
+                <div>
+                  <p>
+                    Иванов Иван
+                  </p>
+                  <p>
+                    Генеральный директор ООО “ААА”
+                  </p>
+                </div>
+                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">
+              </div>
+            </div>
+            <div class="wholesale-supplies__wrapper__answers-questions__cards__card three">
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Заголовок отзыва
+              </div>
+
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Ключевые особенности
+                структуры проекта неоднозначны и будут указаны как претенденты на роль ключевых факторов. А также явные
+                признаки победы институционализации будут заблокированы в рамках своих собственных рациональных
+                ограничений. Элементы политического процесса функционально разнесены на независимые элементы. В своём
+                стремлении улучшить пользовательский опыт мы упускаем, что представители современных социальных резервов
+                обнародованы.
+              </div>
+              <hr>
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">
+                <div>
+                  <p>
+                    Иванов Иван
+                  </p>
+                  <p>
+                    Генеральный директор ООО “ААА”
+                  </p>
+                </div>
+                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">
+              </div>
+            </div>
+
+            <div class="wholesale-supplies__wrapper__answers-questions__cards__card four">
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и
+                трубочки, рекомендую
+              </div>
+
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Являясь всего лишь
+                частью общей картины, активно развивающиеся страны третьего мира, вне зависимости от их уровня, должны
+                быть указаны как претенденты на роль ключевых факторов.
+              </div>
+              <hr>
+              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">
+                <div>
+                  <p>
+                    Иванов Иван
+                  </p>
+                  <p>
+                    Генеральный директор ООО “ААА”
+                  </p>
+                </div>
+                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <swiper
+            :spaceBetween="30"
+            :pagination="{
+      clickable: true,
+    }"
+            :modules="modules"
+            class="mySwiper"
+        >
+          <swiper-slide v-for="review in reviews"
+                        :key="review.id">
+            <app-reviews-slider class="wholesale-supplies__wrapper__answers-questions-reviews"
+                                :title="review.title"
+                                :description="review.description"
+                                :name="review.name"
+                                :organization="review.organization"
+            ></app-reviews-slider>
+          </swiper-slide>
+        </swiper>
+
+        <!--        <swiper-->
+        <!--            :spaceBetween="30"-->
+        <!--            :pagination="{-->
+        <!--      clickable: true,-->
+        <!--    }"-->
+        <!--            :modules="modules"-->
+        <!--            class="mySwiper"-->
+        <!--        >-->
+        <!--          <swiper-slide>-->
+        <!--            <div class="wholesale-supplies__wrapper__answers-questions__cards__card ">-->
         <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и-->
         <!--                трубочки, рекомендую-->
         <!--              </div>-->
@@ -118,15 +240,16 @@
         <!--                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">-->
         <!--              </div>-->
         <!--            </div>-->
-        <!--            <div class="wholesale-supplies__wrapper__answers-questions__cards__card two">-->
+        <!--          </swiper-slide>-->
+        <!--          <swiper-slide>-->
+        <!--            <div class="wholesale-supplies__wrapper__answers-questions__cards__card ">-->
         <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и-->
         <!--                трубочки, рекомендую-->
         <!--              </div>-->
 
-        <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Банальные, но-->
-        <!--                неопровержимые выводы, а также представители современных социальных резервов ассоциативно распределены-->
-        <!--                по отраслям. Противоположная точка зрения подразумевает, что многие известные личности могут быть-->
-        <!--                обнародованы.-->
+        <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Являясь всего лишь-->
+        <!--                частью общей картины, активно развивающиеся страны третьего мира, вне зависимости от их уровня, должны-->
+        <!--                быть указаны как претенденты на роль ключевых факторов.-->
         <!--              </div>-->
         <!--              <hr>-->
         <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">-->
@@ -141,7 +264,9 @@
         <!--                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">-->
         <!--              </div>-->
         <!--            </div>-->
-        <!--            <div class="wholesale-supplies__wrapper__answers-questions__cards__card three">-->
+        <!--          </swiper-slide>-->
+        <!--          <swiper-slide>-->
+        <!--            <div class="wholesale-supplies__wrapper__answers-questions__cards__card ">-->
         <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Заголовок отзыва-->
         <!--              </div>-->
 
@@ -165,15 +290,17 @@
         <!--                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">-->
         <!--              </div>-->
         <!--            </div>-->
-
-        <!--            <div class="wholesale-supplies__wrapper__answers-questions__cards__card four">-->
+        <!--          </swiper-slide>-->
+        <!--          <swiper-slide>-->
+        <!--            <div class="wholesale-supplies__wrapper__answers-questions__cards__card ">-->
         <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и-->
         <!--                трубочки, рекомендую-->
         <!--              </div>-->
 
-        <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Являясь всего лишь-->
-        <!--                частью общей картины, активно развивающиеся страны третьего мира, вне зависимости от их уровня, должны-->
-        <!--                быть указаны как претенденты на роль ключевых факторов.-->
+        <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Банальные, но-->
+        <!--                неопровержимые выводы, а также представители современных социальных резервов ассоциативно распределены-->
+        <!--                по отраслям. Противоположная точка зрения подразумевает, что многие известные личности могут быть-->
+        <!--                обнародованы.-->
         <!--              </div>-->
         <!--              <hr>-->
         <!--              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">-->
@@ -188,19 +315,75 @@
         <!--                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">-->
         <!--              </div>-->
         <!--            </div>-->
-
-
-        <!--          </div>-->
-        <!--        </div>-->
-
+        <!--          </swiper-slide>-->
+        <!--        </swiper>-->
 
       </div>
     </div>
   </div>
+
+
 </template>
 
 <script>
 
+// Import Swiper Vue.js components
+import {Swiper, SwiperSlide} from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
+import 'swiper/css/pagination';
+
+
+// import required modules
+import {Pagination} from 'swiper/modules';
+
+export default {
+  data() {
+    return {
+      reviews: [
+        {
+          id: 1,
+          title: "Очень хорошие пироженки и трубочки, рекомендую",
+          description: "Банальные, но неопровержимые выводы, а также представители современных социальных резервов ассоциативно распределены- по отраслям. Противоположная точка зрения подразумевает, что многие известные личности могут быть обнародованы.",
+          organization: "Генеральный директор ООО “ААА",
+          name: "Иванов Иван",
+        },
+        {
+          id: 2,
+          title: "Заголовок отзыва",
+          description: "Отзыв блаблабла",
+          organization: "Генеральный директор ООО “ААА",
+          name: "Иванов Иван",
+        },
+        {
+          id: 3,
+          title: "Отзыв блаблабла",
+          description: "Банальные, но неопровержимые выводы, а также представители современных социальных резервов ассоциативно распределены- по отраслям. Противоположная точка зрения подразумевает, что многие известные личности могут быть обнародованы.",
+          organization: "Генеральный директор ООО “ААА",
+          name: "Иванов Иван",
+        },
+        {
+          id: 4,
+          title: "Очень хорошие пироженки и трубочки, рекомендую",
+          description: "Банальные, но неопровержимые выводы, а также представители современных социальных резервов ассоциативно распределены- по отраслям. Противоположная точка зрения подразумевает, что многие известные личности могут быть обнародованы.",
+          organization: "Генеральный директор ООО “ААА",
+          name: "Иванов Иван",
+        },
+      ]
+    }
+  },
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  setup() {
+    return {
+      modules: [Pagination],
+    };
+  },
+}
 </script>
 
 <style src="../assets/style/WholesaleSupplies.css" scoped>

@@ -167,8 +167,8 @@ hr {
   font-weight: 600;
 }
 .wholesale-supplies__wrapper__answers-questions__cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 370px);
+  display: flex;
+  flex-wrap: wrap;
   grid-column-gap: 30px;
   grid-row-gap: 30px;
   margin-top: 33px;
@@ -176,7 +176,7 @@ hr {
 .wholesale-supplies__wrapper__answers-questions__cards__card {
   outline: 1px solid rgb(237, 237, 240);
   border-radius: 5px;
-  width: 370px;
+  width: 363px;
   background: #fff;
   padding: 20px;
 }
@@ -215,7 +215,22 @@ hr {
   margin-top: -264px;
   height: 286px;
 }
+.wholesale-supplies__wrapper__answers-questions-reviews {
+  display: none;
+}
 
+@media screen and (max-width: 1280px) {
+  .wholesale-supplies__wrapper__answers-questions {
+    margin: 0 auto;
+    max-width: 1024px;
+  }
+  .wholesale-supplies__wrapper__answers-questions__cards {
+    justify-content: center;
+  }
+  .wholesale-supplies__wrapper__answers-questions__cards__card.four {
+    margin-top: 0;
+  }
+}
 @media screen and (max-width: 1024px) {
   .wholesale-supplies__wrapper__offer__information__title {
     font-size: 36px;
@@ -269,6 +284,26 @@ hr {
     grid-template-columns: repeat(auto-fill, 255px);
     grid-column-gap: 20px;
     grid-row-gap: 36px;
+  }
+  .wholesale-supplies__wrapper__answers-questions-reviews {
+    display: block;
+  }
+  .wholesale-supplies__wrapper__answers-questions_title {
+    font-size: 22px;
+  }
+  .wholesale-supplies__wrapper__answers-questions__cards {
+    display: none;
+  }
+  .wholesale-supplies__wrapper .swiper {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .wholesale-supplies__wrapper .swiper-slide {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media screen and (max-width: 560px) {
