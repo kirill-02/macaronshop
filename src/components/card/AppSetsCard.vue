@@ -58,6 +58,7 @@ export default {
   }
 
   &__price-basket {
+    color: #292929;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -86,6 +87,7 @@ export default {
       font-weight: 600;
       border: none;
       background: #FFFFFF;
+      color: #292929;
 
       i {
         margin-right: 11px;

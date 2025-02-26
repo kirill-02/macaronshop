@@ -7,7 +7,11 @@ hr {
 .wedding {
   margin-top: 53px;
 }
+.wedding .container {
+  overflow: hidden;
+}
 .wedding__wrapper__offer {
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,13 +21,18 @@ hr {
 .wedding__wrapper__offer__images {
   position: relative;
 }
+.wedding__wrapper__offer__images_one {
+  width: 303px;
+}
 .wedding__wrapper__offer__images_two {
+  width: 103px;
   position: absolute;
   top: 50%;
   right: 0;
   transform: translate(74%, -10%);
 }
 .wedding__wrapper__offer__images_three {
+  width: 103px;
   position: absolute;
   top: 50%;
   left: 0;
@@ -35,8 +44,11 @@ hr {
   right: 0;
   transform: translate(30%, -180%);
 }
+.wedding__wrapper__offer__informations {
+  display: none;
+}
 .wedding__wrapper__offer__information {
-  width: 670px;
+  max-width: 670px;
   margin-left: 154px;
 }
 .wedding__wrapper__offer__information__title {
@@ -48,7 +60,17 @@ hr {
   font-size: 18px;
   font-weight: 400;
 }
+.wedding__wrapper__offer__information__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
 .wedding__wrapper__offer__information__btn button {
+  color: #292929;
+  width: 230px;
   cursor: pointer;
   padding: 14px 74px;
   background: none;
@@ -56,9 +78,6 @@ hr {
   outline: 1px solid rgb(78, 157, 211);
   font-size: 14px;
   font-weight: 600;
-}
-.wedding__wrapper__offer__information__btn button:not(:last-child) {
-  margin-right: 10px;
 }
 .wedding__wrapper__offer__information p {
   font-size: 16px;
@@ -120,14 +139,17 @@ hr {
   align-items: center;
   justify-content: center;
   background: #F1F1F1;
-  height: 610px;
 }
 .wedding__wrapper__solutions__images {
   width: 841px;
-  height: 610px;
+  margin-left: -250px;
+}
+.wedding__wrapper__solutions__images img {
+  width: 841px;
 }
 .wedding__wrapper__solutions__information {
-  padding: 100px 135px 0 0;
+  padding: 100px 0 0;
+  margin-left: -30px;
   height: 610px;
   background: #F1F1F1;
 }
@@ -140,6 +162,7 @@ hr {
   font-weight: 400;
 }
 .wedding__wrapper__solutions__information__form {
+  max-width: 570px;
   margin-top: 42px;
 }
 .wedding__wrapper__solutions__information__form label {
@@ -157,11 +180,11 @@ hr {
   resize: none;
 }
 .wedding__wrapper__solutions__information__form input {
-  width: 270px;
+  width: 100%;
   height: 50px;
 }
 .wedding__wrapper__solutions__information__form textarea {
-  width: 570px;
+  width: 100%;
   height: 60px;
 }
 .wedding__wrapper__solutions__information__form__contacts {
@@ -202,7 +225,10 @@ hr {
 }
 .wedding__wrapper__answers-questions__cards {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   grid-column-gap: 30px;
+  grid-row-gap: 30px;
   margin-top: 33px;
 }
 .wedding__wrapper__answers-questions__cards__card {
@@ -224,6 +250,241 @@ hr {
 }
 .wedding__wrapper__answers-questions__cards__card.one {
   height: 150px;
+}
+.wedding__wrapper__answers-questions-reviews {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .wedding__wrapper__offer__information__title {
+    font-size: 36px;
+  }
+  .wedding__wrapper__offer__information__description {
+    font-size: 16px;
+  }
+  .wedding__wrapper__solutions {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  .wedding__wrapper__solutions__images {
+    margin: 0;
+    width: 100%;
+  }
+  .wedding__wrapper__solutions__images img {
+    width: 100%;
+  }
+  .wedding__wrapper__solutions__information {
+    margin: 0 auto;
+    height: auto;
+    padding: 49px 0 0;
+  }
+  .wedding__wrapper__solutions__information_title {
+    text-align: center;
+  }
+  .wedding__wrapper__solutions__information_description {
+    margin: 10px auto 24px;
+    max-width: 500px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .wedding__wrapper__solutions__information__form {
+    margin: 0 auto;
+    max-width: 770px;
+  }
+  .wedding__wrapper__solutions__information__form input {
+    width: 360px;
+  }
+  .wedding__wrapper__solutions__information__form textarea {
+    height: 110px;
+  }
+  .wedding__wrapper__solutions__information__form_btn {
+    text-align: center;
+  }
+  .wedding__wrapper__solutions__information__form p {
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wedding__wrapper__offer {
+    flex-direction: column;
+  }
+  .wedding__wrapper__offer__images {
+    margin-right: 32px;
+  }
+  .wedding__wrapper__offer__images_one {
+    width: 260px;
+  }
+  .wedding__wrapper__offer__informations {
+    display: block;
+    max-width: 516px;
+  }
+  .wedding__wrapper__offer__informations__title {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .wedding__wrapper__offer__informations__description {
+    margin: 13px 0 34px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .wedding__wrapper__offer__information {
+    margin-top: 24px;
+    margin-left: 0;
+  }
+  .wedding__wrapper__offer__information__title {
+    display: none;
+  }
+  .wedding__wrapper__offer__information__description {
+    display: none;
+  }
+  .wedding__wrapper__offer__information p:nth-child(4) {
+    margin-top: 29px;
+  }
+  .wedding__wrapper__offer__information p:nth-child(5) {
+    margin-top: 15px;
+  }
+  .wedding__wrapper__offer__information .one, .wedding__wrapper__offer__information .two, .wedding__wrapper__offer__information .three, .wedding__wrapper__offer__information .four {
+    display: none;
+  }
+  .wedding__wrapper__sets__cards {
+    grid-template-columns: repeat(auto-fill, 290px);
+  }
+  .wedding__wrapper__solutions__information__form {
+    max-width: 540px;
+  }
+  .wedding__wrapper__solutions__information__form input {
+    width: 100%;
+  }
+  .wedding__wrapper__solutions__information__form__contacts {
+    display: block;
+  }
+  .wedding__wrapper__solutions__information__form__contacts div:not(:last-child) {
+    margin: 10px 0;
+  }
+  .wedding__wrapper__answers-questions-reviews {
+    display: block;
+  }
+  .wedding__wrapper__answers-questions {
+    margin-bottom: 0;
+  }
+  .wedding__wrapper__answers-questions_title {
+    font-size: 22px;
+  }
+  .wedding__wrapper__answers-questions__cards {
+    display: none;
+  }
+  .wedding__wrapper .swiper {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .wedding__wrapper .swiper-slide {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 560px) {
+  .wedding__wrapper__offer__images_one {
+    width: 197px;
+  }
+  .wedding__wrapper__offer__images_two {
+    width: 76px;
+  }
+  .wedding__wrapper__offer__images_three {
+    width: 70px;
+    transform: translate(-30%, -92%);
+  }
+  .wedding__wrapper__offer__images_four {
+    width: 40px;
+  }
+  .wedding__wrapper__offer__informations__title {
+    font-size: 24px;
+  }
+  .wedding__wrapper__offer__informations__description {
+    font-size: 14px;
+  }
+  .wedding__wrapper__offer__information__btn button {
+    font-size: 12px;
+    max-width: 190px;
+    padding: 12px 0;
+  }
+  .wedding__wrapper__offer__information p {
+    font-size: 14px;
+  }
+  .wedding__wrapper__sets_title {
+    font-size: 22px;
+  }
+  .wedding__wrapper__sets__cards {
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  .wedding__wrapper__solutions {
+    position: relative;
+    margin-top: 46px;
+  }
+  .wedding__wrapper__solutions__images {
+    margin-top: -40px;
+  }
+  .wedding__wrapper__solutions__information {
+    padding: 49px 17px;
+  }
+  .wedding__wrapper__solutions__information_title {
+    font-size: 22px;
+  }
+  .wedding__wrapper__solutions__information_description {
+    font-size: 14px;
+    max-width: 290px;
+  }
+  .wedding__wrapper__solutions__information__form {
+    max-width: 350px;
+  }
+  .wedding__wrapper__solutions__information__form_btn {
+    z-index: 10;
+  }
+  .wedding__wrapper__solutions__information__form_btn button {
+    padding: 17px 46px;
+  }
+  .wedding__wrapper__solutions__information__form p {
+    position: absolute;
+    width: 280px;
+  }
+  .wedding__wrapper__answers-questions_title {
+    font-size: 22px;
+  }
+  .wedding__wrapper__answers-questions__cards {
+    margin-top: 28px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .wedding__wrapper__sets_title {
+    font-size: 18px;
+  }
+  .wedding__wrapper__sets__cards {
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .wedding__wrapper__solutions__information_title {
+    font-size: 18px;
+  }
+  .wedding__wrapper__solutions__information__form {
+    max-width: 288px;
+  }
+  .wedding__wrapper__solutions__information__form_btn button {
+    padding: 16px 39px;
+  }
+  .wedding__wrapper__answers-questions_title {
+    font-size: 18px;
+  }
+  .wedding__wrapper__answers-questions__cards {
+    margin-top: 20px;
+  }
 }
 
 /*# sourceMappingURL=Wedding.css.map */

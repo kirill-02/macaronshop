@@ -5,6 +5,13 @@
 
         <div class="wedding__wrapper__offer">
 
+          <div class="wedding__wrapper__offer__informations">
+            <div class="wedding__wrapper__offer__informations__title">Свадебное предложение</div>
+            <div class="wedding__wrapper__offer__informations__description">Нежные пирожные макаронс с разными вкусами
+              для украшения вашего свадебного торжества
+            </div>
+          </div>
+
           <div class="wedding__wrapper__offer__images">
             <img src="../../public/img/wedding/1/1.png" alt="" class="wedding__wrapper__offer__images_one">
             <img src="../../public/img/wedding/1/2.png" alt="" class="wedding__wrapper__offer__images_two">
@@ -116,13 +123,45 @@
             </div>
           </div>
         </div>
+
+        <swiper
+            :spaceBetween="30"
+            :pagination="{
+      clickable: true,
+    }"
+            :modules="modules"
+            class="mySwiper"
+        >
+          <swiper-slide v-for="review in reviews"
+                        :key="review.id">
+            <app-reviews-slider class="wedding__wrapper__answers-questions-reviews"
+                                :title="review.title"
+                                :description="review.description"
+                                :name="review.name"
+                                :organization="review.organization"
+            ></app-reviews-slider>
+          </swiper-slide>
+        </swiper>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import {Swiper, SwiperSlide} from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
+import 'swiper/css/pagination';
+
+
+// import required modules
+import {Pagination} from 'swiper/modules';
+
 export default {
+  components: {Swiper, SwiperSlide},
   data() {
     return {
       popularSets: [
@@ -192,12 +231,39 @@ export default {
         // Добавьте больше наборов, если необходимо
       ],
       visibleSetCount: 6,
+      reviews: [
+        {
+          id: 1,
+          title: "Сколько хранятся пирожные макарон?",
+          description: "Срок хранения бла бла бла",
+          organization: "ООО 'Квантум'",
+          name: "Макароншоп",
+        },
+        {
+          id: 2,
+          title: "Как быстро мы выполняем заказы",
+          description: "Стандартный срок выполнения заказа 3-5 дней, При большом тираже и в предновогодний сезон может увеличиться. Потому что...",
+          organization: "ООО 'Квантум'",
+          name: "Макароншоп",
+        },
+        {
+          id: 3,
+          title: "А за 2 дня?",
+          description: "Текст про дополнительную стоимость при срочных заказах",
+          organization: "ООО 'Квантум'",
+          name: "Макароншоп",
+        },
+      ],
     }
   },
   computed: {
     visibleSets() {
       return this.popularSets.slice(0, this.visibleSetCount);
     },
+  }, setup() {
+    return {
+      modules: [Pagination],
+    };
   },
 }
 </script>
