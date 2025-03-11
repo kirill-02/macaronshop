@@ -110,7 +110,7 @@
               </ul>
             </li>
             <hr>
-            <router-link to="/ready-sets">
+            <router-link to="/ready-sets" @click="closeMenu">
               <li>
                 Готовые наборы
                 <!--              <span class="percent"><i class="ic_percent"></i></span>-->

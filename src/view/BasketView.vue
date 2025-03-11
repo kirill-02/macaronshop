@@ -148,10 +148,10 @@
 
               <div class="basket__wrapper__information__delivery__forms_contact">
                 <div class="">
-                  <label for="name">Ваше имя*</label>
+                  <label for="name">Дата получения</label>
                   <input type="text" id="name" placeholder="Укажите имя"></div>
                 <div class="">
-                  <label for="phone">Ваш телефон*</label>
+                  <label for="phone">Время</label>
                   <input type="text" id="phone" placeholder="+7 (___) ___-__-__"></div>
               </div>
 

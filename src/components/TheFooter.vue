@@ -61,7 +61,7 @@
           <div class="footer__wrapper__networks__social">
             <div class=""><i class="ic_vk"></i></div>
             <div class=""><i class="ic_telegram"></i></div>
-            <div class=""><i class="ic_telegram"></i></div>
+<!--            <div class=""><i class="ic_telegram"></i></div>-->
           </div>
         </div>
       </div>
