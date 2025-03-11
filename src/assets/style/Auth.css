@@ -33,9 +33,16 @@
   grid-template-columns: repeat(auto-fill, 370px);
   grid-column-gap: 50px;
 }
+.auth__wrapper__form.register {
+  margin: 0 0 460px;
+  max-width: 990px;
+}
+.auth__wrapper__form.authorization {
+  max-width: 590px;
+  margin: 0 0 360px;
+}
 .auth__wrapper__form {
   transform: translate(0, 70%);
-  max-width: 990px;
   padding: 50px 100px;
   background: #F7EBE5;
   min-height: 300px;
@@ -108,6 +115,115 @@
 }
 .auth__wrapper_rules a {
   color: #4E9DD3;
+}
+
+@media screen and (max-width: 1024px) {
+  .auth__wrapper_img {
+    max-width: 450px;
+    transform: translate(-50%, -38%);
+  }
+  .auth__wrapper_img img {
+    width: 450px;
+  }
+  .auth__wrapper_img_register {
+    width: 700px;
+    transform: translate(-50%, -34%);
+  }
+  .auth__wrapper_img_register img {
+    width: 700px;
+  }
+  .auth__wrapper__form_register {
+    grid-template-columns: repeat(auto-fill, 295px);
+    grid-column-gap: 30px;
+  }
+  .auth__wrapper__form_register input {
+    width: 295px;
+  }
+  .auth__wrapper__form.register {
+    margin: 0 0 250px;
+    max-width: 700px;
+  }
+  .auth__wrapper__form.authorization {
+    margin: 0 0 0;
+  }
+  .auth__wrapper__form {
+    transform: translate(0, 48%);
+    padding: 50px 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .auth__wrapper_img {
+    display: none;
+  }
+  .auth__wrapper_img_register {
+    display: none;
+  }
+  .auth__wrapper__form_register {
+    display: block;
+  }
+  .auth__wrapper__form_register input {
+    width: 407px;
+  }
+  .auth__wrapper__form.register {
+    max-width: 487px;
+  }
+  .auth__wrapper__form.authorization {
+    margin-top: 50px;
+    max-width: 330px;
+  }
+  .auth__wrapper__form.authorization input {
+    width: 274px;
+  }
+  .auth__wrapper__form {
+    transform: translate(0, 12%);
+  }
+  .auth__wrapper__form_title {
+    font-size: 22px;
+  }
+  .auth__wrapper__form_title span {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .auth__wrapper_img {
+    display: none;
+  }
+  .auth__wrapper_img_register {
+    display: none;
+  }
+  .auth__wrapper__form_register input {
+    width: 274px;
+  }
+  .auth__wrapper__form.register {
+    max-width: 330px;
+  }
+  .auth__wrapper__form {
+    padding: 30px 28px;
+  }
+  .auth__wrapper__form_btn {
+    padding: 10px 19px;
+  }
+  .auth__wrapper_login {
+    margin-top: 14px;
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .auth__wrapper__form_register input {
+    width: 235px;
+  }
+  .auth__wrapper__form.register {
+    max-width: 280px;
+  }
+  .auth__wrapper__form.authorization {
+    max-width: 290px;
+  }
+  .auth__wrapper__form.authorization input {
+    width: 246px;
+  }
+  .auth__wrapper__form {
+    padding: 26px 22px;
+  }
 }
 
 /*# sourceMappingURL=Auth.css.map */

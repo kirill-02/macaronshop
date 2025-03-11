@@ -147,6 +147,10 @@ li {
         padding-top: 19px;
         margin: 0 93px 0 26px;
 
+        li {
+          font-weight: 400;
+        }
+
         &_burger {
           display: none;
         }
@@ -265,10 +269,10 @@ li {
 
     .header {
       background: white;
-      padding: 0 110px 16px;
+      padding: 0 122px 16px 0px;
 
       .menu-ul {
-        margin: 0 26px 0 26px;
+        margin: 0 26px 0 80px;
       }
     }
   }
@@ -298,7 +302,7 @@ li {
     }
 
     .header {
-      padding: 0 60px 16px;
+      padding: 0 100px 16px 60px;
 
       .menu__logo {
         max-width: 100px;
@@ -348,7 +352,7 @@ li {
     }
 
     .header {
-      padding: 0 40px 16px;
+      padding: 0 60px 16px 40px;
 
       .menu {
         &-ul {
@@ -482,7 +486,9 @@ li {
 
           &_burger {
             display: block;
-            font-weight: 600;
+            span {
+              font-weight: 600;
+            }
 
             .ic_telegram {
               margin-right: 15px;
@@ -503,6 +509,7 @@ li {
           li {
             padding: 11px 0;
           }
+
         }
 
         .percent {

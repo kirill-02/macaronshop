@@ -119,6 +119,9 @@ li {
   padding-top: 19px;
   margin: 0 93px 0 26px;
 }
+.the-navbar .header .menu-ul li {
+  font-weight: 400;
+}
 .the-navbar .header .menu-ul_burger {
   display: none;
 }
@@ -211,10 +214,10 @@ li {
   }
   .the-navbar .header {
     background: white;
-    padding: 0 110px 16px;
+    padding: 0 122px 16px 0px;
   }
   .the-navbar .header .menu-ul {
-    margin: 0 26px 0 26px;
+    margin: 0 26px 0 80px;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -236,7 +239,7 @@ li {
     margin-right: 0px;
   }
   .the-navbar .header {
-    padding: 0 60px 16px;
+    padding: 0 100px 16px 60px;
   }
   .the-navbar .header .menu__logo {
     max-width: 100px;
@@ -272,7 +275,7 @@ li {
     padding: 5px 25px;
   }
   .the-navbar .header {
-    padding: 0 40px 16px;
+    padding: 0 60px 16px 40px;
   }
   .the-navbar .header .menu-ul .dropdown-menu {
     width: 182px;
@@ -380,6 +383,8 @@ li {
   }
   .the-navbar .header .menu-ul_burger {
     display: block;
+  }
+  .the-navbar .header .menu-ul_burger span {
     font-weight: 600;
   }
   .the-navbar .header .menu-ul_burger .ic_telegram {

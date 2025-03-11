@@ -1,5 +1,6 @@
 .auth {
-  margin:  0 auto;
+  margin: 0 auto;
+
   &__wrapper {
     position: relative;
 
@@ -38,9 +39,18 @@
       grid-column-gap: 50px;
     }
 
+    &__form.register {
+      margin: 0 0 460px;
+      max-width: 990px;
+    }
+
+    &__form.authorization {
+      max-width: 590px;
+      margin: 0 0 360px;
+    }
+
     &__form {
       transform: translate(0, 70%);
-      max-width: 990px;
       padding: 50px 100px;
       background: #F7EBE5;
       min-height: 300px;
@@ -75,6 +85,7 @@
           font-size: 18px;
           font-weight: 600;
         }
+
         p {
           width: 370px;
           display: block;
@@ -129,6 +140,417 @@
 
       a {
         color: #4E9DD3;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .auth {
+    &__wrapper {
+      &_img, &_img_register {
+      }
+
+      &_img {
+        img {
+        }
+      }
+
+      &_img_register {
+        img {
+        }
+      }
+
+      &__form_register {
+      }
+
+      &__form.register {
+      }
+
+      &__form.authorization {
+      }
+
+      &__form {
+        label {
+        }
+
+        label:not(:last-child) {
+        }
+
+        input {
+        }
+
+        &_title {
+          span {
+          }
+
+          p {
+          }
+        }
+
+        &_email {
+        }
+
+        &_password {
+        }
+
+        &_re-password {
+        }
+
+        &_btn {
+        }
+      }
+
+      &_login {
+        span {
+        }
+      }
+
+      &_rules {
+        a {
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .auth {
+    &__wrapper {
+      &_img, &_img_register {
+      }
+
+      &_img {
+        max-width: 450px;
+        transform: translate(-50%, -38%);
+
+        img {
+          width: 450px;
+        }
+      }
+
+      &_img_register {
+        width: 700px;
+        transform: translate(-50%, -34%);
+
+        img {
+          width: 700px;
+        }
+      }
+
+      &__form_register {
+        grid-template-columns: repeat(auto-fill, 295px);
+        grid-column-gap: 30px;
+
+        input {
+          width: 295px;
+        }
+      }
+
+      &__form.register {
+        margin: 0 0 250px;
+        max-width: 700px;
+      }
+
+      &__form.authorization {
+        margin: 0 0 0;
+      }
+
+      &__form {
+        transform: translate(0, 48%);
+        padding: 50px 40px;
+
+        label {
+        }
+
+        label:not(:last-child) {
+        }
+
+        input {
+        }
+
+        &_title {
+          span {
+          }
+
+          p {
+          }
+        }
+
+        &_email {
+        }
+
+        &_password {
+        }
+
+        &_re-password {
+        }
+
+        &_btn {
+        }
+      }
+
+      &_login {
+        span {
+        }
+      }
+
+      &_rules {
+        a {
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .auth {
+    &__wrapper {
+
+      &_img, &_img_register {
+      }
+
+      &_img {
+        display: none;
+
+        img {
+
+        }
+      }
+
+      &_img_register {
+        display: none;
+      }
+
+      &__form_register {
+        display: block;
+
+        input {
+          width: 407px;
+        }
+      }
+
+      &__form.register {
+        max-width: 487px;
+      }
+
+      &__form.authorization {
+        margin-top: 50px;
+        max-width: 330px;
+
+        input {
+          width: 274px;
+        }
+      }
+
+      &__form {
+        transform: translate(0, 12%);
+
+        label {
+        }
+
+        label:not(:last-child) {
+        }
+
+        input {
+        }
+
+        &_title {
+          font-size: 22px;
+
+          span {
+            font-size: 14px;
+          }
+
+          p {
+          }
+        }
+
+        &_email {
+        }
+
+        &_password {
+        }
+
+        &_re-password {
+        }
+
+        &_btn {
+        }
+      }
+
+      &_login {
+        span {
+        }
+      }
+
+      &_rules {
+        a {
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .auth {
+    &__wrapper {
+      &_img, &_img_register {
+      }
+
+      &_img {
+        display: none;
+
+        img {
+        }
+      }
+
+      &_img_register {
+        display: none;
+
+        img {
+
+        }
+      }
+
+      &__form_register {
+        input {
+          width: 274px;
+        }
+      }
+
+      &__form.register {
+        max-width: 330px;
+      }
+
+      &__form.authorization {
+      }
+
+      &__form {
+        padding: 30px 28px;
+
+        label {
+        }
+
+        label:not(:last-child) {
+        }
+
+        input {
+        }
+
+        &_title {
+          span {
+          }
+
+          p {
+          }
+        }
+
+        &_email {
+        }
+
+        &_password {
+        }
+
+        &_re-password {
+        }
+
+        &_btn {
+          padding: 10px 19px;
+        }
+      }
+
+      &_login {
+        margin-top: 14px;
+        font-size: 12px;
+
+        span {
+        }
+      }
+
+      &_rules {
+        a {
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .auth {
+    &__wrapper {
+      &_img, &_img_register {
+      }
+
+      &_img {
+        img {
+        }
+      }
+
+      &_img_register {
+        img {
+        }
+      }
+
+      &__form_register {
+        input {
+          width: 235px;
+        }
+      }
+
+      &__form.register {
+        max-width: 280px;
+      }
+
+      &__form.authorization {
+        max-width: 290px;
+
+        input {
+          width: 246px;
+        }
+      }
+
+      &__form {
+        padding: 26px 22px;
+
+        label {
+        }
+
+        label:not(:last-child) {
+        }
+
+        input {
+        }
+
+        &_title {
+          span {
+          }
+
+          p {
+          }
+        }
+
+        &_email {
+        }
+
+        &_password {
+        }
+
+        &_re-password {
+        }
+
+        &_btn {
+        }
+      }
+
+      &_login {
+        span {
+        }
+      }
+
+      &_rules {
+        a {
+        }
       }
     }
   }

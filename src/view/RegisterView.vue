@@ -4,7 +4,7 @@
     <div class="container">
       <div class="auth__wrapper">
         <div class="auth__wrapper_img_register"><img src="../../public/img/auth/label.png" alt=""></div>
-        <form action="#" class="auth__wrapper__form ">
+        <form action="#" class="auth__wrapper__form register">
           <div class="auth__wrapper__form_title">Получите доступ к оптовым ценам
             <span>Пройдите регистрацию</span></div>
 

@@ -90,7 +90,7 @@
           <ul class="menu-ul">
             <li @click="toggleDropdown('city'); closeMenu" class="menu-ul_burger">
               <span><i class="ic_location"></i></span>
-              Санкт-Петербург
+              <span>Санкт-Петербург</span>
               <span><i class="ic_VectorButton"></i></span>
 
               <ul v-if="isDropdownOpen.city" class="dropdown-menu">
@@ -110,7 +110,12 @@
               </ul>
             </li>
             <hr>
-            <li>СЛАДКИЕ ДНИ <span class="percent"><i class="ic_percent"></i></span></li>
+            <router-link to="/ready-sets">
+              <li>
+                Готовые наборы
+                <!--              <span class="percent"><i class="ic_percent"></i></span>-->
+              </li>
+            </router-link>
             <hr>
             <li @click="toggleDropdown('kit'); closeMenu">
               подарочные наборы
@@ -203,7 +208,7 @@
             <hr>
 
             <li class="menu-ul_burger">
-              8 812 309-82-88
+              <span>8 812 309-82-88</span>
               <!--              <span><i class="ic_VectorButton"></i></span>-->
             </li>
             <li class="menu-ul_burger">

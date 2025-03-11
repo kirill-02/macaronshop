@@ -1,9 +1,9 @@
 <template>
   <div class="auth">
     <div class="container">
-      <div class="auth__wrapper">
+      <div class="auth__wrapper ">
         <div class="auth__wrapper_img"><img src="../../public/img/auth/label.png" alt=""></div>
-        <form action="#" class="auth__wrapper__form">
+        <form action="#" class="auth__wrapper__form authorization">
           <div class="auth__wrapper__form_title">Вход</div>
           <div class="auth__wrapper__form_email">
             <label for="">E-mail</label>
