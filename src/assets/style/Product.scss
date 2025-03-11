@@ -16,6 +16,12 @@ hr {
   margin-top: 87px;
 
   &__wrapper {
+    &__informations {
+      &__title {
+        display: none;
+      }
+    }
+
     &__card-product {
       display: flex;
       justify-content: center;
@@ -44,8 +50,9 @@ hr {
 
     &__block {
       margin-left: 30px;
-      width: 570px;
+      width: 100%;
     }
+
 
     &__information {
 
@@ -61,6 +68,7 @@ hr {
       }
 
       &__tastes {
+        width: 100%;
         margin-top: 20px;
         background: #ffffff;
         padding: 26px 27px 24px;
@@ -85,10 +93,6 @@ hr {
           &_dot {
           }
 
-          &_dot:before {
-            content: '....................................................................................................................';
-            color: #EDEDF0;
-          }
 
           &_quantity {
           }
@@ -147,6 +151,7 @@ hr {
     }
 
     &__description {
+      width: 100%;
       margin-top: 36px;
       padding: 22px 22px 57px;
       background: #ffffff;
@@ -221,6 +226,595 @@ hr {
       padding-bottom: 35px;
 
 
+    }
+  }
+}
+
+
+@media screen and (max-width: 1280px) {
+  .title {
+  }
+
+  .product {
+    &__wrapper {
+      padding: 0 10px;
+
+      &__card-product {
+        flex-wrap: wrap;
+      }
+
+      &__images {
+        img {
+        }
+
+        &__card {
+          img {
+          }
+
+          &__card_img {
+          }
+        }
+      }
+
+      &__block {
+        margin: 0;
+      }
+
+
+      &__information {
+        &__title {
+          p {
+
+          }
+        }
+
+        &__tastes {
+          &_title {
+          }
+
+          &__name-quantity {
+            &_name:not(:last-child) {
+            }
+
+            &_dot {
+            }
+
+            &_dot:before {
+            }
+
+            &_quantity {
+            }
+          }
+
+        }
+      }
+
+      &__price {
+        &_btn {
+        }
+      }
+
+      &__delivery {
+        &__card {
+          i {
+          }
+
+          i:not(:last-child) {
+          }
+
+          &_description {
+          }
+        }
+      }
+
+      &__description {
+        &__title {
+          &_btn {
+            div {
+            }
+
+            .div {
+            }
+          }
+
+          &_btn:not(:last-child) {
+          }
+        }
+
+        &__description {
+          p:nth-child(1) {
+          }
+
+          p:not(:last-child) {
+          }
+        }
+      }
+    }
+  }
+
+  .popular-sets {
+    &__wrapper {
+      &__cards {
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+  }
+
+  .product {
+    &__wrapper {
+      &__card-product {
+      }
+
+      &__images {
+        img {
+        }
+
+        &__card {
+          img {
+          }
+
+          &__card_img {
+          }
+        }
+      }
+
+      &__block {
+      }
+
+      &__information {
+        &__title {
+          p {
+
+          }
+        }
+
+        &__tastes {
+          &_title {
+          }
+
+          &__name-quantity {
+            &_name:not(:last-child) {
+            }
+
+            &_dot {
+            }
+
+            &_dot:before {
+            }
+
+            &_quantity {
+            }
+          }
+
+        }
+      }
+
+      &__price {
+        &_btn {
+        }
+      }
+
+      &__delivery {
+        &__card {
+          i {
+          }
+
+          i:not(:last-child) {
+          }
+
+          &_description {
+          }
+        }
+      }
+
+      &__description {
+        &__title {
+          &_btn {
+            div {
+            }
+
+            .div {
+            }
+          }
+
+          &_btn:not(:last-child) {
+          }
+        }
+
+        &__description {
+          p:nth-child(1) {
+          }
+
+          p:not(:last-child) {
+          }
+        }
+      }
+    }
+  }
+
+  .popular-sets {
+    &__wrapper {
+      &__cards {
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+  }
+
+  .product {
+    &__wrapper {
+      &__card-product {
+      }
+
+      &__images {
+        img {
+          width: 470px;
+
+          height: auto;
+        }
+
+        &__card {
+          img {
+            width: 71.25px;
+            height: 71.25px;
+          }
+
+          &__card_img {
+          }
+        }
+      }
+
+      &__block {
+      }
+
+      &__information {
+        &__title {
+          p {
+
+          }
+        }
+
+        &__tastes {
+          &_title {
+          }
+
+          &__name-quantity {
+            &_name:not(:last-child) {
+            }
+
+            &_dot {
+            }
+
+            &_dot:before {
+            }
+
+            &_quantity {
+            }
+          }
+
+        }
+      }
+
+      &__price {
+        &_btn {
+        }
+      }
+
+      &__delivery {
+        &__card {
+          i {
+          }
+
+          i:not(:last-child) {
+          }
+
+          &_description {
+          }
+        }
+      }
+
+      &__description {
+        &__title {
+          &_btn {
+            div {
+            }
+
+            .div {
+            }
+          }
+
+          &_btn:not(:last-child) {
+          }
+        }
+
+        &__description {
+          p:nth-child(1) {
+          }
+
+          p:not(:last-child) {
+          }
+        }
+      }
+    }
+  }
+
+  .popular-sets {
+    &__wrapper {
+      &__cards {
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .product {
+    &__wrapper {
+      &__informations {
+        &__title {
+          text-align: center;
+          display: block;
+          font-size: 22px;
+          margin-bottom: 11px;
+          font-weight: 600;
+
+          p {
+            font-weight: 400;
+            font-size: 12px;
+          }
+        }
+      }
+
+      &__card-product {
+      }
+
+      &__images {
+        img {
+          width: 288px;
+          height: 227px;
+        }
+
+        &__card {
+          margin-top: 11px;
+
+          img {
+            width: 36px;
+            height: 36px;
+            margin-right: 8px;
+          }
+
+          &__card_img {
+          }
+        }
+      }
+
+      &__block {
+      }
+
+      &__information {
+        &__title {
+          display: none;
+
+          p {
+
+          }
+        }
+
+        &__tastes {
+          padding: 18px;
+
+          &_title {
+            font-size: 14px;
+          }
+
+          &__name-quantity {
+            align-items: flex-start;
+            font-size: 14px;
+
+            &_name:not(:last-child) {
+            }
+
+            &_dot {
+            }
+
+            &_dot:before {
+            }
+
+            &_quantity {
+            }
+          }
+
+        }
+      }
+
+      &__price {
+        font-size: 18px;
+        padding: 18px;
+        &_btn {
+        }
+      }
+
+      &__delivery {
+        &__card {
+          align-items: flex-start;
+          i {
+          }
+
+          i:not(:last-child) {
+          }
+
+          &_description {
+            font-size: 12px;
+          }
+        }
+      }
+
+      &__description {
+        padding: 18px;
+        margin-top: 8px;
+        &__title {
+          &_btn {
+            height: 42px;
+            font-size: 12px;
+            margin-bottom: 6px;
+
+            div {
+            }
+
+            .div {
+              bottom: -20%;
+            }
+          }
+
+          &_btn:not(:last-child) {
+
+          }
+        }
+
+        &__description {
+          font-size: 12px;
+          margin-top: 13px;
+          line-height: 18px;
+
+          p:nth-child(1) {
+          }
+
+          p:not(:last-child) {
+            margin-bottom: 15px;
+
+          }
+        }
+      }
+    }
+  }
+
+  .popular-sets {
+    margin-top: 28px;
+    &__wrapper {
+      &__cards {
+        grid-template-columns: repeat(auto-fill, 180px);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .product {
+    &__wrapper {
+      &__card-product {
+      }
+
+      &__images {
+        img {
+        }
+
+        &__card {
+          img {
+          }
+
+          &__card_img {
+          }
+        }
+      }
+
+      &__block {
+      }
+
+      &__information {
+        &__title {
+          p {
+
+          }
+        }
+
+        &__tastes {
+          &_title {
+          }
+
+          &__name-quantity {
+            &_name:not(:last-child) {
+            }
+
+            &_dot {
+            }
+
+            &_dot:before {
+            }
+
+            &_quantity {
+            }
+          }
+
+        }
+      }
+
+      &__price {
+        &_btn {
+        }
+      }
+
+      &__delivery {
+        &__card {
+          i {
+          }
+
+          i:not(:last-child) {
+          }
+
+          &_description {
+          }
+        }
+      }
+
+      &__description {
+        &__title {
+          &_btn {
+            div {
+            }
+
+            .div {
+            }
+          }
+
+          &_btn:not(:last-child) {
+          }
+        }
+
+        &__description {
+          p:nth-child(1) {
+          }
+
+          p:not(:last-child) {
+          }
+        }
+      }
+    }
+  }
+
+  .popular-sets {
+    margin-top: 28px;
+    &__wrapper {
+      &__cards {
+        grid-template-columns: repeat(auto-fill, 140px);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+      }
     }
   }
 }

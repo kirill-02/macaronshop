@@ -11,6 +11,10 @@
     <div class="container">
       <div class="product__wrapper">
         <div class="product__wrapper__card-product">
+          <div class="product__wrapper__informations__title" v-if="productData">
+            {{ productData.title }}
+            <p>40 макаронс в круглой коробке с персональной надписью</p>
+          </div>
           <div class="product__wrapper__images">
             <img v-if="productData" :src="currentImage" alt="">
             <div class="product__wrapper__images__card">
