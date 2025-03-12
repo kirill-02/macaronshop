@@ -100,8 +100,8 @@
           </div>
 
           <div class="basket__wrapper__information__delivery">
-            <div class="basket__wrapper__information__delivery_title">Доставка</div>
-            <div class="basket__wrapper__information__delivery_description">Укажите контактные данные и выберите способ
+            <div class="title">Доставка</div>
+            <div class="description">Укажите контактные данные и выберите способ
               доставки
             </div>
 
@@ -174,6 +174,7 @@
                     >
                     <label for="">Оплата картой онлайн</label>
                   </div>
+                  <hr>
                   <div>
                     <input
                         @change="selectPayment('cash')"
@@ -183,6 +184,7 @@
                     >
                     <label for="">Наличными при получении</label>
                   </div>
+                  <hr>
                   <div>
                     <input
                         @change="selectPayment('yandex')"
@@ -193,6 +195,7 @@
                     <label for="">Яндекс деньги</label>
                   </div>
                 </div>
+
               </div>
 
               <hr>

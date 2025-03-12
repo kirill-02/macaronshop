@@ -232,9 +232,6 @@ hr {
 
 
 @media screen and (max-width: 1280px) {
-  .title {
-  }
-
   .product {
     &__wrapper {
       padding: 0 10px;
@@ -243,220 +240,22 @@ hr {
         flex-wrap: wrap;
       }
 
-      &__images {
-        img {
-        }
-
-        &__card {
-          img {
-          }
-
-          &__card_img {
-          }
-        }
-      }
-
       &__block {
         margin: 0;
-      }
-
-
-      &__information {
-        &__title {
-          p {
-
-          }
-        }
-
-        &__tastes {
-          &_title {
-          }
-
-          &__name-quantity {
-            &_name:not(:last-child) {
-            }
-
-            &_dot {
-            }
-
-            &_dot:before {
-            }
-
-            &_quantity {
-            }
-          }
-
-        }
-      }
-
-      &__price {
-        &_btn {
-        }
-      }
-
-      &__delivery {
-        &__card {
-          i {
-          }
-
-          i:not(:last-child) {
-          }
-
-          &_description {
-          }
-        }
-      }
-
-      &__description {
-        &__title {
-          &_btn {
-            div {
-            }
-
-            .div {
-            }
-          }
-
-          &_btn:not(:last-child) {
-          }
-        }
-
-        &__description {
-          p:nth-child(1) {
-          }
-
-          p:not(:last-child) {
-          }
-        }
-      }
-    }
-  }
-
-  .popular-sets {
-    &__wrapper {
-      &__cards {
       }
     }
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .title {
-  }
-
-  .product {
-    &__wrapper {
-      &__card-product {
-      }
-
-      &__images {
-        img {
-        }
-
-        &__card {
-          img {
-          }
-
-          &__card_img {
-          }
-        }
-      }
-
-      &__block {
-      }
-
-      &__information {
-        &__title {
-          p {
-
-          }
-        }
-
-        &__tastes {
-          &_title {
-          }
-
-          &__name-quantity {
-            &_name:not(:last-child) {
-            }
-
-            &_dot {
-            }
-
-            &_dot:before {
-            }
-
-            &_quantity {
-            }
-          }
-
-        }
-      }
-
-      &__price {
-        &_btn {
-        }
-      }
-
-      &__delivery {
-        &__card {
-          i {
-          }
-
-          i:not(:last-child) {
-          }
-
-          &_description {
-          }
-        }
-      }
-
-      &__description {
-        &__title {
-          &_btn {
-            div {
-            }
-
-            .div {
-            }
-          }
-
-          &_btn:not(:last-child) {
-          }
-        }
-
-        &__description {
-          p:nth-child(1) {
-          }
-
-          p:not(:last-child) {
-          }
-        }
-      }
-    }
-  }
-
-  .popular-sets {
-    &__wrapper {
-      &__cards {
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 768px) {
-  .title {
-  }
-
   .product {
     &__wrapper {
-      &__card-product {
-      }
-
       &__images {
         img {
           width: 470px;
-
           height: auto;
         }
 
@@ -464,81 +263,6 @@ hr {
           img {
             width: 71.25px;
             height: 71.25px;
-          }
-
-          &__card_img {
-          }
-        }
-      }
-
-      &__block {
-      }
-
-      &__information {
-        &__title {
-          p {
-
-          }
-        }
-
-        &__tastes {
-          &_title {
-          }
-
-          &__name-quantity {
-            &_name:not(:last-child) {
-            }
-
-            &_dot {
-            }
-
-            &_dot:before {
-            }
-
-            &_quantity {
-            }
-          }
-
-        }
-      }
-
-      &__price {
-        &_btn {
-        }
-      }
-
-      &__delivery {
-        &__card {
-          i {
-          }
-
-          i:not(:last-child) {
-          }
-
-          &_description {
-          }
-        }
-      }
-
-      &__description {
-        &__title {
-          &_btn {
-            div {
-            }
-
-            .div {
-            }
-          }
-
-          &_btn:not(:last-child) {
-          }
-        }
-
-        &__description {
-          p:nth-child(1) {
-          }
-
-          p:not(:last-child) {
           }
         }
       }
@@ -575,9 +299,6 @@ hr {
         }
       }
 
-      &__card-product {
-      }
-
       &__images {
         img {
           width: 288px;
@@ -592,22 +313,12 @@ hr {
             height: 36px;
             margin-right: 8px;
           }
-
-          &__card_img {
-          }
         }
-      }
-
-      &__block {
       }
 
       &__information {
         &__title {
           display: none;
-
-          p {
-
-          }
         }
 
         &__tastes {
@@ -620,38 +331,18 @@ hr {
           &__name-quantity {
             align-items: flex-start;
             font-size: 14px;
-
-            &_name:not(:last-child) {
-            }
-
-            &_dot {
-            }
-
-            &_dot:before {
-            }
-
-            &_quantity {
-            }
           }
-
         }
       }
 
       &__price {
         font-size: 18px;
         padding: 18px;
-        &_btn {
-        }
       }
 
       &__delivery {
         &__card {
           align-items: flex-start;
-          i {
-          }
-
-          i:not(:last-child) {
-          }
 
           &_description {
             font-size: 12px;
@@ -662,22 +353,16 @@ hr {
       &__description {
         padding: 18px;
         margin-top: 8px;
+
         &__title {
           &_btn {
             height: 42px;
             font-size: 12px;
             margin-bottom: 6px;
 
-            div {
-            }
-
             .div {
               bottom: -20%;
             }
-          }
-
-          &_btn:not(:last-child) {
-
           }
         }
 
@@ -686,12 +371,8 @@ hr {
           margin-top: 13px;
           line-height: 18px;
 
-          p:nth-child(1) {
-          }
-
           p:not(:last-child) {
             margin-bottom: 15px;
-
           }
         }
       }
@@ -700,6 +381,7 @@ hr {
 
   .popular-sets {
     margin-top: 28px;
+
     &__wrapper {
       &__cards {
         grid-template-columns: repeat(auto-fill, 180px);
@@ -714,101 +396,9 @@ hr {
   .title {
     font-size: 18px;
   }
-
-  .product {
-    &__wrapper {
-      &__card-product {
-      }
-
-      &__images {
-        img {
-        }
-
-        &__card {
-          img {
-          }
-
-          &__card_img {
-          }
-        }
-      }
-
-      &__block {
-      }
-
-      &__information {
-        &__title {
-          p {
-
-          }
-        }
-
-        &__tastes {
-          &_title {
-          }
-
-          &__name-quantity {
-            &_name:not(:last-child) {
-            }
-
-            &_dot {
-            }
-
-            &_dot:before {
-            }
-
-            &_quantity {
-            }
-          }
-
-        }
-      }
-
-      &__price {
-        &_btn {
-        }
-      }
-
-      &__delivery {
-        &__card {
-          i {
-          }
-
-          i:not(:last-child) {
-          }
-
-          &_description {
-          }
-        }
-      }
-
-      &__description {
-        &__title {
-          &_btn {
-            div {
-            }
-
-            .div {
-            }
-          }
-
-          &_btn:not(:last-child) {
-          }
-        }
-
-        &__description {
-          p:nth-child(1) {
-          }
-
-          p:not(:last-child) {
-          }
-        }
-      }
-    }
-  }
-
   .popular-sets {
     margin-top: 28px;
+
     &__wrapper {
       &__cards {
         grid-template-columns: repeat(auto-fill, 140px);

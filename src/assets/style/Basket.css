@@ -1,5 +1,4 @@
 .title {
-  margin-top: 78px;
   text-align: center;
   font-size: 30px;
   font-weight: 600;
@@ -18,11 +17,18 @@ hr {
   border-top: 0.1px solid rgb(237, 237, 240);
 }
 
+.basket {
+  margin-top: 78px;
+}
 .basket__wrapper {
+  padding: 0 16px;
   margin-top: 44px;
   display: flex;
+  justify-content: center;
 }
 .basket__wrapper__information {
+  width: 100%;
+  max-width: 670px;
   margin-bottom: 44px;
   position: relative;
   margin-right: 30px;
@@ -129,17 +135,8 @@ hr {
   font-weight: 600;
   color: #E7426A;
 }
-.basket__wrapper__information__delivery_title {
-  margin-top: 40px;
-  font-size: 30px;
-  font-weight: 600;
-  text-align: center;
-}
-.basket__wrapper__information__delivery_description {
-  margin-top: 7px;
-  font-size: 16px;
-  font-weight: 400;
-  text-align: center;
+.basket__wrapper__information__delivery {
+  margin-top: 43px;
 }
 .basket__wrapper__information__delivery__forms {
   margin-top: 35px;
@@ -150,6 +147,7 @@ hr {
   margin-bottom: 11px;
 }
 .basket__wrapper__information__delivery__forms label {
+  display: block;
   font-size: 14px;
   font-weight: 400;
 }
@@ -211,7 +209,8 @@ hr {
   padding: 12px 14px;
   background: #FFFFFF;
   resize: none;
-  width: 670px;
+  max-width: 670px;
+  width: 100%;
   height: 76px;
   border: none;
   outline: 1px solid rgb(237, 237, 240);
@@ -269,6 +268,8 @@ hr {
   padding: 17px 76px;
   color: #fff;
   background: #E7426A;
+  font-size: 14px;
+  font-weight: 600;
 }
 .basket__wrapper__information__delivery__forms_offer {
   margin-top: 99px;
@@ -280,6 +281,7 @@ hr {
   color: #4E9DD3;
 }
 .basket__wrapper__result {
+  width: 100%;
   padding: 30px;
   max-height: 328px;
   border-radius: 5px;
@@ -292,7 +294,6 @@ hr {
 }
 .basket__wrapper__result__information {
   position: relative;
-  width: 473px;
   margin-top: 15px;
 }
 .basket__wrapper__result__information__card {
@@ -303,18 +304,6 @@ hr {
 .basket__wrapper__result__information__card_title {
   font-size: 16px;
   font-weight: 400;
-}
-.basket__wrapper__result__information__card_dot-one:before {
-  color: #EDEDF0;
-  content: "..................................................................";
-}
-.basket__wrapper__result__information__card_dot-two:before {
-  color: #EDEDF0;
-  content: "...................................................................................................";
-}
-.basket__wrapper__result__information__card_dot-three:before {
-  color: #EDEDF0;
-  content: "..........................................................................................";
 }
 .basket__wrapper__result__information__card_price {
   font-size: 16px;
@@ -336,6 +325,132 @@ hr {
   padding: 17px 76px;
   color: #fff;
   background: #E7426A;
+}
+
+@media screen and (max-width: 1024px) {
+  .basket__wrapper__information {
+    margin-right: 0;
+  }
+  .basket__wrapper__result {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .basket__wrapper__information__delivery__forms_contact {
+    display: block;
+  }
+  .basket__wrapper__information__delivery__forms_contact input {
+    width: 100%;
+  }
+  .basket__wrapper__information__delivery__forms_contact div:not(:last-child) {
+    margin: 0 0 24px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .title {
+    font-size: 22px;
+  }
+  .description {
+    font-size: 14px;
+  }
+  .basket__wrapper {
+    overflow: hidden;
+    margin-top: 12px;
+  }
+  .basket__wrapper__information__product {
+    padding: 20px 13px 20px 11px;
+  }
+  .basket__wrapper__information__product__layout {
+    display: block;
+    position: relative;
+  }
+  .basket__wrapper__information__product__layout_images {
+    position: absolute;
+  }
+  .basket__wrapper__information__product__layout__things {
+    max-width: 440px;
+    width: 100%;
+    margin-left: 100px;
+  }
+  .basket__wrapper__information__product__layout__things_title {
+    font-size: 12px;
+    max-width: 190px;
+    width: 100%;
+  }
+  .basket__wrapper__information__product__layout__things__description {
+    line-height: 14px;
+    font-size: 10px;
+  }
+  .basket__wrapper__information__product__layout__quantity {
+    margin-top: 10px;
+    justify-content: left;
+  }
+  .basket__wrapper__information__product__layout__price {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(94%, 0);
+  }
+  .basket__wrapper__information__product__total-price_description {
+    font-size: 10px;
+    width: 152px;
+  }
+  .basket__wrapper__information__delivery__forms {
+    margin-top: 24px;
+  }
+  .basket__wrapper__information__delivery__forms_contact input {
+    font-size: 14px;
+  }
+  .basket__wrapper__information__delivery__forms_contact div:not(:last-child) {
+    margin-bottom: 13px;
+  }
+  .basket__wrapper__information__delivery__forms__way {
+    margin-top: 13px;
+  }
+  .basket__wrapper__information__delivery__forms__way__choice {
+    display: block;
+  }
+  .basket__wrapper__information__delivery__forms__way__choice__courier:not(:last-child) {
+    margin: 0 0 10px;
+  }
+  .basket__wrapper__information__delivery__forms__way__choice__courier {
+    width: 100%;
+  }
+  .basket__wrapper__information__delivery__forms__way__choice__courier_price {
+    font-size: 12px;
+  }
+  .basket__wrapper__information__delivery__forms_comment {
+    margin: 13px 0;
+  }
+  .basket__wrapper__information__delivery__forms_comment textarea {
+    font-size: 14px;
+  }
+  .basket__wrapper__information__delivery__forms__payment {
+    margin-top: 13px;
+  }
+  .basket__wrapper__information__delivery__forms__payment__method {
+    display: block;
+  }
+  .basket__wrapper__information__delivery__forms__result_sum {
+    font-size: 10px;
+    width: 152px;
+  }
+  .basket__wrapper__information__delivery__forms_btn {
+    font-size: 12px;
+    padding: 17px 43px;
+    transform: translate(-50%, -116%);
+  }
+  .basket__wrapper__information__delivery__forms_offer {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .title {
+    font-size: 18px;
+  }
+  .basket__wrapper__information__product__layout__things_title {
+    max-width: 140px;
+  }
 }
 
 /*# sourceMappingURL=Basket.css.map */
