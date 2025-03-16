@@ -20,7 +20,10 @@
               <router-link class="router-link" to="/delivery">Доставка и оплата</router-link>
             </li>
             <li>
-              <router-link class="router-link" to="/wholesale-supplies">Оптовые поставки</router-link>
+              <router-link class="router-link" to="/auth">Вход</router-link>
+            </li>
+            <li v-if="isLoggedIn">
+              <router-link @click="signOut" class="router-link" to="/auth">Выход</router-link>
             </li>
             <!--            <li>-->
             <!--              <router-link class="router-link" to="/auth">Вход</router-link>-->
@@ -108,6 +111,10 @@
                   <a href="#">Ижевск</a>
                 </li>
               </ul>
+            </li>
+            <hr>
+            <li>
+              <router-link @click=" closeMenu" class="menu-ul_burger" to="/auth">Вход</router-link>
             </li>
             <hr>
             <router-link to="/ready-sets" @click="closeMenu">
@@ -206,7 +213,10 @@
               </ul>
             </li>
             <hr>
-
+            <li v-if="isLoggedIn" @click="closeMenu">
+              <span @click="signOut" class="menu-ul_burger">Выход</span>
+            </li>
+            <hr>
             <li class="menu-ul_burger">
               <span>8 812 309-82-88</span>
               <!--              <span><i class="ic_VectorButton"></i></span>-->
@@ -226,6 +236,10 @@
 </template>
 
 <script>
+import {ref} from 'vue';
+import {useRouter} from 'vue-router';
+import {getAuth, onAuthStateChanged, signOut} from 'firebase/auth';
+
 export default {
   data() {
     return {
@@ -277,7 +291,29 @@ export default {
         this.isDropdownOpen[key] = false;
       });
     }
-  }
+  },
+  setup() {
+    const router = useRouter();
+    const isLoggedIn = ref(true);
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        isLoggedIn.value = true;
+      } else {
+        isLoggedIn.value = false;
+      }
+    });
+    const signOutUser = async () => {
+      await signOut(auth);
+      router.push('/');
+    }
+
+    return {
+      signOut: signOutUser,
+      isLoggedIn
+    };
+  },
 }
 </script>
 
