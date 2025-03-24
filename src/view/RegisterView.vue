@@ -10,27 +10,27 @@
           <div class="auth__wrapper__form_register">
             <div class="auth__wrapper__form_email">
               <label for="name">Ваше имя</label>
-              <input type="text" id="name" v-model="name" placeholder="Ваше имя">
+              <input type="text" id="name" v-model="name" placeholder="Ваше имя" required>
             </div>
             <div class="auth__wrapper__form_email">
               <label for="city">Город</label>
-              <input type="text" id="city" v-model="city" placeholder="Город">
+              <input type="text" id="city" v-model="city" placeholder="Город" required>
             </div>
             <div class="auth__wrapper__form_email">
               <label for="phone">Ваш телефон</label>
-              <input type="text" id="phone" v-model="phone" placeholder="+7 (___) ___-__-__">
+              <input type="text" id="phone" v-model="phone" placeholder="+7 (___) ___-__-__" required>
             </div>
             <div class="auth__wrapper__form_email">
               <label for="company">Компания</label>
-              <input type="text" id="company" v-model="company" placeholder="Компания">
+              <input type="text" id="company" v-model="company" placeholder="Компания" required>
             </div>
             <div class="auth__wrapper__form_email">
               <label for="email">E-mail</label>
-              <input type="email" id="email" v-model="email" placeholder="E-mail">
+              <input type="email" id="email" v-model="email" placeholder="E-mail" required>
             </div>
             <div>
               <label for="password">Придумайте пароль</label>
-              <input type="password" id="password" v-model="password" placeholder="Придумайте пароль">
+              <input type="password" id="password" v-model="password" placeholder="Придумайте пароль" required>
             </div>
           </div>
           <button type="submit" class="auth__wrapper__form_btn">Отправить заявку на регистрацию</button>
@@ -54,23 +54,48 @@
 import {ref} from 'vue';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import {useRouter} from "vue-router";
+import {db} from "../firebase.js"
+import {
+  // onSnapshot,
+  collection,
+  // doc,
+  // deleteDoc,
+  // setDoc,
+  addDoc,
+  // orderBy,
+  // query
+} from 'firebase/firestore';
 
+const name = ref('');
+const city = ref('');
+const phone = ref('');
+const company = ref('');
+const email = ref('');
+const password = ref('');
 export default {
   data() {
     return {}
   },
+  methods: {
+    // register: async function() {
+    //   await addDoc(collection(db, 'users'), {
+    //     name: this.name,
+    //     })
+    //   }
+    },
   setup() {
-    const name = ref('');
-    const city = ref('');
-    const phone = ref('');
-    const company = ref('');
-    const email = ref('');
-    const password = ref('');
     const router = useRouter();
     const register = async () => {
       const auth = getAuth();
       try {
         await createUserWithEmailAndPassword(auth, email.value, password.value);
+        await addDoc(collection(db, 'users'), {
+          name: name.value,
+          city: city.value,
+          phone: phone.value,
+          company: company.value,
+          uid: auth.lastNotifiedUid,
+        })
         router.push('/cabinet');
       } catch (error) {
         console.error('Ошибка при регистрации:', error);
