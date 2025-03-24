@@ -300,7 +300,6 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         isLoggedIn.value = true;
-console.log(auth);
       } else {
         isLoggedIn.value = false;
       }

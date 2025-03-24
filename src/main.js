@@ -1,4 +1,5 @@
 import {createApp} from 'vue'
+import {createPinia} from 'pinia';
 import App from './App.vue'
 import router from '@/router/index.js'
 import "./assets/style/root.css"
@@ -11,9 +12,9 @@ import AppNewsCard from "@/components/card/AppNewsCard.vue";
 import AppReviewsSlider from "@/components/slider/AppReviewsSlider.vue";
 
 
-
 createApp(App)
     .use(router)
+    .use(createPinia())
     .component('app-border-button', AppBorderButton)
     .component('app-sets-card', AppSetsCard)
     .component('app-filter-card', AppFilterCard)

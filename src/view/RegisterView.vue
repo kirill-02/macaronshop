@@ -52,57 +52,50 @@
 
 <script>
 import {ref} from 'vue';
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+// import {getAuth} from 'firebase/auth';
 import {useRouter} from "vue-router";
-import {db} from "../firebase.js"
+// import {db} from "../firebase.js"
+import {useStateStore} from '../store/stateStore'
 import {
   // onSnapshot,
-  collection,
+  // collection,
   // doc,
   // deleteDoc,
   // setDoc,
-  addDoc,
+  // addDoc,
   // orderBy,
   // query
 } from 'firebase/firestore';
 
-const name = ref('');
-const city = ref('');
-const phone = ref('');
-const company = ref('');
-const email = ref('');
-const password = ref('');
+
 export default {
-  data() {
-    return {}
-  },
-  methods: {
-    // register: async function() {
-    //   await addDoc(collection(db, 'users'), {
-    //     name: this.name,
-    //     })
-    //   }
-    },
   setup() {
+    const stateStore = useStateStore();
+    const name = ref('');
+    const city = ref('');
+    const phone = ref('');
+    const company = ref('');
+    const email = ref('');
+    const password = ref('');
+
+
     const router = useRouter();
     const register = async () => {
-      const auth = getAuth();
+      // const auth = getAuth();
       try {
-        await createUserWithEmailAndPassword(auth, email.value, password.value);
-        await addDoc(collection(db, 'users'), {
-          name: name.value,
-          city: city.value,
-          phone: phone.value,
-          company: company.value,
-          uid: auth.lastNotifiedUid,
-        })
+        stateStore.setEmail(email.value);
+        stateStore.setPassword(password.value);
+        stateStore.setName(name.value);
+        stateStore.setCity(city.value);
+        stateStore.setPhone(phone.value);
+        stateStore.setCompany(company.value);
+        await stateStore.registerUser();
         router.push('/cabinet');
       } catch (error) {
         console.error('Ошибка при регистрации:', error);
         alert(error.message);
       }
     };
-
     return {
       name,
       city,
