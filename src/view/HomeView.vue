@@ -415,6 +415,8 @@ export default {
     },
     loadPromotion: function () {
       const promotionDocRef = doc(db, 'product', "promotion");
+      const promotionCollectionRef = collection(promotionDocRef, 'promotion');
+      const promotionQuery = query(promotionCollectionRef);
 
       onSnapshot(promotionQuery, (snapshot) => {
         this.promotion = snapshot.docs.map(doc => {
@@ -422,12 +424,16 @@ export default {
             id: doc.id,
             name: doc.data().name,
             photo: doc.data().photo,
+            title: doc.data().title,
+            color: doc.data().color,
           }
         });
       });
     },
 
   },
+  mounted() {
+    this.loadPromotion();
   }
 };
 </script>
