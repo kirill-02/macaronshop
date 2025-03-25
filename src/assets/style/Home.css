@@ -200,6 +200,7 @@
   height: 380px;
 }
 .promotion__wrapper__cards_card_bookmark {
+  text-transform: uppercase;
   top: 15px;
   display: flex;
   position: absolute;

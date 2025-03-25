@@ -111,89 +111,44 @@
         Акции
       </div>
       <div class="promotion__wrapper">
-        <div class="promotion__wrapper__cards">
-          <div class="promotion__wrapper__cards_card primary">
-            <div class="promotion__wrapper__cards_card_bookmark primary">БЕСПЛАТНАЯ ДОСТАВКА</div>
-            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/1.jpeg" alt=""></div>
-            <div class="promotion__wrapper__cards_card_description ">По СПб в районе КАД – от 3000₽ По МСК – от
-              5000₽
+        <div class="promotion__wrapper__cards" >
+
+          <div class='promotion__wrapper__cards_card ' v-for="promotions in promotion" :key="promotions.id" :style="{ background: promotions.color }">
+            <div class="promotion__wrapper__cards_card_bookmark " :style="{ background: promotions.color }">{{ promotions.title }}</div>
+            <div class="promotion__wrapper__cards_card_img"><img :src="require(`@/../public/imagesFirebase/promotion/${promotions.photo}`)" alt=""></div>
+            <div class="promotion__wrapper__cards_card_description "> {{ promotions.name }}
             </div>
           </div>
 
-          <div class="promotion__wrapper__cards_card danger">
-            <div class="promotion__wrapper__cards_card_bookmark danger">НОВИНКА</div>
-            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/2.jpeg" alt=""></div>
-            <div class="promotion__wrapper__cards_card_description">Шоколадное пирожное картошка на основе
-              бисквита!
-            </div>
-          </div>
+<!--          <div class="promotion__wrapper__cards_card danger">-->
+<!--            <div class="promotion__wrapper__cards_card_bookmark danger">НОВИНКА</div>-->
+<!--            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/photo_2.jpeg" alt=""></div>-->
+<!--            <div class="promotion__wrapper__cards_card_description">Шоколадное пирожное картошка на основе-->
+<!--              бисквита!-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="promotion__wrapper__cards_card danger">
-            <div class="promotion__wrapper__cards_card_bookmark danger">НОВИНКА</div>
-            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/3.jpeg" alt=""></div>
-            <div class="promotion__wrapper__cards_card_description">Аппетитные конфеты на основе миндального
-              печенья и
-              крема
-            </div>
-          </div>
+<!--          <div class="promotion__wrapper__cards_card danger">-->
+<!--            <div class="promotion__wrapper__cards_card_bookmark danger">НОВИНКА</div>-->
+<!--            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/photo_3.jpeg" alt=""></div>-->
+<!--            <div class="promotion__wrapper__cards_card_description">Аппетитные конфеты на основе миндального-->
+<!--              печенья и-->
+<!--              крема-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="promotion__wrapper__cards_card danger">
-            <div class="promotion__wrapper__cards_card_bookmark danger">СЛАДКАЯ НОВИНКА</div>
-            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/4.jpeg" alt=""></div>
-            <div class="promotion__wrapper__cards_card_description">Карамель на палочке из натуральных
-              ингредиентов
-            </div>
-          </div>
+<!--          <div class="promotion__wrapper__cards_card danger">-->
+<!--            <div class="promotion__wrapper__cards_card_bookmark danger">СЛАДКАЯ НОВИНКА</div>-->
+<!--            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/photo_4.jpeg" alt=""></div>-->
+<!--            <div class="promotion__wrapper__cards_card_description">Карамель на палочке из натуральных-->
+<!--              ингредиентов-->
+<!--            </div>-->
+<!--          </div>-->
+
         </div>
       </div>
     </div>
   </div>
-
-<!--  <div class="next-holiday">-->
-<!--    <div class="container">-->
-<!--      <div class="title">Ближайшие праздники</div>-->
-<!--      <div class="next-holiday__wrapper">-->
-<!--        <div class=" next-holiday__wrapper__arrived">-->
-<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/holiday.png" alt=""></div>-->
-<!--          <div class="next-holiday__wrapper__arrived_description">Скоро День рождения близкого человека</div>-->
-
-<!--        </div>-->
-
-<!--        <div class="next-holiday__wrapper__arrived">-->
-<!--          &lt;!&ndash;          <div class="next-holiday__wrapper__arrived_dot">.......................</div>&ndash;&gt;-->
-
-<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/turquoise.png" alt=""></div>-->
-<!--          <div class="next-holiday__wrapper__arrived_description">1 января Новый Год 2021</div>-->
-<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
-<!--        </div>-->
-
-<!--        <div class="next-holiday__wrapper__arrived">-->
-<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/pink.png" alt=""></div>-->
-<!--          <div class="next-holiday__wrapper__arrived_description">14 февраля День Святого Валентина</div>-->
-<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
-<!--        </div>-->
-
-<!--        <div class="next-holiday__wrapper__arrived">-->
-<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/orange.png" alt=""></div>-->
-<!--          <div class="next-holiday__wrapper__arrived_description">23 февраля День Защитника Отечества</div>-->
-<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
-<!--        </div>-->
-
-<!--        <div class="next-holiday__wrapper__arrived">-->
-<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/turquoise.png" alt=""></div>-->
-<!--          <div class="next-holiday__wrapper__arrived_description">8 марта Международный Женский День</div>-->
-<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
-<!--        </div>-->
-
-<!--        <div class="next-holiday__wrapper__arrived">-->
-<!--          <div class="next-holiday__wrapper__arrived_img"><img src="../../public/img/home/4/pink.png" alt=""></div>-->
-<!--          <div class="next-holiday__wrapper__arrived_description">9 марта День Сурка</div>-->
-<!--          <div class="next-holiday__wrapper__arrived_dot">.............................................</div>-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
 
   <div class="popular-sets">
     <div class="container">
@@ -245,7 +200,6 @@
     </div>
   </div>
 
-
   <div class="guarantee">
     <div class="container">
       <div class="title">Мы обо всём позаботились</div>
@@ -295,15 +249,33 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
-import AppNewsCard from "@/components/card/AppNewsCard.vue";
+
+import {
+  // app,
+  db} from '../firebase.js';
+import {
+  // getFirestore,
+  onSnapshot,
+  collection,
+  doc,
+  // deleteDoc,
+  // setDoc,
+  // addDoc,
+  // orderBy,
+  query
+} from 'firebase/firestore';
+import {ref} from 'vue';
 
 export default {
-  components: {AppNewsCard},
+
+
   data() {
     return {
+      promotion: ref([]),
       popularSets: [
         {
           id: 1,
@@ -349,7 +321,7 @@ export default {
         },
         {
           id: 7,
-          img: '4.jpeg',
+          img: 'photo_4.jpeg',
           title: 'Набор на 9',
           description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишня',
           price: '950'
@@ -418,6 +390,7 @@ export default {
       visibleNewsCount: 3 // Количество видимых новостей
     };
   },
+
   computed: {
     visibleSets() {
       return this.popularSets.slice(0, this.visibleSetCount);
@@ -432,15 +405,30 @@ export default {
       return this.visibleNewsCount < this.news.length;
     }
   },
+
   methods: {
     showMore() {
       this.visibleSetCount += 3
     },
     showMoreNews() {
       this.visibleNewsCount += 3; // Увеличиваем количество видимых новостей
-    }
-  }
+    },
+    loadPromotion: function () {
+      const promotionDocRef = doc(db, 'product', "promotion");
 
+      onSnapshot(promotionQuery, (snapshot) => {
+        this.promotion = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            photo: doc.data().photo,
+          }
+        });
+      });
+    },
+
+  },
+  }
 };
 </script>
 
