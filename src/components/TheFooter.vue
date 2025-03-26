@@ -59,8 +59,8 @@
             <div class="footer__wrapper__networks__number_time">с 9:00 до 21:00</div>
           </div>
           <div class="footer__wrapper__networks__social">
-            <div class=""><i class="ic_vk"></i></div>
-            <div class=""><i class="ic_telegram"></i></div>
+            <div class=""><a href="https://vk.me/user_kirill"><i class="ic_vk"></i></a></div>
+            <div class=""><a href="https://t.me/user_Kirillka"><i class="ic_telegram"></i></a></div>
 <!--            <div class=""><i class="ic_telegram"></i></div>-->
           </div>
         </div>

@@ -267,7 +267,7 @@ export default {
           price: 100,
         },
         {
-          id: 3,
+          id: 4,
           title: "Kirill",
           price: 100,
         },
