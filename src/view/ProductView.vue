@@ -9,59 +9,50 @@
   <!--  </div>-->
   <div class="product">
     <div class="container">
-      <div class="product__wrapper">
+      <div class="product__wrapper" >
         <div class="product__wrapper__card-product">
           <div class="product__wrapper__informations__title" v-if="productData">
-            {{ productData.title }}
+            {{ productData.name }}
             <p>40 макаронс в круглой коробке с персональной надписью</p>
           </div>
           <div class="product__wrapper__images">
-            <img v-if="productData" :src="currentImage" alt="">
+            <img :src="currentImage " alt="">
             <div class="product__wrapper__images__card">
               <div
                   class="product__wrapper__images__card_img"
                   v-for="(image, index) in thumbnailImages"
                   :key="index"
-                  @click="currentImage = require(`@/../public/img/home/5/${image}`)"
+                  @click="currentImage = require(`@/../public/imagesFirebase/sets/${image}`)"
               >
-                <img :src="require(`@/../public/img/home/5/${image}`)" alt="">
+                <img :src="require(`@/../public/imagesFirebase/sets/${image}`)" alt="">
               </div>
             </div>
           </div>
           <div class="product__wrapper__block">
             <div class="product__wrapper__information" v-if="productData">
               <div class="product__wrapper__information__title">
-                {{ productData.title }}
+                {{ productData.name }}
                 <p>40 макаронс в круглой коробке с персональной надписью</p>
               </div>
               <div class="product__wrapper__information__tastes">
                 <div class="product__wrapper__information__tastes_title">Вкусы:</div>
 
-                <div class="product__wrapper__information__tastes__name-quantity">
-                  <div class="product__wrapper__information__tastes__name-quantity_name">Яблоко</div>
+                <div class="product__wrapper__information__tastes__name-quantity"
+                     v-for="taste in productData.tastes" :key="taste.id">
+                  <div class="product__wrapper__information__tastes__name-quantity_name">{{ taste.name }}</div>
                   <div class="product__wrapper__information__tastes__name-quantity_dot"></div>
-                  <div class="product__wrapper__information__tastes__name-quantity_quantity">4 шт</div>
-                </div>
-
-                <div class="product__wrapper__information__tastes__name-quantity">
-                  <div class="product__wrapper__information__tastes__name-quantity_name">Вишня</div>
-                  <div class="product__wrapper__information__tastes__name-quantity_dot"></div>
-                  <div class="product__wrapper__information__tastes__name-quantity_quantity">12 шт</div>
-                </div>
-
-                <div class="product__wrapper__information__tastes__name-quantity">
-                  <div class="product__wrapper__information__tastes__name-quantity_name">Кокос</div>
-                  <div class="product__wrapper__information__tastes__name-quantity_dot"></div>
-                  <div class="product__wrapper__information__tastes__name-quantity_quantity">8 шт</div>
+                  <div class="product__wrapper__information__tastes__name-quantity_quantity">{{ taste.quantity }} шт
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="product__wrapper__price">
+            <div class="product__wrapper__price" v-if="productData">
               <div> {{ productData.price }} руб
               </div>
               <button class="product__wrapper__price_btn"><i class="ic_basket"></i> В корзину</button>
             </div>
+            <div v-else>не найденно</div>
 
             <div class="product__wrapper__delivery">
 
@@ -115,7 +106,7 @@
             </button>
           </div>
           <hr>
-          <div class="product__wrapper__description__description">
+          <div class="product__wrapper__description__description" v-if="productData">
             <p v-html="productTitle"></p>
             <p v-html="productDescription"></p>
           </div>
@@ -148,10 +139,15 @@
 </template>
 
 <script>
+import {collection, doc, onSnapshot, query} from "firebase/firestore";
+import {db} from "@/firebase";
+import {ref} from "vue";
+
 export default {
   data() {
 
     return {
+      sets: ref([]),
       currentImage: '',
       activeSection: 0, // Индекс активной секции
       sections: [
@@ -332,14 +328,14 @@ export default {
   },
   computed: {
     productData() {
-      const id = parseInt(this.$route.params.id); // Получаем id из URL и преобразуем его в число
-      return this.popularSets.find(set => set.id === id) || null; // Ищем продукт по id
+      const id = this.$route.params.id; // Получаем id из URL и преобразуем его в число
+      return this.sets.find(set => set.id === id) || null; // Ищем продукт по id
     },
     productTitle() {
-      return this.sections[this.activeSection].title;
+      return this.productData.description_composition_condition[this.activeSection].title;
     },
     productDescription() {
-      return this.sections[this.activeSection].description;
+      return this.productData.description_composition_condition[this.activeSection].description;
     },
     visibleSets() {
       return this.productSets.slice(0, this.visibleSetCount);
@@ -350,9 +346,9 @@ export default {
 
     thumbnailImages() {
       return [
-        this.productData?.imgOne,
-        this.productData?.imgTwo,
-        this.productData?.imgThree,
+        this.productData?.photo[0],
+        this.productData?.photo[1],
+        this.productData?.photo[2],
       ].filter(Boolean); // Возвращаем массив миниатюр, исключая пустые значения
     }
   },
@@ -363,11 +359,33 @@ export default {
     showMore() {
       return this.visibleSetCount += 4
     },
+    withdrawalSets: function () {
+      const setsDocRef = doc(db, 'product', "sets");
+      const setsCollectionRef = collection(setsDocRef, 'sets');
+      const setsQuery = query(setsCollectionRef);
+
+      onSnapshot(setsQuery, (snapshot) => {
+        this.sets = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            price: doc.data().price,
+            description: doc.data().description,
+            photo: doc.data().photo || [],
+            compound: doc.data().compound || [],
+            storage_conditions: doc.data().storage_conditions || [],
+            description_composition_condition: doc.data().description_composition_condition || [],
+            tastes: doc.data().tastes || [],
+          }
+        });
+        if (this.productData) {
+          this.currentImage = require(`@/../public/imagesFirebase/sets/${this.productData.photo[0]}`); // Устанавливаем первое изображение как текущее
+        }
+      });
+    }
   },
   mounted() {
-    if (this.productData) {
-      this.currentImage = require(`@/../public/img/home/5/${this.productData.img}`); // Устанавливаем первое изображение как текущее
-    }
+    this.withdrawalSets();
   },
 }
 </script>

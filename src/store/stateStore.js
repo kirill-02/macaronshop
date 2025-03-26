@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import {app, db} from '../firebase.js';
-import {ref} from 'vue';
+import { ref} from 'vue';
 import {addDoc, collection, doc, onSnapshot, query} from "firebase/firestore";
 
 export const useStateStore = defineStore('stateStore', () => {
@@ -15,6 +15,7 @@ export const useStateStore = defineStore('stateStore', () => {
     const phone = ref('');
     const company = ref('');
     const promotion = ref([]);
+    const sets = ref([])
 
     const setEmail = (newEmail) => {
         email.value = newEmail;
@@ -73,28 +74,46 @@ export const useStateStore = defineStore('stateStore', () => {
         }
     };
 
-    const withdrawalPromotion = () => {
+    const withdrawalPromotion = async () => {
         const promotionDocRef = doc(db, 'product', "promotion");
         const promotionCollectionRef = collection(promotionDocRef, 'promotion');
         const promotionQuery = query(promotionCollectionRef);
 
         onSnapshot(promotionQuery, (snapshot) => {
-            promotion.value = snapshot.docs.map(doc => {
-                return {
-                    id: doc.id,
-                    name: doc.data().name,
-                    photo: doc.data().photo,
-                    title: doc.data().title,
-                    color: doc.data().color,
-                }
-            });
+            promotion.value = snapshot.docs.map(doc => ({
+                id: doc.id,
+                name: doc.data().name,
+                photo: doc.data().photo,
+                title: doc.data().title,
+                color: doc.data().color,
+            }));
         });
     };
 
+    const withdrawalSets = async () => {
+        const setsDocRef = doc(db, 'product', "sets");
+        const setsCollectionRef = collection(setsDocRef, 'sets');
+        const setsQuery = query(setsCollectionRef);
+
+        onSnapshot(setsQuery, (snapshot) => {
+            sets.value = snapshot.docs.map(doc => ({
+                id: doc.id,
+                name: doc.data().name,
+                price: doc.data().price,
+                description: doc.data().description,
+                photo: doc.data().photo || [],
+                compound: doc.data().compound || [],
+                storage_conditions: doc.data().storage_conditions || [],
+                description_composition_condition: doc.data().description_composition_condition || [],
+                tastes: doc.data().tastes || [],
+            }));
+        });
+    };
     return {
         email,
         password,
         promotion,
+        sets,
         setEmail,
         setPassword,
         setName,
@@ -102,6 +121,7 @@ export const useStateStore = defineStore('stateStore', () => {
         setPhone,
         setCompany,
         registerUser,
-        withdrawalPromotion
+        withdrawalPromotion,
+        withdrawalSets,
     };
 });

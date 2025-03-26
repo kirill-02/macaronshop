@@ -105,7 +105,7 @@
     </div>
   </div>
 
-  <div class="promotion">
+  <div class="promotion" v-if="promotion.length > 0">
     <div class="container">
       <div class="title">
         Акции
@@ -128,20 +128,21 @@
       </div>
     </div>
   </div>
+  <div v-else>загрузка ....</div>
 
-  <div class="popular-sets">
+  <div class="popular-sets" v-if="sets.length > 0">
     <div class="container">
       <div class="title">Популярные наборы</div>
       <div class="popular-sets__wrapper">
         <div class="popular-sets__wrapper__cards">
           <app-sets-card
-              v-for="popularSet in visibleSets"
-              :key="popularSet.id"
-              :id="popularSet.id"
-              :img="require(`@/../public/img/home/5/${popularSet.img}`)"
-              :title="popularSet.title"
-              :description="popularSet.description"
-              :price="popularSet.price"
+              v-for="set in sets"
+              :key="set.id"
+              :id="set.id"
+              :title="set.name"
+              :description="set.description"
+              :price="set.price"
+              :img="require(`@/../public/imagesFirebase/sets/${set.photo[2]}`)"
           ></app-sets-card>
         </div>
         <app-border-button
@@ -152,6 +153,7 @@
       </div>
     </div>
   </div>
+  <div v-else>загрузка ....</div>
 
   <div class="news">
     <div class="container">
@@ -246,15 +248,17 @@
 // orderBy,
 // query
 // } from 'firebase/firestore';
-// import {ref} from 'vue';
 import {useStateStore} from '../store/stateStore'
 import {onMounted} from 'vue';
+// import {collection, doc, onSnapshot, query} from "firebase/firestore";
+// import {db} from "@/firebase";
 
 export default {
 
 
   data() {
     return {
+      // sets: ref([]),
       popularSets: [
         {
           id: 1,
@@ -372,10 +376,10 @@ export default {
 
   computed: {
     visibleSets() {
-      return this.popularSets.slice(0, this.visibleSetCount);
+      return this.sets.slice(0, this.visibleSetCount);
     },
     hasMoreSets() {
-      return this.visibleSetCount < this.popularSets.length;
+      return this.sets < this.sets.length;
     },
     visibleNews() {
       return this.news.slice(0, this.visibleNewsCount);
@@ -412,12 +416,22 @@ export default {
 
   },
   setup() {
+
     const stateStore = useStateStore();
-    onMounted(() => {
+
+    const fetchData = () => {
       stateStore.withdrawalPromotion();
+      stateStore.withdrawalSets();
+    };
+
+    // Вызываем fetchData при монтировании компонента
+    onMounted(() => {
+      fetchData();
     });
+
     return {
-      promotion: stateStore.promotion, // Возвращаем реактивную переменную для использования в шаблоне
+      promotion: stateStore.promotion,
+      sets: stateStore.sets,
     };
   },
 };
