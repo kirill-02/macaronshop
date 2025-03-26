@@ -2,7 +2,7 @@ import {defineStore} from 'pinia';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import {app, db} from '../firebase.js';
 import {ref} from 'vue';
-import {addDoc, collection, doc} from "firebase/firestore";
+import {addDoc, collection, doc, onSnapshot, query} from "firebase/firestore";
 
 export const useStateStore = defineStore('stateStore', () => {
     const user = ref(null);
@@ -14,6 +14,8 @@ export const useStateStore = defineStore('stateStore', () => {
     const city = ref('');
     const phone = ref('');
     const company = ref('');
+    const promotion = ref([]);
+
     const setEmail = (newEmail) => {
         email.value = newEmail;
     };
@@ -70,9 +72,29 @@ export const useStateStore = defineStore('stateStore', () => {
             console.error("Ошибка регистрации:", err.message);
         }
     };
+
+    const withdrawalPromotion = () => {
+        const promotionDocRef = doc(db, 'product', "promotion");
+        const promotionCollectionRef = collection(promotionDocRef, 'promotion');
+        const promotionQuery = query(promotionCollectionRef);
+
+        onSnapshot(promotionQuery, (snapshot) => {
+            promotion.value = snapshot.docs.map(doc => {
+                return {
+                    id: doc.id,
+                    name: doc.data().name,
+                    photo: doc.data().photo,
+                    title: doc.data().title,
+                    color: doc.data().color,
+                }
+            });
+        });
+    };
+
     return {
         email,
         password,
+        promotion,
         setEmail,
         setPassword,
         setName,
@@ -80,5 +102,6 @@ export const useStateStore = defineStore('stateStore', () => {
         setPhone,
         setCompany,
         registerUser,
+        withdrawalPromotion
     };
 });

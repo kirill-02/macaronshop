@@ -200,10 +200,10 @@
   height: 380px;
 }
 .promotion__wrapper__cards_card_bookmark {
-  text-transform: uppercase;
   top: 15px;
   display: flex;
   position: absolute;
+  text-transform: uppercase;
   padding: 4px 10px;
 }
 .promotion__wrapper__cards_card_description {

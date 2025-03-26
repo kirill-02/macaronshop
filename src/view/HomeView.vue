@@ -111,39 +111,18 @@
         Акции
       </div>
       <div class="promotion__wrapper">
-        <div class="promotion__wrapper__cards" >
+        <div class="promotion__wrapper__cards">
 
-          <div class='promotion__wrapper__cards_card ' v-for="promotions in promotion" :key="promotions.id" :style="{ background: promotions.color }">
-            <div class="promotion__wrapper__cards_card_bookmark " :style="{ background: promotions.color }">{{ promotions.title }}</div>
-            <div class="promotion__wrapper__cards_card_img"><img :src="require(`@/../public/imagesFirebase/promotion/${promotions.photo}`)" alt=""></div>
+          <div class='promotion__wrapper__cards_card ' v-for="promotions in promotion" :key="promotions.id"
+               :style="{ background: promotions.color }">
+            <div class="promotion__wrapper__cards_card_bookmark " :style="{ background: promotions.color }">
+              {{ promotions.title }}
+            </div>
+            <div class="promotion__wrapper__cards_card_img"><img
+                :src="require(`@/../public/imagesFirebase/promotion/${promotions.photo}`)" alt=""></div>
             <div class="promotion__wrapper__cards_card_description "> {{ promotions.name }}
             </div>
           </div>
-
-<!--          <div class="promotion__wrapper__cards_card danger">-->
-<!--            <div class="promotion__wrapper__cards_card_bookmark danger">НОВИНКА</div>-->
-<!--            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/photo_2.jpeg" alt=""></div>-->
-<!--            <div class="promotion__wrapper__cards_card_description">Шоколадное пирожное картошка на основе-->
-<!--              бисквита!-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="promotion__wrapper__cards_card danger">-->
-<!--            <div class="promotion__wrapper__cards_card_bookmark danger">НОВИНКА</div>-->
-<!--            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/photo_3.jpeg" alt=""></div>-->
-<!--            <div class="promotion__wrapper__cards_card_description">Аппетитные конфеты на основе миндального-->
-<!--              печенья и-->
-<!--              крема-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--          <div class="promotion__wrapper__cards_card danger">-->
-<!--            <div class="promotion__wrapper__cards_card_bookmark danger">СЛАДКАЯ НОВИНКА</div>-->
-<!--            <div class="promotion__wrapper__cards_card_img"><img src="../../public/img/home/3/photo_4.jpeg" alt=""></div>-->
-<!--            <div class="promotion__wrapper__cards_card_description">Карамель на палочке из натуральных-->
-<!--              ингредиентов-->
-<!--            </div>-->
-<!--          </div>-->
 
         </div>
       </div>
@@ -253,29 +232,29 @@
 </template>
 
 <script>
-
-import {
-  // app,
-  db} from '../firebase.js';
-import {
-  // getFirestore,
-  onSnapshot,
-  collection,
-  doc,
-  // deleteDoc,
-  // setDoc,
-  // addDoc,
-  // orderBy,
-  query
-} from 'firebase/firestore';
-import {ref} from 'vue';
+// import {
+// app,
+// db} from '../firebase.js';
+// import {
+// getFirestore,
+// onSnapshot,
+// collection,
+// doc,
+// deleteDoc,
+// setDoc,
+// addDoc,
+// orderBy,
+// query
+// } from 'firebase/firestore';
+// import {ref} from 'vue';
+import {useStateStore} from '../store/stateStore'
+import {onMounted} from 'vue';
 
 export default {
 
 
   data() {
     return {
-      promotion: ref([]),
       popularSets: [
         {
           id: 1,
@@ -413,28 +392,34 @@ export default {
     showMoreNews() {
       this.visibleNewsCount += 3; // Увеличиваем количество видимых новостей
     },
-    loadPromotion: function () {
-      const promotionDocRef = doc(db, 'product', "promotion");
-      const promotionCollectionRef = collection(promotionDocRef, 'promotion');
-      const promotionQuery = query(promotionCollectionRef);
-
-      onSnapshot(promotionQuery, (snapshot) => {
-        this.promotion = snapshot.docs.map(doc => {
-          return {
-            id: doc.id,
-            name: doc.data().name,
-            photo: doc.data().photo,
-            title: doc.data().title,
-            color: doc.data().color,
-          }
-        });
-      });
-    },
+    // loadPromotion: function () {
+    //   const promotionDocRef = doc(db, 'product', "promotion");
+    //   const promotionCollectionRef = collection(promotionDocRef, 'promotion');
+    //   const promotionQuery = query(promotionCollectionRef);
+    //
+    //   onSnapshot(promotionQuery, (snapshot) => {
+    //     this.promotion = snapshot.docs.map(doc => {
+    //       return {
+    //         id: doc.id,
+    //         name: doc.data().name,
+    //         photo: doc.data().photo,
+    //         title: doc.data().title,
+    //         color: doc.data().color,
+    //       }
+    //     });
+    //   });
+    // },
 
   },
-  mounted() {
-    this.loadPromotion();
-  }
+  setup() {
+    const stateStore = useStateStore();
+    onMounted(() => {
+      stateStore.withdrawalPromotion();
+    });
+    return {
+      promotion: stateStore.promotion, // Возвращаем реактивную переменную для использования в шаблоне
+    };
+  },
 };
 </script>
 

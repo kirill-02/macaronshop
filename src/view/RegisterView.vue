@@ -81,7 +81,6 @@ export default {
 
     const router = useRouter();
     const register = async () => {
-      // const auth = getAuth();
       try {
         stateStore.setEmail(email.value);
         stateStore.setPassword(password.value);
