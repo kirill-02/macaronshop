@@ -4,6 +4,49 @@
   text-align: center;
 }
 
+.loader {
+  width: 1em;
+  height: 1em;
+  font-size: 110px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+@media (max-width: 225px), (max-height: 225px) {
+  .loader {
+    font-size: 150px/2;
+  }
+}
+.loader:before, .loader:after {
+  content: "";
+  top: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  border-width: 0.5em;
+  border-style: double;
+  border-color: transparent;
+  box-sizing: border-box;
+  border-radius: 1em;
+  animation: spin 1s infinite;
+}
+.loader:after {
+  left: 0;
+  border-left-color: #cd9685;
+}
+.loader:before {
+  right: 0;
+  border-right-color: #cd9685;
+  animation-delay: 1s/-4;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(360deg);
+  }
+}
 .first-screen__wrapper {
   position: relative;
   display: flex;

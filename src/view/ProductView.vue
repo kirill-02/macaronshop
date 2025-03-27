@@ -9,9 +9,9 @@
   <!--  </div>-->
   <div class="product">
     <div class="container">
-      <div class="product__wrapper" >
+      <div class="product__wrapper" v-if="productData">
         <div class="product__wrapper__card-product">
-          <div class="product__wrapper__informations__title" v-if="productData">
+          <div class="product__wrapper__informations__title" >
             {{ productData.name }}
             <p>40 макаронс в круглой коробке с персональной надписью</p>
           </div>
@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="product__wrapper__block">
-            <div class="product__wrapper__information" v-if="productData">
+            <div class="product__wrapper__information" >
               <div class="product__wrapper__information__title">
                 {{ productData.name }}
                 <p>40 макаронс в круглой коробке с персональной надписью</p>
@@ -47,12 +47,11 @@
               </div>
             </div>
 
-            <div class="product__wrapper__price" v-if="productData">
+            <div class="product__wrapper__price" >
               <div> {{ productData.price }} руб
               </div>
               <button class="product__wrapper__price_btn"><i class="ic_basket"></i> В корзину</button>
             </div>
-            <div v-else>не найденно</div>
 
             <div class="product__wrapper__delivery">
 
@@ -106,7 +105,7 @@
             </button>
           </div>
           <hr>
-          <div class="product__wrapper__description__description" v-if="productData">
+          <div class="product__wrapper__description__description" >
             <p v-html="productTitle"></p>
             <p v-html="productDescription"></p>
           </div>

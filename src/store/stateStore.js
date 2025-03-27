@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import {app, db} from '../firebase.js';
-import { ref} from 'vue';
+import {ref} from 'vue';
 import {addDoc, collection, doc, onSnapshot, query} from "firebase/firestore";
 
 export const useStateStore = defineStore('stateStore', () => {
@@ -15,7 +15,10 @@ export const useStateStore = defineStore('stateStore', () => {
     const phone = ref('');
     const company = ref('');
     const promotion = ref([]);
-    const sets = ref([])
+    const sets = ref([]);
+    const news = ref([]);
+    const conditions = ref([]);
+
 
     const setEmail = (newEmail) => {
         email.value = newEmail;
@@ -36,6 +39,12 @@ export const useStateStore = defineStore('stateStore', () => {
         company.value = newCompany;
     };
 
+
+    const checkLoadingComplete = async () => {
+        if (this.promotion.length && this.sets.length && this.news.length && this.conditions.length) {
+            this.isLoading = false;
+        }
+    };
 
     const registerUser = async () => {
         try {
@@ -87,6 +96,7 @@ export const useStateStore = defineStore('stateStore', () => {
                 title: doc.data().title,
                 color: doc.data().color,
             }));
+            this.checkLoadingComplete();
         });
     };
 
@@ -107,13 +117,54 @@ export const useStateStore = defineStore('stateStore', () => {
                 description_composition_condition: doc.data().description_composition_condition || [],
                 tastes: doc.data().tastes || [],
             }));
+            this.checkLoadingComplete();
         });
     };
+
+    const withdrawalNews = async () => {
+        const newsQuery = query(collection(db, "news"));
+
+        onSnapshot(newsQuery, (snapshot) => {
+            news.value = snapshot.docs.map(doc => ({
+                id: doc.id,
+                name: doc.data().name,
+                description: doc.data().description,
+                date: doc.data().date,
+                photo: doc.data().photo || [],
+            }));
+            this.checkLoadingComplete();
+        });
+    };
+
+    const withdrawalConditions = async () => {
+        const conditionsQuery = query(collection(db, "conditions"));
+
+        onSnapshot(conditionsQuery, (snapshot) => {
+            conditions.value = snapshot.docs.map(doc => ({
+                id: doc.id,
+                name: doc.data().name,
+                description: doc.data().description,
+                photo: doc.data().photo || [],
+            }))
+            this.checkLoadingComplete();
+        })
+    };
+
+
     return {
+        user,
+        error,
+        auth,
         email,
         password,
+        name,
+        city,
+        phone,
+        company,
         promotion,
         sets,
+        news,
+        checkLoadingComplete,
         setEmail,
         setPassword,
         setName,
@@ -123,5 +174,7 @@ export const useStateStore = defineStore('stateStore', () => {
         registerUser,
         withdrawalPromotion,
         withdrawalSets,
+        withdrawalNews,
+        withdrawalConditions,
     };
 });
