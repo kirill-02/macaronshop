@@ -15,9 +15,14 @@ export const useStateStore = defineStore('stateStore', () => {
     const phone = ref('');
     const company = ref('');
     const promotion = ref([]);
-    const sets = ref([]);
+    const product = ref([]);
     const news = ref([]);
     const conditions = ref([]);
+    const guarantee = ref([]);
+    const filtersSets = ref([]);
+    const filtersNews = ref([]);
+    const recommendations = ref([]);
+    const answersToQuestions = ref([]);
 
 
     const setEmail = (newEmail) => {
@@ -84,9 +89,7 @@ export const useStateStore = defineStore('stateStore', () => {
     };
 
     const withdrawalPromotion = async () => {
-        const promotionDocRef = doc(db, 'product', "promotion");
-        const promotionCollectionRef = collection(promotionDocRef, 'promotion');
-        const promotionQuery = query(promotionCollectionRef);
+        const promotionQuery = query(collection(db, "promotion"));
 
         onSnapshot(promotionQuery, (snapshot) => {
             promotion.value = snapshot.docs.map(doc => ({
@@ -96,17 +99,14 @@ export const useStateStore = defineStore('stateStore', () => {
                 title: doc.data().title,
                 color: doc.data().color,
             }));
-            this.checkLoadingComplete();
         });
     };
 
-    const withdrawalSets = async () => {
-        const setsDocRef = doc(db, 'product', "sets");
-        const setsCollectionRef = collection(setsDocRef, 'sets');
-        const setsQuery = query(setsCollectionRef);
+    const withdrawalProduct = async () => {
+        const productQuery = query(collection(db, "product"));
 
-        onSnapshot(setsQuery, (snapshot) => {
-            sets.value = snapshot.docs.map(doc => ({
+        onSnapshot(productQuery, (snapshot) => {
+            product.value = snapshot.docs.map(doc => ({
                 id: doc.id,
                 name: doc.data().name,
                 price: doc.data().price,
@@ -116,10 +116,11 @@ export const useStateStore = defineStore('stateStore', () => {
                 storage_conditions: doc.data().storage_conditions || [],
                 description_composition_condition: doc.data().description_composition_condition || [],
                 tastes: doc.data().tastes || [],
+                title: doc.data().title,
+                search: doc.data().search,
             }));
-            this.checkLoadingComplete();
         });
-    };
+    }
 
     const withdrawalNews = async () => {
         const newsQuery = query(collection(db, "news"));
@@ -132,7 +133,6 @@ export const useStateStore = defineStore('stateStore', () => {
                 date: doc.data().date,
                 photo: doc.data().photo || [],
             }));
-            this.checkLoadingComplete();
         });
     };
 
@@ -150,6 +150,70 @@ export const useStateStore = defineStore('stateStore', () => {
         })
     };
 
+    const withdrawalQuarantee = async () => {
+        const guaranteeQuery = query(collection(db, "guarantee"));
+
+        onSnapshot(guaranteeQuery, (snapshot) => {
+            guarantee.value = snapshot.docs.map(doc => ({
+                id: doc.id,
+                name: doc.data().name,
+                description: doc.data().description,
+                date: doc.data().date,
+                photo: doc.data().photo || [],
+            }));
+        });
+    };
+
+    const withdrawalFiltersSets = async () => {
+        const filtersQuery = query(collection(db, "filtersSets"));
+
+        onSnapshot(filtersQuery, (snapshot) => {
+            filtersSets.value = snapshot.docs.map(doc => ({
+                id: doc.id,
+                title: doc.data().title,
+            }));
+        });
+    };
+
+    const withdrawalFiltersNews = async () => {
+        const filtersQuery = query(collection(db, "filtersNews"));
+
+        onSnapshot(filtersQuery, (snapshot) => {
+            filtersNews.value = snapshot.docs.map(doc => {
+                return {
+                    id: doc.id,
+                    title: doc.data().title,
+                }
+            });
+        });
+    };
+
+    const withdrawalRecommendations = async () => {
+        const recommendationsQuery = query(collection(db, "recommendations"));
+
+        onSnapshot(recommendationsQuery, (snapshot) => {
+            recommendations.value = snapshot.docs.map(doc => ({
+                id: doc.id,
+                description: doc.data().description,
+                title: doc.data().title,
+            }));
+        });
+    };
+
+    const withdrawalAnswersToQuestions = async () => {
+        const answersToQuestionsQuery = query(collection(db, "answersToQuestions"));
+
+        onSnapshot(answersToQuestionsQuery, (snapshot) => {
+            answersToQuestions.value = snapshot.docs.map(doc => {
+                return {
+                    id: doc.id,
+                    description: doc.data().description,
+                    title: doc.data().title,
+                }
+            });
+        });
+    };
+
 
     return {
         user,
@@ -162,8 +226,14 @@ export const useStateStore = defineStore('stateStore', () => {
         phone,
         company,
         promotion,
-        sets,
+        product,
         news,
+        conditions,
+        guarantee,
+        filtersSets,
+        filtersNews,
+        recommendations,
+        answersToQuestions,
         checkLoadingComplete,
         setEmail,
         setPassword,
@@ -173,8 +243,14 @@ export const useStateStore = defineStore('stateStore', () => {
         setCompany,
         registerUser,
         withdrawalPromotion,
-        withdrawalSets,
+        withdrawalProduct,
         withdrawalNews,
         withdrawalConditions,
-    };
+        withdrawalQuarantee,
+        withdrawalFiltersSets,
+        withdrawalFiltersNews,
+        withdrawalRecommendations,
+        withdrawalAnswersToQuestions,
+    }
+        ;
 });

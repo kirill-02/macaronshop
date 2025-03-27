@@ -57,14 +57,13 @@
       <div class="popular-sets__wrapper">
         <div class="popular-sets__wrapper__cards">
           <app-sets-card
-              v-for="popularSet in visibleSets"
-              :key="popularSet.id"
-              :id="popularSet.id"
-
-              :img="require(`@/../public/img/dessertСatalog/${popularSet.img}`)"
-              :title="popularSet.title"
-              :description="popularSet.description"
-              :price="popularSet.price"
+              v-for="products in filteredProductsCombo"
+              :key="products.id"
+              :id="products.id"
+              :img="require(`@/../public/imagesFirebase/product/${products.photo[0]}`)"
+              :title="products.title"
+              :description="products.description"
+              :price="products.price"
           ></app-sets-card>
         </div>
         <app-border-button
@@ -79,91 +78,56 @@
 </template>
 
 <script>
+import {collection, onSnapshot, query} from "firebase/firestore";
+import {db} from "@/firebase";
+import {ref} from "vue"
+
 export default {
   data() {
     return {
-      popularSets: [
-        {
-          id: 1,
-          img: '5.png',
-          title: 'Сердце',
-          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
-          price: '2800'
-        },
-        {
-          id: 2,
-          img: '6.png',
-          title: 'Красота спасёт мир',
-          description: 'Набор 16 шт. Вкусы: клубника - базилик, кокос, голубой сыр, пармезан',
-          price: '750'
-        },
-        {
-          id: 3,
-          img: '7.png',
-          title: 'Круглый набор',
-          description: '40 макаронс в круглой коробке с персональной надписью',
-          price: '3900'
-        },
-        {
-          id: 4,
-          img: '8.png',
-          title: 'Набор на 9',
-          description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишня',
-          price: '950'
-        },
-        {
-          id: 5,
-          img: '5.png',
-          title: 'Набор на 16',
-          description: 'Набор 16 шт. Вкусы: соленая карамель, голубой сыр, пармезан, шоколад',
-          price: '1500'
-        },
-        {
-          id: 6,
-          img: '6.png',
-          title: 'Сердце',
-          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
-          price: '2500'
-        },
-        {
-          id: 7,
-          img: '7.png',
-          title: 'Набор на 9',
-          description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишня',
-          price: '950'
-        },
-        {
-          id: 8,
-          img: '8.png',
-          title: 'Набор на 16',
-          description: 'Набор 16 шт. Вкусы: соленая карамель, голубой сыр, пармезан, шоколад',
-          price: '1500'
-        },
-        {
-          id: 9,
-          img: '5.png',
-          title: 'Сердце',
-          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
-          price: '2500'
-        },
-        // Добавьте больше наборов, если необходимо
-      ],
+      product: ref([]),
       visibleSetCount: 4, // Количество видимых наборов
     }
   },
   computed: {
-    visibleSets() {
-      return this.popularSets.slice(0, this.visibleSetCount);
+    filteredProductsCombo() {
+      return this.product
+          .filter(product => product.title === 'combo')
+          .slice(0, this.visibleSetCount);
     },
     hasMoreSets() {
-      return this.visibleSetCount < this.popularSets.length;
+      return this.visibleSetCount < this.product.filter(product => product.title === 'combo').length;
     }
   },
   methods: {
     showMore() {
       return this.visibleSetCount += 4
-    }
-  }
+    },
+    withdrawalProduct: function () {
+      const productQuery = query(collection(db, "product"));
+
+      onSnapshot(productQuery, (snapshot) => {
+        this.product = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            price: doc.data().price,
+            description: doc.data().description,
+            photo: doc.data().photo || [],
+            compound: doc.data().compound || [],
+            storage_conditions: doc.data().storage_conditions || [],
+            description_composition_condition: doc.data().description_composition_condition || [],
+            tastes: doc.data().tastes || [],
+            title: doc.data().title,
+            search: doc.data().search,
+          }
+        });
+      });
+    },
+  },
+  mounted() {
+    this.withdrawalProduct()
+  },
 }
 </script>
 

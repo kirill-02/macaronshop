@@ -179,6 +179,7 @@ hr {
   width: 363px;
   background: #fff;
   padding: 20px;
+  height: 100%;
 }
 .wholesale-supplies__wrapper__answers-questions__cards__card_title {
   font-size: 18px;
@@ -202,21 +203,20 @@ hr {
   font-size: 12px;
   font-weight: 600;
 }
-.wholesale-supplies__wrapper__answers-questions__cards__card.one {
-  height: 194px;
-}
-.wholesale-supplies__wrapper__answers-questions__cards__card.two {
-  height: 332px;
-}
-.wholesale-supplies__wrapper__answers-questions__cards__card.three {
-  height: 455px;
-}
 .wholesale-supplies__wrapper__answers-questions__cards__card.four {
   margin-top: -264px;
-  height: 286px;
+  height: 100%;
 }
-.wholesale-supplies__wrapper__answers-questions-reviews {
-  display: none;
+.wholesale-supplies__wrapper .swiper {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.wholesale-supplies__wrapper .swiper-slide {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 1280px) {

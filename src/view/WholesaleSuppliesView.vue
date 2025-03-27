@@ -100,117 +100,27 @@
         <div class="wholesale-supplies__wrapper__answers-questions">
           <div class="wholesale-supplies__wrapper__answers-questions_title">Нас рекомендуют</div>
           <div class="wholesale-supplies__wrapper__answers-questions__cards">
-            <div class="wholesale-supplies__wrapper__answers-questions__cards__card one">
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и
-                трубочки, рекомендую
-              </div>
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Отзыв блаблабла
-              </div>
-              <hr>
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">
-                <div>
-                  <p>
-                    Иванов Иван
-                  </p>
-                  <p>
-                    Генеральный директор ООО “ААА”
-                  </p>
-                </div>
-                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">
-              </div>
-            </div>
-            <div class="wholesale-supplies__wrapper__answers-questions__cards__card two">
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и
-                трубочки, рекомендую
-              </div>
-
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Банальные, но
-                неопровержимые выводы, а также представители современных социальных резервов ассоциативно распределены
-                по отраслям. Противоположная точка зрения подразумевает, что многие известные личности могут быть
-                обнародованы.
-              </div>
-              <hr>
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">
-                <div>
-                  <p>
-                    Иванов Иван
-                  </p>
-                  <p>
-                    Генеральный директор ООО “ААА”
-                  </p>
-                </div>
-                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">
-              </div>
-            </div>
-            <div class="wholesale-supplies__wrapper__answers-questions__cards__card three">
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Заголовок отзыва
-              </div>
-
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Ключевые особенности
-                структуры проекта неоднозначны и будут указаны как претенденты на роль ключевых факторов. А также явные
-                признаки победы институционализации будут заблокированы в рамках своих собственных рациональных
-                ограничений. Элементы политического процесса функционально разнесены на независимые элементы. В своём
-                стремлении улучшить пользовательский опыт мы упускаем, что представители современных социальных резервов
-                обнародованы.
-              </div>
-              <hr>
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">
-                <div>
-                  <p>
-                    Иванов Иван
-                  </p>
-                  <p>
-                    Генеральный директор ООО “ААА”
-                  </p>
-                </div>
-                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">
-              </div>
-            </div>
-
-            <div class="wholesale-supplies__wrapper__answers-questions__cards__card four">
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_title">Очень хорошие пироженки и
-                трубочки, рекомендую
-              </div>
-
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card_description">Являясь всего лишь
-                частью общей картины, активно развивающиеся страны третьего мира, вне зависимости от их уровня, должны
-                быть указаны как претенденты на роль ключевых факторов.
-              </div>
-              <hr>
-              <div class="wholesale-supplies__wrapper__answers-questions__cards__card__name">
-                <div>
-                  <p>
-                    Иванов Иван
-                  </p>
-                  <p>
-                    Генеральный директор ООО “ААА”
-                  </p>
-                </div>
-                <img src="../../public/img/wholesaleSupplies/2/1.png" alt="">
-              </div>
-            </div>
-
+            <swiper
+                :spaceBetween="30"
+                :pagination="{clickable: true,}"
+                :modules="modules"
+                class="mySwiper"
+            >
+              <swiper-slide
+                  v-for="recommendation in recommendations"
+                  :key="recommendation.id">
+                <app-reviews-slider
+                    class="wholesale-supplies__wrapper__answers-questions-reviews"
+                    :title="recommendation.title"
+                    :description="recommendation.description"
+                    :name="recommendation.name"
+                    :organization="recommendation.organization"
+                ></app-reviews-slider>
+              </swiper-slide>
+            </swiper>
 
           </div>
         </div>
-        <swiper
-            :spaceBetween="30"
-            :pagination="{
-      clickable: true,
-    }"
-            :modules="modules"
-            class="mySwiper"
-        >
-          <swiper-slide v-for="review in reviews"
-                        :key="review.id">
-            <app-reviews-slider class="wholesale-supplies__wrapper__answers-questions-reviews"
-                                :title="review.title"
-                                :description="review.description"
-                                :name="review.name"
-                                :organization="review.organization"
-            ></app-reviews-slider>
-          </swiper-slide>
-        </swiper>
 
 
       </div>
@@ -233,10 +143,14 @@ import 'swiper/css/pagination';
 
 // import required modules
 import {Pagination} from 'swiper/modules';
+import {collection, onSnapshot, query} from "firebase/firestore";
+import {db} from "@/firebase";
+import {ref} from "vue"
 
 export default {
   data() {
     return {
+      recommendations: ref([]),
       reviews: [
         {
           id: 1,
@@ -273,10 +187,28 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  methods: {
+    withdrawalRecommendations: function () {
+      const recommendationsQuery = query(collection(db, "recommendations"));
+
+      onSnapshot(recommendationsQuery, (snapshot) => {
+        this.recommendations = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            description: doc.data().description,
+            title: doc.data().title,
+          }
+        });
+      });
+    },
+  },
   setup() {
     return {
       modules: [Pagination],
     };
+  },
+  mounted() {
+    this.withdrawalRecommendations()
   },
 }
 </script>

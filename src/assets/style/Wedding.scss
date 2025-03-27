@@ -284,6 +284,7 @@ hr {
           width: 370px;
           background: #fff;
           padding: 21px;
+          height: 100%;
 
           &_title {
             font-size: 18px;
@@ -298,9 +299,7 @@ hr {
           }
         }
 
-        &__card.one {
-          height: 150px;
-        }
+
       }
     }
 

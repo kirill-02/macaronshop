@@ -143,13 +143,13 @@
         <div class="popular-sets__wrapper">
           <div class="popular-sets__wrapper__cards">
             <app-sets-card
-                v-for="set in sets"
-                :key="set.id"
-                :id="set.id"
-                :title="set.name"
-                :description="set.description"
-                :price="set.price"
-                :img="require(`@/../public/imagesFirebase/sets/${set.photo[0]}`)"
+                v-for="products in filteredProductsSets"
+                :key="products.id"
+                :id="products.id"
+                :title="products.name"
+                :description="products.description"
+                :price="products.price"
+                :img="require(`@/../public/imagesFirebase/product/${products.photo[0]}`)"
             ></app-sets-card>
           </div>
           <app-border-button
@@ -168,13 +168,13 @@
           <div class="news__wrapper__cards">
 
             <app-news-card
-                v-for="newsis in news"
-                :key="newsis.id"
-                :id="newsis.id"
-                :img="require(`@/../public/imagesFirebase/news/${newsis.photo}`)"
-                :date="newsis.date"
-                :description="newsis.description"
-                :title="newsis.name"
+                v-for="news in visibleNews"
+                :key="news.id"
+                :id="news.id"
+                :img="require(`@/../public/imagesFirebase/news/${news.photo}`)"
+                :date="news.date"
+                :description="news.description"
+                :title="news.name"
             ></app-news-card>
 
           </div>
@@ -212,9 +212,7 @@
 </template>
 
 <script>
-// import {useStateStore} from '../store/stateStore'
-// import {onMounted} from 'vue';
-import {collection, doc, onSnapshot, query} from "firebase/firestore";
+import {collection, onSnapshot, query} from "firebase/firestore";
 import {db} from "@/firebase";
 import {ref} from "vue"
 
@@ -224,7 +222,7 @@ export default {
   data() {
     return {
       promotion: ref([]),
-      sets: ref([]),
+      product: ref([]),
       news: ref([]),
       conditions: ref([]),
       visibleSetCount: 6, // Количество видимых наборов
@@ -234,11 +232,13 @@ export default {
   },
 
   computed: {
-    visibleSets() {
-      return this.sets.slice(0, this.visibleSetCount);
+    filteredProductsSets() {
+      return this.product
+          .filter(product => product.title === 'sets')
+          .slice(0, this.visibleSetCount);
     },
     hasMoreSets() {
-      return this.sets < this.sets.length;
+      return this.visibleSetCount < this.product.filter(product => product.title === 'sets').length;
     },
     visibleNews() {
       return this.news.slice(0, this.visibleNewsCount);
@@ -257,11 +257,7 @@ export default {
     },
 
     withdrawalPromotion: function () {
-      const promotionDocRef = doc(db, 'product', "promotion");
-      const promotionCollectionRef = collection(promotionDocRef, 'promotion');
-      const promotionQuery = query(promotionCollectionRef);
-
-      // await new Promise(resolve => setTimeout(resolve, 1000000));
+      const promotionQuery = query(collection(db, "promotion"));
 
       onSnapshot(promotionQuery, (snapshot) => {
         this.promotion = snapshot.docs.map(doc => {
@@ -276,13 +272,11 @@ export default {
         this.checkLoadingComplete();
       });
     },
-    withdrawalSets: function () {
-      const setsDocRef = doc(db, 'product', "sets");
-      const setsCollectionRef = collection(setsDocRef, 'sets');
-      const setsQuery = query(setsCollectionRef);
+    withdrawalProduct: function () {
+      const productQuery = query(collection(db, "product"));
 
-      onSnapshot(setsQuery, (snapshot) => {
-        this.sets = snapshot.docs.map(doc => {
+      onSnapshot(productQuery, (snapshot) => {
+        this.product = snapshot.docs.map(doc => {
           return {
             id: doc.id,
             name: doc.data().name,
@@ -293,6 +287,8 @@ export default {
             storage_conditions: doc.data().storage_conditions || [],
             description_composition_condition: doc.data().description_composition_condition || [],
             tastes: doc.data().tastes || [],
+            title: doc.data().title,
+            search: doc.data().search,
           }
         });
         this.checkLoadingComplete();
@@ -309,6 +305,7 @@ export default {
             description: doc.data().description,
             date: doc.data().date,
             photo: doc.data().photo || [],
+            search: doc.data().search,
           }
         });
         this.checkLoadingComplete();
@@ -331,14 +328,14 @@ export default {
     },
 
     checkLoadingComplete() {
-      if (this.promotion.length && this.sets.length && this.news.length && this.conditions.length) {
+      if (this.promotion.length && this.product.length && this.news.length && this.conditions.length) {
         this.isLoading = false;
       }
     }
   },
   mounted() {
     this.withdrawalPromotion()
-    this.withdrawalSets()
+    this.withdrawalProduct()
     this.withdrawalNews()
     this.withdrawalConditions()
   },

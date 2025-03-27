@@ -4,18 +4,21 @@
     <div class="container">
       <div class="title">Готовые наборы</div>
       <div class="popular-sets__wrapper">
-        <app-filter-card :filters="filters"
-                         @search="searchByTag"
-                         @clear="clearFilters"></app-filter-card>
+        <app-filter-card
+            :filters="filtersSets"
+            @search="searchByTag"
+            @clear="clearFilters">
+
+        </app-filter-card>
         <div class="popular-sets__wrapper__cards">
           <app-sets-card
-              v-for="popularSet in visibleSets"
-              :key="popularSet.id"
-              :id="popularSet.id"
-              :img="require(`@/../public/img/home/5/${popularSet.img}`)"
-              :title="popularSet.title"
-              :description="popularSet.description"
-              :price="popularSet.price"
+              v-for="products in visibleSets"
+              :key="products.id"
+              :id="products.id"
+              :img="require(`@/../public/imagesFirebase/product/${products.photo[0]}`)"
+              :title="products.name"
+              :description="products.description"
+              :price="products.price"
           ></app-sets-card>
 
         </div>
@@ -30,116 +33,43 @@
 </template>
 
 <script>
-import AppFilterCard from "@/components/filter/AppFilterCard.vue";
+import {collection, onSnapshot, query} from "firebase/firestore";
+import {db} from "@/firebase";
+import {ref} from "vue"
+
 
 export default {
-  components: {AppFilterCard},
   data() {
     return {
+      product: ref([]),
+      filtersSets: ref([]),
       searchQuery: '',
-      popularSets: [
-        {
-          id: 1,
-          img: '1.jpeg',
-          title: 'Свадьба',
-          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
-          price: '2800'
-        },
-        {
-          id: 2,
-          img: '2.jpeg',
-          title: 'Красота спасёт мир',
-          description: 'Набор 16 шт. Вкусы: клубника - базилик, кокос, голубой сыр, пармезан',
-          price: '750'
-        },
-        {
-          id: 3,
-          img: '3.jpeg',
-          title: 'Круглый набор',
-          description: '40 макаронс в круглой коробке с персональной надписью',
-          price: '3900'
-        },
-        {
-          id: 4,
-          img: '4.jpeg',
-          title: 'Набор на 9',
-          description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка, вишня',
-          price: '950'
-        },
-        {
-          id: 5,
-          img: '5.jpeg',
-          title: 'Набор на 16 ',
-          description: 'Набор 16 шт. Вкусы: соленая карамель, голубой сыр, пармезан, шоколад',
-          price: '1500'
-        },
-        {
-          id: 6,
-          img: '6.jpeg',
-          title: 'Сердце ',
-          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
-          price: '2500'
-        },
-        {
-          id: 7,
-          img: '4.jpeg',
-          title: 'Набор на 9',
-          description: 'Набор из 9 штук в квадратной коробке. Вкусы: шоколад, фисташка,',
-          price: '950'
-        },
-        {
-          id: 8,
-          img: '5.jpeg',
-          title: 'Набор на 16',
-          description: 'Набор 16 шт. Вкусы: соленая карамель, голубой сыр, пармезан, шоколад  ',
-          price: '1500'
-        },
-        {
-          id: 9,
-          img: '6.jpeg',
-          title: 'Сердце',
-          description: '24 штуки в коробке в виде сердца. Ассорти из 6 вкусов',
-          price: '2500'
-        },
-        // Добавьте больше наборов, если необходимо
-      ],
       visibleSetCount: 6,
-      filters: [
-        {id: 1, title: 'Свадьба'},
-        {id: 2, title: 'Девичник'},
-        {id: 3, title: 'День рождения'},
-        {id: 4, title: '8 марта'},
-        {id: 5, title: '23 февраля'},
-        {id: 6, title: 'Новый год'},
-        {id: 7, title: 'День учителя'},
-        {id: 8, title: 'День тренера'},
-        {id: 9, title: '1 сентября'},
-      ],
     }
   },
 
   computed: {
     visibleSets() {
-      let filteredSets = this.popularSets
+      let filteredSets = this.product.filter(product => product.title === 'sets')
 
-      // Фильтрация по поисковому запросу
       if (this.searchQuery) {
         const query = this.searchQuery.toLowerCase()
         filteredSets = filteredSets.filter(set =>
-            set.title.toLowerCase().includes(query) ||
-            set.description.toLowerCase().includes(query)
+            set.name.toLowerCase().includes(query) ||
+            set.description.toLowerCase().includes(query) ||
+            set.search.toLowerCase().includes(query)
         )
       }
       return filteredSets.slice(0, this.visibleSetCount);
     },
     hasMoreSets() {
-      return this.visibleSetCount < this.popularSets.length;
+      return this.visibleSetCount < this.product.filter(product => product.title === 'sets').length;
     },
   },
   methods: {
     searchByTag(tag) {
-      this.searchQuery = tag
-      this.visibleSetCount = 6
+      this.searchQuery = tag;
+      this.visibleSetCount = 6;
     },
     showMoreSets() {
       this.visibleSetCount += 3;
@@ -147,8 +77,48 @@ export default {
     clearFilters() {
       this.searchQuery = ''
       this.visibleSetCount = 6
-    }
-  }
+    },
+
+    withdrawalProduct: function () {
+      const productQuery = query(collection(db, "product"));
+
+      onSnapshot(productQuery, (snapshot) => {
+        this.product = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            price: doc.data().price,
+            description: doc.data().description,
+            photo: doc.data().photo || [],
+            compound: doc.data().compound || [],
+            storage_conditions: doc.data().storage_conditions || [],
+            description_composition_condition: doc.data().description_composition_condition || [],
+            tastes: doc.data().tastes || [],
+            title: doc.data().title,
+            search: doc.data().search,
+          }
+        });
+      });
+    },
+
+    withdrawalFiltersSets: function () {
+      const filtersQuery = query(collection(db, "filtersSets"));
+
+      onSnapshot(filtersQuery, (snapshot) => {
+        this.filtersSets = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            title: doc.data().title,
+          }
+        });
+      });
+    },
+  },
+
+  mounted() {
+    this.withdrawalProduct()
+    this.withdrawalFiltersSets()
+  },
 
 }
 </script>

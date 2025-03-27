@@ -6,25 +6,13 @@
 
     <div class="reviews-slider_description">{{ description }}
     </div>
-    <hr>
-    <div class="reviews-slider__name">
-      <div>
-        <p>
-          {{ name }}
-        </p>
-        <p>
-          {{ organization }}
-        </p>
-      </div>
-      <img src="../../../public/img/wholesaleSupplies/2/1.png" alt="">
-    </div>
   </div>
 
 </template>
 
 <script>
 export default {
-  props: ['title', 'description', 'organization', 'name'],
+  props: ['title', 'description'],
 
 };
 </script>
