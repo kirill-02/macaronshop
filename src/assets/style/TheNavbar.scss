@@ -104,6 +104,12 @@ li {
       display: flex;
     }
 
+    &-contact {
+      span:nth-child(2) {
+        display: none;
+      }
+    }
+
     &-guarantee i, &-contact i {
       margin-right: 5px;
     }
@@ -435,6 +441,7 @@ li {
         }
 
         span:nth-child(2) {
+          display: inline-block;
           border-radius: 50%;
           padding: 3px 5px;
           background: #636363;
@@ -486,8 +493,10 @@ li {
 
           &_burger {
             display: block;
+            font-weight: 400;
+
             span {
-              font-weight: 600;
+              font-weight: 400;
             }
 
             .ic_telegram {
@@ -554,7 +563,6 @@ li {
     }
   }
 }
-
 
 @media screen and (max-width: 360px) {
   .the-navbar {

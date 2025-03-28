@@ -50,7 +50,15 @@
             <div class="product__wrapper__price">
               <div> {{ productData.price }} руб
               </div>
-              <button class="product__wrapper__price_btn"><i class="ic_basket"></i> В корзину</button>
+              <button
+                  @click="addCarts(currentCartId, productData.id)"
+                  class="product__wrapper__price_btn"
+                  v-if="isLoggedIn"
+              >
+                <i class="ic_basket"></i>
+                В корзину
+              </button>
+              <div v-else class="black"> зарегистрируйтесь чтобы добавить корзину</div>
             </div>
 
             <div class="product__wrapper__delivery">
@@ -138,15 +146,19 @@
 </template>
 
 <script>
-import {collection, onSnapshot, query} from "firebase/firestore";
+import {addDoc, collection, doc, getDocs, onSnapshot, query, updateDoc} from "firebase/firestore";
 import {db} from "@/firebase";
 import {ref} from "vue";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 
+const auth = getAuth();
 export default {
   data() {
 
     return {
       product: ref([]),
+      basket: ref([]),
+      carts: ref([]),
       currentImage: '',
       activeSection: 0, // Индекс активной секции
       visibleSetCount: 4,
@@ -158,7 +170,9 @@ export default {
       return this.product.find(set => set.id === id) || null; // Ищем продукт по id
     },
     filteredProductsCombo() {
-      return this.product.filter(product => product.title === 'combo');
+      return this.product
+          .filter(product => product.title === 'combo')
+          .slice(0, this.visibleSetCount);
     },
     productTitle() {
       return this.productData.description_composition_condition[this.activeSection].title;
@@ -166,9 +180,7 @@ export default {
     productDescription() {
       return this.productData.description_composition_condition[this.activeSection].description;
     },
-    visibleSets() {
-      return this.product.slice(0, this.visibleSetCount);
-    },
+
     hasMoreSets() {
       return this.visibleSetCount < this.product.length;
     },
@@ -212,12 +224,102 @@ export default {
           this.currentImage = require(`@/../public/imagesFirebase/product/${this.productData.photo[0]}`); // Устанавливаем первое изображение как текущее
         }
       });
+    },
+
+    withdrawalBasket: function () {
+      const basketQuery = query(collection(db, "basket"));
+      onSnapshot(basketQuery, (snapshot) => {
+        this.basket = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            cartsId: doc.data().cartsId,
+            userId: doc.data().userId,
+          }
+        });
+        const currentUser = this.basket.find(basket => basket.userId === auth.lastNotifiedUid);
+        if (currentUser) {
+          this.currentCartId = currentUser.cartsId;
+          this.withdrawalCarts(this.currentCartId);
+        } else {
+          console.error("Корзина для пользователя не найдена.");
+        }
+      });
+    },
+
+    withdrawalCarts: function (cartId) {
+      if (!cartId) {
+        console.error("CartId возможно не найден");
+        return;
+      }
+      const cartsDocRef = doc(db, "basket", "carts");
+      const cartsCollectionRef = collection(cartsDocRef, cartId);
+      const cartsQuery = query(cartsCollectionRef);
+      onSnapshot(cartsQuery, (snapshot) => {
+        this.carts = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            product_id: doc.data().product_id,
+            quantity: doc.data().quantity,
+          }
+        });
+        console.log(`Товаров в корине ${this.carts.length}`);
+      });
+    },
+
+    addCarts: async function (cartId, itemId) {
+      if (!cartId || !itemId) {
+        console.error("CartId или itemId возможно не найден");
+        return;
+      }
+
+      const cartsDocRef = doc(db, 'basket', "carts");
+      const cartsCollectionRef = collection(cartsDocRef, cartId);
+
+      const cartsQuery = query(cartsCollectionRef);
+      const querySnapshot = await getDocs(cartsQuery);
+
+      let existingItem = null;
+      querySnapshot.forEach(doc => {
+        if (doc.data().product_id === itemId) {
+          existingItem = doc;
+        }
+      });
+
+      if (existingItem) {
+        const newQuantity = existingItem.data().quantity + 1;
+        await updateDoc(existingItem.ref, {
+          quantity: newQuantity,
+        });
+      } else {
+        await addDoc(cartsCollectionRef, {
+          product_id: itemId,
+          quantity: 1,
+        });
+        console.log(`ТТовар добавлен в корзину`);
+      }
+    },
+  },
+  setup() {
+    const isLoggedIn = ref(true);
+
+    onAuthStateChanged(auth, (user) => {
+          // console.log(user.uid);
+          if (user) {
+            isLoggedIn.value = true;
+          } else {
+            isLoggedIn.value = false;
+          }
+        }
+    )
+
+    return {
+      isLoggedIn,
     }
   },
   mounted() {
-    // this.withdrawalSets();
     this.withdrawalProduct();
-
+    this.withdrawalBasket()
+    this.withdrawalCarts()
   },
 }
 </script>

@@ -86,6 +86,9 @@ li {
 .the-navbar .information__menu-guarantee, .the-navbar .information__menu-contact, .the-navbar .information__menu-social {
   display: flex;
 }
+.the-navbar .information__menu-contact span:nth-child(2) {
+  display: none;
+}
 .the-navbar .information__menu-guarantee i, .the-navbar .information__menu-contact i {
   margin-right: 5px;
 }
@@ -338,6 +341,7 @@ li {
     margin-top: -5px;
   }
   .the-navbar .information__menu-contact span:nth-child(2) {
+    display: inline-block;
     border-radius: 50%;
     padding: 3px 5px;
     background: #636363;
@@ -383,9 +387,10 @@ li {
   }
   .the-navbar .header .menu-ul_burger {
     display: block;
+    font-weight: 400;
   }
   .the-navbar .header .menu-ul_burger span {
-    font-weight: 600;
+    font-weight: 400;
   }
   .the-navbar .header .menu-ul_burger .ic_telegram {
     margin-right: 15px;

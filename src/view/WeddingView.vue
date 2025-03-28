@@ -54,7 +54,7 @@
                 :key="products.id"
                 :id="products.id"
                 :img="require(`@/../public/imagesFirebase/product/${products.photo[0]}`)"
-                :title="products.title"
+                :title="products.name"
                 :description="products.description"
                 :price="products.price"
             ></app-sets-card>

@@ -19,11 +19,16 @@
             <li>
               <router-link class="router-link" to="/delivery">Доставка и оплата</router-link>
             </li>
-            <li>
-              <router-link class="router-link" to="/auth">Вход</router-link>
-            </li>
+
+
             <li v-if="isLoggedIn">
               <router-link @click="signOut" class="router-link" to="/auth">Выход</router-link>
+            </li>
+            <li v-if="isLoggedIn">
+              <router-link @click="signOut" class="router-link" to="/cabinet">Кабинет</router-link>
+            </li>
+            <li v-else>
+              <router-link class="router-link" to="/auth">Вход</router-link>
             </li>
             <!--            <li>-->
             <!--              <router-link class="router-link" to="/auth">Вход</router-link>-->
@@ -67,13 +72,15 @@
 
 
             <li><span><i class="ic_phone2"></i></span>8 812 309-82-88</li>
-            <li>
+            <li v-if="isLoggedIn">
               <router-link class="router-link" to="/basket">
                 <span><i class="ic_basket"></i></span>
-                <span>{{ basket.length }}</span>
+                <span>{{ carts.length }}</span>
                 <!--                 (4 товара)-->
-                <span> {{ basket.length > 0 ? `В корзине (${basket.length} товара)` : 'Закрыть' }}</span>
+                <span> {{ carts.length > 0 ? `В корзине (${carts.length} товара)` : 'корзина пуста' }}</span>
               </router-link>
+            </li>
+            <li v-else>
 
             </li>
           </div>
@@ -93,7 +100,7 @@
           <ul class="menu-ul">
             <li @click="toggleDropdown('city'); closeMenu" class="menu-ul_burger">
               <span><i class="ic_location"></i></span>
-              <span>Санкт-Петербург</span>
+              <span><strong> Санкт-Петербург</strong></span>
               <span><i class="ic_VectorButton"></i></span>
 
               <ul v-if="isDropdownOpen.city" class="dropdown-menu">
@@ -112,8 +119,12 @@
                 </li>
               </ul>
             </li>
-            <hr>
-            <li>
+            <hr v-if="isLoggedIn">
+            <li v-if="isLoggedIn">
+              <router-link @click=" closeMenu" class="menu-ul_burger" to="/cabinet">Кабинет</router-link>
+            </li>
+            <hr v-if="!isLoggedIn">
+            <li v-if="!isLoggedIn">
               <router-link @click=" closeMenu" class="menu-ul_burger" to="/auth">Вход</router-link>
             </li>
             <hr>
@@ -212,13 +223,13 @@
                 </router-link>
               </ul>
             </li>
-            <hr>
+            <hr v-if="isLoggedIn">
             <li v-if="isLoggedIn" @click="closeMenu">
               <span @click="signOut" class="menu-ul_burger">Выход</span>
             </li>
             <hr>
             <li class="menu-ul_burger">
-              <span>8 812 309-82-88</span>
+              <span><strong>8 812 309-82-88</strong></span>
               <!--              <span><i class="ic_VectorButton"></i></span>-->
             </li>
             <li class="menu-ul_burger">
@@ -239,10 +250,15 @@
 import {ref} from 'vue';
 import {useRouter} from 'vue-router';
 import {getAuth, onAuthStateChanged, signOut} from 'firebase/auth';
+import {collection, doc, onSnapshot, query} from "firebase/firestore";
+import {db} from "@/firebase";
 
+const auth = getAuth();
 export default {
   data() {
     return {
+      basket: ref([]),
+      carts: ref([]),
       isDropdownOpen: {
         kit: false,
         companies: false,
@@ -250,28 +266,6 @@ export default {
         city: false,
       },
       isMenuOpen: false,
-      basket: [
-        {
-          id: 1,
-          title: "Kirill",
-          price: 100,
-        },
-        {
-          id: 2,
-          title: "Kirill",
-          price: 100,
-        },
-        {
-          id: 3,
-          title: "Kirill",
-          price: 100,
-        },
-        {
-          id: 4,
-          title: "Kirill",
-          price: 100,
-        },
-      ]
     };
   },
   methods: {
@@ -290,12 +284,50 @@ export default {
       Object.keys(this.isDropdownOpen).forEach(key => {
         this.isDropdownOpen[key] = false;
       });
-    }
+    },
+
+    withdrawalBasket: function () {
+      const basketQuery = query(collection(db, "basket"));
+      onSnapshot(basketQuery, (snapshot) => {
+        this.basket = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            cartsId: doc.data().cartsId,
+            userId: doc.data().userId,
+          }
+        });
+        const currentUser = this.basket.find(basket => basket.userId === auth.lastNotifiedUid);
+        if (currentUser) {
+          this.currentCartId = currentUser.cartsId;
+          this.withdrawalCarts(this.currentCartId);
+        } else {
+          console.error("Корзина для пользователя не найдена.");
+        }
+      });
+    },
+
+    withdrawalCarts: function (cartId) {
+      if (!cartId) {
+        console.error("CartId возможно не найден");
+        return;
+      }
+      const cartsDocRef = doc(db, "basket", "carts");
+      const cartsCollectionRef = collection(cartsDocRef, cartId);
+      const cartsQuery = query(cartsCollectionRef);
+      onSnapshot(cartsQuery, (snapshot) => {
+        this.carts = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            product_id: doc.data().product_id,
+            quantity: doc.data().quantity,
+          }
+        });
+      });
+    },
   },
   setup() {
     const router = useRouter();
     const isLoggedIn = ref(true);
-    const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -313,6 +345,10 @@ export default {
       signOut: signOutUser,
       isLoggedIn
     };
+  },
+  mounted() {
+    this.withdrawalBasket();
+    this.withdrawalCarts();
   },
 }
 </script>

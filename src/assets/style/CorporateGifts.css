@@ -13,9 +13,13 @@ hr {
   justify-content: center;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 .corporate-gifts__wrapper__offer__images {
   position: relative;
+}
+.corporate-gifts__wrapper__offer__informations {
+  display: none;
 }
 .corporate-gifts__wrapper__offer__information {
   width: 670px;
@@ -97,6 +101,7 @@ hr {
 }
 .corporate-gifts__wrapper__completed-orders {
   margin-top: 69px;
+  margin-bottom: 30px;
 }
 .corporate-gifts__wrapper__completed-orders_title {
   text-align: center;
@@ -106,17 +111,20 @@ hr {
 .corporate-gifts__wrapper__completed-orders__cards {
   margin-top: 37px;
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(auto-fill, 270px);
   grid-column-gap: 29px;
+  grid-row-gap: 29px;
 }
 .corporate-gifts__wrapper__completed-orders__cards_card {
   background: #FFFFFF;
   padding: 14px 14px 24px;
 }
 .corporate-gifts__wrapper__completed-orders__cards_card_img {
-  background: #E9E6E6;
-  width: 243px;
-  height: 192px;
+  width: 100%;
+}
+.corporate-gifts__wrapper__completed-orders__cards_card_img img {
+  width: 100%;
 }
 .corporate-gifts__wrapper__completed-orders__cards_card_description {
   margin-top: 22px;
@@ -162,6 +170,131 @@ hr {
 .corporate-gifts__wrapper__answers-questions__cards__card.two {
   margin-top: -55px;
   height: 285px;
+}
+
+@media screen and (max-width: 1024px) {
+  .corporate-gifts__wrapper__offer__images {
+    width: 400px;
+  }
+  .corporate-gifts__wrapper__offer__images img {
+    width: 400px;
+  }
+  .corporate-gifts__wrapper__offer__information {
+    margin-right: 20px;
+  }
+  .corporate-gifts__wrapper__offer__information__title {
+    font-size: 36px;
+  }
+  .corporate-gifts__wrapper__offer__information__description {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .corporate-gifts__wrapper__offer {
+    flex-direction: column;
+  }
+  .corporate-gifts__wrapper__offer__images {
+    margin-top: 20px;
+  }
+  .corporate-gifts__wrapper__offer__informations {
+    display: block;
+  }
+  .corporate-gifts__wrapper__offer__informations__title {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  .corporate-gifts__wrapper__offer__informations__description {
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 16px;
+    width: 400px;
+  }
+  .corporate-gifts__wrapper__offer__information {
+    width: auto;
+  }
+  .corporate-gifts__wrapper__offer__information__title {
+    display: none;
+  }
+  .corporate-gifts__wrapper__offer__information__description {
+    display: none;
+  }
+}
+@media screen and (max-width: 560px) {
+  .corporate-gifts__wrapper__offer__images {
+    width: 340px;
+  }
+  .corporate-gifts__wrapper__offer__images img {
+    width: 340px;
+  }
+  .corporate-gifts__wrapper__offer__informations__title {
+    font-size: 24px;
+  }
+  .corporate-gifts__wrapper__offer__informations__description {
+    font-size: 14px;
+    width: 300px;
+  }
+  .corporate-gifts__wrapper__offer__information__btn button {
+    font-size: 12px;
+  }
+  .corporate-gifts__wrapper__offer__information p {
+    font-size: 14px;
+  }
+  .corporate-gifts__wrapper__sets_title {
+    font-size: 22px;
+  }
+  .corporate-gifts__wrapper__sets__cards {
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  .corporate-gifts__wrapper__completed-orders {
+    margin-top: 40px;
+  }
+  .corporate-gifts__wrapper__completed-orders_title {
+    font-size: 22px;
+  }
+  .corporate-gifts__wrapper__completed-orders__cards {
+    margin-top: 28px;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  .corporate-gifts__wrapper__completed-orders__cards_card_description {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .corporate-gifts__wrapper__offer__images {
+    width: 250px;
+  }
+  .corporate-gifts__wrapper__offer__images img {
+    width: 250px;
+  }
+  .corporate-gifts__wrapper__offer__informations__description {
+    width: 300px;
+  }
+  .corporate-gifts__wrapper__sets_title {
+    font-size: 18px;
+  }
+  .corporate-gifts__wrapper__sets__cards {
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+  .corporate-gifts__wrapper__completed-orders {
+    margin-top: 20px;
+  }
+  .corporate-gifts__wrapper__completed-orders_title {
+    font-size: 18px;
+  }
+  .corporate-gifts__wrapper__completed-orders__cards {
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, 140px);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
 }
 
 /*# sourceMappingURL=CorporateGifts.css.map */

@@ -8,17 +8,29 @@ hr {
   margin-top: 53px;
 
   &__wrapper {
+
     &__offer {
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
+      overflow: hidden;
 
       &__images {
         position: relative;
 
 
+      }
+
+      &__informations {
+        display: none;
+
+        &__title {
+        }
+
+        &__description {
+        }
       }
 
       &__information {
@@ -120,6 +132,7 @@ hr {
 
     &__completed-orders {
       margin-top: 69px;
+      margin-bottom: 30px;
 
       &_title {
         text-align: center;
@@ -130,17 +143,20 @@ hr {
       &__cards {
         margin-top: 37px;
         display: grid;
+        justify-content: center;
         grid-template-columns: repeat(auto-fill, 270px);
         grid-column-gap: 29px;
+        grid-row-gap: 29px;
 
         &_card {
           background: #FFFFFF;
           padding: 14px 14px 24px;
 
           &_img {
-            background: #E9E6E6;
-            width: 243px;
-            height: 192px;
+            width: 100%;
+            img {
+              width: 100%;
+            }
           }
 
           &_description {
@@ -199,6 +215,722 @@ hr {
         }
       }
     }
+  }
+
+}
+
+@media screen and (max-width: 1280px) {
+  .corporate-gifts {
+
+    &__wrapper {
+      &__offer {
+
+
+        &__images {
+
+        }
+
+        &__information {
+
+
+          &__title {
+
+          }
+
+          &__description {
+
+          }
+
+          &__btn {
+
+            button {
+
+            }
+
+            button:not(:last-child) {
+            }
+          }
+
+          p {
+
+          }
+
+
+          .one, .two, .three, .four {
+
+          }
+
+          .one {
+
+          }
+
+          .two {
+
+          }
+
+          .three {
+
+          }
+
+          .four {
+
+          }
+        }
+      }
+
+      &__sets {
+
+        &_title {
+
+        }
+
+        &__cards {
+
+
+        }
+
+      }
+
+      &__completed-orders {
+
+        &_title {
+
+        }
+
+        &__cards {
+
+
+          &_card {
+
+
+            &_img {
+
+            }
+
+            &_description {
+
+            }
+          }
+        }
+      }
+
+      &__answers-questions {
+
+        &_title {
+        }
+
+        &__cards {
+
+
+          &__card {
+
+
+            &_title {
+
+            }
+
+            &_description {
+
+            }
+          }
+
+          &__card.one {
+          }
+
+          &__card.two {
+
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .corporate-gifts {
+
+    &__wrapper {
+      &__offer {
+
+
+        &__images {
+          width: 400px;
+
+          img {
+            width: 400px;
+
+          }
+        }
+
+
+        &__information {
+          margin-right: 20px;
+
+          &__title {
+            font-size: 36px;
+
+          }
+
+          &__description {
+            font-size: 16px;
+
+          }
+
+          &__btn {
+
+            button {
+
+            }
+
+            button:not(:last-child) {
+            }
+          }
+
+          p {
+
+          }
+
+
+          .one, .two, .three, .four {
+
+          }
+
+          .one {
+
+          }
+
+          .two {
+
+          }
+
+          .three {
+
+          }
+
+          .four {
+
+          }
+        }
+      }
+
+      &__sets {
+
+        &_title {
+
+        }
+
+        &__cards {
+
+
+        }
+
+      }
+
+      &__completed-orders {
+
+        &_title {
+
+        }
+
+        &__cards {
+
+
+          &_card {
+
+
+            &_img {
+
+            }
+
+            &_description {
+
+            }
+          }
+        }
+      }
+
+      &__answers-questions {
+
+        &_title {
+        }
+
+        &__cards {
+
+
+          &__card {
+
+
+            &_title {
+
+            }
+
+            &_description {
+
+            }
+          }
+
+          &__card.one {
+          }
+
+          &__card.two {
+
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .corporate-gifts {
+
+    &__wrapper {
+      &__offer {
+        flex-direction: column;
+
+        &__images {
+          margin-top: 20px;
+
+        }
+
+        &__informations {
+          display: block;
+
+          &__title {
+            font-size: 36px;
+            font-weight: 600;
+          }
+
+          &__description {
+            margin: 0 auto;
+            font-weight: 400;
+            font-size: 16px;
+            width: 400px;
+          }
+        }
+
+        &__information {
+          width: auto;
+
+          &__title {
+            display: none;
+
+          }
+
+          &__description {
+            display: none;
+
+          }
+
+          &__btn {
+
+            button {
+
+            }
+
+            button:not(:last-child) {
+            }
+          }
+
+          p {
+
+          }
+
+
+          .one, .two, .three, .four {
+
+          }
+
+          .one {
+
+          }
+
+          .two {
+
+          }
+
+          .three {
+
+          }
+
+          .four {
+
+          }
+        }
+      }
+
+      &__sets {
+
+        &_title {
+
+        }
+
+        &__cards {
+
+
+        }
+
+      }
+
+      &__completed-orders {
+
+        &_title {
+
+        }
+
+        &__cards {
+
+
+          &_card {
+
+
+            &_img {
+
+            }
+
+            &_description {
+
+            }
+          }
+        }
+      }
+
+      &__answers-questions {
+
+        &_title {
+        }
+
+        &__cards {
+
+
+          &__card {
+
+
+            &_title {
+
+            }
+
+            &_description {
+
+            }
+          }
+
+          &__card.one {
+          }
+
+          &__card.two {
+
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 560px) {
+  .corporate-gifts {
+
+    &__wrapper {
+      &__offer {
+
+
+        &__images {
+          width: 340px;
+
+          img {
+            width: 340px;
+          }
+
+        }
+
+        &__informations {
+
+          &__title {
+            font-size: 24px;
+          }
+
+          &__description {
+            font-size: 14px;
+            width: 300px;
+          }
+        }
+
+        &__information {
+
+
+          &__title {
+
+          }
+
+          &__description {
+
+          }
+
+          &__btn {
+            button {
+              font-size: 12px;
+
+            }
+
+            button:not(:last-child) {
+            }
+          }
+
+          p {
+            font-size: 14px;
+          }
+
+
+          .one, .two, .three, .four {
+
+          }
+
+          .one {
+
+          }
+
+          .two {
+
+          }
+
+          .three {
+
+          }
+
+          .four {
+
+          }
+        }
+      }
+
+      &__sets {
+
+        &_title {
+          font-size: 22px;
+        }
+
+        &__cards {    margin-top: 28px;
+          grid-template-columns: repeat(auto-fill, 180px);
+          grid-column-gap: 20px;
+          grid-row-gap: 20px;
+
+        }
+
+      }
+
+      &__completed-orders {
+        margin-top: 40px;
+
+        &_title {
+          font-size: 22px;
+        }
+
+        &__cards {
+          margin-top: 28px;
+          grid-template-columns: repeat(auto-fill, 180px);
+          grid-column-gap: 20px;
+          grid-row-gap: 20px;
+
+          &_card {
+
+
+            &_img {
+
+            }
+
+            &_description {
+              font-size: 12px;
+
+            }
+          }
+        }
+      }
+
+      &__answers-questions {
+
+        &_title {
+        }
+
+        &__cards {
+
+
+          &__card {
+
+
+            &_title {
+            }
+
+            &_description {
+
+            }
+          }
+
+          &__card.one {
+          }
+
+          &__card.two {
+
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+
+@media screen and (max-width: 360px) {
+  .corporate-gifts {
+
+    &__wrapper {
+      &__offer {
+
+
+        &__images {
+          width: 250px;
+
+          img {
+            width: 250px;
+          }
+        }
+
+        &__informations {
+
+          &__title {
+
+          }
+
+          &__description {
+            width: 300px;
+          }
+        }
+
+        &__information {
+
+
+          &__title {
+
+          }
+
+          &__description {
+
+          }
+
+          &__btn {
+
+            button {
+
+            }
+
+            button:not(:last-child) {
+            }
+          }
+
+          p {
+
+          }
+
+
+          .one, .two, .three, .four {
+
+          }
+
+          .one {
+
+          }
+
+          .two {
+
+          }
+
+          .three {
+
+          }
+
+          .four {
+
+          }
+        }
+      }
+
+      &__sets {
+
+        &_title {
+          font-size: 18px;
+        }
+
+        &__cards {
+          margin-top: 20px;
+          grid-template-columns: repeat(auto-fill, 140px);
+          grid-column-gap: 10px;
+          grid-row-gap: 10px;
+
+        }
+
+      }
+
+      &__completed-orders {
+        margin-top: 20px;
+        &_title {
+          font-size: 18px;
+        }
+
+        &__cards {
+          margin-top: 20px;
+          grid-template-columns: repeat(auto-fill, 140px);
+          grid-column-gap: 10px;
+          grid-row-gap: 10px;
+
+          &_card {
+
+
+            &_img {
+
+            }
+
+            &_description {
+
+            }
+          }
+        }
+      }
+
+      &__answers-questions {
+
+        &_title {
+        }
+
+        &__cards {
+
+
+          &__card {
+
+
+            &_title {
+
+            }
+
+            &_description {
+
+            }
+          }
+
+          &__card.one {
+          }
+
+          &__card.two {
+
+          }
+        }
+      }
+    }
+
   }
 
 }

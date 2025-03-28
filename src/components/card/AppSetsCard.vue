@@ -1,5 +1,5 @@
 <template>
-  <div class="popular-sets__wrapper__cards__card">
+  <div :id="id" class="popular-sets__wrapper__cards__card">
     <router-link :to="`/product/${id}`">
       <div class="popular-sets__wrapper__cards__card_img">
         <img :src="img" alt="">
@@ -11,16 +11,133 @@
     </router-link>
     <div class="popular-sets__wrapper__cards__card__price-basket">
       <div class="popular-sets__wrapper__cards__card__price-basket_price">{{ price }} руб</div>
-      <button type="submit" class="popular-sets__wrapper__cards__card__price-basket_basket"><i class="ic_basket"></i>
+
+      <button
+          @click="addCarts(currentCartId, id)"
+          type="submit"
+          class="popular-sets__wrapper__cards__card__price-basket_basket"
+          v-if="isLoggedIn"
+      >
+        <i class="ic_basket"></i>
         <span>В корзину</span>
       </button>
+      <div v-else class="popular-sets__wrapper__cards__card__price-basket_basket no_login">
+        зарегистрируйтесь чтобы добавить корзину
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
+import {ref} from 'vue';
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {collection, onSnapshot, query, doc, addDoc, getDocs, updateDoc} from "firebase/firestore";
+import {db} from "@/firebase";
+
+const auth = getAuth();
 export default {
-  props: ['id', 'img', 'title', 'price', 'description']
+  props: ['id', 'img', 'title', 'price', 'description'],
+  data() {
+    return {
+      basket: ref([]),
+      carts: ref([]),
+    }
+  },
+  methods: {
+
+    withdrawalBasket: function () {
+      const basketQuery = query(collection(db, "basket"));
+      onSnapshot(basketQuery, (snapshot) => {
+        this.basket = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            cartsId: doc.data().cartsId,
+            userId: doc.data().userId,
+          }
+        });
+        const currentUser = this.basket.find(basket => basket.userId === auth.lastNotifiedUid);
+        if (currentUser) {
+          this.currentCartId = currentUser.cartsId;
+          this.withdrawalCarts(this.currentCartId);
+        } else {
+          console.error("Корзина для пользователя не найдена.");
+        }
+      });
+    },
+
+    withdrawalCarts: function (cartId) {
+      if (!cartId) {
+        console.error("CartId возможно не найден");
+        return;
+      }
+      const cartsDocRef = doc(db, "basket", "carts");
+      const cartsCollectionRef = collection(cartsDocRef, cartId);
+      const cartsQuery = query(cartsCollectionRef);
+      onSnapshot(cartsQuery, (snapshot) => {
+        this.carts = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            product_id: doc.data().product_id,
+            quantity: doc.data().quantity,
+          }
+        });
+      });
+    },
+
+    addCarts: async function (cartId, itemId) {
+      if (!cartId || !itemId) {
+        console.error("CartId или itemId возможно не найден");
+        return;
+      }
+
+      const cartsDocRef = doc(db, 'basket', "carts");
+      const cartsCollectionRef = collection(cartsDocRef, cartId);
+
+      const cartsQuery = query(cartsCollectionRef);
+      const querySnapshot = await getDocs(cartsQuery);
+
+      let existingItem = null;
+      querySnapshot.forEach(doc => {
+        if (doc.data().product_id === itemId) {
+          existingItem = doc;
+        }
+      });
+
+      if (existingItem) {
+        const newQuantity = existingItem.data().quantity + 1;
+        await updateDoc(existingItem.ref, {
+          quantity: newQuantity,
+        });
+      } else {
+        await addDoc(cartsCollectionRef, {
+          product_id: itemId,
+          quantity: 1,
+        });
+      }
+    },
+  },
+  setup() {
+    const isLoggedIn = ref(true);
+
+    onAuthStateChanged(auth, (user) => {
+          // console.log(user.uid);
+          if (user) {
+            isLoggedIn.value = true;
+          } else {
+            isLoggedIn.value = false;
+          }
+        }
+    )
+
+    return {
+      isLoggedIn,
+    }
+  },
+  mounted() {
+    this.withdrawalBasket();
+    this.withdrawalCarts();
+  },
 }
 </script>
 
@@ -72,26 +189,33 @@ export default {
       color: #E7426A;
       font-size: 18px;
       font-weight: 600;
-      height: 49px;
-
+      height: 100%;
+      border-radius: 0 0 0 5px;
     }
 
     &_basket {
+      text-align: center;
       cursor: pointer;
       align-content: flex-end;
       width: 70%;
       padding: 13px 22px;
       outline: 1px solid rgb(237, 237, 240);
       font-size: 14px;
-      height: 49px;
+      height: 100%;
       font-weight: 600;
       border: none;
       background: #FFFFFF;
       color: #292929;
+      border-radius: 0 0 5px 0;
 
       i {
         margin-right: 11px;
       }
+    }
+
+    &_basket.no_login {
+      cursor: auto;
+      font-size: 10px;
     }
   }
 }
@@ -105,7 +229,12 @@ export default {
 
     &__price-basket {
       &_basket {
+
         padding: 10px 8px;
+      }
+
+      &_basket.no_login {
+        font-size: 8px;
       }
     }
   }
@@ -143,6 +272,14 @@ export default {
         span {
           display: none;
         }
+
+        i {
+          margin: 0;
+        }
+      }
+
+      &_basket.no_login {
+        font-size: 6px;
       }
     }
   }
@@ -172,15 +309,21 @@ export default {
 
       &_price {
         padding: 0 0 0 8px;
+        font-size: 10px;
       }
 
       &_basket {
-        padding: 0px 0px;
+        padding: 4px 4px;
         width: 48%;
+        font-size: 14px;
 
         i {
           margin-right: 4px;
         }
+      }
+
+      &_basket.no_login {
+        font-size: 4px;
       }
     }
   }

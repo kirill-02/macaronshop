@@ -2,7 +2,7 @@ import {defineStore} from 'pinia';
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import {app, db} from '../firebase.js';
 import {ref} from 'vue';
-import {addDoc, collection, doc, onSnapshot, query} from "firebase/firestore";
+import {addDoc, collection, onSnapshot, query} from "firebase/firestore";
 
 export const useStateStore = defineStore('stateStore', () => {
     const user = ref(null);
@@ -77,11 +77,6 @@ export const useStateStore = defineStore('stateStore', () => {
                 cartsId: cartsRandom,
 
             })
-
-            const cartsDocRef = doc(db, 'basket', "carts");
-            const cartsRandomCollectionRef = collection(cartsDocRef, cartsRandom);
-
-            await addDoc(cartsRandomCollectionRef, {});
         } catch (err) {
             error.value = err.message;
             console.error("Ошибка регистрации:", err.message);

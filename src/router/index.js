@@ -92,12 +92,13 @@ const routes = [
             auth: true
         }
     },
+    //
     {
         path: '/basket',
         name: 'basket',
         component: BasketView,
         meta: {
-            layout: 'main',
+            layout: 'authorized',
             auth: true
         }
     },
@@ -143,7 +144,7 @@ const routes = [
         name: 'register',
         component: RegisterView,
         meta: {
-            layout: 'auth',
+            layout: 'auth ',
             auth: true
         }
     },
@@ -170,7 +171,7 @@ const routes = [
         name: 'cabinet',
         component: CabinetView,
         meta: {
-            layout: 'main',
+            layout: 'authorized',
             auth: true
         }
     },

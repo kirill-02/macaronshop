@@ -7,6 +7,8 @@ import {computed} from 'vue'
 import {useRoute} from 'vue-router'
 import MainLayout from "@/layout/MainLayout.vue";
 import AuthLayout from "@/layout/AuthLayout.vue";
+import AuthorizedLayout from "@/layout/AuthorizedLayout.vue";
+import UnauthorizedLayout from "@/layout/UnauthorizedLayout.vue";
 
 export default {
   setup() {
@@ -16,7 +18,7 @@ export default {
     }
   },
   // components: {TheNavbar, TheFooter}
-  components: {MainLayout, AuthLayout}
+  components: {MainLayout, AuthLayout, AuthorizedLayout, UnauthorizedLayout}
 
 }
 
