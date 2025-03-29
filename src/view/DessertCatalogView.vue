@@ -61,7 +61,7 @@
               :key="products.id"
               :id="products.id"
               :img="require(`@/../public/imagesFirebase/product/${products.photo[0]}`)"
-              :title="products.title"
+              :title="products.name"
               :description="products.description"
               :price="products.price"
           ></app-sets-card>
@@ -114,7 +114,6 @@ export default {
             price: doc.data().price,
             description: doc.data().description,
             photo: doc.data().photo || [],
-            compound: doc.data().compound || [],
             storage_conditions: doc.data().storage_conditions || [],
             description_composition_condition: doc.data().description_composition_condition || [],
             tastes: doc.data().tastes || [],

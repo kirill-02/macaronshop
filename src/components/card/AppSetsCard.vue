@@ -22,7 +22,7 @@
         <span>В корзину</span>
       </button>
       <div v-else class="popular-sets__wrapper__cards__card__price-basket_basket no_login">
-        зарегистрируйтесь чтобы добавить корзину
+       <router-link to="/auth"> зарегистрируйтесь чтобы добавить корзину</router-link>
       </div>
 
     </div>

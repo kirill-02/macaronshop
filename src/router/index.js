@@ -144,7 +144,7 @@ const routes = [
         name: 'register',
         component: RegisterView,
         meta: {
-            layout: 'auth ',
+            layout: 'auth',
             auth: true
         }
     },
