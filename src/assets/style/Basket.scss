@@ -10,7 +10,19 @@
   font-size: 16px;
   font-weight: 400;
 }
+.messageSuccessfully {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
 
+.errorMessage {
+  margin: 5px 0 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ff4d6d;
+}
 hr {
 
   margin: 16px 0;
@@ -457,6 +469,12 @@ hr {
   .description {
     font-size: 14px;
   }
+  .messageSuccessfully {
+    margin: 10px auto 0;
+    max-width: 300px;
+    font-size: 16px;
+    font-weight: 400;
+  }
   .basket {
     &__wrapper {
       overflow: hidden;
@@ -492,7 +510,7 @@ hr {
             }
 
             &__quantity {
-              margin-top: 10px;
+              margin-top: 22px;
               justify-content: left;
             }
 

@@ -25,7 +25,7 @@
               <router-link @click="signOut" class="router-link" to="/auth">Выход</router-link>
             </li>
             <li v-if="isLoggedIn">
-              <router-link @click="signOut" class="router-link" to="/cabinet">Кабинет</router-link>
+              <router-link class="router-link" to="/cabinet">Кабинет</router-link>
             </li>
             <li v-else>
               <router-link class="router-link" to="/auth">Вход</router-link>

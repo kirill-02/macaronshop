@@ -1,10 +1,10 @@
 <template>
   <div class="basket">
     <div class="container">
-      <div class="title">Ваша корзина</div>
+      <div class="title" id="messageSuccessfully">Ваша корзина</div>
       <div class="description">{{ filteredProductsCombo.length }} товара / {{ calculateFinalPrice() }} руб.</div>
 
-{{messageSuccessfully}}
+      <div class="messageSuccessfully" >{{messageSuccessfully}}</div>
       <div class="basket__wrapper">
         <div class="basket__wrapper__information">
 
@@ -44,7 +44,6 @@
                      class="basket__wrapper__information__product__layout_cross"><i class="ic_cross"></i></div>
 
               </div>
-              {{basket.cartsId}}
               <hr>
             </div>
 
@@ -67,14 +66,18 @@
             <form @submit.prevent="addDelivery" class="basket__wrapper__information__delivery__forms">
 
               <div class="basket__wrapper__information__delivery__forms_contact">
-                <div class="">
+                <div class="" id="errorMessageName">
                   <label for="name">Ваше имя*</label>
-                  <input type="text" id="name" v-model="name" placeholder="Укажите имя" required></div>
-                {{errorMessageName}}
-                <div class="">
+                  <input type="text" id="name" v-model="name" placeholder="Укажите имя" >
+                <div class="errorMessage">{{errorMessageName}}</div>
+                </div>
+                <div class="" id="errorMessagePhone">
                   <label for="phone">Ваш телефон*</label>
-                  <input type="text" id="phone" v-model="phone" placeholder="+7 (___) ___-__-__" required></div>
+                  <input type="text" id="phone" v-model="phone" placeholder="+7 (___) ___-__-__" >
+                <div class="errorMessage">
                 {{errorMessagePhone}}
+                </div>
+                </div>
               </div>
 
               <div class="basket__wrapper__information__delivery__forms__way">
@@ -102,21 +105,25 @@
 
               </div>
 
-              <div class="basket__wrapper__information__delivery__forms_comment">
+              <div class="basket__wrapper__information__delivery__forms_comment" id="errorMessageAddress">
                 <label for="address">Адрес доставки</label>
-                <textarea id="address" v-model="address" placeholder="Не нужно заполнять при самовывозе" required></textarea>
+                <textarea id="address" v-model="address" placeholder="Не нужно заполнять при самовывозе" ></textarea>
+                <div class="errorMessage">
                 {{errorMessageAddress}}
+                </div>
               </div>
 
               <div class="basket__wrapper__information__delivery__forms_contact">
-                <div class="">
+                <div class="" id="errorMessageDate">
                   <label for="date">Дата получения</label>
-                  <input type="text" id="date" v-model="date" placeholder="Укажите дату" required></div>
-                {{errorMessageDate}}
-                <div class="">
+                  <input type="text" id="date" v-model="date" placeholder="Укажите дату" >
+                  <div class="errorMessage">{{errorMessageDate}} </div>
+                </div>
+                <div class="" id="errorMessageTime">
                   <label for="time">Время</label>
-                  <input type="text" id="time" v-model="time" placeholder="Укажите время" required></div>
-                {{errorMessageTime}}
+                  <input type="text" id="time" v-model="time" placeholder="Укажите время" >
+                  <div class="errorMessage">{{errorMessageTime}} </div>
+                </div>
               </div>
 
               <div class="basket__wrapper__information__delivery__forms_comment">
@@ -169,8 +176,11 @@
                 <div class="basket__wrapper__information__delivery__forms__result_sum">Итоговая сумма заказа вместе с
                   доставкой:
                 </div>
-                <div class="basket__wrapper__information__delivery__forms__result_price"> {{ calculateFinalPrice() }}
-                  руб.
+                <div class="basket__wrapper__information__delivery__forms__result_price" v-if="selectedDelivery === 'courier'">
+                  {{ calculateFinalPrice() + 400}} руб.
+                </div>
+                <div class="basket__wrapper__information__delivery__forms__result_price" v-else>
+                  {{ calculateFinalPrice()}} руб.
                 </div>
               </div>
               {{ errorMessage }}
@@ -190,27 +200,48 @@
           <div class="basket__wrapper__result_title">Итого</div>
 
           <div class="basket__wrapper__result__information">
+<!--            <div class="basket__wrapper__result__information__card">-->
+<!--              <div class="basket__wrapper__result__information__card_title">Стоимость товаров</div>-->
+<!--              <div class="basket__wrapper__result__information__card_dot-one"></div>-->
+<!--              <div class="basket__wrapper__result__information__card_price">700 руб</div>-->
+<!--            </div>-->
+<!--            <div class="basket__wrapper__result__information__card">-->
+<!--              <div class="basket__wrapper__result__information__card_title">Скидка</div>-->
+<!--              <div class="basket__wrapper__result__information__card_dot-two"></div>-->
+<!--              <div class="basket__wrapper__result__information__card_price">0 руб</div>-->
+<!--            </div>-->
             <div class="basket__wrapper__result__information__card">
-              <div class="basket__wrapper__result__information__card_title">Стоимость товаров</div>
-              <div class="basket__wrapper__result__information__card_dot-one"></div>
-              <div class="basket__wrapper__result__information__card_price">700 руб</div>
-            </div>
-            <div class="basket__wrapper__result__information__card">
-              <div class="basket__wrapper__result__information__card_title">Скидка</div>
-              <div class="basket__wrapper__result__information__card_dot-two"></div>
-              <div class="basket__wrapper__result__information__card_price">0 руб</div>
-            </div>
-            <div class="basket__wrapper__result__information__card">
-              <div class="basket__wrapper__result__information__card_title">Доставка</div>
+              <div class="basket__wrapper__result__information__card_title"
+              v-if="selectedDelivery === 'courier'">
+                Доставка
+              </div>
+              <div class="basket__wrapper__result__information__card_title"
+                   v-else>
+                Самовывоз
+              </div>
               <div class="basket__wrapper__result__information__card_dot-three"></div>
-              <div class="basket__wrapper__result__information__card_price">400 руб</div>
+              <div class="basket__wrapper__result__information__card_price"
+                   v-if="selectedDelivery === 'courier'">
+                400 руб
+              </div>
+              <div class="basket__wrapper__result__information__card_price"
+                   v-else>
+                бесплатно
+              </div>
             </div>
             <hr>
             <div class="basket__wrapper__result__information__card">
               <div class="basket__wrapper__result__information__card_title">К оплате</div>
-              <div class="basket__wrapper__result__information__card_price"><strong> {{ calculateFinalPrice() }}
-                руб</strong></div>
+              <div class="basket__wrapper__result__information__card_price" v-if="selectedDelivery === 'courier'">
+                <strong> {{ calculateFinalPrice() + 400}}
+                руб</strong>
+              </div>
+              <div class="basket__wrapper__result__information__card_price" v-else>
+                <strong> {{ calculateFinalPrice()}}
+                  руб</strong>
+              </div>
             </div>
+
           </div>
           <hr>
           <form @submit.prevent="addDelivery">
@@ -280,21 +311,43 @@ export default {
       this.errorMessageDate = null;
       this.errorMessageTime = null;
 
-      // Проверка обязательных полей
-      if (!this.name) {
+      const trimmedName = this.name.trim();
+      const trimmedPhone = this.phone.trim();
+      const trimmedAddress = this.address.trim();
+      const trimmedDate = this.date.trim();
+      const trimmedTime = this.time.trim();
+
+      const messageSuccessfully = document.getElementById('messageSuccessfully');
+      const errorMessageName = document.getElementById('errorMessageName');
+      const errorMessagePhone = document.getElementById('errorMessagePhone');
+      const errorMessageAddress = document.getElementById('errorMessageAddress');
+      const errorMessageDate = document.getElementById('errorMessageDate');
+      const errorMessageTime = document.getElementById('errorMessageTime');
+
+
+      if (this.filteredProductsCombo.length <= 0) {
+        this.messageSuccessfully = "Пожалуйста добавьте товары в корзину"
+        messageSuccessfully.scrollIntoView({ behavior: 'smooth' });
+
+      } else if (!trimmedName) {
         this.errorMessageName = "Заполните имя";
-      } else if (!this.phone) {
+        errorMessageName.scrollIntoView({ behavior: 'smooth' });
+      } else if (!trimmedPhone) {
         this.errorMessagePhone = "Заполните телефон";
-      } else if (!this.address) {
+        errorMessagePhone.scrollIntoView({ behavior: 'smooth' });
+      } else if (!trimmedAddress) {
         this.errorMessageAddress = "Заполните адрес";
-      } else if (!this.date) {
+        errorMessageAddress.scrollIntoView({ behavior: 'smooth' });
+      } else if (!trimmedDate) {
         this.errorMessageDate = "Заполните дату";
-      } else if (!this.time) {
+        errorMessageDate.scrollIntoView({ behavior: 'smooth' });
+      } else if (!trimmedTime) {
         this.errorMessageTime = "Заполните время";
+        errorMessageTime.scrollIntoView({ behavior: 'smooth' });
       }
 
       // Проверка на наличие ошибок
-      return !this.errorMessageName && !this.errorMessagePhone && !this.errorMessageAddress && !this.errorMessageDate && !this.errorMessageTime;
+      return !this.errorMessageName && !this.errorMessagePhone && !this.errorMessageAddress && !this.errorMessageDate && !this.errorMessageTime && !this.messageSuccessfully;
     },
     addDelivery: async function () {
       if (!this.validateFields()) {
@@ -303,10 +356,14 @@ export default {
 
       try {
       const delivery = this.selectedDelivery === 'courier' ? 'Курьерская доставка' : 'Самовывоз';
-      const price = this.calculateFinalPrice();
+      let price = this.calculateFinalPrice();
       const products = this.filteredProductsCombo
       const productIds = products.map(product => product.id);
       let paymentMethod;
+
+      if (this.selectedDelivery === 'courier') {
+        price += 400
+      }
 
       if (this.selectedPayment === 'card') {
         paymentMethod = 'Оплата картой онлайн';
@@ -332,9 +389,18 @@ export default {
         userId: auth.lastNotifiedUid || null,
         product: productIds || null,
       };
+      console.log(orderDetails);
       await addDoc(collection(db, 'orderHistory'), orderDetails)
       await addDoc(collection(db, 'applications'), orderDetails)
+
+
+        const messageSuccessfully = document.getElementById('messageSuccessfully');
+        messageSuccessfully.scrollIntoView({ behavior: 'smooth' });
         this.messageSuccessfully = "Успешно купили товар"
+        setTimeout(() => {
+          this.messageSuccessfully = null
+        }, 30000)
+
         this.name = null
         this.phone = null
         this.address = null
@@ -342,18 +408,12 @@ export default {
         this.time = null
         this.comment = null
 
-        // проверить правильность удаления
         const cartsDocRef = doc(db, 'basket', "carts");
         const cartsCollectionRef = collection(cartsDocRef, this.currentCartId); // Используем текущий cartId
-
-        // Получаем все документы из коллекции carts
         const querySnapshot = await getDocs(cartsCollectionRef);
-
-        // Удаляем каждый документ
         const deletePromises = querySnapshot.docs.map(doc => deleteDoc(doc.ref));
-        await Promise.all(deletePromises);
 
-        this.carts = [];
+        await Promise.all(deletePromises);
       } catch (err) {
         err.value = err.message;
         console.error("Ошибка регистрации:", err.message);

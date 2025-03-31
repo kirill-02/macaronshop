@@ -14,7 +14,7 @@ import ProductView from "@/view/ProductView.vue";
 import NewsView from "@/view/NewsView.vue";
 import BasketView from "@/view/BasketView.vue";
 import WeddingView from "@/view/WeddingView.vue";
-import ErrorView from "@/view/NotFoundView.vue";
+import NotFoundView from "@/view/NotFoundView.vue";
 import WholesaleSuppliesView from "@/view/WholesaleSuppliesView.vue";
 import CorporateGiftsView from "@/view/CorporateGiftsView.vue";
 
@@ -178,7 +178,7 @@ const routes = [
     {
         path: '/:pathMatch(.*)*',
         name: '404',
-        component: ErrorView,
+        component: NotFoundView,
         meta: {
             layout: 'main',
             auth: true

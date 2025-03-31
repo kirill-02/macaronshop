@@ -10,6 +10,19 @@
   font-size: 16px;
   font-weight: 400;
 }
+.messageSuccessfully {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #8cc4ec;
+}
+.errorMessage {
+  margin: 5px 0 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ff4d6d;
+}
 
 hr {
   margin: 16px 0;
@@ -353,6 +366,12 @@ hr {
   .description {
     font-size: 14px;
   }
+  .messageSuccessfully {
+    margin: 10px auto 0;
+    max-width: 300px;
+    font-size: 16px;
+    font-weight: 400;
+  }
   .basket__wrapper {
     overflow: hidden;
     margin-top: 12px;
@@ -382,7 +401,7 @@ hr {
     font-size: 10px;
   }
   .basket__wrapper__information__product__layout__quantity {
-    margin-top: 10px;
+    margin-top: 22px;
     justify-content: left;
   }
   .basket__wrapper__information__product__layout__price {
