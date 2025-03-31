@@ -58,7 +58,7 @@
                 <i class="ic_basket"></i>
                 В корзину
               </button>
-              <div v-else class="black"> зарегистрируйтесь чтобы добавить корзину</div>
+              <div v-else class="black"> <router-link to="/auth">  зарегистрируйтесь чтобы добавить корзину</router-link></div>
             </div>
 
             <div class="product__wrapper__delivery">
@@ -294,7 +294,7 @@ export default {
           product_id: itemId,
           quantity: 1,
         });
-        console.log(`ТТовар добавлен в корзину`);
+        console.log(`Товар добавлен в корзину`);
       }
     },
   },
@@ -302,7 +302,6 @@ export default {
     const isLoggedIn = ref(true);
 
     onAuthStateChanged(auth, (user) => {
-          // console.log(user.uid);
           if (user) {
             isLoggedIn.value = true;
           } else {
