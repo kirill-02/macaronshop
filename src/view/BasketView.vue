@@ -393,7 +393,7 @@ export default {
         } else if (this.selectedPayment === 'cash') {
           paymentMethod = 'Наличными при получении';
         } else if (this.selectedPayment === 'yandex') {
-          paymentMethod = 'Наличными при получении';
+          paymentMethod = 'Яндекс деньги';
         } else {
           paymentMethod = 'не выбран';
         }
