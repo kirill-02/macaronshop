@@ -17,6 +17,7 @@ import WeddingView from "@/view/WeddingView.vue";
 import NotFoundView from "@/view/NotFoundView.vue";
 import WholesaleSuppliesView from "@/view/WholesaleSuppliesView.vue";
 import CorporateGiftsView from "@/view/CorporateGiftsView.vue";
+import OrdersHistoryView from "@/view/OrdersHistoryView.vue";
 
 const routes = [
     {
@@ -129,13 +130,21 @@ const routes = [
             auth: true
         }
     },
-
     {
         path: '/auth',
         name: 'auth',
         component: AuthView,
         meta: {
             layout: 'auth',
+            auth: true
+        }
+    },
+    {
+        path: '/ordersHistory/:id',
+        name: 'ordersHistory',
+        component: OrdersHistoryView,
+        meta: {
+            layout: 'authorized',
             auth: true
         }
     },

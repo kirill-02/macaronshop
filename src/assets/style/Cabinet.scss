@@ -1,0 +1,158 @@
+.cabinet {
+  margin-top: 41px;
+  padding: 0 20px;
+
+  &__wrapper {
+    display: flex;
+
+    &__menu {
+      margin-right: 100px;
+
+      &_button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        color: #292929;
+        background: #F7EBE5;
+        padding: 20px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      &_button:hover {
+        background: #fddccc;
+        color: #000;
+      }
+
+      &_button.page_active {
+        background: #f0c1aa;
+        color: #000;
+      }
+
+      &_button:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+
+    &__information {
+      &_title {
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      table {
+        text-align: center;
+        margin-top: 20px;
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      th {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 6px 25px;
+        border: 1px solid black;
+      }
+
+      td {
+        font-size: 14px;
+        font-weight: 400;
+        padding: 10px 25px;
+        background: #ededed;
+        border-bottom: 1px solid black;
+
+        span {
+          color: #4E9DD3;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .cabinet {
+    &__wrapper {
+      &__menu {
+        margin-right: 50px;
+      }
+
+      &__information {
+        th {
+          padding: 10px 15px;
+        }
+
+        td {
+          padding: 10px 15px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cabinet {
+    &__wrapper {
+      flex-direction: column;
+
+      &__menu {
+        display: flex;
+
+        &_button {
+          text-align: center;
+        }
+
+        &_button:not(:last-child) {
+          margin-bottom: 0;
+          margin-right: 15px;
+        }
+      }
+
+      &__information {
+        &_title {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .cabinet {
+    padding: 10px;
+
+    &__wrapper {
+      &__menu {
+        &_button {
+          font-size: 12px;
+          padding: 10px 10px;
+        }
+      }
+
+      &__information {
+        &_title {
+          font-size: 22px;
+
+        }
+
+        table {
+          margin-top: 10px;
+        }
+
+        th {
+          font-size: 10px;
+          padding: 4px 4px;
+        }
+
+        td {
+          font-size: 8px;
+          padding: 4px 4px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+}

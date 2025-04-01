@@ -4,7 +4,7 @@
       <div class="title" id="messageSuccessfully">Ваша корзина</div>
       <div class="description">{{ filteredProductsCombo.length }} товара / {{ calculateFinalPrice() }} руб.</div>
 
-      <div class="messageSuccessfully" >{{messageSuccessfully}}</div>
+      <div class="messageSuccessfully">{{ messageSuccessfully }}</div>
       <div class="basket__wrapper">
         <div class="basket__wrapper__information">
 
@@ -17,7 +17,7 @@
                 </div>
                 <div class="basket__wrapper__information__product__layout__things">
                   <div class="basket__wrapper__information__product__layout__things_title">
-                    <strong>{{ basket.name }} <span> {{ totalQuantity(basket.tastes) }}  шт.</span></strong>
+                    <strong>{{ basket.name }} </strong>
                   </div>
                   <div class="basket__wrapper__information__product__layout__things__description">
                     <div class=""
@@ -68,15 +68,15 @@
               <div class="basket__wrapper__information__delivery__forms_contact">
                 <div class="" id="errorMessageName">
                   <label for="name">Ваше имя*</label>
-                  <input type="text" id="name" v-model="name" placeholder="Укажите имя" >
-                <div class="errorMessage">{{errorMessageName}}</div>
+                  <input type="text" id="name" v-model="name" placeholder="Укажите имя">
+                  <div class="errorMessage">{{ errorMessageName }}</div>
                 </div>
                 <div class="" id="errorMessagePhone">
                   <label for="phone">Ваш телефон*</label>
-                  <input type="text" id="phone" v-model="phone" placeholder="+7 (___) ___-__-__" >
-                <div class="errorMessage">
-                {{errorMessagePhone}}
-                </div>
+                  <input type="text" id="phone" v-model="phone" placeholder="+7 (___) ___-__-__">
+                  <div class="errorMessage">
+                    {{ errorMessagePhone }}
+                  </div>
                 </div>
               </div>
 
@@ -107,22 +107,22 @@
 
               <div class="basket__wrapper__information__delivery__forms_comment" id="errorMessageAddress">
                 <label for="address">Адрес доставки</label>
-                <textarea id="address" v-model="address" placeholder="Не нужно заполнять при самовывозе" ></textarea>
+                <textarea id="address" v-model="address" placeholder="Не нужно заполнять при самовывозе"></textarea>
                 <div class="errorMessage">
-                {{errorMessageAddress}}
+                  {{ errorMessageAddress }}
                 </div>
               </div>
 
               <div class="basket__wrapper__information__delivery__forms_contact">
                 <div class="" id="errorMessageDate">
                   <label for="date">Дата получения</label>
-                  <input type="text" id="date" v-model="date" placeholder="Укажите дату" >
-                  <div class="errorMessage">{{errorMessageDate}} </div>
+                  <input type="text" id="date" v-model="date" placeholder="Укажите дату">
+                  <div class="errorMessage">{{ errorMessageDate }}</div>
                 </div>
                 <div class="" id="errorMessageTime">
                   <label for="time">Время</label>
-                  <input type="text" id="time" v-model="time" placeholder="Укажите время" >
-                  <div class="errorMessage">{{errorMessageTime}} </div>
+                  <input type="text" id="time" v-model="time" placeholder="Укажите время">
+                  <div class="errorMessage">{{ errorMessageTime }}</div>
                 </div>
               </div>
 
@@ -176,11 +176,12 @@
                 <div class="basket__wrapper__information__delivery__forms__result_sum">Итоговая сумма заказа вместе с
                   доставкой:
                 </div>
-                <div class="basket__wrapper__information__delivery__forms__result_price" v-if="selectedDelivery === 'courier'">
-                  {{ calculateFinalPrice() + 400}} руб.
+                <div class="basket__wrapper__information__delivery__forms__result_price"
+                     v-if="selectedDelivery === 'courier'">
+                  {{ calculateFinalPrice() + 400 }} руб.
                 </div>
                 <div class="basket__wrapper__information__delivery__forms__result_price" v-else>
-                  {{ calculateFinalPrice()}} руб.
+                  {{ calculateFinalPrice() }} руб.
                 </div>
               </div>
               {{ errorMessage }}
@@ -200,19 +201,19 @@
           <div class="basket__wrapper__result_title">Итого</div>
 
           <div class="basket__wrapper__result__information">
-<!--            <div class="basket__wrapper__result__information__card">-->
-<!--              <div class="basket__wrapper__result__information__card_title">Стоимость товаров</div>-->
-<!--              <div class="basket__wrapper__result__information__card_dot-one"></div>-->
-<!--              <div class="basket__wrapper__result__information__card_price">700 руб</div>-->
-<!--            </div>-->
-<!--            <div class="basket__wrapper__result__information__card">-->
-<!--              <div class="basket__wrapper__result__information__card_title">Скидка</div>-->
-<!--              <div class="basket__wrapper__result__information__card_dot-two"></div>-->
-<!--              <div class="basket__wrapper__result__information__card_price">0 руб</div>-->
-<!--            </div>-->
+            <!--            <div class="basket__wrapper__result__information__card">-->
+            <!--              <div class="basket__wrapper__result__information__card_title">Стоимость товаров</div>-->
+            <!--              <div class="basket__wrapper__result__information__card_dot-one"></div>-->
+            <!--              <div class="basket__wrapper__result__information__card_price">700 руб</div>-->
+            <!--            </div>-->
+            <!--            <div class="basket__wrapper__result__information__card">-->
+            <!--              <div class="basket__wrapper__result__information__card_title">Скидка</div>-->
+            <!--              <div class="basket__wrapper__result__information__card_dot-two"></div>-->
+            <!--              <div class="basket__wrapper__result__information__card_price">0 руб</div>-->
+            <!--            </div>-->
             <div class="basket__wrapper__result__information__card">
               <div class="basket__wrapper__result__information__card_title"
-              v-if="selectedDelivery === 'courier'">
+                   v-if="selectedDelivery === 'courier'">
                 Доставка
               </div>
               <div class="basket__wrapper__result__information__card_title"
@@ -233,11 +234,11 @@
             <div class="basket__wrapper__result__information__card">
               <div class="basket__wrapper__result__information__card_title">К оплате</div>
               <div class="basket__wrapper__result__information__card_price" v-if="selectedDelivery === 'courier'">
-                <strong> {{ calculateFinalPrice() + 400}}
-                руб</strong>
+                <strong> {{ calculateFinalPrice() + 400 }}
+                  руб</strong>
               </div>
               <div class="basket__wrapper__result__information__card_price" v-else>
-                <strong> {{ calculateFinalPrice()}}
+                <strong> {{ calculateFinalPrice() }}
                   руб</strong>
               </div>
             </div>
@@ -245,7 +246,8 @@
           </div>
           <hr>
           <form @submit.prevent="addDelivery">
-          <button class="basket__wrapper__result_btn">Оформить заказ</button></form>
+            <button class="basket__wrapper__result_btn">Оформить заказ</button>
+          </form>
         </div>
       </div>
 
@@ -327,23 +329,23 @@ export default {
 
       if (this.filteredProductsCombo.length <= 0) {
         this.messageSuccessfully = "Пожалуйста добавьте товары в корзину"
-        messageSuccessfully.scrollIntoView({ behavior: 'smooth' });
+        messageSuccessfully.scrollIntoView({behavior: 'smooth'});
 
       } else if (!trimmedName) {
         this.errorMessageName = "Заполните имя";
-        errorMessageName.scrollIntoView({ behavior: 'smooth' });
+        errorMessageName.scrollIntoView({behavior: 'smooth'});
       } else if (!trimmedPhone) {
         this.errorMessagePhone = "Заполните телефон";
-        errorMessagePhone.scrollIntoView({ behavior: 'smooth' });
+        errorMessagePhone.scrollIntoView({behavior: 'smooth'});
       } else if (!trimmedAddress) {
         this.errorMessageAddress = "Заполните адрес";
-        errorMessageAddress.scrollIntoView({ behavior: 'smooth' });
+        errorMessageAddress.scrollIntoView({behavior: 'smooth'});
       } else if (!trimmedDate) {
         this.errorMessageDate = "Заполните дату";
-        errorMessageDate.scrollIntoView({ behavior: 'smooth' });
+        errorMessageDate.scrollIntoView({behavior: 'smooth'});
       } else if (!trimmedTime) {
         this.errorMessageTime = "Заполните время";
-        errorMessageTime.scrollIntoView({ behavior: 'smooth' });
+        errorMessageTime.scrollIntoView({behavior: 'smooth'});
       }
 
       // Проверка на наличие ошибок
@@ -355,46 +357,67 @@ export default {
       }
 
       try {
-      const delivery = this.selectedDelivery === 'courier' ? 'Курьерская доставка' : 'Самовывоз';
-      let price = this.calculateFinalPrice();
-      const products = this.filteredProductsCombo
-      const productIds = products.map(product => product.id);
-      let paymentMethod;
+        const delivery = this.selectedDelivery === 'courier' ? 'Курьерская доставка' : 'Самовывоз';
+        let price = this.calculateFinalPrice();
+        const products = this.filteredProductsCombo
 
-      if (this.selectedDelivery === 'courier') {
-        price += 400
-      }
+        const productList = products.map(product => ({
+          id: product.id || null,
+          quantity: product.quantity || null
+        }));
 
-      if (this.selectedPayment === 'card') {
-        paymentMethod = 'Оплата картой онлайн';
-      } else if (this.selectedPayment === 'cash') {
-        paymentMethod = 'Наличными при получении';
-      } else if (this.selectedPayment === 'yandex') {
-        paymentMethod = 'Наличными при получении';
-      } else {
-        paymentMethod = 'не выбран';
-      }
+        const email = auth.currentUser.email;
+        const now = new Date();
+        // Получаем необходимые части даты
+        const day = now.getDate();
+        const month = now.getMonth() + 1; // Месяцы идут с 0 (январь = 0)
+        const year = now.getFullYear();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
 
-      const orderDetails = {
-        address: this.address || null,
-        comment: this.comment || null,
-        date: this.date || null,
-        delivery: delivery || null,
-        name: this.name || null,
-        payment: paymentMethod || null,
-        phone: this.phone || null,
-        state: "новый" || null,
-        time: this.time || null,
-        price: price || null,
-        userId: auth.lastNotifiedUid || null,
-        product: productIds || null,
-      };
-      await addDoc(collection(db, 'orderHistory'), orderDetails)
-      await addDoc(collection(db, 'applications'), orderDetails)
+        const formattedDay = day < 10 ? '0' + day : day;
+        const formattedMonth = month < 10 ? '0' + month : month;
+        const formattedHours = hours < 10 ? '0' + hours : hours;
+        const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
 
+        const orderDate = `${formattedDay}.${formattedMonth}.${year} ${formattedHours}.${formattedMinutes}`;
+
+        let paymentMethod;
+
+        if (this.selectedDelivery === 'courier') {
+          price += 400
+        }
+
+        if (this.selectedPayment === 'card') {
+          paymentMethod = 'Оплата картой онлайн';
+        } else if (this.selectedPayment === 'cash') {
+          paymentMethod = 'Наличными при получении';
+        } else if (this.selectedPayment === 'yandex') {
+          paymentMethod = 'Наличными при получении';
+        } else {
+          paymentMethod = 'не выбран';
+        }
+
+        const orderDetails = {
+          address: this.address || null,
+          comment: this.comment || null,
+          date: this.date || null,
+          delivery: delivery || null,
+          name: this.name || null,
+          payment: paymentMethod || null,
+          phone: this.phone || null,
+          state: "принят",
+          time: this.time || null,
+          price: price || null,
+          userId: auth.lastNotifiedUid || null,
+          product: productList,
+          orderDate: orderDate,
+          email: email,
+        };
+        await addDoc(collection(db, 'orderHistory'), orderDetails)
 
         const messageSuccessfully = document.getElementById('messageSuccessfully');
-        messageSuccessfully.scrollIntoView({ behavior: 'smooth' });
+        messageSuccessfully.scrollIntoView({behavior: 'smooth'});
         this.messageSuccessfully = "Успешно купили товар"
         setTimeout(() => {
           this.messageSuccessfully = null

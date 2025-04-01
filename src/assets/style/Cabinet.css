@@ -1,0 +1,114 @@
+.cabinet {
+  margin-top: 41px;
+  padding: 0 20px;
+}
+.cabinet__wrapper {
+  display: flex;
+}
+.cabinet__wrapper__menu {
+  margin-right: 100px;
+}
+.cabinet__wrapper__menu_button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #292929;
+  background: #F7EBE5;
+  padding: 20px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.cabinet__wrapper__menu_button:hover {
+  background: #fddccc;
+  color: #000;
+}
+.cabinet__wrapper__menu_button.page_active {
+  background: #f0c1aa;
+  color: #000;
+}
+.cabinet__wrapper__menu_button:not(:last-child) {
+  margin-bottom: 10px;
+}
+.cabinet__wrapper__information_title {
+  font-size: 30px;
+  font-weight: 600;
+}
+.cabinet__wrapper__information table {
+  text-align: center;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.cabinet__wrapper__information th {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 6px 25px;
+  border: 1px solid black;
+}
+.cabinet__wrapper__information td {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 25px;
+  background: #ededed;
+  border-bottom: 1px solid black;
+}
+.cabinet__wrapper__information td span {
+  color: #4E9DD3;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .cabinet__wrapper__menu {
+    margin-right: 50px;
+  }
+  .cabinet__wrapper__information th {
+    padding: 10px 15px;
+  }
+  .cabinet__wrapper__information td {
+    padding: 10px 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .cabinet__wrapper {
+    flex-direction: column;
+  }
+  .cabinet__wrapper__menu {
+    display: flex;
+  }
+  .cabinet__wrapper__menu_button {
+    text-align: center;
+  }
+  .cabinet__wrapper__menu_button:not(:last-child) {
+    margin-bottom: 0;
+    margin-right: 15px;
+  }
+  .cabinet__wrapper__information_title {
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .cabinet {
+    padding: 10px;
+  }
+  .cabinet__wrapper__menu_button {
+    font-size: 12px;
+    padding: 10px 10px;
+  }
+  .cabinet__wrapper__information_title {
+    font-size: 22px;
+  }
+  .cabinet__wrapper__information table {
+    margin-top: 10px;
+  }
+  .cabinet__wrapper__information th {
+    font-size: 10px;
+    padding: 4px 4px;
+  }
+  .cabinet__wrapper__information td {
+    font-size: 8px;
+    padding: 4px 4px;
+  }
+}
+
+/*# sourceMappingURL=Cabinet.css.map */
