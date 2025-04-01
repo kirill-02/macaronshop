@@ -389,7 +389,6 @@ export default {
         userId: auth.lastNotifiedUid || null,
         product: productIds || null,
       };
-      console.log(orderDetails);
       await addDoc(collection(db, 'orderHistory'), orderDetails)
       await addDoc(collection(db, 'applications'), orderDetails)
 

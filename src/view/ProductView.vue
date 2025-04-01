@@ -261,7 +261,6 @@ export default {
             quantity: doc.data().quantity,
           }
         });
-        console.log(`Товаров в корине ${this.carts.length}`);
       });
     },
 

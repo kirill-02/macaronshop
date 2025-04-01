@@ -1,6 +1,10 @@
 <template>
-  <div class="">
-    lk
+  <div class="cabinet">
+    <div class="cabinet__container">
+      <div class="cabinet__wrapper">
+        .cabinet__wrapper
+      </div>
+    </div>
   </div>
 </template>
 
