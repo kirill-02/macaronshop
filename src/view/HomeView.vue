@@ -120,7 +120,7 @@
         <div class="promotion__wrapper">
           <div class="promotion__wrapper__cards">
 
-            <div class='promotion__wrapper__cards_card ' v-for="promotions in promotion" :key="promotions.id"
+            <div class='promotion__wrapper__cards_card ' v-for="promotions in filteredPromotion" :key="promotions.id"
                  :style="{ background: promotions.color }">
               <div class="promotion__wrapper__cards_card_bookmark " :style="{ background: promotions.color }">
                 {{ promotions.title }}
@@ -225,8 +225,9 @@ export default {
       product: ref([]),
       news: ref([]),
       conditions: ref([]),
-      visibleSetCount: 6, // Количество видимых наборов
-      visibleNewsCount: 3, // Количество видимых новостей
+      visibleSetCount: 6,
+      visibleNewsCount: 3,
+      visibleNewsPromotion: 4,
       isLoading: true,
     };
   },
@@ -236,6 +237,9 @@ export default {
       return this.product
           .filter(product => product.title === 'sets')
           .slice(0, this.visibleSetCount);
+    },
+    filteredPromotion() {
+      return this.promotion.slice(0, this.visibleNewsPromotion);
     },
     hasMoreSets() {
       return this.visibleSetCount < this.product.filter(product => product.title === 'sets').length;
@@ -253,7 +257,7 @@ export default {
       this.visibleSetCount += 3
     },
     showMoreNews() {
-      this.visibleNewsCount += 3; // Увеличиваем количество видимых новостей
+      this.visibleNewsCount += 3;
     },
 
     withdrawalPromotion: function () {
