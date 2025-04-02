@@ -21,8 +21,13 @@
             </li>
 
 
-            <li v-if="isLoggedIn">
-              <router-link @click="signOut" class="router-link" to="/auth">Выход</router-link>
+            <li v-if="dataUser">
+              <router-link
+                  v-if="dataUser.role === 'модератор'"
+                  class="router-link"
+                  to="/moderator">
+                Панель модератора
+              </router-link>
             </li>
             <li v-if="isLoggedIn">
               <router-link class="router-link" to="/cabinet">Кабинет</router-link>
@@ -30,12 +35,6 @@
             <li v-else>
               <router-link class="router-link" to="/auth">Вход</router-link>
             </li>
-            <!--            <li>-->
-            <!--              <router-link class="router-link" to="/auth">Вход</router-link>-->
-            <!--            </li>-->
-            <!--            <li>-->
-            <!--              <router-link class="router-link" to="/register">Регистрация</router-link>-->
-            <!--            </li>-->
           </div>
 
           <router-link to="/">
@@ -259,6 +258,7 @@ export default {
     return {
       basket: ref([]),
       carts: ref([]),
+      user: ref([]),
       isDropdownOpen: {
         kit: false,
         companies: false,
@@ -267,6 +267,11 @@ export default {
       },
       isMenuOpen: false,
     };
+  },
+  computed: {
+    dataUser() {
+      return this.user.find(user => user.uid === auth.lastNotifiedUid);
+    },
   },
   methods: {
     toggleDropdown(menu) {
@@ -286,6 +291,7 @@ export default {
       });
     },
 
+
     withdrawalBasket: function () {
       const basketQuery = query(collection(db, "basket"));
       onSnapshot(basketQuery, (snapshot) => {
@@ -303,6 +309,23 @@ export default {
         } else {
           console.error("Корзина для пользователя не найдена.");
         }
+      });
+    },
+
+    withdrawalUser: function () {
+      const userQuery = query(collection(db, "users"));
+      onSnapshot(userQuery, (snapshot) => {
+        this.user = snapshot.docs.map(doc => {
+          return {
+            id: doc.id,
+            city: doc.data().city,
+            company: doc.data().company,
+            name: doc.data().name,
+            phone: doc.data().phone,
+            role: doc.data().role,
+            uid: doc.data().uid,
+          }
+        });
       });
     },
 
@@ -349,6 +372,7 @@ export default {
   mounted() {
     this.withdrawalBasket();
     this.withdrawalCarts();
+    this.withdrawalUser();
   },
 }
 </script>

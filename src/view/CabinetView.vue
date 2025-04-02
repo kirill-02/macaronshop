@@ -70,7 +70,7 @@
 
 import {getAuth, signOut} from "firebase/auth";
 import {useRouter} from "vue-router";
-import {collection, onSnapshot, query} from "firebase/firestore";
+import {collection, onSnapshot, query, orderBy} from "firebase/firestore";
 import {db} from "@/firebase";
 import {ref} from 'vue';
 
@@ -93,7 +93,7 @@ export default {
       this.page = e
     },
     withdrawalOrderHistory: function () {
-      const basketQuery = query(collection(db, "orderHistory"));
+      const basketQuery = query(collection(db, "orderHistory"), orderBy("dateTime", "desc"));
 
       onSnapshot(basketQuery, (snapshot) => {
         this.orderHistory = snapshot.docs.map((doc) => {
@@ -113,6 +113,7 @@ export default {
             time: doc.data().time,
             userId: doc.data().userId,
             email: doc.data().email,
+            dateTime: doc.data().dateTime,
           }
         })
       })

@@ -18,6 +18,7 @@ import NotFoundView from "@/view/NotFoundView.vue";
 import WholesaleSuppliesView from "@/view/WholesaleSuppliesView.vue";
 import CorporateGiftsView from "@/view/CorporateGiftsView.vue";
 import OrdersHistoryView from "@/view/OrdersHistoryView.vue";
+import ModeratorView from "@/view/ModeratorView.vue";
 
 const routes = [
     {
@@ -93,7 +94,6 @@ const routes = [
             auth: true
         }
     },
-    //
     {
         path: '/basket',
         name: 'basket',
@@ -131,20 +131,29 @@ const routes = [
         }
     },
     {
-        path: '/auth',
-        name: 'auth',
-        component: AuthView,
-        meta: {
-            layout: 'auth',
-            auth: true
-        }
-    },
-    {
         path: '/ordersHistory/:id',
         name: 'ordersHistory',
         component: OrdersHistoryView,
         meta: {
             layout: 'authorized',
+            auth: true
+        }
+    },
+    {
+        path: '/moderator',
+        name: 'moderator',
+        component: ModeratorView,
+        meta: {
+            layout: 'moderator',
+            auth: true
+        }
+    },
+    {
+        path: '/auth',
+        name: 'auth',
+        component: AuthView,
+        meta: {
+            layout: 'auth',
             auth: true
         }
     },

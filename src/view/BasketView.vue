@@ -73,7 +73,11 @@
                 </div>
                 <div class="" id="errorMessagePhone">
                   <label for="phone">Ваш телефон*</label>
-                  <input type="text" id="phone" v-model="phone" placeholder="+7 (___) ___-__-__">
+                  <input type="tel" id="phone" v-model="phone"
+                         placeholder="+7 (___) ___-__-__"
+                         @input="formatPhone"
+                         @focus="setInitialPhone"
+                  >
                   <div class="errorMessage">
                     {{ errorMessagePhone }}
                   </div>
@@ -116,12 +120,12 @@
               <div class="basket__wrapper__information__delivery__forms_contact">
                 <div class="" id="errorMessageDate">
                   <label for="date">Дата получения</label>
-                  <input type="text" id="date" v-model="date" placeholder="Укажите дату">
+                  <input type="date" id="date" v-model="date">
                   <div class="errorMessage">{{ errorMessageDate }}</div>
                 </div>
                 <div class="" id="errorMessageTime">
                   <label for="time">Время</label>
-                  <input type="text" id="time" v-model="time" placeholder="Укажите время">
+                  <input type="time" id="time" v-model="time">
                   <div class="errorMessage">{{ errorMessageTime }}</div>
                 </div>
               </div>
@@ -304,7 +308,29 @@ export default {
 
   },
   methods: {
+    formatPhone() {
+      let cleaned = this.phone.replace(/\D/g, '');
 
+      if (cleaned.startsWith('9') && cleaned.length === 1) {
+        cleaned = '7' + cleaned;
+      }
+
+      if (cleaned.length > 11) {
+        cleaned = cleaned.substring(0, 11);
+      }
+
+      const match = cleaned.match(/^(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})$/);
+      if (match) {
+        this.phone = `+7 ${match[2] ?  match[2] : ''} ${match[3]} ${match[4]} ${match[5]}`.trim();
+      } else {
+        this.phone = '';
+      }
+    },
+    setInitialPhone() {
+      if (!this.phone) {
+        this.phone = '+7 ';
+      }
+    },
     validateFields() {
       // Сброс ошибок
       this.errorMessageName = null;
@@ -413,6 +439,7 @@ export default {
           product: productList,
           orderDate: orderDate,
           email: email,
+          dateTime: Date.now(),
         };
         await addDoc(collection(db, 'orderHistory'), orderDetails)
 

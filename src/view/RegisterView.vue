@@ -18,11 +18,14 @@
             </div>
             <div class="auth__wrapper__form_email">
               <label for="phone">Ваш телефон</label>
-              <input type="text" id="phone" v-model="phone" placeholder="+7 (___) ___-__-__" required>
+              <input type="text" id="phone" v-model="phone"
+                     @input="formatPhone"
+                     @focus="setInitialPhone"
+                     placeholder="+7 (___) ___-__-__" required>
             </div>
             <div class="auth__wrapper__form_email">
               <label for="company">Компания</label>
-              <input type="text" id="company" v-model="company" placeholder="Компания" required>
+              <input type="text" id="company" v-model="company" placeholder="Компания">
             </div>
             <div class="auth__wrapper__form_email">
               <label for="email">E-mail</label>
@@ -52,23 +55,33 @@
 
 <script>
 import {ref} from 'vue';
-// import {getAuth} from 'firebase/auth';
 import {useRouter} from "vue-router";
-// import {db} from "../firebase.js"
 import {useStateStore} from '../store/stateStore'
-import {
-  // onSnapshot,
-  // collection,
-  // doc,
-  // deleteDoc,
-  // setDoc,
-  // addDoc,
-  // orderBy,
-  // query
-} from 'firebase/firestore';
 
 
 export default {
+  methods: {
+    formatPhone() {
+      let cleaned = this.phone.replace(/\D/g, '');
+      if (cleaned.startsWith('9') && cleaned.length === 1) {
+        cleaned = '7' + cleaned; // Префикс +7
+      }
+      if (cleaned.length > 11) {
+        cleaned = cleaned.substring(0, 11);
+      }
+      const match = cleaned.match(/^(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})$/);
+      if (match) {
+        this.phone = `+7 ${match[2] ? match[2] : ''} ${match[3]} ${match[4]} ${match[5]}`.trim();
+      } else {
+        this.phone = '';
+      }
+    },
+    setInitialPhone() {
+      if (!this.phone) {
+        this.phone = '+7 ';
+      }
+    },
+  },
   setup() {
     const stateStore = useStateStore();
     const name = ref('');

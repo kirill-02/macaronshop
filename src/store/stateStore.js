@@ -62,7 +62,8 @@ export const useStateStore = defineStore('stateStore', () => {
                 name: name.value,
                 city: city.value,
                 phone: phone.value,
-                company: company.value,
+                company: company.value || null,
+                role: 'пользователь',
                 uid: user.value.uid,
             })
 
