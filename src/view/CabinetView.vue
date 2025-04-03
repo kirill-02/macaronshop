@@ -68,10 +68,11 @@
 
 <script>
 
-import {getAuth} from "firebase/auth";
+import {getAuth, signOut} from "firebase/auth";
 import {collection, onSnapshot, query, orderBy} from "firebase/firestore";
 import {db} from "@/firebase";
 import {ref} from 'vue';
+import {useRouter} from "vue-router";
 
 
 const auth = getAuth();
@@ -117,6 +118,18 @@ export default {
         })
       })
     },
+  },
+  setup() {
+    const router = useRouter();
+
+    const signOutUser = async () => {
+      await signOut(auth);
+      router.push('/');
+    }
+
+    return {
+      signOut: signOutUser,
+    };
   },
   mounted() {
     this.withdrawalOrderHistory();
