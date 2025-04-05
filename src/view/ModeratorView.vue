@@ -93,31 +93,29 @@
                     <option value="combo">комбо - наборы</option>
                     <option value="gift_sets">подарки с печатью</option>
                   </select>
-                  {{kit}}
-                  <!--                <input type="text">-->
                 </div>
 
                 <div class="">
                   <label for="">Цена</label>
-                  <input type="text">
+                  <input type="text" v-model="price" placeholder="Укажите цену">
                 </div>
               </div>
 
               <div class="cabinet__wrapper__information__form_block">
                 <div class="">
                   <label for="">Описание</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                  <textarea name="" id="" cols="30" rows="10" v-model="description" placeholder="Укажите описание"></textarea>
                 </div>
               </div>
 
               <div class="cabinet__wrapper__information__form_block">
                 <div class="">
                   <label for="">Название набора</label>
-                  <input type="text">
+                  <input type="text" v-model="name" placeholder="Укажите название">
                 </div>
                 <div class="">
                   <label for="">Поиск по слову</label>
-                  <input type="text">
+                  <input type="text" v-model="search" placeholder="напишите слово по которому будет поиск">
                 </div>
               </div>
 
@@ -143,11 +141,11 @@
               <div class="cabinet__wrapper__information__form_block">
                 <div class="">
                   <label for="">Название</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                  <textarea name="" id="" cols="30" rows="10" v-model="descriptionTitle" placeholder=""></textarea>
                 </div>
                 <div class="">
                   <label for="">Описание</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                  <textarea name="" id="" cols="30" rows="10" v-model="descriptionDescription" placeholder=""></textarea>
                 </div>
               </div>
 
@@ -155,11 +153,11 @@
               <div class="cabinet__wrapper__information__form_block">
                 <div class="">
                   <label for="">Название</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                  <textarea name="" id="" cols="30" rows="10" v-model="compositionTitle" placeholder=""></textarea>
                 </div>
                 <div class="">
                   <label for="">Описание</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                  <textarea name="" id="" cols="30" rows="10" v-model="compositionDescription" placeholder=""></textarea>
                 </div>
               </div>
 
@@ -167,14 +165,13 @@
               <div class="cabinet__wrapper__information__form_block">
                 <div class="">
                   <label for="">Название</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                  <textarea name="" id="" cols="30" rows="10" v-model="conditionTitle" placeholder=""></textarea>
                 </div>
                 <div class="">
                   <label for="">Описание</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                  <textarea name="" id="" cols="30" rows="10" v-model="conditionDescription" placeholder=""></textarea>
                 </div>
               </div>
-
 
               <div class="cabinet__wrapper__information__form_title">Вкусы</div>
 
@@ -197,7 +194,7 @@
                   </button>
               </div>
 
-              {{tastes}}
+              <button class="cabinet__wrapper__information__form_button" @click="addProduct">Добавить товар</button>
             </div>
           </div>
 
@@ -257,18 +254,31 @@
 
 <script>
 import {ref} from 'vue'
+import {addDoc, collection} from "firebase/firestore";
+import {db} from "@/firebase";
 
 export default {
   data() {
     return {
       page: 'sets',
       kit: ref(''),
-      tastes: [
+      description: ref(''),
+      name: ref(''),
+      search: ref(''),
+      price: ref(''),
+      descriptionTitle: ref(''),
+      descriptionDescription: ref(''),
+      compositionTitle: ref(''),
+      compositionDescription: ref(''),
+      conditionTitle: ref(''),
+      conditionDescription: ref(''),
+      description_composition_condition: ref([]),
+      tastes: ref([
         {
           name: '',
           quantity: ''
         }
-      ],
+      ]),
     }
   },
   computed: {},
@@ -279,16 +289,38 @@ export default {
 
     addTastes() {
       this.tastes.push({name: '', quantity: ''})
-      console.log(this.tastes)
     },
     removeTastes(e) {
-
       if (this.tastes.length > 1) {
-    this.tastes.splice(e, 1)
-    console.log(this.tastes)
+      this.tastes.splice(e, 1)
       }
+    },
+    addProduct: async function () {
+      const product = {
+        description: this.description,
+        name: this.name,
+        price: this.price,
+        search: this.search,
+        title: this.kit,
+        tastes: this.tastes,
+        description_composition_condition: [
+          {
+            title: this.descriptionTitle,
+            description: this.descriptionDescription,
+          },
+          {
+            title: this.compositionTitle,
+            description: this.compositionDescription,
+          },
+          {
+            title: this.conditionTitle,
+            description: this.conditionDescription,
+          },
+        ],
+      }
+      console.log(product)
+      await addDoc(collection(db, 'test'), product)
     }
-
   },
 }
 </script>

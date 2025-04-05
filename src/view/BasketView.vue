@@ -545,7 +545,6 @@ export default {
             price: doc.data().price,
             description: doc.data().description,
             photo: doc.data().photo || [],
-            compound: doc.data().compound || [],
             description_composition_condition: doc.data().description_composition_condition || [],
             tastes: doc.data().tastes || [],
             title: doc.data().title,

@@ -124,6 +124,18 @@
   position: absolute;
   right: -20px;
 }
+.cabinet__wrapper__information__form_button {
+  cursor: pointer;
+  margin-top: 25px;
+  font-size: 16px;
+  width: 100%;
+  padding: 15px 38px;
+  background: #e7426a;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 3px;
+}
 .cabinet__wrapper__information table {
   text-align: center;
   margin-top: 20px;
