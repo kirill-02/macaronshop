@@ -11,21 +11,7 @@
           >
             Добавить "готовые наборы"
           </div>
-          <div
-              class="cabinet__wrapper__menu_button"
-              @click="movingPage('combo')"
-              :class="{'page_active': page === 'combo'}"
-          >
-            Добавить "комбо - наборы"
-          </div>
 
-          <div
-              class="cabinet__wrapper__menu_button"
-              @click="movingPage('present')"
-              :class="{'page_active': page === 'present'}"
-          >
-            Добавить "подарки с печатью"
-          </div>
 
           <div
               class="cabinet__wrapper__menu_button"
@@ -91,112 +77,129 @@
           </div>
         </div>
 
-
-
         <div class="cabinet__wrapper__information" v-if="page === 'sets'">
           <div class="cabinet__wrapper__information_title">
             Добавить "готовые наборы"
-            
+          </div>
             <div class="cabinet__wrapper__information__form">
 
-              <div class="">
+              <div class="cabinet__wrapper__information__form_block">
+
                 <div class="">
-                <label for="">title</label>
-                <input type="text">
+                <label for="">Набор для добавления</label>
+                  <select v-model="kit" name="kit" id="kit">
+                    <option  disabled selected value="">Выберите набор который хотите создать</option>
+                    <option value="sets">готовые наборы</option>
+                    <option value="combo">комбо - наборы</option>
+                    <option value="gift_sets">подарки с печатью</option>
+                  </select>
+                  {{kit}}
+                  <!--                <input type="text">-->
                 </div>
+
                 <div class="">
-                  <label for="">price</label>
+                  <label for="">Цена</label>
                   <input type="text">
                 </div>
               </div>
 
-              <div class="">
+              <div class="cabinet__wrapper__information__form_block">
                 <div class="">
-                  <label for="">description</label>
+                  <label for="">Описание</label>
                   <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>
               </div>
-              
-              <div class="">
+
+              <div class="cabinet__wrapper__information__form_block">
                 <div class="">
-                  <label for="">name</label>
+                  <label for="">Название набора</label>
                   <input type="text">
                 </div>
                 <div class="">
-                  <label for="">search</label>
+                  <label for="">Поиск по слову</label>
                   <input type="text">
                 </div>
               </div>
 
-              <div class="">
+              <div class="cabinet__wrapper__information__form_block">
                 <div class="">
-                  <label for="">photo 1</label>
+                  <label for="">Фото №1 (главная)</label>
                   <input type="image" >
                 </div>
                 <div class="">
-                  <label for="">photo 2</label>
+                  <label for="">Фото №2</label>
                   <input type="image" >
 
                 </div>
                 <div class="">
-                  <label for="">photo 3</label>
+                  <label for="">Фото №3</label>
                   <input type="image" >
 
                 </div>
               </div>
-              <div class="cabinet__wrapper__information__form_title">description_composition_condition</div>
-              <div class="cabinet__wrapper__information__form_title">description</div>
+              <div class="cabinet__wrapper__information__form_title">Описание -- Состав -- Условия</div>
+              <div class="cabinet__wrapper__information__form_description">Описание</div>
 
-              <div class="">
+              <div class="cabinet__wrapper__information__form_block">
                 <div class="">
-                  <label for="">name</label>
+                  <label for="">Название</label>
                   <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div class="">
-                  <label for="">description</label>
+                  <label for="">Описание</label>
                   <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>
               </div>
 
-              <div class="cabinet__wrapper__information__form_title">composition</div>
-              <div class="">
+              <div class="cabinet__wrapper__information__form_description">Состав и пищевая ценность</div>
+              <div class="cabinet__wrapper__information__form_block">
                 <div class="">
-                  <label for="">name</label>
+                  <label for="">Название</label>
                   <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>
                 <div class="">
-                  <label for="">description</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
-                </div>
-              </div>
-
-              <div class="cabinet__wrapper__information__form_title">condition</div>
-              <div class="">
-                <div class="">
-                  <label for="">name</label>
-                  <textarea name="" id="" cols="30" rows="10"></textarea>
-                </div>
-                <div class="">
-                  <label for="">description</label>
+                  <label for="">Описание</label>
                   <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>
               </div>
 
+              <div class="cabinet__wrapper__information__form_description">Условия и срок хранения</div>
+              <div class="cabinet__wrapper__information__form_block">
+                <div class="">
+                  <label for="">Название</label>
+                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="">
+                  <label for="">Описание</label>
+                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+              </div>
+
+
+              <div class="cabinet__wrapper__information__form_title">Вкусы</div>
+
+              <div class="cabinet__wrapper__information__form_tastes">
+                <div v-for="(taste, e) in tastes" :key="taste" class="cabinet__wrapper__information__form_tastes_fields">
+                  <div class="">
+                    <label for="">Название</label>
+                    <input v-model="taste.name" type="text">
+                  </div>
+                  <div class="">
+                    <label for="">Количество</label>
+                    <input v-model="taste.quantity" type="number">
+                  </div>
+                  <button class="cabinet__wrapper__information__form_tastes_button minus" @click="removeTastes(e)">
+                    -
+                  </button>
+                </div>
+                <button class="cabinet__wrapper__information__form_tastes_button plus" @click="addTastes">
+                    +
+                  </button>
+              </div>
+
+              {{tastes}}
             </div>
           </div>
-        </div>
-
-        <div class="cabinet__wrapper__information" v-if="page === 'combo'">
-          <div class="cabinet__wrapper__information_title">
-            Добавить "комбо - наборы"
-          </div>
-        </div>
-
-        <div class="cabinet__wrapper__information" v-if="page === 'present'">
-          <div class="cabinet__wrapper__information_title">
-            Добавить "подарки с печатью"
-          </div>
-        </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'seal'">
           <div class="cabinet__wrapper__information_title">
@@ -253,10 +256,19 @@
 </template>
 
 <script>
+import {ref} from 'vue'
+
 export default {
   data() {
     return {
       page: 'sets',
+      kit: ref(''),
+      tastes: [
+        {
+          name: '',
+          quantity: ''
+        }
+      ],
     }
   },
   computed: {},
@@ -264,6 +276,19 @@ export default {
     movingPage(e) {
       this.page = e
     },
+
+    addTastes() {
+      this.tastes.push({name: '', quantity: ''})
+      console.log(this.tastes)
+    },
+    removeTastes(e) {
+
+      if (this.tastes.length > 1) {
+    this.tastes.splice(e, 1)
+    console.log(this.tastes)
+      }
+    }
+
   },
 }
 </script>

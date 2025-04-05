@@ -35,28 +35,40 @@
   font-weight: 600;
 }
 .cabinet__wrapper__information__form {
-  margin-top: 40px;
+  margin-top: 20px;
   width: 450px;
 }
-.cabinet__wrapper__information__form > div {
+.cabinet__wrapper__information__form_title {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.cabinet__wrapper__information__form_description {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+.cabinet__wrapper__information__form_block {
   display: flex;
+  align-items: end;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
 }
-.cabinet__wrapper__information__form > div > div {
+.cabinet__wrapper__information__form_block > div {
   width: 100%;
-}
-.cabinet__wrapper__information__form > div > div:not(:last-child) {
-  margin-right: 10px;
 }
 .cabinet__wrapper__information__form label {
   margin-top: 10px;
   font-size: 16px;
   display: block;
 }
-.cabinet__wrapper__information__form input {
+.cabinet__wrapper__information__form input, .cabinet__wrapper__information__form select {
   padding: 17px 14px 14px;
   margin-top: 3px;
   background: #FFFFFF;
   border: none;
+  height: auto;
   color: #292929;
   font-size: 16px;
   font-weight: 400;
@@ -74,6 +86,43 @@
   outline: 1px solid rgb(237, 237, 240);
   font-size: 16px;
   font-weight: 400;
+}
+.cabinet__wrapper__information__form_tastes {
+  flex-direction: column;
+  position: relative;
+  display: flex;
+}
+.cabinet__wrapper__information__form_tastes_fields {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.cabinet__wrapper__information__form_tastes_fields > div {
+  width: 100%;
+}
+.cabinet__wrapper__information__form_tastes_button {
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 16px;
+  background: #e7426a;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 3px;
+}
+.cabinet__wrapper__information__form_tastes_button.plus {
+  position: absolute;
+  right: -40px;
+  top: 0;
+  height: 100%;
+  transform: translate(0%, 0%);
+}
+.cabinet__wrapper__information__form_tastes_button.minus {
+  margin-top: 34px;
+  padding: 2px 4px;
+  position: absolute;
+  right: -20px;
 }
 .cabinet__wrapper__information table {
   text-align: center;
