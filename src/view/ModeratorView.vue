@@ -81,122 +81,125 @@
           <div class="cabinet__wrapper__information_title">
             Добавить "готовые наборы"
           </div>
-            <div class="cabinet__wrapper__information__form">
+          <div class="cabinet__wrapper__information__form">
 
-              <div class="cabinet__wrapper__information__form_block">
+            <div class="cabinet__wrapper__information__form_block">
 
-                <div class="">
+              <div class="">
                 <label for="">Набор для добавления</label>
-                  <select v-model="kit" name="kit" id="kit">
-                    <option  disabled selected value="">Выберите набор который хотите создать</option>
-                    <option value="sets">готовые наборы</option>
-                    <option value="combo">комбо - наборы</option>
-                    <option value="gift_sets">подарки с печатью</option>
-                  </select>
-                </div>
-
-                <div class="">
-                  <label for="">Цена</label>
-                  <input type="text" v-model="price" placeholder="Укажите цену">
-                </div>
+                <select v-model="kit" name="kit" id="kit">
+                  <option disabled selected value="">Выберите набор который хотите создать</option>
+                  <option value="sets">готовые наборы</option>
+                  <option value="combo">комбо - наборы</option>
+                  <option value="gift_sets">подарки с печатью</option>
+                </select>
               </div>
 
-              <div class="cabinet__wrapper__information__form_block">
-                <div class="">
-                  <label for="">Описание</label>
-                  <textarea name="" id="" cols="30" rows="10" v-model="description" placeholder="Укажите описание"></textarea>
-                </div>
+              <div class="">
+                <label for="">Цена</label>
+                <input type="text" v-model="price" placeholder="Укажите цену">
               </div>
-
-              <div class="cabinet__wrapper__information__form_block">
-                <div class="">
-                  <label for="">Название набора</label>
-                  <input type="text" v-model="name" placeholder="Укажите название">
-                </div>
-                <div class="">
-                  <label for="">Поиск по слову</label>
-                  <input type="text" v-model="search" placeholder="напишите слово по которому будет поиск">
-                </div>
-              </div>
-
-              <div class="cabinet__wrapper__information__form_block">
-                <div class="">
-                  <label for="">Фото №1 (главная)</label>
-                  <input type="image" >
-                </div>
-                <div class="">
-                  <label for="">Фото №2</label>
-                  <input type="image" >
-
-                </div>
-                <div class="">
-                  <label for="">Фото №3</label>
-                  <input type="image" >
-
-                </div>
-              </div>
-              <div class="cabinet__wrapper__information__form_title">Описание -- Состав -- Условия</div>
-              <div class="cabinet__wrapper__information__form_description">Описание</div>
-
-              <div class="cabinet__wrapper__information__form_block">
-                <div class="">
-                  <label for="">Название</label>
-                  <textarea name="" id="" cols="30" rows="10" v-model="descriptionTitle" placeholder=""></textarea>
-                </div>
-                <div class="">
-                  <label for="">Описание</label>
-                  <textarea name="" id="" cols="30" rows="10" v-model="descriptionDescription" placeholder=""></textarea>
-                </div>
-              </div>
-
-              <div class="cabinet__wrapper__information__form_description">Состав и пищевая ценность</div>
-              <div class="cabinet__wrapper__information__form_block">
-                <div class="">
-                  <label for="">Название</label>
-                  <textarea name="" id="" cols="30" rows="10" v-model="compositionTitle" placeholder=""></textarea>
-                </div>
-                <div class="">
-                  <label for="">Описание</label>
-                  <textarea name="" id="" cols="30" rows="10" v-model="compositionDescription" placeholder=""></textarea>
-                </div>
-              </div>
-
-              <div class="cabinet__wrapper__information__form_description">Условия и срок хранения</div>
-              <div class="cabinet__wrapper__information__form_block">
-                <div class="">
-                  <label for="">Название</label>
-                  <textarea name="" id="" cols="30" rows="10" v-model="conditionTitle" placeholder=""></textarea>
-                </div>
-                <div class="">
-                  <label for="">Описание</label>
-                  <textarea name="" id="" cols="30" rows="10" v-model="conditionDescription" placeholder=""></textarea>
-                </div>
-              </div>
-
-              <div class="cabinet__wrapper__information__form_title">Вкусы</div>
-
-              <div class="cabinet__wrapper__information__form_tastes">
-                <div v-for="(taste, e) in tastes" :key="taste" class="cabinet__wrapper__information__form_tastes_fields">
-                  <div class="">
-                    <label for="">Название</label>
-                    <input v-model="taste.name" type="text">
-                  </div>
-                  <div class="">
-                    <label for="">Количество</label>
-                    <input v-model="taste.quantity" type="number">
-                  </div>
-                  <button class="cabinet__wrapper__information__form_tastes_button minus" @click="removeTastes(e)">
-                    -
-                  </button>
-                </div>
-                <button class="cabinet__wrapper__information__form_tastes_button plus" @click="addTastes">
-                    +
-                  </button>
-              </div>
-
-              <button class="cabinet__wrapper__information__form_button" @click="addProduct">Добавить товар</button>
             </div>
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Описание</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="description"
+                          placeholder="Укажите описание"></textarea>
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Название набора</label>
+                <input type="text" v-model="name" placeholder="Укажите название">
+              </div>
+              <div class="">
+                <label for="">Поиск по слову</label>
+                <input type="text" v-model="search" placeholder="напишите слово по которому будет поиск">
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_block">
+
+
+              <div class="">
+                <label for="">Фото №1 (главная)</label>
+                <input type="file" @change="handleFileUpload($event, 'mainImage')" accept="image/*">
+              </div>
+              <div class="">
+                <label for="">Фото №2</label>
+                <input type="file" @change="handleFileUpload($event, 'image2')" accept="image/*">
+              </div>
+              <div class="">
+                <label for="">Фото №3</label>
+                <input type="file" @change="handleFileUpload($event, 'image3')" accept="image/*">
+              </div>
+
+
+            </div>
+            <div class="cabinet__wrapper__information__form_title">Описание -- Состав -- Условия</div>
+            <div class="cabinet__wrapper__information__form_description">Описание</div>
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Название</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="descriptionTitle" placeholder=""></textarea>
+              </div>
+              <div class="">
+                <label for="">Описание</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="descriptionDescription" placeholder=""></textarea>
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_description">Состав и пищевая ценность</div>
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Название</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="compositionTitle" placeholder=""></textarea>
+              </div>
+              <div class="">
+                <label for="">Описание</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="compositionDescription" placeholder=""></textarea>
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_description">Условия и срок хранения</div>
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Название</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="conditionTitle" placeholder=""></textarea>
+              </div>
+              <div class="">
+                <label for="">Описание</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="conditionDescription" placeholder=""></textarea>
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_title">Вкусы</div>
+
+            <div class="cabinet__wrapper__information__form_tastes">
+              <div v-for="(taste, e) in tastes" :key="taste" class="cabinet__wrapper__information__form_tastes_fields">
+                <div class="">
+                  <label for="">Название</label>
+                  <input v-model="taste.name" type="text">
+                </div>
+                <div class="">
+                  <label for="">Количество</label>
+                  <input v-model="taste.quantity" type="number">
+                </div>
+                <button class="cabinet__wrapper__information__form_tastes_button minus" @click="removeTastes(e)">
+                  -
+                </button>
+              </div>
+              <button class="cabinet__wrapper__information__form_tastes_button plus" @click="addTastes">
+                +
+              </button>
+            </div>
+
+            <button class="cabinet__wrapper__information__form_button" @click="addProduct">Добавить товар</button>
           </div>
+        </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'seal'">
           <div class="cabinet__wrapper__information_title">
@@ -242,7 +245,7 @@
 
         <div class="cabinet__wrapper__information" v-if="page === 'user'">
           <div class="cabinet__wrapper__information_title">
-           Вывод пользователя
+            Вывод пользователя
           </div>
         </div>
 
@@ -273,6 +276,9 @@ export default {
       conditionTitle: ref(''),
       conditionDescription: ref(''),
       description_composition_condition: ref([]),
+      mainImage: null,
+      image2: null,
+      image3: null,
       tastes: ref([
         {
           name: '',
@@ -284,19 +290,38 @@ export default {
   computed: {},
   methods: {
     movingPage(e) {
-      this.page = e
+      this.page = e;
     },
-
     addTastes() {
       this.tastes.push({name: '', quantity: ''})
     },
     removeTastes(e) {
       if (this.tastes.length > 1) {
-      this.tastes.splice(e, 1)
+        this.tastes.splice(e, 1)
       }
     },
-    addProduct: async function () {
+    handleFileUpload(event, imageType) {
+      const file = event.target.files[0];
+      if (file) {
+        this[imageType] = file; // Сохраняем файл в состояние компонента
+      } else {
+        this[imageType] = null; // Убедитесь, что переменная сбрасывается, если файл не выбран
+      }
+    }
+    ,
+
+    async addProduct() {
+      if (!this.mainImage || !this.image2 || !this.image3) {
+        alert('Пожалуйста, загрузите все три изображения.');
+        return;
+      }
+      const formData = new FormData();
+      formData.append('image', this.mainImage);
+      formData.append('image2', this.image2);
+      formData.append('image3', this.image3);
+
       const product = {
+        test: 'test',
         description: this.description,
         name: this.name,
         price: this.price,
@@ -317,11 +342,30 @@ export default {
             description: this.conditionDescription,
           },
         ],
+        photo: [],
+      };
+      console.log(product);
+      try {
+        const response = await fetch('http://localhost:3000/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        product.photo = data.filePaths;
+
+
+        await addDoc(collection(db, 'product'), product);
+
+      } catch (error) {
+        console.error('Error:', error);
       }
-      console.log(product)
-      await addDoc(collection(db, 'test'), product)
     }
-  },
+  }
 }
 </script>
 
