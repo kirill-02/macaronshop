@@ -22,9 +22,9 @@
                   class="product__wrapper__images__card_img"
                   v-for="(image, index) in thumbnailImages"
                   :key="index"
-                  @click="currentImage = require(`@/../public/imagesFirebase/product/${image}`)"
+                  @click="currentImage = `/imagesFirebase/product/${image}`"
               >
-                <img :src="require(`@/../public/imagesFirebase/product/${image}`)" alt="">
+                <img :src="`/imagesFirebase/product/${image}`" alt="">
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@
                   v-for="products in filteredProductsCombo"
                   :key="products.id"
                   :id="products.id"
-                  :img="require(`@/../public/imagesFirebase/product/${products.photo[0]}`)"
+                  :img="`imagesFirebase/product/${products.photo[0]}`"
                   :title="products.name"
                   :description="products.description"
                   :price="products.price"
@@ -219,7 +219,7 @@ export default {
           }
         });
         if (this.productData) {
-          this.currentImage = require(`@/../public/imagesFirebase/product/${this.productData.photo[0]}`); // Устанавливаем первое изображение как текущее
+          this.currentImage = `/imagesFirebase/product/${this.productData.photo[0]}`; // Устанавливаем первое изображение как текущее
         }
       });
     },

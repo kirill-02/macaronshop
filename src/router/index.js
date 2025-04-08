@@ -208,5 +208,4 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes,
 });
-
 export default router; // Экспортируйте маршрутизатор

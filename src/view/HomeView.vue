@@ -171,7 +171,7 @@
                 v-for="news in visibleNews"
                 :key="news.id"
                 :id="news.id"
-                :img="`imagesFirebase/news/${news.photo}`"
+                :img="`/imagesFirebase/news/${news.photo}`"
                 :date="news.date"
                 :description="news.description"
                 :title="news.name"
@@ -195,7 +195,7 @@
 
             <div class="guarantee__wrapper__cards_card" v-for="condition in conditions" :key="condition.id">
               <div class="guarantee__wrapper__cards_card_img">
-                <img :src="`imagesFirebase/conditions/${condition.photo}`" alt="">
+                <img :src="`/imagesFirebase/conditions/${condition.photo}`" alt="">
               </div>
               <div class="guarantee__wrapper__cards_card__information">
                 <div class="guarantee__wrapper__cards_card__information_title">{{ condition.name }}</div>
