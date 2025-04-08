@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '@/view/HomeView.vue';
 import AuthView from '@/view/AuthView.vue';
 import CabinetView from '@/view/CabinetView.vue';
@@ -205,7 +205,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(), // Измените на createWebHistory
+    history: createWebHashHistory(),
     routes,
 });
 
