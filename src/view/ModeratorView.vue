@@ -262,6 +262,7 @@ import {db} from "@/firebase";
 
 export default {
   data() {
+    
     return {
       page: 'sets',
       kit: ref(''),
