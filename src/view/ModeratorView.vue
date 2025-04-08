@@ -345,8 +345,11 @@ export default {
         photo: [],
       };
       console.log(product);
+      const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
+      // const baseUrl = '/upload'; // для хоста
+
       try {
-        const response = await fetch('http://localhost:3000/upload', {
+        const response = await fetch(baseUrl, {
           method: 'POST',
           body: formData,
         });
@@ -356,13 +359,15 @@ export default {
         }
 
         const data = await response.json();
-        product.photo = data.filePaths;
+        product.photo = data.filePaths; // Сохраняем пути к изображениям
 
-
+        // Сохраните продукт в Firestore
         await addDoc(collection(db, 'product'), product);
+        alert('Продукт успешно добавлен!');
 
       } catch (error) {
         console.error('Error:', error);
+        alert('Произошла ошибка при добавлении продукта. Пожалуйста, попробуйте еще раз.');
       }
     }
   }

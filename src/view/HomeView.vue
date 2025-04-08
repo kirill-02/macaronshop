@@ -126,7 +126,7 @@
                 {{ promotions.title }}
               </div>
               <div class="promotion__wrapper__cards_card_img">
-                <img :src="require(`@/../public/imagesFirebase/promotion/${promotions.photo}`)" alt="">
+                <img :src="`imagesFirebase/promotion/${promotions.photo}`" alt="">
               </div>
               <div class="promotion__wrapper__cards_card_description "> {{ promotions.name }}
               </div>
@@ -149,7 +149,7 @@
                 :title="products.name"
                 :description="products.description"
                 :price="products.price"
-                :img="require(`@/../public/imagesFirebase/product/${products.photo[0]}`)"
+                :img="`/imagesFirebase/product/${products.photo[0]}`"
             ></app-sets-card>
           </div>
           <app-border-button
@@ -171,7 +171,7 @@
                 v-for="news in visibleNews"
                 :key="news.id"
                 :id="news.id"
-                :img="require(`@/../public/imagesFirebase/news/${news.photo}`)"
+                :img="`imagesFirebase/news/${news.photo}`"
                 :date="news.date"
                 :description="news.description"
                 :title="news.name"
@@ -195,7 +195,7 @@
 
             <div class="guarantee__wrapper__cards_card" v-for="condition in conditions" :key="condition.id">
               <div class="guarantee__wrapper__cards_card_img">
-                <img :src="require(`@/../public/imagesFirebase/conditions/${condition.photo}`)" alt="">
+                <img :src="`imagesFirebase/conditions/${condition.photo}`" alt="">
               </div>
               <div class="guarantee__wrapper__cards_card__information">
                 <div class="guarantee__wrapper__cards_card__information_title">{{ condition.name }}</div>
