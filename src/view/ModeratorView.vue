@@ -287,6 +287,7 @@ export default {
       ]),
     }
   },
+  
   computed: {},
   methods: {
     movingPage(e) {
@@ -345,8 +346,8 @@ export default {
         photo: [],
       };
       console.log(product);
-      const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
-      // const baseUrl = '/upload'; // для хоста
+      // const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
+      const baseUrl = '/upload'; // для хоста
 
       try {
         const response = await fetch(baseUrl, {

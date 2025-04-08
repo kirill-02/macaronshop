@@ -13,8 +13,8 @@ const PORT = process.env.APP_PORT || 3000;
 const HOST = process.env.APP_IP || '0.0.0.0';
 
 // Папка для загрузки изображений
-const uploadDir = path.join(__dirname, '../public/imagesFirebase/product'); // для локалки
-// const uploadDir = path.join(__dirname, '../www/imagesFirebase/product'); //для хоста
+// const uploadDir = path.join(__dirname, '../public/imagesFirebase/product'); // для локалки
+const uploadDir = path.join(__dirname, '../www/imagesFirebase/product'); //для хоста
 
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, {recursive: true});
