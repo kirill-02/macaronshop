@@ -287,7 +287,7 @@ export default {
       ]),
     }
   },
-
+  
   computed: {},
   methods: {
     movingPage(e) {
