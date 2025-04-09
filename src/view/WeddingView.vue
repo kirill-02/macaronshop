@@ -53,7 +53,7 @@
                 v-for="products in filteredProductsSets"
                 :key="products.id"
                 :id="products.id"
-                :img="require(`@/../public/imagesFirebase/product/${products.photo[0]}`)"
+                :img="`/imagesFirebase/product/${products.photo[0]}`"
                 :title="products.name"
                 :description="products.description"
                 :price="products.price"

@@ -51,7 +51,7 @@
                 v-for="product in filteredProductsSets"
                 :key="product.id"
                 :id="product.id"
-                :img="require(`@/../public/imagesFirebase/product/${product.photo[0]}`)"
+                :img="`/imagesFirebase/product/${product.photo[0]}`"
                 :title="product.name"
                 :description="product.description"
                 :price="product.price"
@@ -69,7 +69,7 @@
                 :key="completeds.id"
                 class="corporate-gifts__wrapper__completed-orders__cards_card">
               <div class="corporate-gifts__wrapper__completed-orders__cards_card_img">
-                <img :src="require(`@/../public/imagesFirebase/completed/${completeds.photo}`)" alt="">
+                <img :src="`/imagesFirebase/completed/${completeds.photo}`" alt="">
               </div>
               <div class="corporate-gifts__wrapper__completed-orders__cards_card_description">
                 {{ completeds.name }}

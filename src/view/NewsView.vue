@@ -12,7 +12,7 @@
               v-for="news in visibleSets"
               :key="news.id"
               :id="news.id"
-              :img="require(`@/../public/imagesFirebase/news/${news.photo}`)"
+              :img="`/imagesFirebase/news/${news.photo}`"
               :date="news.date"
               :description="news.description"
               :title="news.name"

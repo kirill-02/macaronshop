@@ -10,7 +10,7 @@
 
           <div class="guarantee__wrapper__cards_card" v-for="guarantees in guarantee" :key="guarantees.id">
             <div class="guarantee__wrapper__cards_card_img">
-              <img :src="require(`@/../public/imagesFirebase/guarantee/${guarantees.photo}`)" alt="">
+              <img :src="`/imagesFirebase/guarantee/${guarantees.photo}`" alt="">
             </div>
             <div class="guarantee__wrapper__cards_card__information">
               <div class="guarantee__wrapper__cards_card__information_title">{{ guarantees.name }}</div>

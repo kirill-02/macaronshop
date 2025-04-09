@@ -13,7 +13,7 @@
                  :key="basket.id">
               <div class="basket__wrapper__information__product__layout">
                 <div class="basket__wrapper__information__product__layout_images"><img
-                    :src="require(`@/../public/imagesFirebase/product/${basket.photo[0]}`)" alt="">
+                    :src="`/imagesFirebase/product/${basket.photo[0]}`" alt="">
                 </div>
                 <div class="basket__wrapper__information__product__layout__things">
                   <div class="basket__wrapper__information__product__layout__things_title">

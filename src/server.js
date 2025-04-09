@@ -3,21 +3,20 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
-const {v4: uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 app.use(cors());
-
 
 const PORT = process.env.APP_PORT || 3000;
 const HOST = process.env.APP_IP || '0.0.0.0';
 
 // Папка для загрузки изображений
 // const uploadDir = path.join(__dirname, '../public/imagesFirebase/product'); // для локалки
-const uploadDir = path.join(__dirname, '../www/imagesFirebase/product'); //для хоста
+const uploadDir = path.join(__dirname, '../www/imagesFirebase/product'); // для хоста
 
 if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, {recursive: true});
+    fs.mkdirSync(uploadDir, { recursive: true });
 }
 
 // Настройка хранения файлов
@@ -31,21 +30,19 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({storage: storage});
+const upload = multer({ storage: storage });
 
+// === СТАТИКА ===
 app.use(express.static(path.join(__dirname, '../www')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../www/index.html'));
-});
-
+// === API роут ===
 app.post('/upload', upload.fields([
-    {name: 'image', maxCount: 1},
-    {name: 'image2', maxCount: 1},
-    {name: 'image3', maxCount: 1}]
-), (req, res) => {
+    { name: 'image', maxCount: 1 },
+    { name: 'image2', maxCount: 1 },
+    { name: 'image3', maxCount: 1 }
+]), (req, res) => {
     if (!req.files) {
-        return res.status(400).json({error: 'No files uploaded'});
+        return res.status(400).json({ error: 'No files uploaded' });
     }
 
     const filePaths = [];
@@ -59,10 +56,15 @@ app.post('/upload', upload.fields([
         filePaths.push(req.files['image3'][0].filename);
     }
 
-    res.json({filePaths});
+    res.json({ filePaths });
 });
 
-// Запуск сервера
+// === SPA fallback ===
+app.get(/^\/.*/, (req, res) => {
+    res.sendFile(path.join(__dirname, '../www/index.html'));
+});
+
+// === ЗАПУСК ===
 app.listen(PORT, HOST, () => {
     console.log(`Server is running on http://${HOST}:${PORT}`);
 });

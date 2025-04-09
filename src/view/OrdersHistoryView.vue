@@ -69,7 +69,7 @@
             <div class="order-history__wrapper__information__product__layout">
               <div class="order-history__wrapper__information__product__layout_images">
                 <img
-                    :src="require(`@/../public/imagesFirebase/product/${product.photo[0]}`)" alt="">
+                    :src="`/imagesFirebase/product/${product.photo[0]}`" alt="">
               </div>
               <div class="order-history__wrapper__information__product__layout__things">
                 <div class="order-history__wrapper__information__product__layout__things_title">

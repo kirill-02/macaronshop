@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
 import HomeView from '@/view/HomeView.vue';
 import AuthView from '@/view/AuthView.vue';
 import CabinetView from '@/view/CabinetView.vue';
@@ -201,11 +201,11 @@ const routes = [
             layout: 'main',
             auth: true
         }
-    },
+    }
 ];
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes,
 });
 export default router; // Экспортируйте маршрутизатор
