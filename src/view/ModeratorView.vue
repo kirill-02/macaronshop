@@ -81,7 +81,7 @@
           <div class="cabinet__wrapper__information_title">
             Добавить "готовые наборы"
           </div>
-          <div class="cabinet__wrapper__information__form">
+          <form class="cabinet__wrapper__information__form">
 
             <div class="cabinet__wrapper__information__form_block">
 
@@ -198,25 +198,112 @@
             </div>
 
             <button class="cabinet__wrapper__information__form_button" @click="addProduct">Добавить товар</button>
-          </div>
+          </form>
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'seal'">
           <div class="cabinet__wrapper__information_title">
             Добавить "выполненные заказы с печатью"
           </div>
+          <form class="cabinet__wrapper__information__form">
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Название выполненного набора</label>
+                <input type="text" placeholder="Укажите название">
+              </div>
+              <div class="">
+                <label for="">Фото №1 (главная)</label>
+                <input type="file" @change="handleFileUpload($event, 'mainImage')" accept="image/*">
+              </div>
+            </div>
+            <button class="cabinet__wrapper__information__form_button"
+            >Добавить выполненные заказы с печатью</button>
+          </form>
+
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'promotion'">
           <div class="cabinet__wrapper__information_title">
             Добавить "акции"
           </div>
+
+          <form class="cabinet__wrapper__information__form">
+
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Название акции</label>
+                <input type="text" placeholder="Укажите название">
+              </div>
+              <div class="">
+                <label for="">Цвет</label>
+                <input type="text"  placeholder="название цвета (#000)">
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_block">
+
+
+              <div class="">
+                <label for="">Фото №1 (главная)</label>
+                <input type="file" @change="handleFileUpload($event, 'mainImage')" accept="image/*">
+              </div>
+              <div class="">
+                <label for="">Заголовок (Новинка)</label>
+                <input type="text"  placeholder="Заголовок (новинка)">
+              </div>
+
+
+            </div>
+
+            <button class="cabinet__wrapper__information__form_button">Добавить акции</button>
+          </form>
+
+
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'news'">
           <div class="cabinet__wrapper__information_title">
             Добавить "новости"
           </div>
+
+          <form class="cabinet__wrapper__information__form">
+
+            <div class="cabinet__wrapper__information__form_block">
+
+              <div class="">
+                <label for="">Название</label>
+                <input type="text"  placeholder="Укажите название">
+              </div>
+
+              <div class="">
+                <label for="">Поиск по слову</label>
+                <input type="text"  placeholder="напишите слово по которому будет поиск">
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Описание</label>
+                <textarea name="" id="" cols="30" rows="10"
+                          placeholder="Укажите описание"></textarea>
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Дата</label>
+                <input type="date" v-model="name" placeholder="Укажите дату">
+              </div>
+              <div class="">
+                <label for="">Фото</label>
+                <input type="file" @change="handleFileUpload($event, 'mainImage')" accept="image/*">
+              </div>
+            </div>
+
+            <button class="cabinet__wrapper__information__form_button">Добавить новость</button>
+          </form>
+
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'conditions'">
