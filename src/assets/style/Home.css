@@ -242,6 +242,16 @@
   margin-bottom: 30px;
   height: 380px;
 }
+.promotion__wrapper__cards_card_img {
+  width: 100%;
+  min-height: 142px;
+  height: 270px;
+}
+.promotion__wrapper__cards_card_img img {
+  width: 100%;
+  min-height: 142px;
+  height: 270px;
+}
 .promotion__wrapper__cards_card_bookmark {
   top: 15px;
   display: flex;
@@ -546,8 +556,11 @@
     font-size: 12px;
     margin-bottom: 0;
   }
+  .promotion__wrapper__cards_card_img {
+    height: 180px;
+  }
   .promotion__wrapper__cards_card_img img {
-    width: 180px;
+    height: 180px;
   }
   .promotion__wrapper__cards_card_description {
     padding: 10px;
@@ -625,6 +638,12 @@
   }
   .promotion__wrapper {
     margin-top: 20px;
+  }
+  .promotion__wrapper__cards_card_img {
+    height: 142px;
+  }
+  .promotion__wrapper__cards_card_img img {
+    height: 142px;
   }
   .promotion .title {
     font-size: 18px;

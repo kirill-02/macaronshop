@@ -3,7 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
-const { v4: uuidv4 } = require('uuid');
+const {v4: uuidv4} = require('uuid');
 
 const app = express();
 app.use(cors());
@@ -11,18 +11,32 @@ app.use(cors());
 const PORT = process.env.APP_PORT || 3000;
 const HOST = process.env.APP_IP || '0.0.0.0';
 
-// Папка для загрузки изображений
-// const uploadDir = path.join(__dirname, '../public/imagesFirebase/product'); // для локалки
-const uploadDir = path.join(__dirname, '../www/imagesFirebase/product'); // для хоста
-
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-// Настройка хранения файлов
+// === Настройка хранилища с выбором папки по имени поля ===
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, uploadDir);
+        let targetDir;
+
+        // Определяем путь в зависимости от имени поля
+        if (file.fieldname === 'sealImage') {
+            targetDir = path.join(__dirname, '../public/imagesFirebase/completed'); // Для локалки
+            // const targetDir = path.join(__dirname, '../www/imagesFirebase/completed'); // для хоста
+        } else if (file.fieldname === 'image' || file.fieldname === 'image2' || file.fieldname === 'image3') {
+            targetDir = path.join(__dirname, '../public/imagesFirebase/product'); // Для локалки
+            // const targetDir = path.join(__dirname, '../www/imagesFirebase/product'); // для хоста
+        } else if (file.fieldname === 'promotionImage') {
+            targetDir = path.join(__dirname, '../public/imagesFirebase/promotion'); // Для локалки
+            // const targetDir = path.join(__dirname, '../www/imagesFirebase/promotion'); // для хоста
+        } else if (file.fieldname === 'newsImage') {
+            targetDir = path.join(__dirname, '../public/imagesFirebase/news'); // Для локалки
+            // const targetDir = path.join(__dirname, '../www/imagesFirebase/news'); // для хоста
+        }
+
+        // Создаём папку, если не существует
+        if (!fs.existsSync(targetDir)) {
+            fs.mkdirSync(targetDir, {recursive: true});
+        }
+
+        cb(null, targetDir);
     },
     filename: (req, file, cb) => {
         const uniqueName = uuidv4() + path.extname(file.originalname);
@@ -30,41 +44,42 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({storage: storage});
 
 // === СТАТИКА ===
 app.use(express.static(path.join(__dirname, '../www')));
 
-// === API роут ===
+// === API: Загрузка файлов ===
 app.post('/upload', upload.fields([
-    { name: 'image', maxCount: 1 },
-    { name: 'image2', maxCount: 1 },
-    { name: 'image3', maxCount: 1 }
+    {name: 'image', maxCount: 1},
+    {name: 'image2', maxCount: 1},
+    {name: 'image3', maxCount: 1},
+    {name: 'sealImage', maxCount: 1},
+    {name: 'promotionImage', maxCount: 1},
+    {name: 'newsImage', maxCount: 1},
 ]), (req, res) => {
     if (!req.files) {
-        return res.status(400).json({ error: 'No files uploaded' });
+        return res.status(400).json({error: 'No files uploaded'});
     }
 
     const filePaths = [];
-    if (req.files['image']) {
-        filePaths.push(req.files['image'][0].filename);
-    }
-    if (req.files['image2']) {
-        filePaths.push(req.files['image2'][0].filename);
-    }
-    if (req.files['image3']) {
-        filePaths.push(req.files['image3'][0].filename);
-    }
 
-    res.json({ filePaths });
+    // Перечисляем все допустимые поля
+    ['image', 'image2', 'image3', 'sealImage', 'promotionImage', 'newsImage'].forEach(field => {
+        if (req.files[field]) {
+            filePaths.push(req.files[field][0].filename);
+        }
+    });
+
+    res.json({filePaths});
 });
 
-// === SPA fallback ===
+// === SPA fallback для фронта ===
 app.get(/^\/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, '../www/index.html'));
 });
 
-// === ЗАПУСК ===
+// === ЗАПУСК СЕРВЕРА ===
 app.listen(PORT, HOST, () => {
     console.log(`Server is running on http://${HOST}:${PORT}`);
 });

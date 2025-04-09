@@ -62,14 +62,6 @@
 
           <div
               class="cabinet__wrapper__menu_button"
-              @click="movingPage('guarantee')"
-              :class="{'page_active': page === 'guarantee'}"
-          >
-            Добавить "Гарантии вкуса и качества"
-          </div>
-
-          <div
-              class="cabinet__wrapper__menu_button"
               @click="movingPage('user')"
               :class="{'page_active': page === 'user'}"
           >
@@ -81,7 +73,7 @@
           <div class="cabinet__wrapper__information_title">
             Добавить "готовые наборы"
           </div>
-          <form class="cabinet__wrapper__information__form">
+          <div class="cabinet__wrapper__information__form">
 
             <div class="cabinet__wrapper__information__form_block">
 
@@ -198,27 +190,28 @@
             </div>
 
             <button class="cabinet__wrapper__information__form_button" @click="addProduct">Добавить товар</button>
-          </form>
+          </div>
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'seal'">
           <div class="cabinet__wrapper__information_title">
             Добавить "выполненные заказы с печатью"
           </div>
-          <form class="cabinet__wrapper__information__form">
+          <div class="cabinet__wrapper__information__form">
             <div class="cabinet__wrapper__information__form_block">
               <div class="">
                 <label for="">Название выполненного набора</label>
-                <input type="text" placeholder="Укажите название">
+                <input type="text" v-model="name" placeholder="Укажите название">
               </div>
               <div class="">
-                <label for="">Фото №1 (главная)</label>
+                <label for="">Фото</label>
                 <input type="file" @change="handleFileUpload($event, 'mainImage')" accept="image/*">
               </div>
             </div>
-            <button class="cabinet__wrapper__information__form_button"
-            >Добавить выполненные заказы с печатью</button>
-          </form>
+            <button class="cabinet__wrapper__information__form_button" @click="addSeal">
+              >Добавить выполненные заказы с печатью
+            </button>
+          </div>
 
         </div>
 
@@ -227,17 +220,21 @@
             Добавить "акции"
           </div>
 
-          <form class="cabinet__wrapper__information__form">
+          <div class="cabinet__wrapper__information__form">
 
 
             <div class="cabinet__wrapper__information__form_block">
               <div class="">
                 <label for="">Название акции</label>
-                <input type="text" placeholder="Укажите название">
+                <input type="text" v-model="name" placeholder="Укажите название">
               </div>
               <div class="">
                 <label for="">Цвет</label>
-                <input type="text"  placeholder="название цвета (#000)">
+                <select v-model="color" name="color" id="color">
+                  <option disabled selected value="">Выберите название цвета (#000)</option>
+                  <option value="#FF4D6D">Красный</option>
+                  <option value="#8CC4EC">Синий</option>
+                </select>
               </div>
             </div>
 
@@ -250,14 +247,14 @@
               </div>
               <div class="">
                 <label for="">Заголовок (Новинка)</label>
-                <input type="text"  placeholder="Заголовок (новинка)">
+                <input type="text" v-model="title" placeholder="Заголовок (новинка)">
               </div>
 
 
             </div>
 
-            <button class="cabinet__wrapper__information__form_button">Добавить акции</button>
-          </form>
+            <button class="cabinet__wrapper__information__form_button" @click="addPromotion">Добавить акции</button>
+          </div>
 
 
         </div>
@@ -267,19 +264,64 @@
             Добавить "новости"
           </div>
 
-          <form class="cabinet__wrapper__information__form">
+          <div class="cabinet__wrapper__information__form">
 
             <div class="cabinet__wrapper__information__form_block">
 
               <div class="">
                 <label for="">Название</label>
-                <input type="text"  placeholder="Укажите название">
+                <input type="text" v-model="name" placeholder="Укажите название">
               </div>
 
               <div class="">
                 <label for="">Поиск по слову</label>
-                <input type="text"  placeholder="напишите слово по которому будет поиск">
+                <input type="text" v-model="search" placeholder="напишите слово по которому будет поиск">
               </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Описание</label>
+                <textarea name="" id="" cols="30" rows="10"
+                          v-model="description"
+                          placeholder="Укажите описание"></textarea>
+              </div>
+            </div>
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Дата</label>
+                <input type="date" v-model="date" placeholder="Укажите дату">
+              </div>
+              <div class="">
+                <label for="">Фото</label>
+                <input type="file" @change="handleFileUpload($event, 'mainImage')" accept="image/*">
+              </div>
+            </div>
+
+            <button class="cabinet__wrapper__information__form_button" @click="addNews">Добавить новость</button>
+          </div>
+
+        </div>
+
+        <div class="cabinet__wrapper__information" v-if="page === 'conditions'">
+          <div class="cabinet__wrapper__information_title">
+            Добавить "условия"
+          </div>
+
+          <div class="cabinet__wrapper__information__form">
+
+            <div class="cabinet__wrapper__information__form_block">
+
+              <div class="">
+                <label for="">Название</label>
+                <input type="text" placeholder="Укажите название">
+              </div>
+              <div class="">
+                <label for="">Фото</label>
+                <input type="file" @change="handleFileUpload($event, 'mainImage')" accept="image/*">
+              </div>
+
             </div>
 
             <div class="cabinet__wrapper__information__form_block">
@@ -290,45 +332,50 @@
               </div>
             </div>
 
-            <div class="cabinet__wrapper__information__form_block">
-              <div class="">
-                <label for="">Дата</label>
-                <input type="date" v-model="name" placeholder="Укажите дату">
-              </div>
-              <div class="">
-                <label for="">Фото</label>
-                <input type="file" @change="handleFileUpload($event, 'mainImage')" accept="image/*">
-              </div>
-            </div>
-
-            <button class="cabinet__wrapper__information__form_button">Добавить новость</button>
-          </form>
-
-        </div>
-
-        <div class="cabinet__wrapper__information" v-if="page === 'conditions'">
-          <div class="cabinet__wrapper__information_title">
-            Добавить "условия"
+            <button class="cabinet__wrapper__information__form_button">Добавить условия</button>
           </div>
+
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'filterNews'">
           <div class="cabinet__wrapper__information_title">
             Добавить "фильтры для новостей"
           </div>
+
+          <div class="cabinet__wrapper__information__form">
+
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Название фильтра</label>
+                <input type="text" placeholder="Укажите название">
+              </div>
+            </div>
+
+            <button class="cabinet__wrapper__information__form_button">Добавить фильтр для новостей</button>
+          </div>
+
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'filterSets'">
           <div class="cabinet__wrapper__information_title">
             Добавить "фильтры для готовых наборов"
           </div>
+
+          <div class="cabinet__wrapper__information__form">
+
+            <div class="cabinet__wrapper__information__form_block">
+              <div class="">
+                <label for="">Название фильтра</label>
+                <input type="text" placeholder="Укажите название">
+              </div>
+            </div>
+
+            <button class="cabinet__wrapper__information__form_button">Добавить фильтр для продуктов</button>
+          </div>
+
         </div>
 
-        <div class="cabinet__wrapper__information" v-if="page === 'guarantee'">
-          <div class="cabinet__wrapper__information_title">
-            Добавить "Гарантии вкуса и качества"
-          </div>
-        </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'user'">
           <div class="cabinet__wrapper__information_title">
@@ -347,11 +394,16 @@ import {ref} from 'vue'
 import {addDoc, collection} from "firebase/firestore";
 import {db} from "@/firebase";
 
+const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
+// const baseUrl = '/upload'; // для хоста
 export default {
   data() {
-    
+
     return {
       page: 'sets',
+      date: ref(''),
+      color: ref(''),
+      title: ref(''),
       kit: ref(''),
       description: ref(''),
       name: ref(''),
@@ -375,11 +427,35 @@ export default {
       ]),
     }
   },
-  
+
   computed: {},
   methods: {
     movingPage(e) {
       this.page = e;
+      this.date = ref(''),
+      this.color = ref(''),
+          this.title = ref(''),
+          this.kit = ref(''),
+          this.description = ref(''),
+          this.name = ref(''),
+          this.search = ref(''),
+          this.price = ref(''),
+          this.descriptionTitle = ref(''),
+          this.descriptionDescription = ref(''),
+          this.compositionTitle = ref(''),
+          this.compositionDescription = ref(''),
+          this.conditionTitle = ref(''),
+          this.conditionDescription = ref(''),
+          this.description_composition_condition = ref([]),
+          this.mainImage = null,
+          this.image2 = null,
+          this.image3 = null,
+          this.tastes = ref([
+            {
+              name: '',
+              quantity: ''
+            }
+          ])
     },
     addTastes() {
       this.tastes.push({name: '', quantity: ''})
@@ -409,7 +485,7 @@ export default {
       formData.append('image2', this.image2);
       formData.append('image3', this.image3);
 
-      const product = {
+      const productData = {
         test: 'test',
         description: this.description,
         name: this.name,
@@ -433,9 +509,8 @@ export default {
         ],
         photo: [],
       };
-      console.log(product);
-      // const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
-      const baseUrl = '/upload'; // для хоста
+      console.log(productData);
+
 
       try {
         const response = await fetch(baseUrl, {
@@ -448,17 +523,131 @@ export default {
         }
 
         const data = await response.json();
-        product.photo = data.filePaths; // Сохраняем пути к изображениям
+        productData.photo = data.filePaths; // Сохраняем пути к изображениям
 
         // Сохраните продукт в Firestore
-        await addDoc(collection(db, 'product'), product);
+        await addDoc(collection(db, 'product'), productData);
         alert('Продукт успешно добавлен!');
 
       } catch (error) {
         console.error('Error:', error);
         alert('Произошла ошибка при добавлении продукта. Пожалуйста, попробуйте еще раз.');
       }
+    },
+
+    async addSeal() {
+      if (!this.mainImage) {
+        alert('Пожалуйста, загрузите изображение.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('sealImage', this.mainImage);
+
+      const sealData = {
+        name: this.name,
+        photo: '',
+      };
+
+
+      try {
+        const response = await fetch(baseUrl, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Ошибка при загрузке изображения');
+        }
+
+        const data = await response.json();
+        sealData.photo = data.filePaths[0]; // Получаем путь к изображению
+
+        await addDoc(collection(db, 'completed'), sealData); // добавляем в коллекцию seal
+        alert('Выполненный заказ с печатью успешно добавлен!');
+      } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при добавлении выполненного заказа.');
+      }
+    },
+
+    async addPromotion() {
+      if (!this.mainImage) {
+        alert('Пожалуйста, загрузите изображение.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('promotionImage', this.mainImage);
+
+      const promotionlData = {
+        color: this.color,
+        name: this.name,
+        title: this.title,
+        photo: '',
+      };
+
+
+      try {
+        const response = await fetch(baseUrl, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Ошибка при загрузке изображения');
+        }
+
+        const data = await response.json();
+        promotionlData.photo = data.filePaths[0]; // Получаем путь к изображению
+
+        await addDoc(collection(db, 'promotion'), promotionlData); // добавляем в коллекцию seal
+        alert('акция успешно добавлен!');
+      } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при добавлении акции.');
+      }
+    },
+
+    async addNews() {
+      if (!this.mainImage) {
+        alert('Пожалуйста, загрузите изображение.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('newsImage', this.mainImage);
+
+      const newsData = {
+        date: this.date,
+        description: this.description,
+        name: this.name,
+        search: this.search,
+        photo: '',
+      };
+
+
+      try {
+        const response = await fetch(baseUrl, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Ошибка при загрузке изображения');
+        }
+
+        const data = await response.json();
+        newsData.photo = data.filePaths[0]; // Получаем путь к изображению
+
+        await addDoc(collection(db, 'news'), newsData); // добавляем в коллекцию seal
+        alert('новость успешно добавлен!');
+      } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при добавлении новостей.');
+      }
     }
+
   }
 }
 </script>

@@ -136,7 +136,6 @@
         </div>
       </div>
     </div>
-
     <div class="popular-sets">
       <div class="container">
         <div class="title">Популярные наборы</div>

@@ -22,7 +22,7 @@
         <span>В корзину</span>
       </button>
       <div v-else class="popular-sets__wrapper__cards__card__price-basket_basket no_login">
-       <router-link to="/auth"> зарегистрируйтесь чтобы добавить корзину</router-link>
+        <router-link to="/auth"> зарегистрируйтесь чтобы добавить корзину</router-link>
       </div>
 
     </div>
@@ -152,9 +152,11 @@ export default {
 
   &_img {
     width: 100%;
+    height: 300px;
 
     img {
       width: 100%;
+      height: 300px;
     }
   }
 
@@ -223,6 +225,14 @@ export default {
 
 @media screen and (max-width: 768px) {
   .popular-sets__wrapper__cards__card {
+    &_img {
+      height: 235px;
+
+      img {
+        height: 235px;
+      }
+    }
+
     &__information {
       position: relative;
     }
@@ -244,9 +254,15 @@ export default {
   .popular-sets__wrapper__cards__card {
     &_img {
       padding: 10px 10px 0 10px;
+      height: 130px;
+
+      img {
+        height: 130px;
+      }
     }
 
     &__information {
+      margin-top: 5px;
       position: relative;
       padding: 10px 12px;
 
@@ -289,6 +305,11 @@ export default {
   .popular-sets__wrapper__cards__card {
     &_img {
       padding: 8px 8px 0 8px;
+      height: 100px;
+
+      img {
+        height: 100px;
+      }
     }
 
     &__information {

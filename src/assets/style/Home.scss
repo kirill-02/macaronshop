@@ -296,6 +296,18 @@
         margin-bottom: 30px;
         height: 380px;
 
+        &_img {
+          width: 100%;
+          min-height: 142px;
+          height: 270px;
+
+          img {
+            width: 100%;
+            min-height: 142px;
+            height: 270px;
+          }
+        }
+
         &_bookmark {
           top: 15px;
           display: flex;
@@ -705,8 +717,10 @@
           margin-bottom: 0;
 
           &_img {
+            height: 180px;
+
             img {
-              width: 180px;
+              height: 180px;
             }
           }
 
@@ -828,6 +842,19 @@
   .promotion {
     &__wrapper {
       margin-top: 20px;
+
+      &__cards {
+        &_card {
+          &_img {
+            height: 142px;
+
+            img {
+              height: 142px;
+
+            }
+          }
+        }
+      }
     }
 
     .title {

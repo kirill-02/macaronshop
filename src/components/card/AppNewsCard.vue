@@ -24,8 +24,10 @@ export default {
   &_img {
     width: 100%;
 
+    height: 210px;
     img {
       width: 100%;
+      height: 210px;
     }
   }
 
@@ -52,12 +54,27 @@ export default {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1028px) {
+  .news__wrapper__cards__card {
+    &_img {
 
+      height: 164px;
+      img {
+        height: 164px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 560px) {
   .news__wrapper__cards__card {
+    &_img {
+
+      height: 102px;
+      img {
+        height: 102px;
+      }
+    }
     &__information {
       padding: 10px 12px;
 
@@ -78,6 +95,13 @@ export default {
 
 @media screen and (max-width: 360px) {
   .news__wrapper__cards__card {
+    &_img {
+
+      height: 80px;
+      img {
+        height: 80px;
+      }
+    }
     &__information {
       padding: 6px 12px;
 
