@@ -29,6 +29,9 @@ const storage = multer.diskStorage({
         } else if (file.fieldname === 'newsImage') {
             targetDir = path.join(__dirname, '../public/imagesFirebase/news'); // Для локалки
             // const targetDir = path.join(__dirname, '../www/imagesFirebase/news'); // для хоста
+        } else if (file.fieldname === 'conditionsImage') {
+            targetDir = path.join(__dirname, '../public/imagesFirebase/conditions'); // Для локалки
+            // const targetDir = path.join(__dirname, '../www/imagesFirebase/conditions'); // для хоста
         }
 
         // Создаём папку, если не существует
@@ -57,6 +60,7 @@ app.post('/upload', upload.fields([
     {name: 'sealImage', maxCount: 1},
     {name: 'promotionImage', maxCount: 1},
     {name: 'newsImage', maxCount: 1},
+    {name: 'conditionsImage', maxCount: 1},
 ]), (req, res) => {
     if (!req.files) {
         return res.status(400).json({error: 'No files uploaded'});
@@ -65,7 +69,7 @@ app.post('/upload', upload.fields([
     const filePaths = [];
 
     // Перечисляем все допустимые поля
-    ['image', 'image2', 'image3', 'sealImage', 'promotionImage', 'newsImage'].forEach(field => {
+    ['image', 'image2', 'image3', 'sealImage', 'promotionImage', 'newsImage', 'conditionsImage'].forEach(field => {
         if (req.files[field]) {
             filePaths.push(req.files[field][0].filename);
         }

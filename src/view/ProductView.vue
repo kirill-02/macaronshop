@@ -127,7 +127,7 @@
                   v-for="products in filteredProductsCombo"
                   :key="products.id"
                   :id="products.id"
-                  :img="`imagesFirebase/product/${products.photo[0]}`"
+                  :img="`/imagesFirebase/product/${products.photo[0]}`"
                   :title="products.name"
                   :description="products.description"
                   :price="products.price"

@@ -315,7 +315,7 @@
 
               <div class="">
                 <label for="">Название</label>
-                <input type="text" placeholder="Укажите название">
+                <input type="text" v-model="name" placeholder="Укажите название">
               </div>
               <div class="">
                 <label for="">Фото</label>
@@ -328,11 +328,12 @@
               <div class="">
                 <label for="">Описание</label>
                 <textarea name="" id="" cols="30" rows="10"
+                          v-model="description"
                           placeholder="Укажите описание"></textarea>
               </div>
             </div>
 
-            <button class="cabinet__wrapper__information__form_button">Добавить условия</button>
+            <button class="cabinet__wrapper__information__form_button" @click="addConditions">Добавить условия</button>
           </div>
 
         </div>
@@ -348,11 +349,15 @@
             <div class="cabinet__wrapper__information__form_block">
               <div class="">
                 <label for="">Название фильтра</label>
-                <input type="text" placeholder="Укажите название">
+                <input type="text" v-model="name" placeholder="Укажите название">
               </div>
             </div>
 
-            <button class="cabinet__wrapper__information__form_button">Добавить фильтр для новостей</button>
+            <button
+                class="cabinet__wrapper__information__form_button"
+                @click="addFilterNews">
+              Добавить фильтр для новостей
+            </button>
           </div>
 
         </div>
@@ -367,11 +372,13 @@
             <div class="cabinet__wrapper__information__form_block">
               <div class="">
                 <label for="">Название фильтра</label>
-                <input type="text" placeholder="Укажите название">
+                <input type="text" v-model="name" placeholder="Укажите название">
               </div>
             </div>
 
-            <button class="cabinet__wrapper__information__form_button">Добавить фильтр для продуктов</button>
+            <button class="cabinet__wrapper__information__form_button" @click="addFilterSets">Добавить фильтр для
+              продуктов
+            </button>
           </div>
 
         </div>
@@ -433,7 +440,7 @@ export default {
     movingPage(e) {
       this.page = e;
       this.date = ref(''),
-      this.color = ref(''),
+          this.color = ref(''),
           this.title = ref(''),
           this.kit = ref(''),
           this.description = ref(''),
@@ -646,7 +653,62 @@ export default {
         console.error('Ошибка:', error);
         alert('Произошла ошибка при добавлении новостей.');
       }
-    }
+    },
+
+    async addConditions() {
+      if (!this.mainImage) {
+        alert('Пожалуйста, загрузите изображение.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('conditionsImage', this.mainImage);
+
+      const conditionsData = {
+        description: this.description,
+        name: this.name,
+        photo: '',
+      };
+
+
+      try {
+        const response = await fetch(baseUrl, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Ошибка при загрузке изображения');
+        }
+
+        const data = await response.json();
+        conditionsData.photo = data.filePaths[0]; // Получаем путь к изображению
+
+        await addDoc(collection(db, 'conditions'), conditionsData); // добавляем в коллекцию seal
+        alert('Условие успешно добавлено!');
+      } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при добавлении условия.');
+      }
+    },
+
+    async addFilterNews() {
+      const conditionsData = {
+        name: this.name,
+      };
+
+      await addDoc(collection(db, 'filtersNews'), conditionsData); // добавляем в коллекцию seal
+      alert('Фильтр для новостей успешно добавлено!');
+    },
+
+    async addFilterSets() {
+      const conditionsData = {
+        name: this.name,
+      };
+
+      await addDoc(collection(db, 'filtersSets'), conditionsData); // добавляем в коллекцию seal
+      alert('Фильтр для продуктов успешно добавлено!');
+    },
 
   }
 }
