@@ -493,7 +493,6 @@ export default {
       formData.append('image3', this.image3);
 
       const productData = {
-        test: 'test',
         description: this.description,
         name: this.name,
         price: this.price,
@@ -516,7 +515,6 @@ export default {
         ],
         photo: [],
       };
-      console.log(productData);
 
 
       try {
@@ -694,7 +692,7 @@ export default {
 
     async addFilterNews() {
       const conditionsData = {
-        name: this.name,
+        title: this.name,
       };
 
       await addDoc(collection(db, 'filtersNews'), conditionsData); // добавляем в коллекцию seal
@@ -703,13 +701,12 @@ export default {
 
     async addFilterSets() {
       const conditionsData = {
-        name: this.name,
+        title: this.name,
       };
 
       await addDoc(collection(db, 'filtersSets'), conditionsData); // добавляем в коллекцию seal
       alert('Фильтр для продуктов успешно добавлено!');
     },
-
   }
 }
 </script>
