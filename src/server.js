@@ -8,14 +8,6 @@ const {v4: uuidv4} = require('uuid');
 const app = express();
 app.use(cors());
 
-const admin = require('firebase-admin');
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
-
-admin.initializeApp({
-    credential: admin.credential.cert(require('./serviceAccountKey.json'))
-});
 const PORT = process.env.APP_PORT || 3000;
 const HOST = process.env.APP_IP || '0.0.0.0';
 
@@ -27,19 +19,19 @@ const storage = multer.diskStorage({
         // Определяем путь в зависимости от имени поля
         if (file.fieldname === 'sealImage') {
             targetDir = path.join(__dirname, '../public/imagesFirebase/completed'); // Для локалки
-            // targetDir = path.join(__dirname, '../www/imagesFirebase/completed'); // для хоста
+             // targetDir = path.join(__dirname, '../www/imagesFirebase/completed'); // для хоста
         } else if (file.fieldname === 'image' || file.fieldname === 'image2' || file.fieldname === 'image3') {
             targetDir = path.join(__dirname, '../public/imagesFirebase/product'); // Для локалки
-            // targetDir = path.join(__dirname, '../www/imagesFirebase/product'); // для хоста
+             // targetDir = path.join(__dirname, '../www/imagesFirebase/product'); // для хоста
         } else if (file.fieldname === 'promotionImage') {
             targetDir = path.join(__dirname, '../public/imagesFirebase/promotion'); // Для локалки
-            // targetDir = path.join(__dirname, '../www/imagesFirebase/promotion'); // для хоста
+             // targetDir = path.join(__dirname, '../www/imagesFirebase/promotion'); // для хоста
         } else if (file.fieldname === 'newsImage') {
             targetDir = path.join(__dirname, '../public/imagesFirebase/news'); // Для локалки
-            // targetDir = path.join(__dirname, '../www/imagesFirebase/news'); // для хоста
+             // targetDir = path.join(__dirname, '../www/imagesFirebase/news'); // для хоста
         } else if (file.fieldname === 'conditionsImage') {
             targetDir = path.join(__dirname, '../public/imagesFirebase/conditions'); // Для локалки
-            // targetDir = path.join(__dirname, '../www/imagesFirebase/conditions'); // для хоста
+             // targetDir = path.join(__dirname, '../www/imagesFirebase/conditions'); // для хоста
         }
 
         // Создаём папку, если не существует
@@ -84,21 +76,6 @@ app.post('/upload', upload.fields([
     });
 
     res.json({filePaths});
-});
-
-app.post('/delete-user', async (req, res) => {
-    const {uid} = req.body;
-
-    if (!uid) {
-        return res.status(400).json({error: 'Не передан uid'});
-    }
-
-    try {
-        await admin.auth().deleteUser(uid);
-        res.status(200).json({message: 'Пользователь успешно удалён'});
-    } catch (error) {
-        res.status(500).json({error: 'Ошибка при удалении пользователя'});
-    }
 });
 
 // === SPA fallback для фронта ===

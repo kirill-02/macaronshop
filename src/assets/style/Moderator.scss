@@ -46,13 +46,11 @@
       &__form {
         margin-top: 20px;
         width: 450px;
-
         &_title {
           margin-top: 20px;
           font-size: 24px;
           font-weight: 600;
         }
-
         &_description {
           font-size: 18px;
           font-weight: 600;
@@ -65,22 +63,18 @@
           align-items: end;
           grid-column-gap: 10px;
           grid-row-gap: 10px;
-
-          > div {
+          >div {
             width: 100%;
           }
-
-          > div:not(:last-child) {
+          >div:not(:last-child) {
             //margin-right: 10px;
           }
         }
-
         label {
           margin-top: 10px;
           font-size: 16px;
           display: block;
         }
-
         input, select {
           padding: 17px 14px 14px;
           margin-top: 3px;
@@ -90,10 +84,8 @@
           color: #292929;
           font-size: 16px;
           font-weight: 400;
-          outline: 1px solid rgb(237, 237, 240);
-          width: 100%;
+          outline: 1px solid rgb(237, 237, 240); width: 100%;
         }
-
         textarea {
           margin-top: 3px;
           padding: 12px 14px;
@@ -112,50 +104,44 @@
           flex-direction: column;
           position: relative;
           display: flex;
-
           &_fields {
             display: flex;
             align-items: center;
             grid-column-gap: 10px;
             grid-row-gap: 10px;
-
-            > div {
+            >div {
               width: 100%;
 
             }
           }
-
-          &_button {
-            cursor: pointer;
-            margin-top: 15px;
-            font-size: 16px;
-            //width: 100%;
-            //padding: 15px 38px;
-            background: #e7426a;
-            border: none;
-            outline: none;
-            color: #fff;
-            border-radius: 3px;
-
-            &.plus {
-              position: absolute;
-              right: -40px;
-              top: 0;
-              height: 100%;
-              transform: translate(0%, 0%);
+            &_button {
+              cursor: pointer;
+              margin-top: 15px;
+              font-size: 16px;
+              //width: 100%;
+              //padding: 15px 38px;
+              background: #e7426a;
+              border: none;
+              outline: none;
+              color: #fff;
+              border-radius: 3px;
+              &.plus {
+                position: absolute;
+                right: -40px;
+                top: 0;
+                height: 100%;
+                transform: translate(0%, 0%);
+              }
+              &.minus {
+                margin-top: 34px;
+                padding: 2px 4px;
+                position: absolute;
+                right: -20px;
+              }
             }
-
-            &.minus {
-              margin-top: 34px;
-              padding: 2px 4px;
-              position: absolute;
-              right: -20px;
-            }
-          }
 
 
         }
-
         &_button {
           cursor: pointer;
           margin-top: 25px;
@@ -186,40 +172,11 @@
       }
 
       td {
-        word-break: break-all;
         font-size: 14px;
         font-weight: 400;
         padding: 10px 25px;
         background: #ededed;
         border-bottom: 1px solid black;
-
-        button {
-          border: none;
-          outline: none;
-          border-radius: 5px;
-          padding: 5px;
-          width: 100%;
-
-          &:not(:last-child) {
-            margin-bottom: 4px;
-          }
-        }
-
-        button:nth-child(1) {
-          background: #A8DCDF;
-        }
-
-        button:nth-child(2) {
-          background: #ff4d6d;
-        }
-
-        button:nth-child(3) {
-          background: #8cc4ec;
-        }
-
-        button:nth-child(4) {
-          background: #C4C6EC;
-        }
 
         span {
           color: #4E9DD3;
