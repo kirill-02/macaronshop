@@ -384,10 +384,38 @@
         </div>
 
 
-        <div class="cabinet__wrapper__information" v-if="page === 'user'">
+        <div class="cabinet__wrapper__information user" v-if="page === 'user'">
           <div class="cabinet__wrapper__information_title">
             Вывод пользователя
           </div>
+
+          <table>
+            <thead>
+            <tr>
+              <th>uid</th>
+              <th>phone</th>
+              <th>company</th>
+              <th>role</th>
+              <th>кнопки</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr v-for="user in users" :key="user.id">
+              <td>{{ user.uid }}</td>
+              <td>{{ user.phone }}</td>
+              <td>{{ user.company || "пользователь не добавил" }}</td>
+              <td>{{ user.role }}</td>
+              <td>
+                <button>Изменить</button>
+                <button @click="deleteUser(user.id, user.uid)">Удалить</button>
+                <button>Сохранить</button>
+                <button>Отменить</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
         </div>
 
 
@@ -398,16 +426,26 @@
 
 <script>
 import {ref} from 'vue'
-import {addDoc, collection} from "firebase/firestore";
+import {
+  addDoc, collection, onSnapshot, query, where, getDocs,
+  deleteDoc,
+  doc
+} from "firebase/firestore";
 import {db} from "@/firebase";
+// import firebase from 'firebase/app';
+import 'firebase/auth';
+// import {getAuth} from "firebase/auth";
 
+// const auth = getAuth();
 const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
 // const baseUrl = '/upload'; // для хоста
 export default {
   data() {
 
     return {
-      page: 'sets',
+      users: ref([]),
+      basket: ref([]),
+      page: 'user',
       date: ref(''),
       color: ref(''),
       title: ref(''),
@@ -479,8 +517,7 @@ export default {
       } else {
         this[imageType] = null; // Убедитесь, что переменная сбрасывается, если файл не выбран
       }
-    }
-    ,
+    },
 
     async addProduct() {
       if (!this.mainImage || !this.image2 || !this.image3) {
@@ -707,6 +744,89 @@ export default {
       await addDoc(collection(db, 'filtersSets'), conditionsData); // добавляем в коллекцию seal
       alert('Фильтр для продуктов успешно добавлено!');
     },
+
+    withdrawalUsers: function () {
+      const basketQuery = query(collection(db, "users"));
+
+      onSnapshot(basketQuery, (snapshot) => {
+        this.users = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            uid: doc.data().uid,
+            phone: doc.data().phone,
+            name: doc.data().name,
+            company: doc.data().company,
+            city: doc.data().city,
+            role: doc.data().role,
+          }
+        })
+      })
+    },
+
+    withdrawalBasket: function () {
+      const basketQuery = query(collection(db, "basket"));
+
+      onSnapshot(basketQuery, (snapshot) => {
+        this.basket = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            cartsId: doc.data().cartsId,
+            userId: doc.data().userId,
+          }
+        })
+        // console.log(this.users);
+        // const currentUser = this.basket.filter(basket => basket.userId === this.users.uid);
+        // console.log(currentUser);
+        // if (currentUser) {
+        //   this.currentCartId = currentUser.cartsId;
+        //   this.deleteUser(this.currentCartId);
+        //
+        // } else {
+        //   console.error("Корзина для пользователя не найдена.");
+        // }
+      })
+    },
+
+    async deleteUser(userId, userUid) {
+      try {
+        const basketQuery = query(collection(db, "basket"), where("userId", "==", userUid));
+        const querySnapshotBasket = await getDocs(basketQuery);
+
+        if (querySnapshotBasket.empty) {
+          console.log("Пользователь не найден в корзине.");
+          return;
+        }
+
+        let cartsId = '';
+
+        querySnapshotBasket.forEach(async (docItem) => {
+          cartsId = docItem.data().cartsId;
+          await deleteDoc(docItem.ref); // удаляем basket
+        });
+
+        const cartDocsSnapshot = await getDocs(collection(db, "basket", "carts", cartsId));
+        cartDocsSnapshot.forEach(async (docItem) => {
+          await deleteDoc(docItem.ref); // удаляем товар
+        });
+
+        await deleteDoc(doc(db, 'users', userId));
+
+        await fetch("http://localhost:3000/delete-user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({uid: userUid})
+        });
+
+      } catch (err) {
+        console.error("Ошибка при удалении:", err);
+      }
+    }
+  },
+  mounted() {
+    this.withdrawalUsers();
+    this.withdrawalBasket();
   }
 }
 </script>
