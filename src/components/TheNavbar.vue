@@ -118,6 +118,14 @@
                 </li>
               </ul>
             </li>
+            <li v-if="dataUser">
+              <router-link
+                  v-if="dataUser.role === 'модератор'"
+                  class="menu-ul_burger"
+                  to="/moderator">
+                Панель модератора
+              </router-link>
+            </li>
             <hr v-if="isLoggedIn">
             <li v-if="isLoggedIn">
               <router-link @click=" closeMenu" class="menu-ul_burger" to="/cabinet">Кабинет</router-link>
@@ -229,7 +237,6 @@
             <hr>
             <li class="menu-ul_burger">
               <span><strong>8 812 309-82-88</strong></span>
-              <!--              <span><i class="ic_VectorButton"></i></span>-->
             </li>
             <li class="menu-ul_burger">
               <span><i class="ic_telegram"></i></span>

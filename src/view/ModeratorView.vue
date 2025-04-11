@@ -511,9 +511,9 @@ export default {
     handleFileUpload(event, imageType) {
       const file = event.target.files[0];
       if (file) {
-        this[imageType] = file; // Сохраняем файл в состояние компонента
+        this[imageType] = file;
       } else {
-        this[imageType] = null; // Убедитесь, что переменная сбрасывается, если файл не выбран
+        this[imageType] = null;
       }
     }
     ,
@@ -564,7 +564,7 @@ export default {
         }
 
         const data = await response.json();
-        productData.photo = data.filePaths; // Сохраняем пути к изображениям
+        productData.photo = data.filePaths;
 
         // Сохраните продукт в Firestore
         await addDoc(collection(db, 'product'), productData);
@@ -602,9 +602,9 @@ export default {
         }
 
         const data = await response.json();
-        sealData.photo = data.filePaths[0]; // Получаем путь к изображению
+        sealData.photo = data.filePaths[0];
 
-        await addDoc(collection(db, 'completed'), sealData); // добавляем в коллекцию seal
+        await addDoc(collection(db, 'completed'), sealData);
         alert('Выполненный заказ с печатью успешно добавлен!');
       } catch (error) {
         console.error('Ошибка:', error);
@@ -640,9 +640,9 @@ export default {
         }
 
         const data = await response.json();
-        promotionlData.photo = data.filePaths[0]; // Получаем путь к изображению
+        promotionlData.photo = data.filePaths[0];
 
-        await addDoc(collection(db, 'promotion'), promotionlData); // добавляем в коллекцию seal
+        await addDoc(collection(db, 'promotion'), promotionlData);
         alert('акция успешно добавлен!');
       } catch (error) {
         console.error('Ошибка:', error);
@@ -679,9 +679,9 @@ export default {
         }
 
         const data = await response.json();
-        newsData.photo = data.filePaths[0]; // Получаем путь к изображению
+        newsData.photo = data.filePaths[0];
 
-        await addDoc(collection(db, 'news'), newsData); // добавляем в коллекцию seal
+        await addDoc(collection(db, 'news'), newsData);
         alert('новость успешно добавлен!');
       } catch (error) {
         console.error('Ошибка:', error);
@@ -716,9 +716,9 @@ export default {
         }
 
         const data = await response.json();
-        conditionsData.photo = data.filePaths[0]; // Получаем путь к изображению
+        conditionsData.photo = data.filePaths[0];
 
-        await addDoc(collection(db, 'conditions'), conditionsData); // добавляем в коллекцию seal
+        await addDoc(collection(db, 'conditions'), conditionsData);
         alert('Условие успешно добавлено!');
       } catch (error) {
         console.error('Ошибка:', error);
@@ -731,7 +731,7 @@ export default {
         title: this.name,
       };
 
-      await addDoc(collection(db, 'filtersNews'), conditionsData); // добавляем в коллекцию seal
+      await addDoc(collection(db, 'filtersNews'), conditionsData);
       alert('Фильтр для новостей успешно добавлено!');
     },
 
@@ -740,7 +740,7 @@ export default {
         title: this.name,
       };
 
-      await addDoc(collection(db, 'filtersSets'), conditionsData); // добавляем в коллекцию seal
+      await addDoc(collection(db, 'filtersSets'), conditionsData);
       alert('Фильтр для продуктов успешно добавлено!');
     },
 
