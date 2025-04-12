@@ -12,7 +12,6 @@
             Добавить "готовые наборы"
           </div>
 
-
           <div
               class="cabinet__wrapper__menu_button"
               @click="movingPage('seal')"
@@ -67,6 +66,15 @@
           >
             Вывод пользователей
           </div>
+
+          <div
+              class="cabinet__wrapper__menu_button"
+              @click="movingPage('product')"
+              :class="{'page_active': page === 'product'}"
+          >
+            Вывод продуктов
+          </div>
+
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'sets'">
@@ -401,19 +409,185 @@
             </thead>
             <tbody>
 
-            <tr v-for="user in users" :key="user.id">
+            <tr v-for="user in filteredUsers" :key="user.id">
               <td>{{ user.uid }}</td>
               <td>{{ user.phone }}</td>
               <td>{{ user.company || "пользователь не добавил" }}</td>
-              <td>{{ user.role }}</td>
+              <td v-if="update !== user.id">{{ user.role }}</td>
+              <td v-if="update === user.id">
+                {{ (role === "" || role === null) ? user.role : role }}
+                <input v-model="role" type="text" name="" id="" placeholder="изменить">
+              </td>
               <td>
-                <button>Изменить</button>
-                <button @click="deleteUser(user.id, user.uid)">Удалить</button>
-                <button>Сохранить</button>
-                <button>Отменить</button>
+                <button @click="updateUser(user.id)" v-if="update !== user.id">Изменить</button>
+                <button v-if="update !== user.id" @click="deleteUser(user.id, user.uid)">Удалить</button>
+                <button v-if="update === user.id" @click="saveUser(null, user)">Сохранить</button>
+                <button v-if="update === user.id" @click="cancellationUser(null)">Отменить</button>
               </td>
             </tr>
             </tbody>
+          </table>
+
+
+        </div>
+
+        <div class="cabinet__wrapper__information " v-if="page === 'product'">
+          <div class="cabinet__wrapper__information_title">
+            Вывод продуктов
+          </div>
+<div>
+  <button class="cabinet__wrapper__menu_button product"
+          :class="{'page_active': tableProduct === 'sets'}"
+          @click="tableKit('sets')">Популярные наборы</button>
+  <button class="cabinet__wrapper__menu_button product"
+          :class="{'page_active': tableProduct === 'combo'}"
+          @click="tableKit('combo')">Комбо наборы</button>
+  <button class="cabinet__wrapper__menu_button product"
+          :class="{'page_active': tableProduct === 'gift_sets'}"
+          @click="tableKit('gift_sets')">Подарочные наборы</button>
+</div>
+          
+          
+          <table>
+            <thead>
+            <tr>
+              <th>Описание</th>
+              <th>Описание - состав - условия</th>
+              <th>Имя</th>
+              <th>Цена</th>
+              <th>Поиск</th>
+              <th>Вкусы</th>
+              <th>Тип продукта</th>
+              <th>кнопки</th>
+            </tr>
+            </thead>
+
+            <tbody v-if="tableProduct === 'sets' && updateProduct === null">
+            <tr  v-for="product in filteredProductsSets" :key="product.id" >
+              <td>{{product.description}}</td>
+              <td>
+                <hr>
+                <span>Описание: </span>
+                <br>
+                НАЗВАНИЕ: {{product.description_composition_condition[0].title}}
+                <br><br>
+                ОПИСАНИЕ: {{product.description_composition_condition[0].description}}
+                <br>
+                <hr>
+                <span>Состав: </span>
+                <br>
+                НАЗВАНИЕ: {{product.description_composition_condition[1].title}}
+                <br> <br>
+                ОПИСАНИЕ: {{product.description_composition_condition[1].description}}
+                <br>
+                <hr>
+                <span>Условия и срок: </span>
+                <br>
+
+                НАЗВАНИЕ: {{product.description_composition_condition[2].title}}
+                <br> <br>
+                ОПИСАНИЕ: {{product.description_composition_condition[2].description}}
+
+                <hr>
+              </td>
+              <td>{{product.name}}</td>
+              <td>{{ product.price }}р</td>
+              <td>{{product.search}}</td>
+              <td>
+                <div v-for="tastes in product.tastes" :key="tastes.id">
+                  <hr>
+                  <span>Название: </span>
+                  {{tastes.name}}
+                  <span>Количество: </span>
+                  {{tastes.quantity}}
+                </div>
+                <hr>
+
+              </td>
+              <td>{{product.title}}</td>
+              <td>
+                <button @click="updateProducts(product.id)" v-if="updateProduct !== product.id">Изменить</button>
+                <button v-if="updateProduct !== product.id" >Удалить</button>
+                <button v-if="updateProduct === product.id" @click="saveProduct(null)">Сохранить</button>
+                <button v-if="updateProduct === product.id" @click="cancellationProduct(null)">Отменить</button>
+              </td>
+            </tr>
+            </tbody>
+            <tbody v-if="tableProduct === 'sets' && updateProduct !== null">
+            <tr  v-for="product in filteredProductsSets" :key="product.id" >
+              <td>
+                {{ (description === "" || description === null) ? product.description :  description}}
+                <input v-model="description" type="text">
+              </td>
+              <td>
+                <hr>
+                <span>Описание: </span>
+                <br>
+                НАЗВАНИЕ: {{ (descriptionTitle === "" || descriptionTitle === null) ? product.description_composition_condition[0].title :  descriptionTitle}}
+                <input v-model="descriptionTitle" type="text">
+                <br><br>
+                ОПИСАНИЕ: {{ (descriptionDescription === "" || descriptionDescription === null) ? product.description_composition_condition[0].description :  descriptionDescription}}
+                <input v-model="descriptionDescription" type="text">
+
+                <br>
+                <hr>
+                <span>Состав: </span>
+                <br>
+                НАЗВАНИЕ: {{ (compositionTitle === "" || compositionTitle === null) ? product.description_composition_condition[1].title :  compositionTitle}}
+                <input v-model="compositionTitle" type="text">
+
+                <br> <br>
+                ОПИСАНИЕ: {{ (compositionDescription === "" || compositionDescription === null) ? product.description_composition_condition[0].description :  compositionDescription}}
+                <input v-model="compositionDescription" type="text">
+                <br>
+                <hr>
+                <span>Условия и срок: </span>
+                <br>
+
+                НАЗВАНИЕ: {{ (conditionTitle === "" || conditionTitle === null) ? product.description_composition_condition[2].title :  conditionTitle}}
+                <input v-model="conditionTitle" type="text">
+
+                <br> <br>
+                ОПИСАНИЕ: {{ (conditionDescription === "" || conditionDescription === null) ? product.description_composition_condition[0].description :  conditionDescription}}
+                <input v-model="conditionDescription" type="text">
+
+                <hr>
+              </td>
+              <td>
+                {{ (name === "" || name === null) ? product.name :  name}}
+                <input v-model="name" type="text">
+              </td>
+              <td>
+                {{ (price === "" || price === null) ? product.price :  price}}р
+                <input v-model="price" type="text">
+              </td>
+              <td>
+                {{ (search === "" || search === null) ? product.search :  search}}
+                <input v-model="search" type="text">
+              </td>
+              <td>
+                <div v-for="tastes in product.tastes" :key="tastes.id">
+                  <hr>
+                  <span>Название: </span>
+                  {{tastes.name}}
+                  <span>Количество: </span>
+                  {{tastes.quantity}}
+                </div>
+                <hr>
+
+              </td>
+              <td>{{product.title}}</td>
+              <td>
+                <button @click="updateProducts(product.id)" v-if="updateProduct !== product.id">Изменить</button>
+                <button v-if="updateProduct !== product.id" >Удалить</button>
+                <button v-if="updateProduct === product.id" @click="saveProduct(null)">Сохранить</button>
+                <button v-if="updateProduct === product.id" @click="cancellationProduct(null)">Отменить</button>
+              </td>
+            </tr>
+            </tbody>
+
+
+
           </table>
 
 
@@ -430,6 +604,7 @@ import {ref} from 'vue'
 import {
   addDoc, collection, onSnapshot, query, where, getDocs,
   deleteDoc,
+  setDoc,
   doc
 } from "firebase/firestore";
 import 'firebase/auth';
@@ -439,11 +614,15 @@ const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/uploa
 // const baseUrl = '/upload'; // для хоста
 export default {
   data() {
-
     return {
+      updateProduct: null,
+      tableProduct: 'sets',
+      update: null,
+      role: null,
+      products: ref([]),
       users: ref([]),
       basket: ref([]),
-      page: 'user',
+      page: 'product',
       date: ref(''),
       color: ref(''),
       title: ref(''),
@@ -471,10 +650,28 @@ export default {
     }
   },
 
-  computed: {},
+  computed: {
+    filteredUsers() {
+      const filterUser = this.users.filter(users => users.role !== 'модератор');
+      return filterUser
+    },
+    filteredProductsSets() {
+      const filterProduct = this.products.filter(product => product.title === 'sets');
+      return filterProduct
+    },
+    filteredProductsCombo() {
+      const filterProduct = this.products.filter(product => product.title === 'combo');
+      return filterProduct
+    },
+    filteredProductsGift_sets() {
+      const filterProduct = this.products.filter(product => product.title === 'gift_sets');
+      return filterProduct
+    },
+  },
   methods: {
     movingPage(e) {
       this.page = e;
+      this.role = ref([]),
       this.date = ref(''),
           this.color = ref(''),
           this.title = ref(''),
@@ -515,8 +712,7 @@ export default {
       } else {
         this[imageType] = null;
       }
-    }
-    ,
+    },
 
     async addProduct() {
       if (!this.mainImage || !this.image2 || !this.image3) {
@@ -801,10 +997,72 @@ export default {
       } catch (err) {
         console.error("Ошибка при удалении:", err);
       }
-    }
+    },
+
+    async updateUser(update) {
+      this.update = update
+this.role = null
+    },
+
+    async cancellationUser(update) {
+      this.update = update
+      this.role = null
+    },
+
+    async saveUser(update, user) {
+      setDoc(doc(db, 'users', user.id), {
+        id: user.id,
+        uid: user.uid,
+        phone: user.phone,
+        name: user.name,
+        company: user.company,
+        city: user.city,
+        role: this.role,
+      });
+
+      this.update = update
+      this.role = null
+    },
+
+
+    withdrawalProduct: function () {
+      const productQuery = query(collection(db, "product"));
+
+      onSnapshot(productQuery, (snapshot) => {
+        this.products = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            price: doc.data().price,
+            description: doc.data().description,
+            photo: doc.data().photo || [],
+            description_composition_condition: doc.data().description_composition_condition || [],
+            tastes: doc.data().tastes || [],
+            title: doc.data().title,
+            search: doc.data().search,
+          }
+        })
+        console.log(this.product);
+      })
+    },
+
+    tableKit(e) {
+      this.tableProduct = e
+    },
+
+    async updateProducts(update) {
+      this.updateProduct = update;
+    },
+    async saveProduct(update) {
+      this.updateProduct = update;
+    },
+    async cancellationProduct(update) {
+      this.updateProduct = update;
+    },
   },
   mounted() {
     this.withdrawalUsers();
+    this.withdrawalProduct();
   }
 }
 </script>
