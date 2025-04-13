@@ -159,12 +159,22 @@ hr {
   border: 1px solid black;
 }
 .cabinet__wrapper__information td {
+  max-width: 300px;
   word-break: keep-all;
   font-size: 14px;
   font-weight: 400;
   padding: 10px 15px;
   background: #ededed;
   border-bottom: 1px solid black;
+}
+.cabinet__wrapper__information td input {
+  width: 100%;
+  max-width: 300px;
+}
+.cabinet__wrapper__information td .span {
+  color: #292929;
+  cursor: auto;
+  word-break: break-all;
 }
 .cabinet__wrapper__information td button {
   border: none;
