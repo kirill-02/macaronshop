@@ -107,6 +107,29 @@
             Вывод условий
           </div>
 
+          <div
+              class="cabinet__wrapper__menu_button"
+              @click="movingPage('withdrawalFilterProduct')"
+              :class="{'page_active': page === 'withdrawalFilterProduct'}"
+          >
+            Вывод фильтров для продуктов
+          </div>
+
+          <div
+              class="cabinet__wrapper__menu_button"
+              @click="movingPage('withdrawalFilterNews')"
+              :class="{'page_active': page === 'withdrawalFilterNews'}"
+          >
+            Вывод фильтров для новостей
+          </div>
+
+          <div
+              class="cabinet__wrapper__menu_button"
+              @click="movingPage('withdrawalОrderHistory')"
+              :class="{'page_active': page === 'withdrawalОrderHistory'}"
+          >
+            Вывод всех заказов пользователей
+          </div>
 
         </div>
 
@@ -1157,6 +1180,203 @@
         </div>
 
 
+        <div class="cabinet__wrapper__information " v-if="page === 'withdrawalFilterProduct'">
+          <div class="cabinet__wrapper__information_title">
+            Вывод фильтров для продуктов
+          </div>
+
+
+          <table>
+            <thead>
+            <tr>
+              <th>id</th>
+              <th>Название</th>
+              <th>Кнопки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="filterProducts in filterProduct" :key="filterProducts.id">
+              <td>
+                {{ filterProducts.id }}
+              </td>
+              <td v-if="updateFiltersProduct !== filterProducts.id">
+                {{ filterProducts.title }}
+              </td>
+              <td v-if="updateFiltersProduct === filterProducts.id">
+                <span class="span"> {{
+                    (title === "" || title === null) ? filterProducts.title : title
+                  }}</span>
+                <br><input v-model="title" type="text">
+              </td>
+              <td>
+                <button @click="updateFilterProduct(filterProducts.id)"
+                        v-if="updateFiltersProduct !== filterProducts.id">
+                  Изменить
+                </button>
+                <button v-if="updateFiltersProduct !== filterProducts.id"
+                        @click="deleteFilterProduct(filterProducts.id)">Удалить
+                </button>
+                <button v-if="updateFiltersProduct === filterProducts.id"
+                        @click="saveFilterProduct(null, filterProducts)">Сохранить
+                </button>
+                <button v-if="updateFiltersProduct === filterProducts.id" @click="cancellationFilterProduct(null)">
+                  Отменить
+                </button>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+        <div class="cabinet__wrapper__information " v-if="page === 'withdrawalFilterNews'">
+          <div class="cabinet__wrapper__information_title">
+            Вывод фильтров для новостей
+          </div>
+
+
+          <table>
+            <thead>
+            <tr>
+              <th>id</th>
+              <th>Название</th>
+              <th>Кнопки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="filterNewsis in filterNews" :key="filterNewsis.id">
+              <td>
+                {{ filterNewsis.id }}
+              </td>
+              <td v-if="updateFiltersNews !== filterNewsis.id">
+                {{ filterNewsis.title }}
+              </td>
+              <td v-if="updateFiltersNews === filterNewsis.id">
+                <span class="span"> {{
+                    (title === "" || title === null) ? filterNewsis.title : title
+                  }}</span>
+                <br><input v-model="title" type="text">
+              </td>
+              <td>
+                <button @click="updateFilterNews(filterNewsis.id)"
+                        v-if="updateFiltersNews !== filterNewsis.id">
+                  Изменить
+                </button>
+                <button v-if="updateFiltersNews !== filterNewsis.id"
+                        @click="deleteFilterNews(filterNewsis.id)">Удалить
+                </button>
+                <button v-if="updateFiltersNews === filterNewsis.id"
+                        @click="saveFilterNews(null, filterNewsis)">Сохранить
+                </button>
+                <button v-if="updateFiltersNews === filterNewsis.id" @click="cancellationFilterNews(null)">
+                  Отменить
+                </button>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+        <div class="cabinet__wrapper__information " v-if="page === 'withdrawalОrderHistory'">
+          <div class="cabinet__wrapper__information_title">
+            Вывод всех заказов пользователей
+          </div>
+
+
+          <table>
+            <thead>
+            <tr>
+              <th>id</th>
+              <th>Адрес</th>
+              <th>Комментарий</th>
+              <th>Дата доставки</th>
+              <th>Время доставки</th>
+              <th>Способ доставки</th>
+              <th>Почта</th>
+              <th>Дата заказа</th>
+              <th>Способ оплаты</th>
+              <th>Цена</th>
+              <th>Id пользователя</th>
+              <th>Продукты</th>
+              <th>Статус</th>
+              <th>кнопки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="orderHistorys in orderHistory" :key="orderHistorys.id">
+              <td>
+                {{ orderHistorys.id }}
+              </td>
+              <td>
+                {{ orderHistorys.address }}
+              </td>
+              <td>
+                {{ orderHistorys.comment }}
+              </td>
+              <td>
+                {{ orderHistorys.date }}
+              </td>
+              <td>
+                {{ orderHistorys.time }}
+              </td>
+              <td>
+                {{ orderHistorys.delivery }}
+              </td>
+              <td>
+                {{ orderHistorys.email }}
+              </td>
+              <td>
+                {{ orderHistorys.orderDate }}
+              </td>
+              <td>
+                {{ orderHistorys.payment }}
+              </td>
+              <td>
+                {{ orderHistorys.price }}
+              </td>
+              <td>
+                {{ orderHistorys.userId }}
+              </td>
+
+              <td><br>
+                <div v-for="(product, index) in orderHistorys.product" :key="product.id">
+                  <span>ID ТОВАРА: </span>
+                  <router-link
+                      :to="`/product/${orderHistorys.product[index].id}`">
+                    {{ orderHistorys.product[index].id }}
+                  </router-link>
+                  <br>
+                  <span>КОЛИЧЕСТВО:</span> {{ orderHistorys.product[index].quantity }}
+                  <br><br>
+                </div>
+              </td>
+              <td v-if="updateOrderHistory !== orderHistorys.id">
+                {{ orderHistorys.state }}
+              </td>
+              <td v-if="updateOrderHistory === orderHistorys.id">
+                <span class="span">{{ (state === "" || state === null) ? orderHistorys.state : state }}</span>
+                <br><input v-model="state" type="text">
+              </td>
+              <td>
+                <button @click="updateOrderHistorys(orderHistorys.id)" v-if="updateOrderHistory !== orderHistorys.id">
+                  Изменить
+                </button>
+                <!--                <button v-if="updateNews !== newsis.id" @click="deleteOrderHistory(newsis.id)">Удалить</button>-->
+                <button v-if="updateOrderHistory === orderHistorys.id" @click="saveOrderHistory(null, orderHistorys)">
+                  Сохранить
+                </button>
+                <button v-if="updateOrderHistory === orderHistorys.id" @click="cancellationOrderHistory(null)">
+                  Отменить
+                </button>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+
       </div>
     </div>
   </div>
@@ -1178,14 +1398,21 @@ const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/uploa
 export default {
   data() {
     return {
+      orderHistory: ref([]),
+      filterProduct: ref([]),
+      filterNews: ref([]),
       completed: ref([]),
       tableProduct: 'sets',
+      updateOrderHistory: null,
+      updateFiltersProduct: null,
+      updateFiltersNews: null,
       updateConditions: null,
       updateCompleted: null,
       updatePromotion: null,
       updateNews: null,
       updateProduct: null,
       update: null,
+      state: ref(''),
       conditions: ref([]),
       newTastes: ref([]),
       promotion: ref([]),
@@ -1193,7 +1420,7 @@ export default {
       products: ref([]),
       users: ref([]),
       basket: ref([]),
-      page: 'withdrawalNews',
+      page: 'withdrawalОrderHistory',
       role: null,
       date: ref(''),
       color: ref(''),
@@ -1242,6 +1469,10 @@ export default {
   },
   methods: {
     reset() {
+      this.state = ref('');
+      this.updateOrderHistory = null,
+          this.updateFiltersProduct = null;
+      this.updateFiltersNews = null;
       this.updateConditions = null;
       this.updateCompleted = null;
       this.updatePromotion = null;
@@ -1844,6 +2075,134 @@ export default {
       this.updateConditions = conditionsId;
       this.reset()
     },
+
+
+    withdrawalFilterProduct: function () {
+      const filtersSetsQuery = query(collection(db, "filtersSets"));
+
+      onSnapshot(filtersSetsQuery, (snapshot) => {
+        this.filterProduct = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            title: doc.data().title,
+          }
+        })
+      })
+    },
+
+    async updateFilterProduct(filterId) {
+      this.reset()
+      this.updateFiltersProduct = filterId;
+    },
+    async deleteFilterProduct(filterId) {
+      await deleteDoc(doc(db, 'filtersSets', filterId));
+    },
+    async saveFilterProduct(filterId, filter) {
+      setDoc(doc(db, 'filtersSets', filter.id), {
+        title: this.title || filter.title,
+      });
+      this.updateFiltersProduct = filterId;
+      this.reset()
+    },
+    async cancellationFilterProduct(filterId) {
+      this.updateFiltersProduct = filterId;
+      this.reset()
+    },
+
+
+    withdrawalFilterNews: function () {
+      const filtersNewsQuery = query(collection(db, "filtersNews"));
+
+      onSnapshot(filtersNewsQuery, (snapshot) => {
+        this.filterNews = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            title: doc.data().title,
+          }
+        })
+      })
+    },
+
+    async updateFilterNews(filterId) {
+      this.reset()
+      this.updateFiltersNews = filterId;
+    },
+    async deleteFilterNews(filterId) {
+      await deleteDoc(doc(db, 'filtersNews', filterId));
+    },
+    async saveFilterNews(filterId, filter) {
+      setDoc(doc(db, 'filtersNews', filter.id), {
+        title: this.title || filter.title,
+      });
+      this.updateFiltersNews = filterId;
+      this.reset()
+    },
+    async cancellationFilterNews(filterId) {
+      this.updateFiltersNews = filterId;
+      this.reset()
+    },
+
+
+    withdrawalOrderHistory: function () {
+      const orderHistoryQuery = query(collection(db, "orderHistory"));
+
+      onSnapshot(orderHistoryQuery, (snapshot) => {
+        this.orderHistory = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            address: doc.data().address,
+            date: doc.data().date,
+            dateTime: doc.data().dateTime,
+            delivery: doc.data().delivery,
+            email: doc.data().email,
+            name: doc.data().name,
+            orderDate: doc.data().orderDate,
+            payment: doc.data().payment,
+            phone: doc.data().phone,
+            price: doc.data().price,
+            product: doc.data().product || [],
+            state: doc.data().state,
+            time: doc.data().time,
+            userId: doc.data().userId,
+            comment: doc.data().comment,
+          }
+        })
+      })
+    },
+
+    async updateOrderHistorys(orderHistoryId) {
+      this.reset()
+      this.updateOrderHistory = orderHistoryId;
+    },
+    // async deleteOrderHistory(filterId) {
+    //   await deleteDoc(doc(db, 'filtersNews', filterId));
+    // },
+    async saveOrderHistory(orderHistoryId, orderHistory) {
+      setDoc(doc(db, 'orderHistory', orderHistory.id), {
+        id: orderHistory.id,
+        address: orderHistory.address,
+        date: orderHistory.date,
+        dateTime: orderHistory.dateTime,
+        delivery: orderHistory.delivery,
+        email: orderHistory.email,
+        name: orderHistory.name,
+        orderDate: orderHistory.orderDate,
+        payment: orderHistory.payment,
+        phone: orderHistory.phone,
+        price: orderHistory.price,
+        product: orderHistory.product,
+        state: this.state || orderHistory.state,
+        time: orderHistory.time,
+        userId: orderHistory.userId,
+        comment: orderHistory.comment,
+      });
+      this.updateOrderHistory = orderHistoryId;
+      this.reset()
+    },
+    async cancellationOrderHistory(orderHistoryId) {
+      this.updateOrderHistory = orderHistoryId;
+      this.reset()
+    },
   },
   mounted() {
     this.withdrawalUsers();
@@ -1852,6 +2211,9 @@ export default {
     this.withdrawalPromotion();
     this.withdrawalCompleted();
     this.withdrawalConditions();
+    this.withdrawalFilterProduct();
+    this.withdrawalFilterNews();
+    this.withdrawalOrderHistory();
   }
 }
 </script>
