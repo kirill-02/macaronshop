@@ -75,6 +75,39 @@
             Вывод продуктов
           </div>
 
+          <div
+              class="cabinet__wrapper__menu_button"
+              @click="movingPage('withdrawalNews')"
+              :class="{'page_active': page === 'withdrawalNews'}"
+          >
+            Вывод новостей
+          </div>
+
+          <div
+              class="cabinet__wrapper__menu_button"
+              @click="movingPage('withdrawalPromotion')"
+              :class="{'page_active': page === 'withdrawalPromotion'}"
+          >
+            Вывод акций
+          </div>
+
+          <div
+              class="cabinet__wrapper__menu_button"
+              @click="movingPage('withdrawalCompleted')"
+              :class="{'page_active': page === 'withdrawalCompleted'}"
+          >
+            Вывод выполненных заказов с печатью
+          </div>
+
+          <div
+              class="cabinet__wrapper__menu_button"
+              @click="movingPage('withdrawalConditions')"
+              :class="{'page_active': page === 'withdrawalConditions'}"
+          >
+            Вывод условий
+          </div>
+
+
         </div>
 
         <div class="cabinet__wrapper__information" v-if="page === 'sets'">
@@ -454,6 +487,7 @@
           <table>
             <thead>
             <tr>
+              <th>id</th>
               <th>Описание</th>
               <th>Описание - состав - условия</th>
               <th>Имя</th>
@@ -466,6 +500,9 @@
             </thead>
             <tbody v-if="tableProduct === 'sets'">
             <tr v-for="product in filteredProductsSets" :key="product.id">
+              <td>
+                {{ product.id }}
+              </td>
               <td v-if="updateProduct !== product.id">
                 {{ product.description }}
               </td>
@@ -606,6 +643,9 @@
             </tbody>
             <tbody v-if="tableProduct === 'combo'">
             <tr v-for="product in filteredProductsCombo" :key="product.id">
+              <td>
+                {{ product.id }}
+              </td>
               <td v-if="updateProduct !== product.id">
                 {{ product.description }}
               </td>
@@ -746,6 +786,9 @@
             </tbody>
             <tbody v-if="tableProduct === 'gift_sets'">
             <tr v-for="product in filteredProductsGift_sets" :key="product.id">
+              <td>
+                {{ product.id }}
+              </td>
               <td v-if="updateProduct !== product.id">
                 {{ product.description }}
               </td>
@@ -887,6 +930,233 @@
 
           </table>
         </div>
+
+        <div class="cabinet__wrapper__information " v-if="page === 'withdrawalNews'">
+          <div class="cabinet__wrapper__information_title">
+            Вывод новостей
+          </div>
+
+
+          <table>
+            <thead>
+            <tr>
+              <th>id</th>
+              <th>Описание</th>
+              <th>Название</th>
+              <th>Поиск</th>
+              <th>Дата</th>
+              <th>кнопки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="newsis in news" :key="newsis.id">
+              <td>
+                {{ newsis.id }}
+              </td>
+              <td v-if="updateNews !== newsis.id">
+                {{ newsis.description }}
+              </td>
+              <td v-if="updateNews === newsis.id">
+                <span class="span"> {{
+                    (description === "" || description === null) ? newsis.description : description
+                  }}</span>
+                <br><input v-model="description" type="text">
+              </td>
+              <td v-if="updateNews !== newsis.id">
+                {{ newsis.name }}
+              </td>
+              <td v-if="updateNews === newsis.id">
+                <span class="span"> {{ (name === "" || name === null) ? newsis.name : name }}</span>
+                <br><input v-model="name" type="text">
+              </td>
+              <td v-if="updateNews !== newsis.id">
+                {{ newsis.search }}
+              </td>
+              <td v-if="updateNews === newsis.id">
+                <span class="span"> {{ (search === "" || search === null) ? newsis.search : search }}</span>
+                <br><input v-model="search" type="text">
+              </td>
+              <td v-if="updateNews !== newsis.id">
+                {{ newsis.date }}
+              </td>
+              <td v-if="updateNews === newsis.id">
+                <span class="span">{{ (date === "" || date === null) ? newsis.date : date }}</span>
+                <br><input v-model="date" type="text">
+              </td>
+              <td>
+                <button @click="updateNewsis(newsis.id)" v-if="updateNews !== newsis.id">
+                  Изменить
+                </button>
+                <button v-if="updateNews !== newsis.id" @click="deleteNews(newsis.id)">Удалить</button>
+                <button v-if="updateNews === newsis.id" @click="saveNews(null, newsis)">Сохранить</button>
+                <button v-if="updateNews === newsis.id" @click="cancellationNews(null)">Отменить</button>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+        <div class="cabinet__wrapper__information " v-if="page === 'withdrawalPromotion'">
+          <div class="cabinet__wrapper__information_title">
+            Вывод акций
+          </div>
+
+
+          <table>
+            <thead>
+            <tr>
+              <th>id</th>
+              <th>Название</th>
+              <th>Цвет</th>
+              <th>Тип акции</th>
+              <th>Кнопки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="promotions in promotion" :key="promotions.id">
+              <td>
+                {{ promotions.id }}
+              </td>
+              <td v-if="updatePromotion !== promotions.id">
+                {{ promotions.name }}
+              </td>
+              <td v-if="updatePromotion === promotions.id">
+                <span class="span"> {{
+                    (name === "" || name === null) ? promotions.name : name
+                  }}</span>
+                <br><input v-model="name" type="text">
+              </td>
+              <td v-if="updatePromotion !== promotions.id">
+                {{ promotions.color }}
+              </td>
+              <td v-if="updatePromotion === promotions.id">
+                <span class="span"> {{ (color === "" || color === null) ? promotions.color : color }}</span>
+                <br><input v-model="color" type="text">
+              </td>
+              <td v-if="updatePromotion !== promotions.id">
+                {{ promotions.title }}
+              </td>
+              <td v-if="updatePromotion === promotions.id">
+                <span class="span"> {{ (title === "" || title === null) ? promotions.title : title }}</span>
+                <br><input v-model="title" type="text">
+              </td>
+              <td>
+                <button @click="updatePromotions(promotions.id)" v-if="updatePromotion !== promotions.id">
+                  Изменить
+                </button>
+                <button v-if="updatePromotion !== promotions.id" @click="deletePromotion(promotions.id)">Удалить
+                </button>
+                <button v-if="updatePromotion === promotions.id" @click="savePromotion(null, promotions)">Сохранить
+                </button>
+                <button v-if="updatePromotion === promotions.id" @click="cancellationPromotion(null)">Отменить</button>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+        <div class="cabinet__wrapper__information " v-if="page === 'withdrawalCompleted'">
+          <div class="cabinet__wrapper__information_title">
+            Вывод выполненных заказов с печатью
+          </div>
+
+
+          <table>
+            <thead>
+            <tr>
+              <th>id</th>
+              <th>Название</th>
+              <th>Кнопки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="completeds in completed" :key="completeds.id">
+              <td>
+                {{ completeds.id }}
+              </td>
+              <td v-if="updateCompleted !== completeds.id">
+                {{ completeds.name }}
+              </td>
+              <td v-if="updateCompleted === completeds.id">
+                <span class="span"> {{
+                    (name === "" || name === null) ? completeds.name : name
+                  }}</span>
+                <br><input v-model="name" type="text">
+              </td>
+              <td>
+                <button @click="updateCompleteds(completeds.id)" v-if="updateCompleted !== completeds.id">
+                  Изменить
+                </button>
+                <button v-if="updateCompleted !== completeds.id" @click="deleteCompleted(completeds.id)">Удалить
+                </button>
+                <button v-if="updateCompleted === completeds.id" @click="saveCompleted(null, completeds)">Сохранить
+                </button>
+                <button v-if="updateCompleted === completeds.id" @click="cancellationCompleted(null)">Отменить</button>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+
+        <div class="cabinet__wrapper__information " v-if="page === 'withdrawalConditions'">
+          <div class="cabinet__wrapper__information_title">
+            Вывод условий
+          </div>
+
+
+          <table>
+            <thead>
+            <tr>
+              <th>id</th>
+              <th>Название</th>
+              <th>Описание</th>
+              <th>Кнопки</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="condition in conditions" :key="condition.id">
+              <td>
+                {{ condition.id }}
+              </td>
+              <td v-if="updateConditions !== condition.id">
+                {{ condition.name }}
+              </td>
+              <td v-if="updateConditions === condition.id">
+                <span class="span"> {{
+                    (name === "" || name === null) ? condition.name : name
+                  }}</span>
+                <br><input v-model="name" type="text">
+              </td>
+              <td v-if="updateConditions !== condition.id">
+                {{ condition.description }}
+              </td>
+              <td v-if="updateConditions === condition.id">
+                <span class="span"> {{
+                    (description === "" || description === null) ? condition.description : description
+                  }}</span>
+                <br><input v-model="description" type="text">
+              </td>
+              <td>
+                <button @click="updateCondition(condition.id)" v-if="updateConditions !== condition.id">
+                  Изменить
+                </button>
+                <button v-if="updateConditions !== condition.id" @click="deleteCondition(condition.id)">Удалить
+                </button>
+                <button v-if="updateConditions === condition.id" @click="saveCondition(null, condition)">Сохранить
+                </button>
+                <button v-if="updateConditions === condition.id" @click="cancellationCondition(null)">Отменить</button>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+
       </div>
     </div>
   </div>
@@ -908,15 +1178,23 @@ const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/uploa
 export default {
   data() {
     return {
-      newTastes: ref([]),
-      updateProduct: null,
+      completed: ref([]),
       tableProduct: 'sets',
+      updateConditions: null,
+      updateCompleted: null,
+      updatePromotion: null,
+      updateNews: null,
+      updateProduct: null,
       update: null,
-      role: null,
+      conditions: ref([]),
+      newTastes: ref([]),
+      promotion: ref([]),
+      news: ref([]),
       products: ref([]),
       users: ref([]),
       basket: ref([]),
-      page: 'product',
+      page: 'withdrawalNews',
+      role: null,
       date: ref(''),
       color: ref(''),
       title: ref(''),
@@ -963,8 +1241,14 @@ export default {
     },
   },
   methods: {
-    movingPage(e) {
-      this.page = e;
+    reset() {
+      this.updateConditions = null;
+      this.updateCompleted = null;
+      this.updatePromotion = null;
+      this.updateNews = null;
+      this.updateProduct = null;
+      this.update = null;
+      this.newTastes = ref([]);
       this.role = ref([]),
           this.date = ref(''),
           this.color = ref(''),
@@ -991,6 +1275,10 @@ export default {
             }
           ])
     },
+    movingPage(e) {
+      this.page = e;
+      this.reset()
+    },
     addTastes() {
       this.tastes.push({name: '', quantity: ''})
     },
@@ -1007,6 +1295,7 @@ export default {
         this[imageType] = null;
       }
     },
+
 
     async addProduct() {
       if (!this.mainImage || !this.image2 || !this.image3) {
@@ -1296,11 +1585,12 @@ export default {
     async updateUser(update) {
       this.update = update
       this.role = null
+
     },
 
     async cancellationUser(update) {
       this.update = update
-      this.role = null
+      this.reset()
     },
 
     async saveUser(update, user) {
@@ -1314,7 +1604,7 @@ export default {
       });
 
       this.update = update
-      this.role = null
+      this.reset()
     },
 
 
@@ -1340,13 +1630,15 @@ export default {
 
     tableKit(e) {
       this.tableProduct = e
+      this.reset()
+
     },
 
     async deleteProduct(productId) {
       await deleteDoc(doc(db, 'product', productId));
     },
     async updateProducts(productId, tastes) {
-      this.newTastes = [];
+      this.reset()
 
       const product = this.products.find(p => p.id === productId);
       this.originalProduct = JSON.parse(JSON.stringify(product));
@@ -1391,47 +1683,175 @@ export default {
       });
 
       this.updateProduct = update;
+      this.reset()
     },
 
     async cancellationProduct() {
-      // if (this.originalProduct) {
-      //   this.newTastes = this.originalProduct.tastes.map(taste => ({
-      //     name: taste.name,
-      //     quantity: taste.quantity
-      //   }));
-      // }
       this.updateProduct = null;
-      this.newTastes = ref([]),
-          this.role = ref([]),
-          this.date = ref(''),
-          this.color = ref(''),
-          this.title = ref(''),
-          this.kit = ref(''),
-          this.description = ref(''),
-          this.name = ref(''),
-          this.search = ref(''),
-          this.price = ref(''),
-          this.descriptionTitle = ref(''),
-          this.descriptionDescription = ref(''),
-          this.compositionTitle = ref(''),
-          this.compositionDescription = ref(''),
-          this.conditionTitle = ref(''),
-          this.conditionDescription = ref(''),
-          this.description_composition_condition = ref([]),
-          this.mainImage = null,
-          this.image2 = null,
-          this.image3 = null,
-          this.tastes = ref([
-            {
-              name: '',
-              quantity: ''
-            }
-          ])
+      this.reset()
+    },
+
+    withdrawalNews: function () {
+      const newsQuery = query(collection(db, "news"));
+
+      onSnapshot(newsQuery, (snapshot) => {
+        this.news = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            description: doc.data().description,
+            date: doc.data().date,
+            photo: doc.data().photo || [],
+            search: doc.data().search,
+          }
+        })
+      })
+    },
+
+
+    async updateNewsis(newsId) {
+      this.reset()
+      this.updateNews = newsId;
+    },
+    async deleteNews(newsId) {
+      await deleteDoc(doc(db, 'news', newsId));
+    },
+    async saveNews(newsId, news) {
+      setDoc(doc(db, 'news', news.id), {
+        date: this.date || news.date,
+        description: this.description || news.description,
+        name: this.name || news.name,
+        search: this.search || news.search,
+        photo: news.photo,
+      });
+      this.updateNews = newsId;
+      this.reset()
+    },
+    async cancellationNews(newsId) {
+      this.updateNews = newsId;
+
+      this.reset()
+    },
+
+
+    withdrawalPromotion: function () {
+      const promotionQuery = query(collection(db, "promotion"));
+
+      onSnapshot(promotionQuery, (snapshot) => {
+        this.promotion = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            color: doc.data().color,
+            title: doc.data().title,
+            photo: doc.data().photo || [],
+          }
+        })
+      })
+    },
+
+    async updatePromotions(promotionId) {
+      this.reset()
+      this.updatePromotion = promotionId;
+    },
+    async deletePromotion(promotionId) {
+      await deleteDoc(doc(db, 'promotion', promotionId));
+    },
+    async savePromotion(promotionId, promotion) {
+      setDoc(doc(db, 'promotion', promotion.id), {
+        color: this.color || promotion.color,
+        title: this.title || promotion.title,
+        name: this.name || promotion.name,
+        photo: promotion.photo,
+      });
+      this.updatePromotion = promotionId;
+      this.reset()
+    },
+    async cancellationPromotion(promotionId) {
+      this.updatePromotion = promotionId;
+
+      this.reset()
+    },
+
+
+    withdrawalCompleted: function () {
+      const completedQuery = query(collection(db, "completed"));
+
+      onSnapshot(completedQuery, (snapshot) => {
+        this.completed = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            photo: doc.data().photo || [],
+          }
+        })
+      })
+    },
+
+    async updateCompleteds(completedId) {
+      this.reset()
+      this.updateCompleted = completedId;
+    },
+    async deleteCompleted(completedId) {
+      await deleteDoc(doc(db, 'completed', completedId));
+    },
+    async saveCompleted(completedId, completed) {
+      setDoc(doc(db, 'completed', completed.id), {
+        name: this.name || completed.name,
+        photo: completed.photo,
+      });
+      this.updateCompleted = completedId;
+      this.reset()
+    },
+    async cancellationCompleted(completedId) {
+      this.updateCompleted = completedId;
+      this.reset()
+    },
+
+
+    withdrawalConditions: function () {
+      const conditionsQuery = query(collection(db, "conditions"));
+
+      onSnapshot(conditionsQuery, (snapshot) => {
+        this.conditions = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            name: doc.data().name,
+            description: doc.data().description,
+            photo: doc.data().photo || [],
+          }
+        })
+      })
+    },
+
+    async updateCondition(conditionsId) {
+      this.reset()
+      this.updateConditions = conditionsId;
+    },
+    async deleteCondition(conditionsId) {
+      await deleteDoc(doc(db, 'conditions', conditionsId));
+    },
+    async saveCondition(conditionsId, conditions) {
+      setDoc(doc(db, 'conditions', conditions.id), {
+        name: this.name || conditions.name,
+        description: this.description || conditions.description,
+        photo: conditions.photo,
+      });
+      this.updateConditions = conditionsId;
+      this.reset()
+    },
+    async cancellationCondition(conditionsId) {
+      this.updateConditions = conditionsId;
+      this.reset()
     },
   },
   mounted() {
     this.withdrawalUsers();
     this.withdrawalProduct();
+    this.withdrawalNews();
+    this.withdrawalPromotion();
+    this.withdrawalCompleted();
+    this.withdrawalConditions();
   }
 }
 </script>
