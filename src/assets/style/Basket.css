@@ -179,6 +179,9 @@ hr {
   font-weight: 400;
   outline: 1px solid rgb(237, 237, 240);
 }
+.basket__wrapper__information__delivery__forms_contact input.errorInput {
+  outline: 1px dashed #ff4d6d;
+}
 .basket__wrapper__information__delivery__forms_contact div:not(:last-child) {
   margin-right: 14px;
 }
@@ -230,6 +233,9 @@ hr {
   outline: 1px solid rgb(237, 237, 240);
   font-size: 16px;
   font-weight: 400;
+}
+.basket__wrapper__information__delivery__forms_comment textarea.errorInput {
+  outline: 1px dashed #ff4d6d;
 }
 .basket__wrapper__information__delivery__forms_comment textarea:nth-child(2) {
   height: 108px;

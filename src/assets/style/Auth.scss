@@ -1,3 +1,10 @@
+.errorMessage {
+  margin: 5px 0 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ff4d6d;
+}
+
 .auth {
   margin: 0 auto;
 
@@ -42,6 +49,9 @@
     &__form.register {
       margin: 0 0 460px;
       max-width: 990px;
+      div {
+        height: 100%;
+      }
     }
 
     &__form.authorization {
@@ -70,6 +80,9 @@
         padding: 14px 15px;
         border: none;
         outline: none;
+      }
+      input.errorInput {
+        outline: 1px dashed #ff4d6d;
       }
 
       &_title {

@@ -1,3 +1,10 @@
+.errorMessage {
+  margin: 5px 0 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ff4d6d;
+}
+
 .auth {
   margin: 0 auto;
 }
@@ -37,6 +44,9 @@
   margin: 0 0 460px;
   max-width: 990px;
 }
+.auth__wrapper__form.register div {
+  height: 100%;
+}
 .auth__wrapper__form.authorization {
   max-width: 590px;
   margin: 0 0 360px;
@@ -60,6 +70,9 @@
   padding: 14px 15px;
   border: none;
   outline: none;
+}
+.auth__wrapper__form input.errorInput {
+  outline: 1px dashed #ff4d6d;
 }
 .auth__wrapper__form_title {
   text-align: center;

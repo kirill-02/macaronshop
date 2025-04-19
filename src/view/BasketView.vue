@@ -68,7 +68,7 @@
               <div class="basket__wrapper__information__delivery__forms_contact">
                 <div class="" id="errorMessageName">
                   <label for="name">Ваше имя*</label>
-                  <input type="text" id="name" v-model="name" placeholder="Укажите имя">
+                  <input type="text" id="name" v-model="name" placeholder="Укажите имя" :class="{'errorInput': errorMessageName}">
                   <div class="errorMessage">{{ errorMessageName }}</div>
                 </div>
                 <div class="" id="errorMessagePhone">
@@ -77,6 +77,7 @@
                          placeholder="+7 (___) ___-__-__"
                          @input="formatPhone"
                          @focus="setInitialPhone"
+                         :class="{'errorInput': errorMessagePhone}"
                   >
                   <div class="errorMessage">
                     {{ errorMessagePhone }}
@@ -111,7 +112,7 @@
 
               <div class="basket__wrapper__information__delivery__forms_comment" id="errorMessageAddress">
                 <label for="address">Адрес доставки</label>
-                <textarea id="address" v-model="address" placeholder="Не нужно заполнять при самовывозе"></textarea>
+                <textarea id="address" v-model="address" placeholder="Не нужно заполнять при самовывозе" :class="{'errorInput': errorMessageAddress}"></textarea>
                 <div class="errorMessage">
                   {{ errorMessageAddress }}
                 </div>
@@ -120,12 +121,12 @@
               <div class="basket__wrapper__information__delivery__forms_contact">
                 <div class="" id="errorMessageDate">
                   <label for="date">Дата получения</label>
-                  <input type="date" id="date" v-model="date">
+                  <input type="date" id="date" v-model="date" :class="{'errorInput': errorMessageDate}">
                   <div class="errorMessage">{{ errorMessageDate }}</div>
                 </div>
                 <div class="" id="errorMessageTime">
                   <label for="time">Время</label>
-                  <input type="time" id="time" v-model="time">
+                  <input type="time" id="time" v-model="time" :class="{'errorInput': errorMessageTime}">
                   <div class="errorMessage">{{ errorMessageTime }}</div>
                 </div>
               </div>
@@ -463,6 +464,7 @@ export default {
         const deletePromises = querySnapshot.docs.map(doc => deleteDoc(doc.ref));
 
         await Promise.all(deletePromises);
+        this.$router.push("/cabinet");
       } catch (err) {
         err.value = err.message;
         console.error("Ошибка регистрации:", err.message);

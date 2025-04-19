@@ -5,13 +5,19 @@
         <div class="auth__wrapper_img"><img src="../../public/img/auth/label.png" alt=""></div>
         <form @submit.prevent="singIn" class="auth__wrapper__form authorization">
           <div class="auth__wrapper__form_title">Вход</div>
-          <div class="auth__wrapper__form_email">
+          <div class="auth__wrapper__form_email" id="errorMessageEmail">
             <label for="email">E-mail</label>
-            <input type="email" id="email" v-model="email" placeholder="E-mail">
+            <input type="email" id="email" v-model="email" placeholder="E-mail" :class="{'errorInput': errorMessageEmail}">
+            <div class="errorMessage">
+              {{ errorMessageEmail }}
+            </div>
           </div>
-          <div>
+          <div id="errorMessagePassword">
             <label for="password">Пароль</label>
-            <input type="password" id="password" v-model="password" placeholder="Пароль">
+            <input type="password" id="password" v-model="password" placeholder="Пароль" :class="{'errorInput': errorMessagePassword}">
+            <div class="errorMessage">
+              {{ errorMessagePassword }}
+            </div>
           </div>
           <p v-if="errMsg"> {{ errMsg }}</p>
           <router-link to="/password-recovery-form">
@@ -44,7 +50,44 @@ export default {
     const password = ref('');
     const errMsg = ref('')
     const router = useRouter();
+
+    const errorMessageEmail = ref(null);
+    const errorMessagePassword = ref(null);
+
+
+    const validateFields = () => {
+
+      errorMessageEmail.value = null;
+      errorMessagePassword.value = null;
+
+
+      const trimmedEmail = email.value.trim();
+      const trimmedPassword = password.value.trim();
+
+      const errorMessageEmailElement = document.getElementById('errorMessageEmail');
+      const errorMessagePasswordElement = document.getElementById('errorMessagePassword');
+
+
+      if (!trimmedEmail) {
+        errorMessageEmail.value = "Заполните email";
+        errorMessageEmailElement.scrollIntoView({ behavior: 'smooth' });
+      } else if (!trimmedPassword) {
+        errorMessagePassword.value = "Заполните пароль";
+        errorMessagePasswordElement.scrollIntoView({ behavior: 'smooth' });
+      }
+
+
+      return !errorMessageEmail.value &&
+          !errorMessagePassword.value
+    };
+
+
     const singIn = async () => {
+      if (!validateFields()) {
+        return;
+      }
+
+
       const auth = getAuth();
       try {
             await signInWithEmailAndPassword(auth, email.value, password.value);
@@ -71,7 +114,10 @@ export default {
       email,
       password,
       singIn,
-      errMsg
+      errMsg,
+      errorMessageEmail,
+      errorMessagePassword,
+      validateFields,
     };
   },
 }
