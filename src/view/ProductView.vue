@@ -13,7 +13,7 @@
         <div class="product__wrapper__card-product">
           <div class="product__wrapper__informations__title">
             {{ productData.name }}
-            <p>40 макаронс в круглой коробке с персональной надписью</p>
+            <p> {{ productData.description }}</p>
           </div>
           <div class="product__wrapper__images">
             <img :src="currentImage" alt="">
@@ -32,7 +32,7 @@
             <div class="product__wrapper__information">
               <div class="product__wrapper__information__title">
                 {{ productData.name }}
-                <p>40 макаронс в круглой коробке с персональной надписью</p>
+                <p> {{ productData.description }}</p>
               </div>
               <div class="product__wrapper__information__tastes">
                 <div class="product__wrapper__information__tastes_title">Вкусы:</div>
