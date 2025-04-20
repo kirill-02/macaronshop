@@ -5,6 +5,10 @@
   color: #ff4d6d;
 }
 
+.valid {
+  color: green;
+}
+
 .auth {
   margin: 0 auto;
 }

@@ -10,7 +10,8 @@
           <div class="auth__wrapper__form_register">
             <div class="auth__wrapper__form_email" id="errorMessageName">
               <label for="name">Ваше имя</label>
-              <input type="text" id="name" v-model="name" placeholder="Ваше имя" :class="{'errorInput': errorMessageName}">
+              <input type="text" id="name" v-model="name" placeholder="Ваше имя"
+                     :class="{'errorInput': errorMessageName}">
               <div class="errorMessage">
                 {{ errorMessageName }}
               </div>
@@ -22,13 +23,13 @@
                 {{ errorMessageCity }}
               </div>
             </div>
-            <div class="auth__wrapper__form_email" id="errorMessagePhone" >
+            <div class="auth__wrapper__form_email" id="errorMessagePhone">
               <label for="phone">Ваш телефон</label>
               <input type="text" id="phone" v-model="phone"
                      @input="formatPhone"
                      @focus="setInitialPhone"
                      :class="{'errorInput': errorMessagePhone}"
-                     placeholder="+7 (___) ___-__-__" >
+                     placeholder="+7 (___) ___-__-__">
               <div class="errorMessage">
                 {{ errorMessagePhone }}
               </div>
@@ -47,10 +48,23 @@
             </div>
             <div id="errorMessagePassword">
               <label for="password">Придумайте пароль</label>
-              <input type="password" id="password" v-model="password" placeholder="Придумайте пароль"
-                     :class="{'errorInput': errorMessagePassword}">
+              <input
+                  type="password"
+                  id="password"
+                  v-model="password"
+                  placeholder="Придумайте пароль"
+                  @input="validatePassword"
+                  :class="{'errorInput': errorMessagePassword}"
+              />
               <div class="errorMessage">
                 {{ errorMessagePassword }}
+                <ul>
+                  <li :class="{'valid': passwordConditions.minLength}">1. {{ passwordSymbol }}</li>
+                  <li :class="{'valid': passwordConditions.uppercase}">2. {{ passwordCapital }}</li>
+                  <li :class="{'valid': passwordConditions.lowercase}">3. {{ passwordLowercase }}</li>
+                  <li :class="{'valid': passwordConditions.number}">4. {{ passwordNumber }}</li>
+                  <li :class="{'valid': passwordConditions.specialChar}">5. {{ passwordSpecial }}</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -72,9 +86,9 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { useRouter } from "vue-router";
-import { useStateStore } from '../store/stateStore';
+import {ref, watch} from 'vue';
+import {useRouter} from "vue-router";
+import {useStateStore} from '../store/stateStore';
 
 export default {
   setup() {
@@ -84,6 +98,7 @@ export default {
     const company = ref('');
     const email = ref('');
     const password = ref('');
+    const passwordError = ref(null);
     const errorMessageName = ref(null);
     const errorMessageCity = ref(null);
     const errorMessagePhone = ref(null);
@@ -137,19 +152,19 @@ export default {
 
       if (!trimmedName) {
         errorMessageName.value = "Заполните имя";
-        errorMessageNameElement.scrollIntoView({ behavior: 'smooth' });
+        errorMessageNameElement.scrollIntoView({behavior: 'smooth'});
       } else if (!trimmedCity) {
         errorMessageCity.value = "Заполните город";
-        errorMessageCityElement.scrollIntoView({ behavior: 'smooth' });
+        errorMessageCityElement.scrollIntoView({behavior: 'smooth'});
       } else if (!trimmedPhone) {
         errorMessagePhone.value = "Заполните телефон";
-        errorMessagePhoneElement.scrollIntoView({ behavior: 'smooth' });
+        errorMessagePhoneElement.scrollIntoView({behavior: 'smooth'});
       } else if (!trimmedEmail) {
         errorMessageEmail.value = "Заполните почту";
-        errorMessageEmailElement.scrollIntoView({ behavior: 'smooth' });
+        errorMessageEmailElement.scrollIntoView({behavior: 'smooth'});
       } else if (!trimmedPassword) {
         errorMessagePassword.value = "Заполните пароль";
-        errorMessagePasswordElement.scrollIntoView({ behavior: 'smooth' });
+        errorMessagePasswordElement.scrollIntoView({behavior: 'smooth'});
       }
 
 
@@ -159,9 +174,61 @@ export default {
           !errorMessageEmail.value &&
           !errorMessagePassword.value;
     };
+    const passwordSymbol = 'Пароль должен содержать минимум 8 символов.';
+    const passwordCapital = 'Пароль должен содержать хотя бы одну заглавную букву.';
+    const passwordLowercase = 'Пароль должен содержать хотя бы одну строчную букву.';
+    const passwordNumber = 'Пароль должен содержать хотя бы одну цифру.';
+    const passwordSpecial = 'Пароль должен содержать хотя бы один спецсимвол (!@#$%^&*).';
 
+    const passwordConditions = {
+      minLength: false,
+      uppercase: false,
+      lowercase: false,
+      number: false,
+      specialChar: false,
+    };
+
+    const validatePassword = () => {
+      const value = password.value;
+
+      // Проверка каждого условия
+      passwordConditions.minLength = value.length >= 8;
+      passwordConditions.uppercase = /[A-Z]/.test(value);
+      passwordConditions.lowercase = /[a-z]/.test(value);
+      passwordConditions.number = /[0-9]/.test(value);
+      passwordConditions.specialChar = /[!@#$%^&*]/.test(value);
+
+      // Обновление сообщения об ошибке
+      passwordError.value = ''; // Сбрасываем сообщение об ошибке
+      if (!passwordConditions.minLength) {
+        passwordError.value = passwordSymbol;
+      } else if (!passwordConditions.uppercase) {
+        passwordError.value = passwordCapital;
+      } else if (!passwordConditions.lowercase) {
+        passwordError.value = passwordLowercase;
+      } else if (!passwordConditions.number) {
+        passwordError.value = passwordNumber;
+      } else if (!passwordConditions.specialChar) {
+        passwordError.value = passwordSpecial;
+      }
+      return (
+          passwordConditions.minLength &&
+          passwordConditions.uppercase &&
+          passwordConditions.lowercase &&
+          passwordConditions.number &&
+          passwordConditions.specialChar
+      );
+    };
+    watch([password, name, city, phone, email], () => {
+      validatePassword();
+      validateFields();
+    });
     const register = async () => {
       if (!validateFields()) {
+        return;
+      }
+
+      if (!validatePassword()) {
         return;
       }
 
@@ -172,7 +239,7 @@ export default {
         stateStore.setCity(city.value);
         stateStore.setPhone(phone.value);
         stateStore.setCompany(company.value);
-        await stateStore.registerUser ();
+        await stateStore.registerUser();
         router.push('/cabinet');
       } catch (error) {
         console.error('Ошибка при регистрации:', error);
@@ -187,14 +254,22 @@ export default {
       company,
       email,
       password,
+      passwordError,
       errorMessageName,
       errorMessageCity,
       errorMessagePhone,
       errorMessageEmail,
       errorMessagePassword,
+      passwordSymbol,
+      passwordCapital,
+      passwordLowercase,
+      passwordNumber,
+      passwordSpecial,
+      passwordConditions,
       formatPhone,
       setInitialPhone,
       validateFields,
+      validatePassword,
       register,
     };
   },
@@ -204,7 +279,6 @@ export default {
 <style scoped>
 /* Add your styles here if needed */
 </style>
-
 
 
 <style scoped>

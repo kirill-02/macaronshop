@@ -5,6 +5,11 @@
   color: #ff4d6d;
 }
 
+
+.valid {
+  color: green;
+}
+
 .auth {
   margin: 0 auto;
 
@@ -49,6 +54,7 @@
     &__form.register {
       margin: 0 0 460px;
       max-width: 990px;
+
       div {
         height: 100%;
       }
@@ -81,6 +87,7 @@
         border: none;
         outline: none;
       }
+
       input.errorInput {
         outline: 1px dashed #ff4d6d;
       }

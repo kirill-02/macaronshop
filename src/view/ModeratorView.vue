@@ -1576,7 +1576,6 @@ export default {
         const data = await response.json();
         productData.photo = data.filePaths;
 
-        // Сохраните продукт в Firestore
         await addDoc(collection(db, 'product'), productData);
         alert('Продукт успешно добавлен!');
 
@@ -2174,9 +2173,6 @@ export default {
       this.reset()
       this.updateOrderHistory = orderHistoryId;
     },
-    // async deleteOrderHistory(filterId) {
-    //   await deleteDoc(doc(db, 'filtersNews', filterId));
-    // },
     async saveOrderHistory(orderHistoryId, orderHistory) {
       setDoc(doc(db, 'orderHistory', orderHistory.id), {
         id: orderHistory.id,

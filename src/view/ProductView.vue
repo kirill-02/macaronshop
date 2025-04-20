@@ -16,7 +16,7 @@
             <p>40 макаронс в круглой коробке с персональной надписью</p>
           </div>
           <div class="product__wrapper__images">
-            <img :src="currentImage " alt="">
+            <img :src="currentImage" alt="">
             <div class="product__wrapper__images__card">
               <div
                   class="product__wrapper__images__card_img"
@@ -58,7 +58,9 @@
                 <i class="ic_basket"></i>
                 В корзину
               </button>
-              <div v-else class="black"> <router-link to="/auth">  зарегистрируйтесь чтобы добавить корзину</router-link></div>
+              <div v-else class="black">
+                <router-link to="/auth"> зарегистрируйтесь чтобы добавить корзину</router-link>
+              </div>
             </div>
 
             <div class="product__wrapper__delivery">
@@ -180,11 +182,9 @@ export default {
     productDescription() {
       return this.productData.description_composition_condition[this.activeSection].description;
     },
-
     hasMoreSets() {
       return this.visibleSetCount < this.product.length;
     },
-
     thumbnailImages() {
       return [
         this.productData?.photo[0],
@@ -295,6 +295,18 @@ export default {
         console.log(`Товар добавлен в корзину`);
       }
     },
+  },
+  watch: {
+    '$route.params.id': {
+      immediate: true,
+      handler() {
+        this.withdrawalProduct();
+
+        if (this.productData && this.productData.photo.length > 0) {
+          this.currentImage = `/imagesFirebase/product/${this.productData.photo[0]}`;
+        }
+      }
+    }
   },
   setup() {
     const isLoggedIn = ref(true);
