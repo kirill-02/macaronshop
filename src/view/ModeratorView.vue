@@ -527,8 +527,8 @@
               <th>кнопки</th>
             </tr>
             </thead>
-            <tbody v-if="tableProduct === 'sets'">
-            <tr v-for="product in filteredProductsSets" :key="product.id">
+            <tbody>
+            <tr v-for="product in filteredProducts" :key="product.id">
               <td>
                 {{ product.id }}
               </td>
@@ -658,293 +658,12 @@
               </td>
               <td v-if="updateProduct === product.id">
                 <span class="span"> {{ (kit === "" || kit === null) ? product.title : kit }}</span>
-                <br><input v-model="kit" type="text">
-              </td>
-              <td>
-                <button @click="updateProducts(product.id, product.tastes)" v-if="updateProduct !== product.id">
-                  Изменить
-                </button>
-                <button v-if="updateProduct !== product.id" @click="deleteProduct(product.id)">Удалить</button>
-                <button v-if="updateProduct === product.id" @click="saveProduct(null, product)">Сохранить</button>
-                <button v-if="updateProduct === product.id" @click="cancellationProduct(null)">Отменить</button>
-              </td>
-            </tr>
-            </tbody>
-            <tbody v-if="tableProduct === 'combo'">
-            <tr v-for="product in filteredProductsCombo" :key="product.id">
-              <td>
-                {{ product.id }}
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.description }}
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span"> {{
-                    (description === "" || description === null) ? product.description : description
-                  }}</span>
-                <br><input v-model="description" type="text">
-              </td>
-              <td v-if="updateProduct !== product.id">
-                <hr>
-                <span>Описание: </span>
-                <br>
-                НАЗВАНИЕ: {{ product.description_composition_condition[0].title }}
-                <br><br>
-                ОПИСАНИЕ: {{ product.description_composition_condition[0].description }}
-                <br>
-                <hr>
-                <span>Состав: </span>
-                <br>
-                НАЗВАНИЕ: {{ product.description_composition_condition[1].title }}
-                <br> <br>
-                ОПИСАНИЕ: {{ product.description_composition_condition[1].description }}
-                <br>
-                <hr>
-                <span>Условия и срок: </span>
-                <br>
-
-                НАЗВАНИЕ: {{ product.description_composition_condition[2].title }}
-                <br> <br>
-                ОПИСАНИЕ: {{ product.description_composition_condition[2].description }}
-
-                <hr>
-              </td>
-              <td v-if="updateProduct === product.id">
-                <hr>
-                <span>Описание: </span>
-                <br>
-                НАЗВАНИЕ: <span class="span">{{
-                  (descriptionTitle === "" || descriptionTitle === null) ? product.description_composition_condition[0].title : descriptionTitle
-                }}</span>
-                <br><input v-model="descriptionTitle" type="text">
-                <br><br>
-                ОПИСАНИЕ: <span class="span">{{
-                  (descriptionDescription === "" || descriptionDescription === null) ? product.description_composition_condition[0].description : descriptionDescription
-                }}</span>
-                <br><input v-model="descriptionDescription" type="text">
-
-                <br>
-                <hr>
-                <span>Состав: </span>
-                <br>
-                НАЗВАНИЕ: <span class="span">{{
-                  (compositionTitle === "" || compositionTitle === null) ? product.description_composition_condition[1].title : compositionTitle
-                }}</span>
-                <br><input v-model="compositionTitle" type="text">
-
-                <br> <br>
-                ОПИСАНИЕ: <span class="span">{{
-                  (compositionDescription === "" || compositionDescription === null) ? product.description_composition_condition[0].description : compositionDescription
-                }}</span>
-                <br><input v-model="compositionDescription" type="text">
-                <br>
-                <hr>
-                <span>Условия и срок: </span>
-                <br>
-
-                НАЗВАНИЕ: <span class="span">{{
-                  (conditionTitle === "" || conditionTitle === null) ? product.description_composition_condition[2].title : conditionTitle
-                }}</span>
-                <br><input v-model="conditionTitle" type="text">
-
-                <br> <br>
-                ОПИСАНИЕ: <span class="span">{{
-                  (conditionDescription === "" || conditionDescription === null) ? product.description_composition_condition[0].description : conditionDescription
-                }}</span>
-                <br><input v-model="conditionDescription" type="text">
-
-                <hr>
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.name }}
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span"> {{ (name === "" || name === null) ? product.name : name }}</span>
-                <br><input v-model="name" type="text">
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.price }}р
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span">{{ (price === "" || price === null) ? product.price : price }}</span>
-                <br><input v-model="price" type="text">
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.search }}
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span"> {{ (search === "" || search === null) ? product.search : search }}</span>
-                <br><input v-model="search" type="text">
-              </td>
-              <td v-if="updateProduct !== product.id">
-                <div v-for="taste in product.tastes" :key="taste.id">
-                  <hr>
-                  <span>Название: </span>
-                  {{ taste.name }}
-                  <span>Количество: </span>
-                  {{ taste.quantity }}
-                </div>
-                <hr>
-              </td>
-              <td v-if="updateProduct === product.id">
-                <div v-for="(taste, tasteIndex) in newTastes" :key="tasteIndex">
-                  <hr>
-                  <span>Название: </span> <span class="span"> {{ taste.name }}</span>
-                  <input v-model="taste.name" type="text" placeholder="Введите название">
-                  <span>Количество: </span> <span class="span"> {{ taste.quantity }}</span>
-                  <input v-model="taste.quantity" type="number" placeholder="Введите количество">
-                  <hr>
-                </div>
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.title }}
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span"> {{ (kit === "" || kit === null) ? product.title : kit }}</span>
-                <br><input v-model="kit" type="text">
-              </td>
-              <td>
-                <button @click="updateProducts(product.id, product.tastes)" v-if="updateProduct !== product.id">
-                  Изменить
-                </button>
-                <button v-if="updateProduct !== product.id" @click="deleteProduct(product.id)">Удалить</button>
-                <button v-if="updateProduct === product.id" @click="saveProduct(null, product)">Сохранить</button>
-                <button v-if="updateProduct === product.id" @click="cancellationProduct(null)">Отменить</button>
-              </td>
-            </tr>
-            </tbody>
-            <tbody v-if="tableProduct === 'gift_sets'">
-            <tr v-for="product in filteredProductsGift_sets" :key="product.id">
-              <td>
-                {{ product.id }}
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.description }}
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span"> {{
-                    (description === "" || description === null) ? product.description : description
-                  }}</span>
-                <br><input v-model="description" type="text">
-              </td>
-              <td v-if="updateProduct !== product.id">
-                <hr>
-                <span>Описание: </span>
-                <br>
-                НАЗВАНИЕ: {{ product.description_composition_condition[0].title }}
-                <br><br>
-                ОПИСАНИЕ: {{ product.description_composition_condition[0].description }}
-                <br>
-                <hr>
-                <span>Состав: </span>
-                <br>
-                НАЗВАНИЕ: {{ product.description_composition_condition[1].title }}
-                <br> <br>
-                ОПИСАНИЕ: {{ product.description_composition_condition[1].description }}
-                <br>
-                <hr>
-                <span>Условия и срок: </span>
-                <br>
-
-                НАЗВАНИЕ: {{ product.description_composition_condition[2].title }}
-                <br> <br>
-                ОПИСАНИЕ: {{ product.description_composition_condition[2].description }}
-
-                <hr>
-              </td>
-              <td v-if="updateProduct === product.id">
-                <hr>
-                <span>Описание: </span>
-                <br>
-                НАЗВАНИЕ: <span class="span">{{
-                  (descriptionTitle === "" || descriptionTitle === null) ? product.description_composition_condition[0].title : descriptionTitle
-                }}</span>
-                <br><input v-model="descriptionTitle" type="text">
-                <br><br>
-                ОПИСАНИЕ: <span class="span">{{
-                  (descriptionDescription === "" || descriptionDescription === null) ? product.description_composition_condition[0].description : descriptionDescription
-                }}</span>
-                <br><input v-model="descriptionDescription" type="text">
-
-                <br>
-                <hr>
-                <span>Состав: </span>
-                <br>
-                НАЗВАНИЕ: <span class="span">{{
-                  (compositionTitle === "" || compositionTitle === null) ? product.description_composition_condition[1].title : compositionTitle
-                }}</span>
-                <br><input v-model="compositionTitle" type="text">
-
-                <br> <br>
-                ОПИСАНИЕ: <span class="span">{{
-                  (compositionDescription === "" || compositionDescription === null) ? product.description_composition_condition[0].description : compositionDescription
-                }}</span>
-                <br><input v-model="compositionDescription" type="text">
-                <br>
-                <hr>
-                <span>Условия и срок: </span>
-                <br>
-
-                НАЗВАНИЕ: <span class="span">{{
-                  (conditionTitle === "" || conditionTitle === null) ? product.description_composition_condition[2].title : conditionTitle
-                }}</span>
-                <br><input v-model="conditionTitle" type="text">
-
-                <br> <br>
-                ОПИСАНИЕ: <span class="span">{{
-                  (conditionDescription === "" || conditionDescription === null) ? product.description_composition_condition[0].description : conditionDescription
-                }}</span>
-                <br><input v-model="conditionDescription" type="text">
-
-                <hr>
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.name }}
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span"> {{ (name === "" || name === null) ? product.name : name }}</span>
-                <br><input v-model="name" type="text">
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.price }}р
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span">{{ (price === "" || price === null) ? product.price : price }}</span>
-                <br><input v-model="price" type="text">
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.search }}
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span"> {{ (search === "" || search === null) ? product.search : search }}</span>
-                <br><input v-model="search" type="text">
-              </td>
-              <td v-if="updateProduct !== product.id">
-                <div v-for="taste in product.tastes" :key="taste.id">
-                  <hr>
-                  <span>Название: </span>
-                  {{ taste.name }}
-                  <span>Количество: </span>
-                  {{ taste.quantity }}
-                </div>
-                <hr>
-              </td>
-              <td v-if="updateProduct === product.id">
-                <div v-for="(taste, tasteIndex) in newTastes" :key="tasteIndex">
-                  <hr>
-                  <span>Название: </span> <span class="span"> {{ taste.name }}</span>
-                  <input v-model="taste.name" type="text" placeholder="Введите название">
-                  <span>Количество: </span> <span class="span"> {{ taste.quantity }}</span>
-                  <input v-model="taste.quantity" type="number" placeholder="Введите количество">
-                  <hr>
-                </div>
-              </td>
-              <td v-if="updateProduct !== product.id">
-                {{ product.title }}
-              </td>
-              <td v-if="updateProduct === product.id">
-                <span class="span"> {{ (kit === "" || kit === null) ? product.title : kit }}</span>
-                <br><input v-model="kit" type="text">
+                <select v-model="kit" name="kit" id="kit">
+                  <option disabled selected value="">Исправить набор</option>
+                  <option value="sets">готовые наборы</option>
+                  <option value="combo">комбо - наборы</option>
+                  <option value="gift_sets">подарки с печатью</option>
+                </select>
               </td>
               <td>
                 <button @click="updateProducts(product.id, product.tastes)" v-if="updateProduct !== product.id">
@@ -1288,7 +1007,20 @@
           <div class="cabinet__wrapper__information_title">
             Вывод всех заказов пользователей
           </div>
-
+          <div>
+            <button class="cabinet__wrapper__menu_button product"
+                    :class="{'page_active': tableOrderHistory === 'accepted'}"
+                    @click="tableHistory('accepted')">Статус "Принят"
+            </button>
+            <button class="cabinet__wrapper__menu_button product"
+                    :class="{'page_active': tableOrderHistory === 'processed'}"
+                    @click="tableHistory('processed')">Статус "Обрабатывается"
+            </button>
+            <button class="cabinet__wrapper__menu_button product"
+                    :class="{'page_active': tableOrderHistory === 'ready'}"
+                    @click="tableHistory('ready')">Статус "Готов"
+            </button>
+          </div>
 
           <table>
             <thead>
@@ -1310,7 +1042,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="orderHistorys in orderHistory" :key="orderHistorys.id">
+            <tr v-for="orderHistorys in filteredProductsSets" :key="orderHistorys.id">
               <td>
                 {{ orderHistorys.id }}
               </td>
@@ -1362,7 +1094,13 @@
               </td>
               <td v-if="updateOrderHistory === orderHistorys.id">
                 <span class="span">{{ (state === "" || state === null) ? orderHistorys.state : state }}</span>
-                <br><input v-model="state" type="text">
+                <!--                <br><input v-model="state" type="text">-->
+                <select v-model="state" name="kit" id="kit">
+                  <option disabled selected value="">Выберите статус</option>
+                  <option value="принят">Принят</option>
+                  <option value="обрабатывается">Обрабатывается</option>
+                  <option value="готов">Готов</option>
+                </select>
               </td>
               <td>
                 <button @click="updateOrderHistorys(orderHistorys.id)" v-if="updateOrderHistory !== orderHistorys.id">
@@ -1409,6 +1147,7 @@ export default {
       filterProduct: ref([]),
       filterNews: ref([]),
       completed: ref([]),
+      tableOrderHistory: 'accepted',
       tableProduct: 'sets',
       updateOrderHistory: null,
       updateFiltersProduct: null,
@@ -1427,7 +1166,7 @@ export default {
       products: ref([]),
       users: ref([]),
       basket: ref([]),
-      page: 'user',
+      page: 'withdrawalОrderHistory',
       role: null,
       date: ref(''),
       color: ref(''),
@@ -1457,20 +1196,28 @@ export default {
   },
 
   computed: {
-    // filteredUsers() {
-    //   const filterUser = this.users.filter(users => users.role !== 'модератор');
-    //   return filterUser
-    // },
+    filteredProducts() {
+      let filterProduct = '';
+      if (this.tableProduct === 'sets') {
+        filterProduct = this.products.filter(product => product.title === 'sets');
+      } else if (this.tableProduct === 'combo') {
+        filterProduct = this.products.filter(product => product.title === 'combo');
+      } else {
+        filterProduct = this.products.filter(product => product.title === 'gift_sets');
+      }
+
+      return filterProduct
+    },
     filteredProductsSets() {
-      const filterProduct = this.products.filter(product => product.title === 'sets');
-      return filterProduct
-    },
-    filteredProductsCombo() {
-      const filterProduct = this.products.filter(product => product.title === 'combo');
-      return filterProduct
-    },
-    filteredProductsGift_sets() {
-      const filterProduct = this.products.filter(product => product.title === 'gift_sets');
+      let filterProduct = '';
+      if (this.tableOrderHistory === 'accepted') {
+        filterProduct = this.orderHistory.filter(orderHistory => orderHistory.state === 'принят');
+      } else if (this.tableOrderHistory === 'processed') {
+        filterProduct = this.orderHistory.filter(orderHistory => orderHistory.state === 'обрабатывается');
+      } else {
+        filterProduct = this.orderHistory.filter(orderHistory => orderHistory.state === 'готов');
+      }
+
       return filterProduct
     },
   },
@@ -1894,7 +1641,10 @@ export default {
     tableKit(e) {
       this.tableProduct = e
       this.reset()
-
+    },
+    tableHistory(e) {
+      this.tableOrderHistory = e
+      this.reset()
     },
 
     async deleteProduct(productId) {
