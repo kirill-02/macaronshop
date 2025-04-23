@@ -1398,8 +1398,8 @@ import {
 import 'firebase/auth';
 import {db} from "@/firebase";
 
-// const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
-const baseUrl = '/upload'; // для хоста
+const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
+// const baseUrl = '/upload'; // для хоста
 export default {
   data() {
     return {
@@ -1602,7 +1602,7 @@ export default {
 
         await addDoc(collection(db, 'product'), productData);
         alert('Продукт успешно добавлен!');
-
+        this.reset()
       } catch (error) {
         console.error('Error:', error);
         alert('Произошла ошибка при добавлении продукта. Пожалуйста, попробуйте еще раз.');
@@ -1639,6 +1639,7 @@ export default {
 
         await addDoc(collection(db, 'completed'), sealData);
         alert('Выполненный заказ с печатью успешно добавлен!');
+        this.reset()
       } catch (error) {
         console.error('Ошибка:', error);
         alert('Произошла ошибка при добавлении выполненного заказа.');
@@ -1677,6 +1678,7 @@ export default {
 
         await addDoc(collection(db, 'promotion'), promotionlData);
         alert('акция успешно добавлен!');
+        this.reset()
       } catch (error) {
         console.error('Ошибка:', error);
         alert('Произошла ошибка при добавлении акции.');
@@ -1716,6 +1718,7 @@ export default {
 
         await addDoc(collection(db, 'news'), newsData);
         alert('новость успешно добавлен!');
+        this.reset()
       } catch (error) {
         console.error('Ошибка:', error);
         alert('Произошла ошибка при добавлении новостей.');
@@ -1753,6 +1756,7 @@ export default {
 
         await addDoc(collection(db, 'conditions'), conditionsData);
         alert('Условие успешно добавлено!');
+        this.reset()
       } catch (error) {
         console.error('Ошибка:', error);
         alert('Произошла ошибка при добавлении условия.');
@@ -1766,6 +1770,7 @@ export default {
 
       await addDoc(collection(db, 'filtersNews'), conditionsData);
       alert('Фильтр для новостей успешно добавлено!');
+      this.reset()
     },
 
     async addFilterSets() {
@@ -1775,6 +1780,7 @@ export default {
 
       await addDoc(collection(db, 'filtersSets'), conditionsData);
       alert('Фильтр для продуктов успешно добавлено!');
+      this.reset()
     },
 
 
@@ -1824,8 +1830,8 @@ export default {
         await deleteDoc(doc(db, 'users', userId));
 
         await fetch(
-            // "http://localhost:3000/delete-user",
-            "/delete-user",
+            "http://localhost:3000/delete-user",
+            // "/delete-user",
             {
               method: "POST",
               headers: {
