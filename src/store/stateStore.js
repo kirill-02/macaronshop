@@ -59,6 +59,7 @@ export const useStateStore = defineStore('stateStore', () => {
             console.log("Пользователь зарегистрирован:", user.value);
 
             await addDoc(collection(db, 'users'), {
+                email: email.value,
                 name: name.value,
                 city: city.value,
                 phone: phone.value,

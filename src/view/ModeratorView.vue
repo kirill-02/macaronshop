@@ -452,21 +452,27 @@
           <div class="cabinet__wrapper__information_title">
             Вывод пользователя
           </div>
-
+          <div class="formSearch">
+            <input class="search" type="text" v-model="searchUserId" placeholder="Введите ID пользователя"/>
+            <button class="searchButton" @click="searchUser ">Поиск</button> <!-- Кнопка для поиска -->
+            <button class="searchButton" @click="searchsUser ">Отмена</button> <!-- Кнопка для поиска -->
+          </div>
           <table>
             <thead>
             <tr>
-              <th>uid</th>
-              <th>phone</th>
-              <th>company</th>
-              <th>role</th>
-              <th>кнопки</th>
+              <th>UID</th>
+              <th>Email</th>
+              <th>Телефон</th>
+              <th>Компания</th>
+              <th>Роль</th>
+              <th>Кнопки</th>
             </tr>
             </thead>
             <tbody>
 
             <tr v-for="user in filteredUsers" :key="user.id">
               <td>{{ user.uid }}</td>
+              <td>{{ user.email }}</td>
               <td>{{ user.phone }}</td>
               <td>{{ user.company || "пользователь не добавил" }}</td>
               <td v-if="update !== user.id">{{ user.role }}</td>
@@ -1362,7 +1368,6 @@
                 <button @click="updateOrderHistorys(orderHistorys.id)" v-if="updateOrderHistory !== orderHistorys.id">
                   Изменить
                 </button>
-                <!--                <button v-if="updateNews !== newsis.id" @click="deleteOrderHistory(newsis.id)">Удалить</button>-->
                 <button v-if="updateOrderHistory === orderHistorys.id" @click="saveOrderHistory(null, orderHistorys)">
                   Сохранить
                 </button>
@@ -1398,6 +1403,8 @@ const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/uploa
 export default {
   data() {
     return {
+      searchUserId: ref(''),
+      filteredUsers: ref([]),
       orderHistory: ref([]),
       filterProduct: ref([]),
       filterNews: ref([]),
@@ -1420,7 +1427,7 @@ export default {
       products: ref([]),
       users: ref([]),
       basket: ref([]),
-      page: 'withdrawalОrderHistory',
+      page: 'user',
       role: null,
       date: ref(''),
       color: ref(''),
@@ -1450,10 +1457,10 @@ export default {
   },
 
   computed: {
-    filteredUsers() {
-      const filterUser = this.users.filter(users => users.role !== 'модератор');
-      return filterUser
-    },
+    // filteredUsers() {
+    //   const filterUser = this.users.filter(users => users.role !== 'модератор');
+    //   return filterUser
+    // },
     filteredProductsSets() {
       const filterProduct = this.products.filter(product => product.title === 'sets');
       return filterProduct
@@ -1468,10 +1475,12 @@ export default {
     },
   },
   methods: {
-    reset() {
+    reset: function () {
+      // this.filteredUsers = ref([]);
+      this.searchUserId = ref('');
       this.state = ref('');
-      this.updateOrderHistory = null,
-          this.updateFiltersProduct = null;
+      this.updateOrderHistory = null;
+      this.updateFiltersProduct = null;
       this.updateFiltersNews = null;
       this.updateConditions = null;
       this.updateCompleted = null;
@@ -1527,7 +1536,23 @@ export default {
       }
     },
 
+    searchUser() {
 
+
+      if (this.searchUserId) {
+        this.filteredUsers =
+            this.users.filter(user => user.uid.includes(this.searchUserId) ||
+                user.phone.includes(this.searchUserId) ||
+                user.email.includes(this.searchUserId) &&
+                user.role !== 'модератор');
+      } else {
+        this.filteredUsers = this.users.filter(user => user.role !== 'модератор'); // Показываем всех, если поле пустое
+      }
+    },
+    searchsUser() {
+      this.searchUserId = ref('');
+      this.filteredUsers = this.users.filter(user => user.role !== 'модератор');
+    },
     async addProduct() {
       if (!this.mainImage || !this.image2 || !this.image3) {
         alert('Пожалуйста, загрузите все три изображения.');
@@ -1761,6 +1786,7 @@ export default {
         this.users = snapshot.docs.map((doc) => {
           return {
             id: doc.id,
+            email: doc.data().email,
             uid: doc.data().uid,
             phone: doc.data().phone,
             name: doc.data().name,
@@ -1769,6 +1795,8 @@ export default {
             role: doc.data().role,
           }
         })
+        this.filteredUsers = this.users.filter(users => users.role !== 'модератор');
+
       })
     },
 
@@ -2210,6 +2238,7 @@ export default {
     this.withdrawalFilterProduct();
     this.withdrawalFilterNews();
     this.withdrawalOrderHistory();
+
   }
 }
 </script>
