@@ -1398,8 +1398,8 @@ import {
 import 'firebase/auth';
 import {db} from "@/firebase";
 
-const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
-// const baseUrl = '/upload'; // для хоста
+// const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
+const baseUrl = '/upload'; // для хоста
 export default {
   data() {
     return {
@@ -1535,7 +1535,6 @@ export default {
         this[imageType] = null;
       }
     },
-
     searchUser() {
 
 
@@ -1825,8 +1824,8 @@ export default {
         await deleteDoc(doc(db, 'users', userId));
 
         await fetch(
-            "http://localhost:3000/delete-user",
-            // "/delete-user",
+            // "http://localhost:3000/delete-user",
+            "/delete-user",
             {
               method: "POST",
               headers: {

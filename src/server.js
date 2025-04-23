@@ -26,20 +26,20 @@ const storage = multer.diskStorage({
 
         // Определяем путь в зависимости от имени поля
         if (file.fieldname === 'sealImage') {
-            // targetDir = path.join(__dirname, "../public/imagesFirebase/completed"); // Для локалки
-            targetDir = path.join(__dirname, '../www/imagesFirebase/completed'); // для хоста
+            targetDir = path.join(__dirname, "../public/imagesFirebase/completed"); // Для локалки
+            // targetDir = path.join(__dirname, '../www/imagesFirebase/completed'); // для хоста
         } else if (file.fieldname === 'image' || file.fieldname === 'image2' || file.fieldname === 'image3') {
-            // targetDir = path.join(__dirname, '../public/imagesFirebase/product'); // Для локалки
-            targetDir = path.join(__dirname, '../www/imagesFirebase/product'); // для хоста
+            targetDir = path.join(__dirname, '../public/imagesFirebase/product'); // Для локалки
+            // targetDir = path.join(__dirname, '../www/imagesFirebase/product'); // для хоста
         } else if (file.fieldname === 'promotionImage') {
-            // targetDir = path.join(__dirname, '../public/imagesFirebase/promotion'); // Для локалки
-            targetDir = path.join(__dirname, '../www/imagesFirebase/promotion'); // для хоста
+            targetDir = path.join(__dirname, '../public/imagesFirebase/promotion'); // Для локалки
+            // targetDir = path.join(__dirname, '../www/imagesFirebase/promotion'); // для хоста
         } else if (file.fieldname === 'newsImage') {
-            // targetDir = path.join(__dirname, '../public/imagesFirebase/news'); // Для локалки
-            targetDir = path.join(__dirname, '../www/imagesFirebase/news'); // для хоста
+            targetDir = path.join(__dirname, '../public/imagesFirebase/news'); // Для локалки
+            // targetDir = path.join(__dirname, '../www/imagesFirebase/news'); // для хоста
         } else if (file.fieldname === 'conditionsImage') {
-            // targetDir = path.join(__dirname, '../public/imagesFirebase/conditions'); // Для локалки
-            targetDir = path.join(__dirname, '../www/imagesFirebase/conditions'); // для хоста
+            targetDir = path.join(__dirname, '../public/imagesFirebase/conditions'); // Для локалки
+            // targetDir = path.join(__dirname, '../www/imagesFirebase/conditions'); // для хоста
         }
 
         // Создаём папку, если не существует
