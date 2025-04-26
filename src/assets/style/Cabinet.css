@@ -57,6 +57,41 @@
   color: #4E9DD3;
   cursor: pointer;
 }
+.cabinet__wrapper__information__form > div {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.cabinet__wrapper__information__form label {
+  margin-top: 10px;
+  font-size: 16px;
+  display: block;
+}
+.cabinet__wrapper__information__form input {
+  padding: 17px 14px 14px;
+  margin-top: 3px;
+  background: #FFFFFF;
+  border: none;
+  height: auto;
+  color: #292929;
+  font-size: 16px;
+  font-weight: 400;
+  outline: 1px solid rgb(237, 237, 240);
+  width: 100%;
+}
+.cabinet__wrapper__information__form_button {
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 16px;
+  width: 100%;
+  padding: 15px 38px;
+  background: #e7426a;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 3px;
+}
 
 @media screen and (max-width: 1024px) {
   .cabinet__wrapper__menu {

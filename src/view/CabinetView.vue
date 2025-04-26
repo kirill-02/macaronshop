@@ -60,6 +60,23 @@
             Контактные данные
           </div>
 
+          <form @submit.prevent="updateUser" class="cabinet__wrapper__information__form">
+              <span>lutyjpon439@gmail.com</span> <br>
+              <span>27405826Kirill!</span>
+            <div>
+
+            <div>
+              <label for="email">Изменить почту</label>
+              <input v-model="email" type="text" name="email" id="" placeholder="Введите почту">
+            </div>
+            <div>
+              <label for="password">Изменить пароль</label>
+              <input v-model="password" type="text" name="password" id="" placeholder="Введите пароль">
+            </div>
+            </div>
+            <button class="cabinet__wrapper__information__form_button" type="submit">Сохранить</button>
+          </form>
+          
         </div>
       </div>
     </div>
@@ -68,7 +85,8 @@
 
 <script>
 
-import {getAuth, signOut} from "firebase/auth";
+import { getAuth, signOut,
+} from "firebase/auth";
 import {collection, onSnapshot, query, orderBy} from "firebase/firestore";
 import {db} from "@/firebase";
 import {ref} from 'vue';
@@ -79,8 +97,10 @@ const auth = getAuth();
 export default {
   data() {
     return {
-      page: 'story',
+      page: 'contacts',
       orderHistory: ref([]),
+      email: ref(''),
+      password: ref(''),
     }
   },
   computed: {
@@ -118,6 +138,7 @@ export default {
         })
       })
     },
+
   },
   setup() {
     const router = useRouter();
