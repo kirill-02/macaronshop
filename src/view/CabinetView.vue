@@ -61,22 +61,22 @@
           </div>
 
           <form @submit.prevent="updateUser" class="cabinet__wrapper__information__form">
-              <span>lutyjpon439@gmail.com</span> <br>
-              <span>27405826Kirill!</span>
+            <span>lutyjpon439@gmail.com</span> <br>
+            <span>2580367223Kirill!</span>
             <div>
 
-            <div>
-              <label for="email">Изменить почту</label>
-              <input v-model="email" type="text" name="email" id="" placeholder="Введите почту">
-            </div>
-            <div>
-              <label for="password">Изменить пароль</label>
-              <input v-model="password" type="text" name="password" id="" placeholder="Введите пароль">
-            </div>
+              <div>
+                <label for="email">Изменить почту</label>
+                <input v-model="email" type="text" name="email" id="" placeholder="Введите почту">
+              </div>
+              <div>
+                <label for="password">Изменить пароль</label>
+                <input v-model="password" type="text" name="password" id="" placeholder="Введите пароль">
+              </div>
             </div>
             <button class="cabinet__wrapper__information__form_button" type="submit">Сохранить</button>
           </form>
-          
+
         </div>
       </div>
     </div>
@@ -85,11 +85,17 @@
 
 <script>
 
-import { getAuth, signOut,
+import {
+  getAuth, signOut,
+  EmailAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  reauthenticateWithCredential,
+  verifyBeforeUpdateEmail
 } from "firebase/auth";
 import {collection, onSnapshot, query, orderBy} from "firebase/firestore";
 import {db} from "@/firebase";
-import {ref} from 'vue';
+// import {ref} from 'vue';
 import {useRouter} from "vue-router";
 
 
@@ -98,9 +104,9 @@ export default {
   data() {
     return {
       page: 'contacts',
-      orderHistory: ref([]),
-      email: ref(''),
-      password: ref(''),
+      orderHistory: [],
+      email: '',
+      password: '',
     }
   },
   computed: {
@@ -139,6 +145,43 @@ export default {
       })
     },
 
+    async updateUser() {
+      const user = auth.currentUser;
+      if (!user) {
+        alert('Пользователь не найден.');
+        return;
+      }
+      if (!this.password || !this.email) {
+        alert('Введите пароль и новый email.');
+        return;
+      }
+      try {
+        const credential = EmailAuthProvider.credential(user.email, this.password);
+        await reauthenticateWithCredential(user, credential);
+        await verifyBeforeUpdateEmail(user, this.email);
+
+        sessionStorage.setItem('autoLoginEmail', this.email);
+        sessionStorage.setItem('autoLoginPassword', this.password);
+
+        alert('Письмо подтверждения отправлено на новую почту. Подтвердите её.');
+      } catch (error) {
+        alert('Ошибка: ' + error.message);
+      }
+    },
+    async autoLoginAfterVerification() {
+      const email = sessionStorage.getItem('autoLoginEmail');
+      const password = sessionStorage.getItem('autoLoginPassword');
+      if (email && password) {
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          sessionStorage.removeItem('autoLoginEmail');
+          sessionStorage.removeItem('autoLoginPassword');
+        } catch (error) {
+          console.error('Ошибка:', error);
+        }
+      }
+    }
+
   },
   setup() {
     const router = useRouter();
@@ -154,6 +197,11 @@ export default {
   },
   mounted() {
     this.withdrawalOrderHistory();
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        this.autoLoginAfterVerification();
+      }
+    });
   }
 }
 </script>

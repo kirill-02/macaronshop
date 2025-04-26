@@ -193,6 +193,7 @@ const routes = [
             auth: true
         }
     },
+
     {
         path: '/:pathMatch(.*)*',
         name: '404',
@@ -208,4 +209,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 });
+
+
 export default router; // Экспортируйте маршрутизатор
