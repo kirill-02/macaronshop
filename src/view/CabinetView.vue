@@ -103,7 +103,7 @@ const auth = getAuth();
 export default {
   data() {
     return {
-      page: 'contacts',
+      page: 'story',
       orderHistory: [],
       email: '',
       password: '',
