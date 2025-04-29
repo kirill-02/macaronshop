@@ -461,7 +461,7 @@
             <thead>
             <tr>
               <th>UID</th>
-              <th>Email</th>
+
               <th>Телефон</th>
               <th>Компания</th>
               <th>Роль</th>
@@ -472,7 +472,7 @@
 
             <tr v-for="user in filteredUsers" :key="user.id">
               <td>{{ user.uid }}</td>
-              <td>{{ user.email }}</td>
+
               <td>{{ user.phone }}</td>
               <td>{{ user.company || "пользователь не добавил" }}</td>
               <td v-if="update !== user.id">{{ user.role }}</td>
@@ -1136,8 +1136,8 @@ import {
 import 'firebase/auth';
 import {db} from "@/firebase";
 
-const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
-// const baseUrl = '/upload'; // для хоста
+// const baseUrl = `${process.env.VUE_APP_API_URL || 'http://localhost:3000'}/upload`; // для локалки
+const baseUrl = '/upload'; // для хоста
 export default {
   data() {
     return {
@@ -1288,8 +1288,7 @@ export default {
       if (this.searchUserId) {
         this.filteredUsers =
             this.users.filter(user => user.uid.includes(this.searchUserId) ||
-                user.phone.includes(this.searchUserId) ||
-                user.email.includes(this.searchUserId) &&
+                user.phone.includes(this.searchUserId)  &&
                 user.role !== 'модератор');
       } else {
         this.filteredUsers = this.users.filter(user => user.role !== 'модератор'); // Показываем всех, если поле пустое
@@ -1538,7 +1537,6 @@ export default {
         this.users = snapshot.docs.map((doc) => {
           return {
             id: doc.id,
-            email: doc.data().email,
             uid: doc.data().uid,
             phone: doc.data().phone,
             name: doc.data().name,
@@ -1577,8 +1575,8 @@ export default {
         await deleteDoc(doc(db, 'users', userId));
 
         await fetch(
-            "http://localhost:3000/delete-user",
-            // "/delete-user",
+            // "http://localhost:3000/delete-user",
+            "/delete-user",
             {
               method: "POST",
               headers: {
